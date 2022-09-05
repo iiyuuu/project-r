@@ -171,10 +171,8 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  moveSpeed: 5
-  dashingPower: 100
-  dashingTime: 0.2
-  dashingCooldown: 1
+  baseMoveSpeed: 5
+  dashingPower: 15
 --- !u!61 &190043827
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1069,7 +1067,7 @@ Transform:
   m_GameObject: {fileID: 1825565560}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -9.942509, y: 0.009999275, z: 0}
-  m_LocalScale: {x: 0.31562504, y: 9.80054, z: 1}
+  m_LocalScale: {x: 0.31840256, y: 9.886785, z: 1.0088}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1607383507}

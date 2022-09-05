@@ -10,16 +10,15 @@ public class PlayerControls : MonoBehaviour
     public ContactFilter2D movementFilter;
     private Rigidbody2D body;
     private Vector2 moveInput;
+    private Vector2 dashDirection;
 
-
-    public float moveSpeed = 5.0f;
+    public float baseMoveSpeed = 5.0f;
     private float activeMoveSpeed;
 
-    private bool canDash = true;
-    private bool isDashing;
+    IEnumerator dashCoroutine;
     public float dashingPower = 24f;
-    public float dashingTime = 0.2f;
-    public float dashingCooldown = 1f;
+    bool isDashing;
+    bool canDash = true;
 
     
 
@@ -28,15 +27,41 @@ public class PlayerControls : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
-        activeMoveSpeed = moveSpeed;
+        activeMoveSpeed = baseMoveSpeed;
+
     }
-    //Per Frame basis
+    //input
     void Update()
     {
         FixedUpdate();
+        //checks for space bar input then starts coroutine
+        if (Input.GetKeyDown(KeyCode.Space) && canDash == true)
+        {
+            if (dashCoroutine != null)
+            {
+                //stop condition for coroutine if you are already dashing
+                StopCoroutine(dashCoroutine);
+            }
+            dashDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            if(dashDirection == Vector2.zero)
+            {
+                dashDirection = new Vector2(transform.localScale.x, 0);
+            }
+            dashCoroutine = Dash(0.1f, 0.5f);
+            StartCoroutine(dashCoroutine);
+        }
+
     }
+    //movement
     void FixedUpdate()
     {
+
+        //movement speed modifier
+        if (isDashing)
+        {
+            body.velocity = dashDirection.normalized * dashingPower;
+            return;
+        }
 
         // Try to move player in input direction, followed by left right and up down input if failed
         bool success = PlayerMovement(moveInput);
@@ -50,7 +75,6 @@ public class PlayerControls : MonoBehaviour
                 success = PlayerMovement(new Vector2(0, moveInput.y));
             }
         }
-
         
     }
     private void OnMove(InputValue value)
@@ -61,7 +85,7 @@ public class PlayerControls : MonoBehaviour
 
     void physicsUpdate()
     {
-        body.MovePosition(body.position + moveInput * moveSpeed * Time.fixedDeltaTime);
+        body.MovePosition(body.position + moveInput * activeMoveSpeed * Time.fixedDeltaTime);
     }
 
     private bool PlayerMovement(Vector2 direction)
@@ -70,11 +94,11 @@ public class PlayerControls : MonoBehaviour
             direction,
             movementFilter,
             castCollisions,
-            moveSpeed * Time.fixedDeltaTime + collisionOffset);
+            activeMoveSpeed * Time.fixedDeltaTime + collisionOffset);
 
         if(count == 0)
         {
-            Vector2 moveVector = direction * moveSpeed * Time.fixedDeltaTime;
+            Vector2 moveVector = direction * activeMoveSpeed * Time.fixedDeltaTime;
 
             //No Collisions
             body.MovePosition(body.position + moveVector);
@@ -85,27 +109,21 @@ public class PlayerControls : MonoBehaviour
             //prints collisions; just debugging
             foreach(RaycastHit2D hit in castCollisions)
             {
-                print(hit.ToString());
+                print("hit");
             }
 
             return false;
         }
     }
 
-    void OnDash(InputValue value)
-    {
-        StartCoroutine(Dash());
-   
-    }
-
-    private IEnumerator Dash()
+    private IEnumerator Dash(float dashingTime, float dashingCooldown)
     {
         canDash = false;
         isDashing = true;
-        body.velocity = new Vector2(body.velocity.x * dashingPower, body.velocity.x * dashingPower);
-        yield return new WaitForSeconds(dashingTime);
+        yield return new WaitForSeconds(dashingTime);//during dash
         isDashing = false;
-        yield return new WaitForSeconds(dashingCooldown);
+        activeMoveSpeed = baseMoveSpeed;
+        yield return new WaitForSeconds(dashingCooldown);//wait dash cd
         canDash = true;
     }
 
