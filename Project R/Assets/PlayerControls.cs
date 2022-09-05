@@ -1,22 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerControls : MonoBehaviour
 {
-    Rigidbody2D body;
-    public float moveSpeed = 20.0f;
-    private float activeMoveSpeed;
-    public float dashSpeed;
-    public float dashLength = 0.5f;
-    public float dashCooldown = 1f;
+    private List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
+    public float collisionOffset = 0.05f;
+    public ContactFilter2D movementFilter;
+    private Rigidbody2D body;
     private Vector2 moveInput;
 
-    private float dashCounter;
-    private float dashCooldownTime;
 
+    public float moveSpeed = 5.0f;
+    private float activeMoveSpeed;
 
-    float moveLimiter = 0.85f;
+    private bool canDash = true;
+    private bool isDashing;
+    public float dashingPower = 24f;
+    public float dashingTime = 0.2f;
+    public float dashingCooldown = 1f;
+
     
 
     //Vector 2 -> 2d Vector with X and Y speed
@@ -29,74 +33,82 @@ public class PlayerControls : MonoBehaviour
     //Per Frame basis
     void Update()
     {
-        PlayerMovement();
         FixedUpdate();
-        PlayerDash();
     }
-
     void FixedUpdate()
     {
-        if(moveInput.x != 0 && moveInput.y != 0)//check if the sprite is moving diagonally
+
+        // Try to move player in input direction, followed by left right and up down input if failed
+        bool success = PlayerMovement(moveInput);
+
+        //if player hits a wall check if player can move left/right or up/down the wall
+        if (!success)
         {
-            moveInput.x *= moveLimiter;
-            moveInput.y *= moveLimiter;
+            success = PlayerMovement(new Vector2(moveInput.x, 0));
+            if (!success)
+            {
+                success = PlayerMovement(new Vector2(0, moveInput.y));
+            }
         }
 
-        body.velocity = new Vector2(moveInput.x * activeMoveSpeed, moveInput.y * activeMoveSpeed);
+        
+    }
+    private void OnMove(InputValue value)
+    {
+        //gathers user movement inputs
+        moveInput = value.Get<Vector2>();
     }
 
-    private void PlayerMovement()
+    void physicsUpdate()
     {
+        body.MovePosition(body.position + moveInput * moveSpeed * Time.fixedDeltaTime);
+    }
 
-        bool isIdle = false;
+    private bool PlayerMovement(Vector2 direction)
+    {
+        int count = body.Cast(
+            direction,
+            movementFilter,
+            castCollisions,
+            moveSpeed * Time.fixedDeltaTime + collisionOffset);
 
-        moveInput.x = Input.GetAxisRaw("Horizontal");
-        moveInput.y = Input.GetAxisRaw("Vertical");
-        
-        if(moveInput.x == 0 && moveInput.y == 0)
+        if(count == 0)
         {
-            isIdle = true;
-        }
+            Vector2 moveVector = direction * moveSpeed * Time.fixedDeltaTime;
 
-
-        if (isIdle)
-        {
-            //play animation
+            //No Collisions
+            body.MovePosition(body.position + moveVector);
+            return true;
         }
         else
         {
-            body.velocity = moveInput * moveSpeed;
+            //prints collisions; just debugging
+            foreach(RaycastHit2D hit in castCollisions)
+            {
+                print(hit.ToString());
+            }
+
+            return false;
         }
     }
 
-    private void PlayerDash()
+    void OnDash(InputValue value)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if(dashCooldownTime <=0 && dashCounter <= 0)
-            {
-                activeMoveSpeed = dashSpeed;
-                dashCounter = dashLength;
-            }
-
-        }
-
-        if(dashCounter > 0)
-        {
-            dashCounter -= Time.deltaTime;
-
-            if(dashCounter <= 0)
-            {
-                activeMoveSpeed = moveSpeed;
-                dashCooldownTime = dashCooldown;
-            }
-        }
-
-        if(dashCooldownTime > 0)
-        {
-            dashCooldownTime -= Time.deltaTime;
-        }
+        StartCoroutine(Dash());
+   
     }
+
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        body.velocity = new Vector2(body.velocity.x * dashingPower, body.velocity.x * dashingPower);
+        yield return new WaitForSeconds(dashingTime);
+        isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
+    }
+
 
 
 
