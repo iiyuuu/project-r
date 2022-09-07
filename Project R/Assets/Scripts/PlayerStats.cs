@@ -10,31 +10,36 @@ public class PlayerStats : MonoBehaviour
 
     public static event Action OnPlayerDamaged;
     public static event Action OnPlayerDeath;
+    public static event Action OnPlayerHeal;
+
+    private PlayerCombat combatStats;
 
     void Start()
     {
         currentHealth = maxHealth;
     }
 
-    void DamageTaken(int amount)
+    public void DamageTaken(int amount)
     {
         currentHealth -= amount;
-        //OnPlayerDamaged?.Invoke();
+        OnPlayerDamaged?.Invoke();
 
-        if(currentHealth <= 0){
+        if (currentHealth <= 0)
+        {
             currentHealth = 0;
-            //OnPlayerDeath?.Invoke();
+            OnPlayerDeath?.Invoke();
             Debug.Log("dejj");
-            //dejj
             //death animation
             //fade out or game over scene
         }
     }
 
-    void Healing(int amount)
+    public void Healing(int amount)
     {
         currentHealth += amount;
-        if (currentHealth <= maxHealth)
+        OnPlayerHeal?.Invoke();
+
+        if (currentHealth >= maxHealth)
         {
             currentHealth = maxHealth;
         }

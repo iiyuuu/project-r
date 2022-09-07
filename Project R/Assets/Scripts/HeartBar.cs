@@ -9,20 +9,21 @@ public class HeartBar : MonoBehaviour
     public PlayerStats _playerStats;
     List<Heart> hearts = new List<Heart>();
 
+    private void OnEnable()
+    {
+        PlayerStats.OnPlayerDamaged += DrawHearts;
+        PlayerStats.OnPlayerHeal += DrawHearts;
+    }
+    private void OnDisable()
+    {
+        PlayerStats.OnPlayerDamaged -= DrawHearts;
+        PlayerStats.OnPlayerHeal -= DrawHearts;
+    }
+
     private void Start()
     {
         DrawHearts();
     }
-
-    //private void OnEnable()
-    //{
-    //    _playerStats.OnPlayerDamaged += DrawHearts();
-    //}
-
-    //private void OnDisable()
-    //{
-    //    _playerStats.OnPlayerDamaged -= DrawHearts();
-    //}
 
     public void DrawHearts()
     {

@@ -11,6 +11,7 @@ public class PlayerCombat : MonoBehaviour
 
     public int attackDamage = 1;
 
+    public PlayerStats stats;
 
 
     // Update is called once per frame
@@ -34,4 +35,18 @@ public class PlayerCombat : MonoBehaviour
         }
 
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        //if(other.tag == "Enemy")
+        //{
+        //    Enemy enemey = other.GetComponent<Enemy>();
+        //    if(enemy != null)
+        //    {
+        //        stats.DamageTaken(1);
+        //    }
+        //}
+        return;
+    }
+
 }

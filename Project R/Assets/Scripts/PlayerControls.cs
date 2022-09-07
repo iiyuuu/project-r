@@ -10,7 +10,6 @@ public class PlayerControls : MonoBehaviour
     public ContactFilter2D movementFilter;
     private Rigidbody2D body;
     private Vector2 moveInput;
-    private Vector2 dashDirection;
 
     public float baseMoveSpeed = 5.0f;
     private float activeMoveSpeed;
@@ -19,14 +18,20 @@ public class PlayerControls : MonoBehaviour
     public float dashingPower = 24f;
     bool isDashing;
     bool canDash = true;
+    private Vector2 dashDirection;
 
-    
+    Animator animator;
+    SpriteRenderer spriteRenderer;
+
+    public PlayerCombat combat;
 
     //Vector 2 -> 2d Vector with X and Y speed
 
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();//added some animation precode
+        spriteRenderer = GetComponent<SpriteRenderer>();//sprite render for flipping sprite (no need for both left and right sprite now)
         activeMoveSpeed = baseMoveSpeed;
 
     }
@@ -35,21 +40,6 @@ public class PlayerControls : MonoBehaviour
     {
         FixedUpdate();
         //checks for space bar input then starts coroutine
-        if (Input.GetKeyDown(KeyCode.Space) && canDash == true)
-        {
-            if (dashCoroutine != null)
-            {
-                //stop condition for coroutine if you are already dashing
-                StopCoroutine(dashCoroutine);
-            }
-            dashDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-            if(dashDirection == Vector2.zero)
-            {
-                dashDirection = new Vector2(transform.localScale.x, 0);
-            }
-            dashCoroutine = Dash(0.1f, 0.5f);
-            StartCoroutine(dashCoroutine);
-        }
 
     }
     //movement
@@ -59,6 +49,7 @@ public class PlayerControls : MonoBehaviour
         //movement speed modifier
         if (isDashing)
         {
+            print(dashDirection);
             body.velocity = dashDirection.normalized * dashingPower;
             return;
         }
@@ -67,13 +58,32 @@ public class PlayerControls : MonoBehaviour
         bool success = PlayerMovement(moveInput);
 
         //if player hits a wall check if player can move left/right or up/down the wall
-        if (!success)
+        if(moveInput != Vector2.zero)
         {
-            success = PlayerMovement(new Vector2(moveInput.x, 0));
             if (!success)
             {
-                success = PlayerMovement(new Vector2(0, moveInput.y));
+                success = PlayerMovement(new Vector2(moveInput.x, 0));
+                if (!success)
+                {
+                    success = PlayerMovement(new Vector2(0, moveInput.y));
+                }
             }
+
+            //animator.SetBool("isMoving", success);
+        }
+        else
+        {
+            //animator.SetBool("isMoving", false);
+        }
+        
+        //flips sprite if you are moving left/right
+        if(moveInput.x < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if(moveInput.x > 0)
+        {
+            spriteRenderer.flipX = false;
         }
         
     }
@@ -90,30 +100,25 @@ public class PlayerControls : MonoBehaviour
 
     private bool PlayerMovement(Vector2 direction)
     {
-        int count = body.Cast(
-            direction,
+            int count = body.Cast(
+            moveInput,
             movementFilter,
             castCollisions,
             activeMoveSpeed * Time.fixedDeltaTime + collisionOffset);
 
-        if(count == 0)
-        {
-            Vector2 moveVector = direction * activeMoveSpeed * Time.fixedDeltaTime;
-
-            //No Collisions
-            body.MovePosition(body.position + moveVector);
-            return true;
-        }
-        else
-        {
-            //prints collisions; just debugging
-            foreach(RaycastHit2D hit in castCollisions)
+            if (count == 0)
             {
-                print("hit");
-            }
+                Vector2 moveVector = moveInput * activeMoveSpeed * Time.fixedDeltaTime;
 
-            return false;
-        }
+                //No Collisions
+                body.MovePosition(body.position + moveVector);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
     }
 
     private IEnumerator Dash(float dashingTime, float dashingCooldown)
@@ -127,7 +132,37 @@ public class PlayerControls : MonoBehaviour
         canDash = true;
     }
 
+    void OnDash()
+    {
+        if (canDash)
+        {
+            if (dashCoroutine != null)
+            {
+                //stop condition for coroutine if you are already dashing
+                StopCoroutine(dashCoroutine);
+            }
 
-
-
+            if (moveInput == Vector2.zero)
+            {
+                if (spriteRenderer.flipX && moveInput.y == 0)//if sprite is facing left
+                {
+                    dashDirection = new Vector2(-transform.localScale.x, 0);//move in set y direction
+                }
+                else if (!spriteRenderer.flipX && moveInput.y == 0)//if sprite is facing right
+                {
+                    dashDirection = new Vector2(transform.localScale.x, 0);//move in set x direction
+                }
+            }
+            else
+            {
+                dashDirection = new Vector2(moveInput.x, moveInput.y);//will dash in diagonal movement
+            }
+            dashCoroutine = Dash(0.1f, 0.5f);//calls coroutine for dash manuever
+            StartCoroutine(dashCoroutine);
+        }
+        else
+        {
+            return;
+        }
+    }
 }

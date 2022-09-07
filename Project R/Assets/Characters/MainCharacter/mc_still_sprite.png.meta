@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f7f05e621e1b141e180a9d0e49e3d1c6
+guid: 4b87dfdb4fa95094fa9c2d6d497ca9af
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -121,8 +121,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c3e97c355fba140ab92f7745e41617b1
-      internalID: -1130233880
+      spriteID: 63ce5cad89a4d034a972b35cfdf48040
+      internalID: -372273093
       vertices: []
       indices: 
       edges: []
@@ -142,8 +142,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f091fdfa0ca0e4dfbac71178e3b1a560
-      internalID: 365113634
+      spriteID: c7fb89eb78184c8499b2938fbc229f1e
+      internalID: -746239339
       vertices: []
       indices: 
       edges: []
@@ -163,8 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3ac60caba0df4984975b3d58a1781c0
-      internalID: -1681889419
+      spriteID: 8328bc1d872cee341a95631925bdf1b7
+      internalID: -493241249
       vertices: []
       indices: 
       edges: []
@@ -184,8 +184,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 183a9bf7ddc9248dfbeac3734503c311
-      internalID: 1023525815
+      spriteID: 15d417fc64dcc624c8059a0fbf938ec6
+      internalID: -965181812
       vertices: []
       indices: 
       edges: []
@@ -205,8 +205,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33ac0b36f4a494503800137caf24975b
-      internalID: -1115274555
+      spriteID: 16ec4d1e776678546b57211ed70112fa
+      internalID: -1724857111
       vertices: []
       indices: 
       edges: []
@@ -226,8 +226,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c66b9b4bbbb424208aa106af8d4f2364
-      internalID: 586410959
+      spriteID: 4eac569040dffb34dbc9fba3a00ee8fc
+      internalID: 244331651
       vertices: []
       indices: 
       edges: []
@@ -247,8 +247,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4508776c7cfe64529a903c43752d36b6
-      internalID: -1723873439
+      spriteID: b59c72dac20641b4088d6fb0b954c9d6
+      internalID: 47137456
       vertices: []
       indices: 
       edges: []
@@ -268,8 +268,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 763fabc6551d941c9ad3d95eba124d5e
-      internalID: -2087590760
+      spriteID: 17eaccc9ef211124e836abe0f2cff1ec
+      internalID: -147544198
       vertices: []
       indices: 
       edges: []
@@ -289,8 +289,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c617cd79b48243a8b1b3e4eb122fe81
-      internalID: -522917887
+      spriteID: 7147a716dffb521439d6b94e8f350943
+      internalID: -675971567
       vertices: []
       indices: 
       edges: []
@@ -310,8 +310,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fef4fff1886a745dbb5d4d56a4fa334b
-      internalID: 1629680718
+      spriteID: bf49860d4cf46da4981fa70499845868
+      internalID: -97395545
       vertices: []
       indices: 
       edges: []
@@ -327,16 +327,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      mc_still_sprite_9: 1629680718
-      mc_still_sprite_1: 365113634
-      mc_still_sprite_4: -1115274555
-      mc_still_sprite_0: -1130233880
-      mc_still_sprite_8: -522917887
-      mc_still_sprite_3: 1023525815
-      mc_still_sprite_5: 586410959
-      mc_still_sprite_2: -1681889419
-      mc_still_sprite_7: -2087590760
-      mc_still_sprite_6: -1723873439
+      mc_still_sprite_9: -97395545
+      mc_still_sprite_1: -746239339
+      mc_still_sprite_4: -1724857111
+      mc_still_sprite_0: -372273093
+      mc_still_sprite_8: -675971567
+      mc_still_sprite_3: -965181812
+      mc_still_sprite_5: 244331651
+      mc_still_sprite_2: -493241249
+      mc_still_sprite_7: -147544198
+      mc_still_sprite_6: 47137456
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

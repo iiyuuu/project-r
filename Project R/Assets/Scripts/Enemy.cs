@@ -6,7 +6,9 @@ public class Enemy : MonoBehaviour
 {
 
     public int maxHealth = 3;
-    int currentHealth;
+    private int currentHealth;
+
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -23,10 +25,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void Die()
+    public void Die()
     {
         Debug.Log("enemy died");
-        //GetComponent<Collider2D>().enable = false;
-        this.enabled = false;
+        Destroy(gameObject);
     }
+
+    
 }
