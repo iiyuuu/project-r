@@ -9,15 +9,6 @@ public class CurrencyManager : MonoBehaviour
     public TextMeshProUGUI text;
     int currency;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        if(instance == null)
-        {
-            instance = this;
-        }
-    }
-
     public void ChangeCurrency(int currencyValue)
     {
         currency += currencyValue;
