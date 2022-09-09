@@ -17,22 +17,19 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.C))
-        {
-            Attack();
-        }
+
     }
 
-    void Attack()
+    void OnMelee()
     {
-        //attack animation
-        //detect enemies in range
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-        //Damage enemies
-        foreach(Collider2D enemy in hitEnemies)
-        {
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
-        }
+        ////attack animation
+        ////detect enemies in range
+        //Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        ////Damage enemies
+        //foreach(Collider2D enemy in hitEnemies)
+        //{
+        //    enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+        //}
 
     }
 

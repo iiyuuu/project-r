@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Heal
+  - Enemy
+  - Coin
   layers:
   - Default
   - TransparentFX
@@ -11,9 +14,9 @@ TagManager:
   - Wall
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Interactable
   - 
   - 
   - 

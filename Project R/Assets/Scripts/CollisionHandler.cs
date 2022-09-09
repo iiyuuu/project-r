@@ -13,7 +13,7 @@ public class CollisionHandler : MonoBehaviour
        {
             Debug.Log("Enemy Hit you");
             stats.DamageTaken(1);
-            //add like 2 second i frames in the stats script
+
        }
        else if (other.gameObject.tag.Equals("Heal"))
        {
@@ -29,5 +29,7 @@ public class CollisionHandler : MonoBehaviour
        }
 
     }
+
+
 
 }

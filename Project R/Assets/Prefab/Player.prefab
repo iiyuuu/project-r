@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5002295740580372872}
   - component: {fileID: 8479199668614094276}
   - component: {fileID: 8479199668614094282}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -34,8 +34,8 @@ Transform:
   m_GameObject: {fileID: 8479199668614094285}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -54.8, y: -6, z: 0.064910784}
-  m_LocalScale: {x: 15, y: 12.901009, z: 6.734007}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 35, y: 35, z: 15.712682}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: -1
@@ -81,12 +81,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -372273093, guid: 4b87dfdb4fa95094fa9c2d6d497ca9af, type: 3}
+  m_Sprite: {fileID: -879159589, guid: bed847c902f498946be3dbf1b2835a43, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -105,18 +105,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.021487474, y: -0.4414962}
+  m_Offset: {x: 0.0058611035, y: -0.13639772}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 0.32, y: 0.32}
+    newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4260127, y: 0.11700761}
+  m_Size: {x: 0.1617859, y: 0.05771292}
   m_EdgeRadius: 0
 --- !u!50 &8479199668614094283
 Rigidbody2D:
@@ -167,7 +167,9 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   baseMoveSpeed: 50
+  idleFriction: 0.9
   dashingPower: 150
+  isDashing: 0
   combat: {fileID: 8479199668614094273}
 --- !u!114 &8479199668614094277
 MonoBehaviour:
@@ -216,6 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 8479199668614094277}
   currency: {fileID: 0}
+  controls: {fileID: 0}
 --- !u!95 &8479199668614094276
 Animator:
   serializedVersion: 4

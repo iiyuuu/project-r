@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4b87dfdb4fa95094fa9c2d6d497ca9af
+guid: bed847c902f498946be3dbf1b2835a43
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -107,112 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mc_still_sprite_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 63ce5cad89a4d034a972b35cfdf48040
-      internalID: -372273093
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mc_still_sprite_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c7fb89eb78184c8499b2938fbc229f1e
-      internalID: -746239339
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mc_still_sprite_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8328bc1d872cee341a95631925bdf1b7
-      internalID: -493241249
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mc_still_sprite_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 15d417fc64dcc624c8059a0fbf938ec6
-      internalID: -965181812
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mc_still_sprite_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 16ec4d1e776678546b57211ed70112fa
-      internalID: -1724857111
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mc_still_sprite_5
+      name: playerIdle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -226,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4eac569040dffb34dbc9fba3a00ee8fc
-      internalID: 244331651
+      spriteID: 3edd88e4d142e7945b6565730e78c0df
+      internalID: -879159589
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_still_sprite_6
+      name: playerIdle_1
       rect:
         serializedVersion: 2
         x: 32
@@ -247,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b59c72dac20641b4088d6fb0b954c9d6
-      internalID: 47137456
+      spriteID: caa9f25c3ed915e46943909ac1a40b2f
+      internalID: 1584676765
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_still_sprite_7
+      name: playerIdle_2
       rect:
         serializedVersion: 2
         x: 64
@@ -268,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17eaccc9ef211124e836abe0f2cff1ec
-      internalID: -147544198
+      spriteID: 1dd2da023907f2a4b9bde4a046ceab3d
+      internalID: -1659875795
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_still_sprite_8
+      name: playerIdle_3
       rect:
         serializedVersion: 2
         x: 96
@@ -289,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7147a716dffb521439d6b94e8f350943
-      internalID: -675971567
+      spriteID: c9ed7314e5c89bb4ca17b6b56ecf387a
+      internalID: 631244680
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mc_still_sprite_9
+      name: playerIdle_4
       rect:
         serializedVersion: 2
         x: 128
@@ -310,8 +205,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf49860d4cf46da4981fa70499845868
-      internalID: -97395545
+      spriteID: 0241e83842925c24994256ee87a4f445
+      internalID: -725615695
       vertices: []
       indices: 
       edges: []
@@ -327,16 +222,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      mc_still_sprite_9: -97395545
-      mc_still_sprite_1: -746239339
-      mc_still_sprite_4: -1724857111
-      mc_still_sprite_0: -372273093
-      mc_still_sprite_8: -675971567
-      mc_still_sprite_3: -965181812
-      mc_still_sprite_5: 244331651
-      mc_still_sprite_2: -493241249
-      mc_still_sprite_7: -147544198
-      mc_still_sprite_6: 47137456
+      playerIdle_0: -879159589
+      playerIdle_3: 631244680
+      playerIdle_4: -725615695
+      playerIdle_2: -1659875795
+      playerIdle_1: 1584676765
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

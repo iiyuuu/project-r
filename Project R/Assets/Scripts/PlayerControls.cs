@@ -17,7 +17,7 @@ public class PlayerControls : MonoBehaviour
 
     IEnumerator dashCoroutine;
     public float dashingPower = 24f;
-    bool isDashing;
+    public bool isDashing;
     bool canDash = true;
     private Vector2 dashDirection;
 
@@ -25,6 +25,8 @@ public class PlayerControls : MonoBehaviour
     SpriteRenderer spriteRenderer;
 
     public PlayerCombat combat;
+
+    bool canMove = true;
 
     //Vector 2 -> 2d Vector with X and Y speed
 
@@ -46,49 +48,51 @@ public class PlayerControls : MonoBehaviour
     //movement
     void FixedUpdate()
     {
-
-        //movement speed modifier
-        if (isDashing)
-        {
-            print(dashDirection);
-            body.velocity = dashDirection.normalized * dashingPower;
-            return;
-        }
-
-        // Try to move player in input direction, followed by left right and up down input if failed
-        bool success = PlayerMovement(moveInput);
-
-        //if player hits a wall check if player can move left/right or up/down the wall
-        if(moveInput != Vector2.zero)
-        {
-            if (!success)
+        Physics2D.IgnoreLayerCollision(6, 7, false);
+        if (canMove)
+        { 
+            //movement speed modifier
+            if (isDashing)
             {
-                success = PlayerMovement(new Vector2(moveInput.x, 0));
+                body.velocity = dashDirection.normalized * dashingPower;
+                Physics2D.IgnoreLayerCollision(6, 7, true);
+                return;
+            }
+
+            // Try to move player in input direction, followed by left right and up down input if failed
+            bool success = PlayerMovement(moveInput);
+
+            //if player hits a wall check if player can move left/right or up/down the wall
+            if (moveInput != Vector2.zero)
+            {
                 if (!success)
                 {
-                    success = PlayerMovement(new Vector2(0, moveInput.y));
+                    success = PlayerMovement(new Vector2(moveInput.x, 0));
+                    if (!success)
+                    {
+                        success = PlayerMovement(new Vector2(0, moveInput.y));
+                    }
                 }
-            }
 
-            //flips sprite if you are moving left/right
-            if (moveInput.x < 0)
-            {
-                spriteRenderer.flipX = true;
-            }
-            else if (moveInput.x > 0)
-            {
-                spriteRenderer.flipX = false;
-            }
 
-            UpdateAnimationParameters();
-            //animator.SetBool("isMoving", success);
+                //flips sprite if you are moving left/right
+                if (moveInput.x < 0)
+                {
+                    spriteRenderer.flipX = true;
+                }
+                else if (moveInput.x > 0)
+                {
+                    spriteRenderer.flipX = false;
+                }
+
+                animator.SetBool("isMoving", success);
+            }
+            else
+            {
+                animator.SetBool("isMoving", false);
+            }
         }
-        else
-        {
             body.velocity = Vector2.Lerp(body.velocity, Vector2.zero, 1);
-            //animator.SetBool("isMoving", false);
-        }
-        
         
     }
     private void OnMove(InputValue value)
@@ -99,6 +103,8 @@ public class PlayerControls : MonoBehaviour
 
     private bool PlayerMovement(Vector2 direction)
     {
+        if(moveInput != Vector2.zero)
+        {
             int count = body.Cast(
             moveInput,
             movementFilter,
@@ -109,7 +115,7 @@ public class PlayerControls : MonoBehaviour
             {
                 Vector2 moveVector = moveInput * activeMoveSpeed * Time.deltaTime;
 
-            //No Collisions
+                //No Collisions
                 //body.velocity = Vector2.ClampMagnitude(body.velocity + moveVector, activeMoveSpeed);
                 body.MovePosition(body.position + moveVector);
                 return true;
@@ -118,6 +124,12 @@ public class PlayerControls : MonoBehaviour
             {
                 return false;
             }
+        }
+        else
+        {
+            return false;
+        }
+            
             
     }
 
@@ -166,9 +178,18 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
-    void UpdateAnimationParameters()
+    void OnMelee()
     {
-        animator.SetFloat("moveX", moveInput.x);
-        animator.SetFloat("moveY", moveInput.y);
+        animator.SetTrigger("isAttacking");
+    }
+
+    public void LockMovement()
+    {
+        canMove = false;
+    }
+
+    public void UnlockMovemen()
+    {
+        canMove = true;
     }
 }
