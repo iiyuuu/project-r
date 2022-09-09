@@ -448,6 +448,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6636966778158899223, guid: b2050ab9056828743967e9106327f027, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 75b1e216f39b39148b8bd2fd4e5c93a3, type: 3}
     - target: {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -480,8 +484,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 846703157}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -145, y: -4, z: -1212.6155}
-  m_LocalScale: {x: 8.237592, y: 7.922421, z: 13.473505}
+  m_LocalPosition: {x: -145.8, y: -4, z: -1212.6155}
+  m_LocalScale: {x: 150, y: 150, z: 13.473505}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 661865382}
@@ -528,7 +532,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: 22b1121dc0ff5b94f9f528674de832f5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 75b1e216f39b39148b8bd2fd4e5c93a3, type: 3}
   m_Color: {r: 0.9779327, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1259,7 +1263,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1472,8 +1476,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -893.9008, y: 569.739}
-  m_SizeDelta: {x: 614.198, y: 145.522}
+  m_AnchoredPosition: {x: -699.79553, y: 612.1486}
+  m_SizeDelta: {x: 1002.409, y: 60.702}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2015509901
 MonoBehaviour:
@@ -1509,10 +1513,10 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 0, y: 0}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_CellSize: {x: 64, y: 64}
+  m_Spacing: {x: 32, y: 0}
+  m_Constraint: 2
+  m_ConstraintCount: 1
 --- !u!114 &2015509903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1717,6 +1721,10 @@ PrefabInstance:
       propertyPath: currency
       value: 
       objectReference: {fileID: 661865383}
+    - target: {fileID: 8479199668614094277, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
+      propertyPath: maxHealth
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8479199668614094280, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
       propertyPath: m_RootOrder
       value: -1

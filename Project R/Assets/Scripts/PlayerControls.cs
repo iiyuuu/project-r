@@ -85,7 +85,7 @@ public class PlayerControls : MonoBehaviour
         }
         else
         {
-            body.velocity = Vector2.Lerp(body.velocity, Vector2.zero, idleFriction);
+            body.velocity = Vector2.Lerp(body.velocity, Vector2.zero, 1);
             //animator.SetBool("isMoving", false);
         }
         
