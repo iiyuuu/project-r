@@ -18,7 +18,7 @@ public class CollisionHandler : MonoBehaviour
        else if (other.gameObject.tag.Equals("Heal"))
        {
            Debug.Log("Grabbed Heart");
-           stats.Healing(1);
+           stats.Healing(2);
            Destroy(other.gameObject);
        }
        else if (other.gameObject.tag.Equals("Coin"))

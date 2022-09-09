@@ -107,11 +107,11 @@ public class PlayerControls : MonoBehaviour
 
             if (count == 0)
             {
-                Vector2 moveVector = moveInput * activeMoveSpeed * Time.fixedDeltaTime;
+                Vector2 moveVector = moveInput * activeMoveSpeed * Time.deltaTime;
 
             //No Collisions
-                body.velocity = Vector2.ClampMagnitude(body.velocity + moveVector, activeMoveSpeed);
-                //body.MovePosition(body.position + moveVector);
+                //body.velocity = Vector2.ClampMagnitude(body.velocity + moveVector, activeMoveSpeed);
+                body.MovePosition(body.position + moveVector);
                 return true;
             }
             else
