@@ -11,8 +11,9 @@ public class PlayerControls : MonoBehaviour
     private Rigidbody2D body;
     private Vector2 moveInput;
 
-    public float baseMoveSpeed = 5.0f;
+    public float baseMoveSpeed = 50f;
     private float activeMoveSpeed;
+    public float idleFriction = 0.9f;
 
     IEnumerator dashCoroutine;
     public float dashingPower = 24f;
@@ -69,33 +70,31 @@ public class PlayerControls : MonoBehaviour
                 }
             }
 
+            //flips sprite if you are moving left/right
+            if (moveInput.x < 0)
+            {
+                spriteRenderer.flipX = true;
+            }
+            else if (moveInput.x > 0)
+            {
+                spriteRenderer.flipX = false;
+            }
+
+            UpdateAnimationParameters();
             //animator.SetBool("isMoving", success);
         }
         else
         {
+            body.velocity = Vector2.Lerp(body.velocity, Vector2.zero, idleFriction);
             //animator.SetBool("isMoving", false);
         }
         
-        //flips sprite if you are moving left/right
-        if(moveInput.x < 0)
-        {
-            spriteRenderer.flipX = true;
-        }
-        else if(moveInput.x > 0)
-        {
-            spriteRenderer.flipX = false;
-        }
         
     }
     private void OnMove(InputValue value)
     {
         //gathers user movement inputs
         moveInput = value.Get<Vector2>();
-    }
-
-    void physicsUpdate()
-    {
-        body.MovePosition(body.position + moveInput * activeMoveSpeed * Time.fixedDeltaTime);
     }
 
     private bool PlayerMovement(Vector2 direction)
@@ -110,8 +109,9 @@ public class PlayerControls : MonoBehaviour
             {
                 Vector2 moveVector = moveInput * activeMoveSpeed * Time.fixedDeltaTime;
 
-                //No Collisions
-                body.MovePosition(body.position + moveVector);
+            //No Collisions
+                body.velocity = Vector2.ClampMagnitude(body.velocity + moveVector, activeMoveSpeed);
+                //body.MovePosition(body.position + moveVector);
                 return true;
             }
             else
@@ -166,11 +166,9 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    void UpdateAnimationParameters()
     {
-        if (other.gameObject.CompareTag("Coin"))
-        {
-            Destroy(other.gameObject);
-        }
+        animator.SetFloat("moveX", moveInput.x);
+        animator.SetFloat("moveY", moveInput.y);
     }
 }
