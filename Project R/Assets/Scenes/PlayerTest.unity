@@ -778,7 +778,6 @@ GameObject:
   - component: {fileID: 1361916396}
   - component: {fileID: 1361916398}
   - component: {fileID: 1361916397}
-  - component: {fileID: 1361916399}
   m_Layer: 0
   m_Name: Tiles
   m_TagString: Untagged
@@ -3076,23 +3075,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!19719996 &1361916399
-TilemapCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361916395}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
-  m_UseDelaunayMesh: 0
 --- !u!1 &1403383119
 GameObject:
   m_ObjectHideFlags: 0
@@ -3682,11 +3664,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6636966778158899222, guid: b2050ab9056828743967e9106327f027, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2567.8574
+      value: -2563.4
       objectReference: {fileID: 0}
     - target: {fileID: 6636966778158899222, guid: b2050ab9056828743967e9106327f027, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1485.3016
+      value: 1489.7
       objectReference: {fileID: 0}
     - target: {fileID: 6636966778158899222, guid: b2050ab9056828743967e9106327f027, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4144,11 +4126,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8479199668614094284, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
       propertyPath: dashingPower
-      value: 30
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8479199668614094284, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
       propertyPath: baseMoveSpeed
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8479199668614094285, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
       propertyPath: m_Name
