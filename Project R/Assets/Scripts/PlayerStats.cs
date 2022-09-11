@@ -14,15 +14,22 @@ public class PlayerStats : MonoBehaviour
 
     private PlayerCombat combatStats;
 
+    [Header("iFrames")]
+    [SerializeField] private float iFrameDuration;
+    [SerializeField] private int numberOfFlashes;
+    private SpriteRenderer spriteRend;
+
     void Start()
     {
         currentHealth = maxHealth;
+        spriteRend = GetComponent<SpriteRenderer>();
     }
 
     public void DamageTaken(int amount)
     {
         currentHealth -= amount;
         OnPlayerDamaged?.Invoke();
+        StartCoroutine(invulnerabilty());
 
         if (currentHealth <= 0)
         {
@@ -43,5 +50,20 @@ public class PlayerStats : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
+    }
+
+    private IEnumerator invulnerabilty()
+    {
+        Physics2D.IgnoreLayerCollision(6,7,true);
+        for (int i = 0; i < numberOfFlashes; i++)
+        {
+            spriteRend.color = new Color(1, 0, 0,0.5f);
+            yield return new WaitForSeconds(iFrameDuration/(numberOfFlashes*2));
+            spriteRend.color = Color.white;
+            yield return new WaitForSeconds(iFrameDuration / (numberOfFlashes * 2));
+
+        }
+
+        Physics2D.IgnoreLayerCollision(10, 11, false);
     }
 }
