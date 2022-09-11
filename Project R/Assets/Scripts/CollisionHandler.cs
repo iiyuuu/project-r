@@ -7,12 +7,28 @@ public class CollisionHandler : MonoBehaviour
     public PlayerStats stats;
     public CurrencyManager currency;
 
+    IEnumerator damageCoroutine;
+    private bool canDamage = true;
+    private bool isDamaged = false;
+    private float damageCooldown = 2f;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
        if(other.gameObject.tag.Equals("Enemy"))
        {
-            Debug.Log("Enemy Hit you");
-            stats.DamageTaken(1);
+            if (canDamage)
+            {
+                if(damageCoroutine != null)
+                {
+                    StopCoroutine(damageCoroutine);
+                }
+                else
+                {
+                    Debug.Log("Enemy Hit you");
+                    stats.DamageTaken(1);
+                    StartCoroutine(damageCoroutine);
+                }
+            }
 
        }
        else if (other.gameObject.tag.Equals("Heal"))
@@ -28,6 +44,15 @@ public class CollisionHandler : MonoBehaviour
             Destroy(other.gameObject);
        }
 
+    }
+
+    private IEnumerator playerTakeDamage()
+    {
+        canDamage = false;
+        isDamaged = true;
+        yield return new WaitForSeconds(damageCooldown); //I-frames
+        isDamaged = false;
+        canDamage = true;
     }
 
 

@@ -11,8 +11,10 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb;
     public Transform target;
     private Vector2 moveDirection;
+    private GameObject[] enemies;
+   
 
-    
+  
 
     private void Awake()
     {
@@ -22,6 +24,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         
     }
 
@@ -35,15 +38,16 @@ public class Enemy : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        moveEnemy(moveDirection);
+        moveEnemy();
     }
 
-    void moveEnemy(Vector2 direction)
+    void moveEnemy()
     {
-        rb.MovePosition((Vector2) transform.position + (moveDirection * moveSpeed * Time.deltaTime));
+      rb.MovePosition((Vector2)transform.position + (moveDirection * moveSpeed * Time.deltaTime));
+       
     }
 
-   
+
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;

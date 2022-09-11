@@ -188,7 +188,7 @@ public class PlayerControls : MonoBehaviour
         canMove = false;
     }
 
-    public void UnlockMovemen()
+    public void UnlockMovement()
     {
         canMove = true;
     }
