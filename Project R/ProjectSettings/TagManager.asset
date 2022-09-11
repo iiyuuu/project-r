@@ -47,3 +47,9 @@ TagManager:
   - name: Gameplay
     uniqueID: 99032631
     locked: 0
+  - name: Background
+    uniqueID: 2351170515
+    locked: 0
+  - name: Collision Object
+    uniqueID: 4143883949
+    locked: 0

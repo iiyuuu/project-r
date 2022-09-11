@@ -27,6 +27,7 @@ public class PlayerControls : MonoBehaviour
     public PlayerCombat combat;
 
     bool canMove = true;
+    public MeleeHitbox melee;
 
     //Vector 2 -> 2d Vector with X and Y speed
 
@@ -90,9 +91,9 @@ public class PlayerControls : MonoBehaviour
             else
             {
                 animator.SetBool("isMoving", false);
+                body.velocity = Vector2.Lerp(body.velocity, Vector2.zero, 0.9f);
             }
         }
-            body.velocity = Vector2.Lerp(body.velocity, Vector2.zero, 1);
         
     }
     private void OnMove(InputValue value)
@@ -116,7 +117,6 @@ public class PlayerControls : MonoBehaviour
                 Vector2 moveVector = moveInput * activeMoveSpeed * Time.deltaTime;
 
                 //No Collisions
-                //body.velocity = Vector2.ClampMagnitude(body.velocity + moveVector, activeMoveSpeed);
                 body.MovePosition(body.position + moveVector);
                 return true;
             }
@@ -183,12 +183,33 @@ public class PlayerControls : MonoBehaviour
         animator.SetTrigger("isAttacking");
     }
 
+    public void MeleeAttack()
+    {
+        LockMovement();
+        
+        if(spriteRenderer.flipX == true)
+        {
+            melee.AttackLeft();
+        }
+        else
+        {
+            melee.AttackRight();
+        }
+    }
+
+    public void EndAttack()
+    {
+        UnlockMovement();
+        melee.StopAttack();
+    }
+
     public void LockMovement()
     {
         canMove = false;
+        body.velocity = Vector2.zero;
     }
 
-    public void UnlockMovemen()
+    public void UnlockMovement()
     {
         canMove = true;
     }

@@ -9,13 +9,12 @@ public class CollisionHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-       if(other.gameObject.tag.Equals("Enemy"))
-       {
-            Debug.Log("Enemy Hit you");
-            stats.DamageTaken(1);
-
-       }
-       else if (other.gameObject.tag.Equals("Heal"))
+       //if(other.gameObject.tag.Equals("Enemy"))
+       //{
+       //     Debug.Log("Enemy Hit you");
+       //     stats.DamageTaken(1);
+       //}
+       if (other.gameObject.tag.Equals("Heal"))
        {
            Debug.Log("Grabbed Heart");
            stats.Healing(2);
