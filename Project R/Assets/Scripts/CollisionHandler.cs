@@ -31,7 +31,7 @@ public class CollisionHandler : MonoBehaviour
             }
 
        }
-       else if (other.gameObject.tag.Equals("Heal"))
+       if (other.gameObject.tag.Equals("Heal"))
        {
            Debug.Log("Grabbed Heart");
            stats.Healing(2);

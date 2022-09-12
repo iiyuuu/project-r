@@ -5,8 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-    public int maxHealth = 3;
-    private int currentHealth;
+    public int health = 3;
     [SerializeField] float moveSpeed = 25f;
     private Rigidbody2D rb;
     public Transform target;
@@ -14,7 +13,23 @@ public class Enemy : MonoBehaviour
     private GameObject[] enemies;
    
 
-  
+    public int Health
+    {
+        set
+        {
+            health = value;
+
+            if(health <= 0)
+            {
+                Die();
+            }
+        }
+        get
+        {
+            return health;
+        }
+    }
+    
 
     private void Awake()
     {
@@ -31,8 +46,8 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         Vector3 direction = target.position - transform.position;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        rb.rotation = angle;
+        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        //rb.rotation = angle;
         direction.Normalize();
         moveDirection = direction;
     }
@@ -63,6 +78,5 @@ public class Enemy : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
     
 }
