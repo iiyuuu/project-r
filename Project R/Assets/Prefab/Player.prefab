@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meleeCollider: {fileID: 3817471512452414424}
-  combatStats: {fileID: 0}
+  attackDamage: 1
 --- !u!1 &8479199668614094285
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,7 +87,6 @@ GameObject:
   - component: {fileID: 8479199668614094283}
   - component: {fileID: 8479199668614094284}
   - component: {fileID: 8479199668614094277}
-  - component: {fileID: 8479199668614094273}
   - component: {fileID: 5002295740580372872}
   - component: {fileID: 8479199668614094276}
   - component: {fileID: 8479199668614094282}
@@ -244,7 +243,7 @@ MonoBehaviour:
   idleFriction: 0.9
   dashingPower: 150
   isDashing: 0
-  combat: {fileID: 8479199668614094273}
+  canDash: 1
   melee: {fileID: 5075760738389464468}
 --- !u!114 &8479199668614094277
 MonoBehaviour:
@@ -262,25 +261,7 @@ MonoBehaviour:
   currentHealth: 8
   iFrameDuration: 1
   numberOfFlashes: 5
---- !u!114 &8479199668614094273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8479199668614094285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d877c70e89316a4e82711d04f2e831a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackPoint: {fileID: 0}
-  attackRange: 0.5
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 1
-  attackDamage: 1
-  stats: {fileID: 0}
+  hurt: 0
 --- !u!114 &5002295740580372872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,6 +276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 8479199668614094277}
   currency: {fileID: 0}
+  controls: {fileID: 0}
 --- !u!95 &8479199668614094276
 Animator:
   serializedVersion: 4

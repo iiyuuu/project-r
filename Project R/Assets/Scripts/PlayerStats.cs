@@ -12,8 +12,6 @@ public class PlayerStats : MonoBehaviour
     public static event Action OnPlayerDeath;
     public static event Action OnPlayerHeal;
 
-    private PlayerCombat combatStats;
-
     [Header("damageFrames")]
     [SerializeField] private float iFrameDuration;
     [SerializeField] private int numberOfFlashes;

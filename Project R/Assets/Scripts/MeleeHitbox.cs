@@ -9,7 +9,7 @@ public class MeleeHitbox : MonoBehaviour
 
     public Collider2D meleeCollider;
 
-    public PlayerCombat combatStats;
+    public int attackDamage = 1;
 
     private void Start()
     {
@@ -41,7 +41,7 @@ public class MeleeHitbox : MonoBehaviour
             Enemy enemy = collision.GetComponent<Enemy>();
             if(enemy != null)
             {
-                enemy.Health -= combatStats.attackDamage;
+                enemy.Health -= attackDamage;
             }
         }
     }

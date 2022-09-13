@@ -24,8 +24,6 @@ public class PlayerControls : MonoBehaviour
     Animator animator;
     SpriteRenderer spriteRenderer;
 
-    public PlayerCombat combat;
-
     bool canMove = true;
     public MeleeHitbox melee;
 
@@ -49,14 +47,12 @@ public class PlayerControls : MonoBehaviour
     //movement
     void FixedUpdate()
     {
-        Physics2D.IgnoreLayerCollision(6, 7, false);
         if (canMove)
         { 
             //movement speed modifier
             if (isDashing)
             {
                 body.velocity = dashDirection.normalized * dashingPower;
-                Physics2D.IgnoreLayerCollision(6, 7, true);
                 return;
             }
 
@@ -66,13 +62,13 @@ public class PlayerControls : MonoBehaviour
             //if player hits a wall check if player can move left/right or up/down the wall
             if (moveInput != Vector2.zero)
             {
-                if (!success)
+                if (!success && moveInput.x > 0)
                 {
                     success = PlayerMovement(new Vector2(moveInput.x, 0));
-                    if (!success)
-                    {
-                        success = PlayerMovement(new Vector2(0, moveInput.y));
-                    }
+                }
+                if (!success && moveInput.y > 0)
+                {
+                    success = PlayerMovement(new Vector2(0, moveInput.y));
                 }
 
 
@@ -180,7 +176,7 @@ public class PlayerControls : MonoBehaviour
     }
 
     void OnMelee()
-    {
+    { 
         animator.SetTrigger("isAttacking");
     }
 

@@ -7,17 +7,15 @@ public class CollisionHandler : MonoBehaviour
     public PlayerStats stats;
     public CurrencyManager currency;
     public PlayerControls controls;
+    public MeleeHitbox hitbox;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
        if(other.gameObject.tag.Equals("Enemy"))
        {
-            if (controls.canDash)
+            if (controls.canDash && !stats.hurt && !hitbox.meleeCollider.enabled)
             {
-                if (!stats.hurt)
-                {
-                    stats.DamageTaken(1);
-                } 
+                stats.DamageTaken(1);
             }
        }
        if (other.gameObject.tag.Equals("Heal"))
@@ -26,7 +24,7 @@ public class CollisionHandler : MonoBehaviour
            stats.Healing(2);
            Destroy(other.gameObject);
        }
-       else if (other.gameObject.tag.Equals("Coin"))
+       if (other.gameObject.tag.Equals("Coin"))
        {
             Debug.Log("Grabbed Coin");
             currency.ChangeCurrency(1);
