@@ -18,7 +18,7 @@ public class PlayerControls : MonoBehaviour
     IEnumerator dashCoroutine;
     public float dashingPower = 24f;
     public bool isDashing;
-    bool canDash = true;
+    public bool canDash = true;
     private Vector2 dashDirection;
 
     Animator animator;
@@ -148,6 +148,7 @@ public class PlayerControls : MonoBehaviour
     {
         if (canDash)
         {
+            animator.SetTrigger("isDashing");
             if (dashCoroutine != null)
             {
                 //stop condition for coroutine if you are already dashing

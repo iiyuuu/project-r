@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
 
             if(health <= 0)
             {
-                Die();
+                Destroy(gameObject);
             }
         }
         get
@@ -49,20 +49,9 @@ public class Enemy : MonoBehaviour
 
     void moveEnemy(Vector2 direction)
     {
-        rb.MovePosition((Vector2)transform.position + (moveDirection * moveSpeed * Time.deltaTime));
+        rb.MovePosition((Vector2)transform.position + (moveDirection * moveSpeed * Time.fixedDeltaTime));
     }
 
-   
-    //public void OnHit(int damage)
-    //{
-    //    currentHealth -= damage;
-    //    Debug.Log("Enemy hit for " + damage);
-    //    //hurt animation
-    //}
 
-    public void Die()
-    {
-        Destroy(gameObject);
-    }
     
 }

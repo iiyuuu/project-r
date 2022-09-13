@@ -6,13 +6,19 @@ public class CollisionHandler : MonoBehaviour
 {
     public PlayerStats stats;
     public CurrencyManager currency;
+    public PlayerControls controls;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
        if(other.gameObject.tag.Equals("Enemy"))
        {
-           Debug.Log("Enemy Hit you");
-           stats.DamageTaken(1);
+            if (controls.canDash)
+            {
+                if (!stats.hurt)
+                {
+                    stats.DamageTaken(1);
+                } 
+            }
        }
        if (other.gameObject.tag.Equals("Heal"))
        {
@@ -28,6 +34,8 @@ public class CollisionHandler : MonoBehaviour
        }
 
     }
+
+
 
 
 

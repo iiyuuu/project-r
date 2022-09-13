@@ -14,10 +14,14 @@ public class PlayerStats : MonoBehaviour
 
     private PlayerCombat combatStats;
 
-    [Header("iFrames")]
+    [Header("damageFrames")]
     [SerializeField] private float iFrameDuration;
     [SerializeField] private int numberOfFlashes;
     private SpriteRenderer spriteRend;
+    public bool hurt = false;
+
+    
+
 
     void Start()
     {
@@ -54,16 +58,17 @@ public class PlayerStats : MonoBehaviour
 
     private IEnumerator invulnerabilty()
     {
+        hurt = true;
         Physics2D.IgnoreLayerCollision(6,7,true);
         for (int i = 0; i < numberOfFlashes; i++)
         {
             spriteRend.color = new Color(1, 0, 0,0.5f);
-            yield return new WaitForSeconds(iFrameDuration/(numberOfFlashes*2));
+            yield return new WaitForSeconds(iFrameDuration / (numberOfFlashes*2));
             spriteRend.color = Color.white;
             yield return new WaitForSeconds(iFrameDuration / (numberOfFlashes * 2));
 
         }
-
-        Physics2D.IgnoreLayerCollision(10, 11, false);
+        hurt = false;
+        Physics2D.IgnoreLayerCollision(6, 7, false);
     }
 }

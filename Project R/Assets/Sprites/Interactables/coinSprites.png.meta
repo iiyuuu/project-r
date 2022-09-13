@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fc776fb8de9e9eb4793e3edd3af10ef3
+guid: ffd930831f0c6f746a8523bfc1e4ab68
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,8 +121,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c77316dc1621dfe4ca10818e2b492fc7
-      internalID: 1209024275
+      spriteID: 88a2ac8b7c44bb24eb401f90fc7e0811
+      internalID: -1860862986
       vertices: []
       indices: 
       edges: []
@@ -142,14 +142,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d77e77bfc359a704d864da35a46841c2
-      internalID: 1356789494
+      spriteID: 06e495e2815ef8d41b4a2cf7b4fdfb8d
+      internalID: 472696286
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
       name: coinSprites_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69f724a9cd8aac946876cdf0e4ef968c
+      internalID: 2001705314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: coinSprites_3
       rect:
         serializedVersion: 2
         x: 0
@@ -163,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f633ed88b63b83b4aa395811c3e83daf
-      internalID: -915369690
+      spriteID: 34f1347a6ab5aa24195943d59a56864d
+      internalID: 695641861
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: coinSprites_3
+      name: coinSprites_4
       rect:
         serializedVersion: 2
         x: 32
@@ -184,8 +205,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44d1e61d438443b41bd104f52562dc77
-      internalID: 1883507695
+      spriteID: 3de989132206ba04a91f0ae0edc2489f
+      internalID: -2129173039
       vertices: []
       indices: 
       edges: []
@@ -201,10 +222,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      coinSprites_1: 1356789494
-      coinSprites_3: 1883507695
-      coinSprites_2: -915369690
-      coinSprites_0: 1209024275
+      coinSprites_1: 472696286
+      coinSprites_3: 695641861
+      coinSprites_2: 2001705314
+      coinSprites_4: -2129173039
+      coinSprites_0: -1860862986
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

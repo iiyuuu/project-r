@@ -260,6 +260,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 8
   currentHealth: 8
+  iFrameDuration: 1
+  numberOfFlashes: 5
 --- !u!114 &8479199668614094273
 MonoBehaviour:
   m_ObjectHideFlags: 0
