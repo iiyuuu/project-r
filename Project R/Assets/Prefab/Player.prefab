@@ -276,7 +276,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 8479199668614094277}
   currency: {fileID: 0}
-  controls: {fileID: 0}
+  controls: {fileID: 8479199668614094284}
+  hitbox: {fileID: 0}
+  thrust: 10
+  kbTime: 0.1
 --- !u!95 &8479199668614094276
 Animator:
   serializedVersion: 4

@@ -7516,16 +7516,36 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3569968416217482963, guid: e517611539a620a4abc513f5ea7efa8d, type: 3}
+      propertyPath: m_Radius
+      value: 0.109891266
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569968416217482963, guid: e517611539a620a4abc513f5ea7efa8d, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.002253607
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569968416217482963, guid: e517611539a620a4abc513f5ea7efa8d, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.07437024
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569968416217482963, guid: e517611539a620a4abc513f5ea7efa8d, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3569968416217482964, guid: e517611539a620a4abc513f5ea7efa8d, type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569968416217482964, guid: e517611539a620a4abc513f5ea7efa8d, type: 3}
       propertyPath: m_BodyType
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569968416217482964, guid: e517611539a620a4abc513f5ea7efa8d, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3569968416217482964, guid: e517611539a620a4abc513f5ea7efa8d, type: 3}
       propertyPath: m_Constraints
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3569968416217482966, guid: e517611539a620a4abc513f5ea7efa8d, type: 3}
       propertyPath: m_RootOrder
@@ -8389,6 +8409,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 426903528}
     - target: {fileID: 5002295740580372872, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
+      propertyPath: thrust
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002295740580372872, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
       propertyPath: controls
       value: 
       objectReference: {fileID: 1748589189}
@@ -8396,10 +8420,6 @@ PrefabInstance:
       propertyPath: currency
       value: 
       objectReference: {fileID: 661865383}
-    - target: {fileID: 5075760738389464468, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
-      propertyPath: combatStats
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5075760738389464468, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
       propertyPath: meleeCollider
       value: 
@@ -8474,7 +8494,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8479199668614094283, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
       propertyPath: m_BodyType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8479199668614094284, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
       propertyPath: dashingPower
