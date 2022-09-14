@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
-    public int health = 3;
     [SerializeField] float moveSpeed = 25f;
+    public int health = 3;
     private Rigidbody2D rb;
     public Transform target;
     private Vector2 moveDirection;
+
+    public float chaseRadius;
+    public float attackRadius;
+    public Transform homePosition;
+
+    Animator animator;
+
+    [Header("Damage Indicator")]
+    public float iFrameDuration;
+    [SerializeField] private int numberOfFlashes;
+    [SerializeField] public bool enemyHurt = false;
+    private SpriteRenderer spriteRend;
 
     public int Health
     {
@@ -29,29 +40,61 @@ public class Enemy : MonoBehaviour
     }
     
 
-    private void Awake()
+    private void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        target = GameObject.FindWithTag("Player").transform;
+        homePosition = this.transform;
+        Debug.Log(homePosition.position);
     }
 
     private void Update()
     {
-        Vector3 direction = target.position - transform.position;
-        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        //rb.rotation = angle;
-        direction.Normalize();
-        moveDirection = direction;
+        
+        if (enemyHurt) { return; }
+
+
+        //Vector3 direction = target.position - transform.position;
+        ////float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        ////rb.rotation = angle;
+        //direction.Normalize();
+        //moveDirection = direction;
     }
     private void FixedUpdate()
     {
         moveEnemy(moveDirection);
+        CheckDistance();
     }
 
     void moveEnemy(Vector2 direction)
     {
-        rb.MovePosition((Vector2)transform.position + (moveDirection * moveSpeed * Time.fixedDeltaTime));
+        //rb.MovePosition((Vector2)transform.position + (moveDirection * moveSpeed * Time.fixedDeltaTime));
     }
 
+    public IEnumerator Damaged()
+    {
+        enemyHurt = true;
+        for (int i = 0; i < numberOfFlashes; i++)
+        {
+            spriteRend.color = new Color(1, 0, 0, 0.5f);
+            yield return new WaitForSeconds(iFrameDuration / (numberOfFlashes * 2));
+            spriteRend.color = Color.white;
+            yield return new WaitForSeconds(iFrameDuration / (numberOfFlashes * 2));
 
+        }
+        enemyHurt = false;
+    }
     
+    void CheckDistance()
+    {
+        if (Vector3.Distance(target.position, transform.position) <= chaseRadius)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+        }
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, homePosition.position, moveSpeed * Time.deltaTime);
+        }
+    }
 }
