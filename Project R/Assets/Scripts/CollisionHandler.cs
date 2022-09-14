@@ -16,17 +16,27 @@ public class CollisionHandler : MonoBehaviour
     {
        if(other.gameObject.tag.Equals("Enemy"))
        {
+            Rigidbody2D enemy = other.GetComponent<Rigidbody2D>();
+            Vector2 difference = enemy.transform.position - transform.position;
+            difference = difference.normalized * thrust;
             if (controls.canDash && !stats.hurt && !hitbox.meleeCollider.enabled)
             {
                 //stats.DamageTaken(1);
-            }
-            Rigidbody2D enemy = other.GetComponent<Rigidbody2D>();
-            if(enemy != null)
-            {
-                Vector2 difference = enemy.transform.position - transform.position;
+                
+                enemy.isKinematic = false;
+                difference = transform.position - enemy.transform.position;
                 difference = difference.normalized * thrust;
+                controls.body.AddForce(difference, ForceMode2D.Impulse);
+                StartCoroutine(kbCoroutine(controls.body));
+                enemy.isKinematic = true;
+            }
+            
+            if(enemy != null && hitbox.meleeCollider.enabled)
+            {
+                enemy.isKinematic = false;
                 enemy.AddForce(difference, ForceMode2D.Impulse);
                 StartCoroutine(kbCoroutine(enemy));
+                enemy.isKinematic = true;
             }
        }
        if (other.gameObject.tag.Equals("Heal"))
@@ -44,12 +54,12 @@ public class CollisionHandler : MonoBehaviour
 
     }
 
-    private IEnumerator kbCoroutine(Rigidbody2D enemy)
+    private IEnumerator kbCoroutine(Rigidbody2D tag)
     {
-        if(enemy != null)
+        if(tag != null)
         {
             yield return new WaitForSeconds(kbTime);
-            enemy.velocity = Vector2.zero;
+            tag.velocity = Vector2.zero;
         }
     }
 

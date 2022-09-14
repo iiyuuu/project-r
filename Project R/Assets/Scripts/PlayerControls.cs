@@ -8,7 +8,7 @@ public class PlayerControls : MonoBehaviour
     private List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
-    private Rigidbody2D body;
+    [SerializeField] public Rigidbody2D body;
     private Vector2 moveInput;
 
     public float baseMoveSpeed = 50f;
