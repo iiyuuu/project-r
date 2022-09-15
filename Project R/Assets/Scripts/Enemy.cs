@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
         animator = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform;
         homePosition = this.transform;
-        Debug.Log(homePosition.position);
+        //Debug.Log(homePosition.position);
     }
 
     private void Update()

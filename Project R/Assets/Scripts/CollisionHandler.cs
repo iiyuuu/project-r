@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionHandler : MonoBehaviour
+public class CollisionHandler : PlayerControls
 {
     public PlayerStats stats;
     public CurrencyManager currency;
-    public PlayerControls controls;
     public MeleeHitbox hitbox;
 
     public float thrust;
@@ -19,16 +18,18 @@ public class CollisionHandler : MonoBehaviour
             Rigidbody2D enemy = other.GetComponent<Rigidbody2D>();
             Vector2 difference = enemy.transform.position - transform.position;
             difference = difference.normalized * thrust;
-            if (controls.canDash && !stats.hurt && !hitbox.meleeCollider.enabled)
+            if (canDash && !stats.hurt && !hitbox.meleeCollider.enabled)
             {
                 //stats.DamageTaken(1);
-                
+                canMove = false;
                 enemy.isKinematic = false;
                 difference = transform.position - enemy.transform.position;
                 difference = difference.normalized * thrust;
-                controls.body.AddForce(difference, ForceMode2D.Impulse);
-                StartCoroutine(kbCoroutine(controls.body));
+                Debug.Log(enemy.isKinematic);
+                body.AddForce(difference, ForceMode2D.Impulse);
+                StartCoroutine(kbCoroutine(body));
                 enemy.isKinematic = true;
+                canMove = true;
             }
             
             if(enemy != null && hitbox.meleeCollider.enabled)

@@ -6,25 +6,25 @@ using UnityEngine.InputSystem;
 public class PlayerControls : MonoBehaviour
 {
     private List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
-    public float collisionOffset = 0.05f;
+    [SerializeField] public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
     [SerializeField] public Rigidbody2D body;
     private Vector2 moveInput;
 
     public float baseMoveSpeed = 50f;
-    private float activeMoveSpeed;
-    public float idleFriction = 0.9f;
+    [SerializeField] private float activeMoveSpeed;
+    [SerializeField] public float idleFriction = 0.9f;
 
     IEnumerator dashCoroutine;
     public float dashingPower = 24f;
-    public bool isDashing;
-    public bool canDash = true;
+    [SerializeField] public bool isDashing;
+    [SerializeField] public bool canDash = true;
     private Vector2 dashDirection;
 
     Animator animator;
     SpriteRenderer spriteRenderer;
 
-    bool canMove = true;
+    [SerializeField] public bool canMove = true;
     public MeleeHitbox melee;
 
     //Vector 2 -> 2d Vector with X and Y speed
