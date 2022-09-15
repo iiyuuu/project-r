@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionHandler : PlayerControls
+public class CollisionHandler : MonoBehaviour
 {
     public PlayerStats stats;
     public CurrencyManager currency;
     public MeleeHitbox hitbox;
+    public PlayerControls controls;
 
     public float thrust;
     [SerializeField] public float kbTime = 0.1f;
@@ -18,18 +19,18 @@ public class CollisionHandler : PlayerControls
             Rigidbody2D enemy = other.GetComponent<Rigidbody2D>();
             Vector2 difference = enemy.transform.position - transform.position;
             difference = difference.normalized * thrust;
-            if (canDash && !stats.hurt && !hitbox.meleeCollider.enabled)
+            if (controls.canDash && !stats.hurt && !hitbox.meleeCollider.enabled)
             {
-                //stats.DamageTaken(1);
-                //canMove = false;
-                //isMoving = false;
-                //enemy.isKinematic = false;
-                //difference = transform.position - enemy.transform.position;
-                //difference = difference.normalized * thrust;
-                //body.AddForce(difference, ForceMode2D.Impulse);
-                //StartCoroutine(kbCoroutine(body));
-                //enemy.isKinematic = true;
-                //canMove = true;
+                stats.DamageTaken(1);
+                controls.canMove = false;
+                controls.isMoving = false;
+                enemy.isKinematic = false;
+                difference = transform.position - enemy.transform.position;
+                difference = difference.normalized * thrust * controls.body.velocity;
+                controls.body.AddForce(difference, ForceMode2D.Impulse);
+                StartCoroutine(kbCoroutine(controls.body));
+                enemy.isKinematic = true;
+                controls.canMove = true;
             }
             
             if(enemy != null && hitbox.meleeCollider.enabled)

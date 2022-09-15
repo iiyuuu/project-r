@@ -9,10 +9,10 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
     [SerializeField] public Rigidbody2D body;
-    private Vector2 moveInput;
+    public Vector2 moveInput;
 
     public float baseMoveSpeed = 50f;
-    [SerializeField] private float activeMoveSpeed;
+    [SerializeField] public float activeMoveSpeed;
     [SerializeField] public float idleFriction = 0.9f;
 
     IEnumerator dashCoroutine;
@@ -52,6 +52,7 @@ public class PlayerControls : MonoBehaviour
             //movement speed modifier
             if (isDashing)
             {
+
                 body.velocity = dashDirection.normalized * dashingPower;
                 return;
             }
@@ -113,12 +114,12 @@ public class PlayerControls : MonoBehaviour
 
             if (count == 0)
             {
-                Vector2 moveVector = direction.normalized * activeMoveSpeed ;
+                Vector2 moveVector = direction.normalized * activeMoveSpeed;
 
                 //No Collisions
-
                 //body.MovePosition(body.position + moveVector);
-                body.velocity = moveVector;
+                body.AddForce(moveVector);
+                //body.velocity = moveVector;
                 return true;
             }
             else
@@ -150,6 +151,7 @@ public class PlayerControls : MonoBehaviour
         if (canDash)
         {
             animator.SetTrigger("isDashing");
+            Debug.Log("Dash");
             if (dashCoroutine != null)
             {
                 //stop condition for coroutine if you are already dashing
@@ -171,7 +173,7 @@ public class PlayerControls : MonoBehaviour
             {
                 dashDirection = new Vector2(moveInput.x, moveInput.y);//will dash in diagonal movement
             }
-            dashCoroutine = Dash(0.1f, 0.5f);//calls coroutine for dash manuever
+            dashCoroutine = Dash(0.2f, 0.5f);//calls coroutine for dash manuever
             StartCoroutine(dashCoroutine);
         }
         else
