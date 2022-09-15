@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     public float chaseRadius;
     public float attackRadius;
     public Transform homePosition;
+    [SerializeField] public CollisionHandler collision_h;
 
     Animator animator;
 
@@ -88,13 +89,16 @@ public class Enemy : MonoBehaviour
     
     void CheckDistance()
     {
-        if (Vector3.Distance(target.position, transform.position) <= chaseRadius)
+        if (Vector2.Distance(target.position, transform.position) <= chaseRadius)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.fixedDeltaTime);
+                
         }
-        else
+        else if (Vector2.Distance(target.position, transform.position) > chaseRadius)
         {
-            transform.position = Vector3.MoveTowards(transform.position, homePosition.position, moveSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, homePosition.position, moveSpeed * Time.fixedDeltaTime);
         }
+        
     }
+
 }

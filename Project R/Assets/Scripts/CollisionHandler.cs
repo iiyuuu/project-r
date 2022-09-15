@@ -21,15 +21,15 @@ public class CollisionHandler : PlayerControls
             if (canDash && !stats.hurt && !hitbox.meleeCollider.enabled)
             {
                 //stats.DamageTaken(1);
-                canMove = false;
-                enemy.isKinematic = false;
-                difference = transform.position - enemy.transform.position;
-                difference = difference.normalized * thrust;
-                Debug.Log(enemy.isKinematic);
-                body.AddForce(difference, ForceMode2D.Impulse);
-                StartCoroutine(kbCoroutine(body));
-                enemy.isKinematic = true;
-                canMove = true;
+                //canMove = false;
+                //isMoving = false;
+                //enemy.isKinematic = false;
+                //difference = transform.position - enemy.transform.position;
+                //difference = difference.normalized * thrust;
+                //body.AddForce(difference, ForceMode2D.Impulse);
+                //StartCoroutine(kbCoroutine(body));
+                //enemy.isKinematic = true;
+                //canMove = true;
             }
             
             if(enemy != null && hitbox.meleeCollider.enabled)
