@@ -142,12 +142,14 @@ public class PlayerControls : MonoBehaviour
         yield return new WaitForSeconds(dashingTime);//during dash
         isDashing = false;
         activeMoveSpeed = baseMoveSpeed;
+        Physics2D.IgnoreLayerCollision(6, 8, false);
         yield return new WaitForSeconds(dashingCooldown);//wait dash cd
         canDash = true;
     }
 
     void OnDash()
     {
+        Physics2D.IgnoreLayerCollision(6, 8, true);
         if (canDash)
         {
             animator.SetTrigger("isDashing");

@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] float moveSpeed = 25f;
+
     public int health = 3;
+    [SerializeField] float moveSpeed = 3f;
     private Rigidbody2D rb;
     public Transform target;
     private Vector2 moveDirection;
+    public float detectionDistance = 1f;
+    private float currentDistance;
 
     public float chaseRadius;
     public float attackRadius;
