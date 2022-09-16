@@ -11,8 +11,9 @@ public class RangedEnemy : MonoBehaviour
     private Vector2 moveDirection;
     public float detectionDistance = 1f;
     [SerializeField]private float currentDistance;
-
+    public GameObject firePoint;
     public int Health
+
     {
         set
         {
@@ -32,6 +33,7 @@ public class RangedEnemy : MonoBehaviour
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
+        
         
     }
 
@@ -53,6 +55,8 @@ public class RangedEnemy : MonoBehaviour
         {
             Debug.Log("Detected");
             moveEnemy(moveDirection);
+            wep.Shoot();
+
         }
 
     }

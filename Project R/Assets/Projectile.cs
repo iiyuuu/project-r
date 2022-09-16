@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float speed = 1f;
+    public float speed = 3f;
     public Rigidbody2D rb;
     public int damage = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb.velocity = transform.right * speed;
+        rb.velocity = transform.right * speed * Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
