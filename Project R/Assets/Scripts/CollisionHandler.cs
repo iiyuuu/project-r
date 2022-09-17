@@ -53,6 +53,21 @@ public class CollisionHandler : MonoBehaviour
             currency.ChangeCurrency(1);
             Destroy(other.gameObject);
        }
+       if (other.gameObject.tag.Equals("Health Power Up"))
+        {
+            Debug.Log("Health Power Up Picked Up");
+            stats.maxHealth += 2;
+            stats.Healing(2);
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.tag.Equals("Speed Power Up"))
+        {
+            Debug.Log("Speed Power Up Picked Up");
+            controls.baseMoveSpeed += 5;
+            controls.activeMoveSpeed += 5;
+            Destroy(other.gameObject);
+        }
 
     }
 
