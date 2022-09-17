@@ -55,7 +55,7 @@ public class RangedEnemy : MonoBehaviour
         {
             Debug.Log("Detected");
             moveEnemy(moveDirection);
-            wep.Shoot();
+            //wep.Shoot();
 
         }
 
