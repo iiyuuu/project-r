@@ -12,8 +12,8 @@ public class RangedEnemy : MonoBehaviour
     public float detectionDistance = 1f;
     [SerializeField]private float currentDistance;
     public GameObject firePoint;
+    public weapon wep;
     public int Health
-
     {
         set
         {
@@ -33,7 +33,6 @@ public class RangedEnemy : MonoBehaviour
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
-        
         
     }
 
