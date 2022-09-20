@@ -63,13 +63,13 @@ public class RangedEnemy : MonoBehaviour
     {
         if (Vector2.Distance(target.position, transform.position) <= chaseRadius)
         {
-            Debug.Log("Fuck you");
+            //Debug.Log("Fuck you");
             transform.position = Vector2.MoveTowards(transform.position, target.position, (-1)*moveSpeed * Time.fixedDeltaTime);
 
         }
         else if (Vector2.Distance(target.position, transform.position) > chaseRadius)
         {
-            Debug.Log("Double fuck you");
+            //Debug.Log("Double fuck you");
             transform.position = Vector2.MoveTowards(transform.position, homePosition, (-1)*moveSpeed * Time.fixedDeltaTime);
         }
 

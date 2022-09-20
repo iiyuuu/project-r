@@ -66,7 +66,8 @@ public class Enemy : MonoBehaviour
         //moveDirection = direction;
     }
     private void FixedUpdate()
-    { 
+    {
+        if (enemyHurt) { return; }
         CheckDistance();
     }
 

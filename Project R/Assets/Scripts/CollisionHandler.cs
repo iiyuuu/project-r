@@ -25,9 +25,11 @@ public class CollisionHandler : MonoBehaviour
                 controls.canMove = false;
                 controls.isMoving = false;
                 enemy.isKinematic = false;
+
                 difference = transform.position - enemy.transform.position;
                 difference = difference.normalized * thrust;
                 Debug.Log(difference);
+
                 controls.body.AddForce(difference, ForceMode2D.Impulse);
                 StartCoroutine(kbCoroutine(controls.body));
                 enemy.isKinematic = true;
@@ -38,9 +40,11 @@ public class CollisionHandler : MonoBehaviour
             if(enemy != null && hitbox.meleeCollider.enabled)
             {
                 enemy.isKinematic = false;
+                difference /= 2;
                 enemy.AddForce(difference, ForceMode2D.Impulse);
                 StartCoroutine(kbCoroutine(enemy));
                 enemy.isKinematic = true;
+                //add enemy flash red here
             }
        }
        if (other.gameObject.tag.Equals("Heal"))
