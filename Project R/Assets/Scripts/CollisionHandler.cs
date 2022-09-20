@@ -20,17 +20,19 @@ public class CollisionHandler : MonoBehaviour
             Vector2 difference = enemy.transform.position - transform.position;
             difference = difference.normalized * thrust;
             if (controls.canDash && !stats.hurt && !hitbox.meleeCollider.enabled)
-            {
+            { 
                 stats.DamageTaken(1);
                 controls.canMove = false;
                 controls.isMoving = false;
                 enemy.isKinematic = false;
                 difference = transform.position - enemy.transform.position;
-                difference = difference.normalized * thrust * controls.body.velocity;
+                difference = difference.normalized * thrust;
+                Debug.Log(difference);
                 controls.body.AddForce(difference, ForceMode2D.Impulse);
                 StartCoroutine(kbCoroutine(controls.body));
                 enemy.isKinematic = true;
                 controls.canMove = true;
+             
             }
             
             if(enemy != null && hitbox.meleeCollider.enabled)

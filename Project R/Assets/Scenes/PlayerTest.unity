@@ -8470,7 +8470,7 @@ MonoBehaviour:
   target: {fileID: 190043829}
   detectionDistance: 0.05
   currentDistance: 0
-  wep: {fileID: 0}
+  firePoint: {fileID: 0}
 --- !u!50 &2139561883
 Rigidbody2D:
   serializedVersion: 4
@@ -8583,7 +8583,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139561880}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d17f352d7e9b4051a4fcce8d931a95f, type: 3}
   m_Name: 
@@ -8609,7 +8609,7 @@ PrefabInstance:
       objectReference: {fileID: 426903528}
     - target: {fileID: 5002295740580372872, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
       propertyPath: thrust
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5002295740580372872, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
       propertyPath: controls
@@ -8714,6 +8714,10 @@ PrefabInstance:
     - target: {fileID: 8479199668614094284, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
       propertyPath: baseMoveSpeed
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479199668614094284, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
+      propertyPath: collisionOffset
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8479199668614094285, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
       propertyPath: m_Name

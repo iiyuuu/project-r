@@ -4,29 +4,16 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float speed = 3f;
-    public Rigidbody2D rb;
-    public int damage = 1;
+    private Vector3 shootDir;
+    public float moveSpeed = 2f;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Setup(Vector3 shootDir)
     {
-        rb.velocity = transform.right * speed * Time.deltaTime;
+        this.shootDir = shootDir;
     }
 
-    private void OnTriggerEnter2D(Collider2D hitInfo)
+    private void Update()
     {
-        PlayerStats player = hitInfo.GetComponent<PlayerStats>();
-        if(player != null)
-        {
-            player.DamageTaken(damage);
-        }
-        Destroy(gameObject);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        transform.position += shootDir * moveSpeed * Time.deltaTime;
     }
 }

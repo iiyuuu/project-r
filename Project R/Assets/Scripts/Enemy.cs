@@ -66,14 +66,8 @@ public class Enemy : MonoBehaviour
         //moveDirection = direction;
     }
     private void FixedUpdate()
-    {
-        moveEnemy(moveDirection);
+    { 
         CheckDistance();
-    }
-
-    void moveEnemy(Vector2 direction)
-    {
-        //rb.MovePosition((Vector2)transform.position + (moveDirection * moveSpeed * Time.fixedDeltaTime));
     }
 
     public IEnumerator Damaged()
