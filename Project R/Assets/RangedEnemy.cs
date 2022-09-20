@@ -12,7 +12,10 @@ public class RangedEnemy : MonoBehaviour
     public float detectionDistance = 1f;
     [SerializeField]private float currentDistance;
     public GameObject firePoint;
-    public weapon wep;
+
+    public float chaseRadius;
+    public Vector3 homePosition;
+
     public int Health
     {
         set
@@ -33,6 +36,9 @@ public class RangedEnemy : MonoBehaviour
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
+        homePosition = transform.position;
+
+        
         
     }
 
@@ -42,26 +48,32 @@ public class RangedEnemy : MonoBehaviour
     {
         Vector3 direction = target.position - transform.position;
         currentDistance = Vector3.Distance(target.position, transform.position);
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        rb.rotation = angle;
+        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+       // rb.rotation = angle;
         direction.Normalize();
         moveDirection = direction;
     }
 
     private void FixedUpdate()
     {
-        if (currentDistance < detectionDistance)
-        {
-            Debug.Log("Detected");
-            moveEnemy(moveDirection);
-            //wep.Shoot();
+        CheckDistance();
 
+    }
+    void CheckDistance()
+    {
+        if (Vector2.Distance(target.position, transform.position) <= chaseRadius)
+        {
+            Debug.Log("Fuck you");
+            transform.position = Vector2.MoveTowards(transform.position, target.position, (-1)*moveSpeed * Time.fixedDeltaTime);
+
+        }
+        else if (Vector2.Distance(target.position, transform.position) > chaseRadius)
+        {
+            Debug.Log("Double fuck you");
+            transform.position = Vector2.MoveTowards(transform.position, homePosition, (-1)*moveSpeed * Time.fixedDeltaTime);
         }
 
     }
 
-    void moveEnemy(Vector2 direction)
-    {
-        rb.MovePosition((Vector2)transform.position - (direction * moveSpeed * Time.fixedDeltaTime));
-    }
+
 }

@@ -9,11 +9,7 @@ public class Projectile : MonoBehaviour
 
     public void Setup(Vector3 shootDir)
     {
-<<<<<<< Updated upstream
         this.shootDir = shootDir;
-=======
-        rb.MovePosition(transform.right * speed * Time.deltaTime);
->>>>>>> Stashed changes
     }
 
     private void Update()
