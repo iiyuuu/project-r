@@ -9,20 +9,15 @@ public class Enemy : MonoBehaviour
     [SerializeField] float moveSpeed = 3f;
     private Rigidbody2D rb;
     public Transform target;
-    private Vector2 moveDirection;
-    public float detectionDistance = 1f;
-    private float currentDistance;
 
     public float chaseRadius;
-    public float attackRadius;
-    public Transform homePosition;
-    [SerializeField] public CollisionHandler collision_h;
+    public Vector3 homePosition;
 
     Animator animator;
 
     [Header("Damage Indicator")]
     public float iFrameDuration;
-    [SerializeField] private int numberOfFlashes;
+    [SerializeField] int numberOfFlashes;
     [SerializeField] public bool enemyHurt = false;
     private SpriteRenderer spriteRend;
 
@@ -31,10 +26,10 @@ public class Enemy : MonoBehaviour
         set
         {
             health = value;
-
             if(health <= 0)
             {
-                Destroy(gameObject);
+                animator.SetTrigger("slimeDeath");
+                rb = null;
             }
         }
         get
@@ -49,16 +44,13 @@ public class Enemy : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform;
-        homePosition = this.transform;
-        //Debug.Log(homePosition.position);
+        spriteRend = GetComponent<SpriteRenderer>();
+        homePosition = transform.position;
     }
 
     private void Update()
     {
         
-        if (enemyHurt) { return; }
-
-
         //Vector3 direction = target.position - transform.position;
         ////float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         ////rb.rotation = angle;
@@ -66,22 +58,26 @@ public class Enemy : MonoBehaviour
         //moveDirection = direction;
     }
     private void FixedUpdate()
-    { 
+    {
+        if (enemyHurt) { return;}
         CheckDistance();
     }
 
     public IEnumerator Damaged()
     {
-        enemyHurt = true;
-        for (int i = 0; i < numberOfFlashes; i++)
+        if(rb != null)
         {
-            spriteRend.color = new Color(1, 0, 0, 0.5f);
-            yield return new WaitForSeconds(iFrameDuration / (numberOfFlashes * 2));
-            spriteRend.color = Color.white;
-            yield return new WaitForSeconds(iFrameDuration / (numberOfFlashes * 2));
-
+            for(int i = 0; i < numberOfFlashes; i++)
+            {
+                spriteRend.color = new Color(1, 0, 0, 0.5f);
+                yield return new WaitForSeconds(iFrameDuration / numberOfFlashes);
+                spriteRend.color = Color.white;
+                
+            }
+            enemyHurt = false;
         }
-        enemyHurt = false;
+        
+        
     }
     
     void CheckDistance()
@@ -93,9 +89,43 @@ public class Enemy : MonoBehaviour
         }
         else if (Vector2.Distance(target.position, transform.position) > chaseRadius)
         {
-            transform.position = Vector2.MoveTowards(transform.position, homePosition.position, moveSpeed * Time.fixedDeltaTime);
+            Invoke("MoveBack", 1f);//1s delay before moving back
         }
         
     }
+
+    void MoveBack()
+    {
+        if(Vector2.Distance(target.position, transform.position) > chaseRadius)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, homePosition, moveSpeed * Time.fixedDeltaTime);
+        }
+        
+    }
+
+    void Death()
+    {
+        Destroy(this.gameObject);
+    }
+
+    void OnCollisionEnter2D(Collision2D other){
+        if(other.gameObject.tag.Equals("Enemy"))
+        {
+            Enemy enemy = other.gameObject.GetComponent<Enemy>();
+            other.rigidbody.velocity = Vector2.zero;
+            if (enemyHurt)//checks if enemy is hurt and hurts both objects
+            {
+                if(!enemy.enemyHurt)
+                {
+                    enemy.Health -= 1;
+                    enemy.enemyHurt = true;
+                    StartCoroutine(enemy.Damaged());
+                }
+                
+            }
+        }
+        
+    }
+
 
 }

@@ -19,45 +19,39 @@ public class CollisionHandler : MonoBehaviour
             Rigidbody2D enemy = other.GetComponent<Rigidbody2D>();
             Vector2 difference = enemy.transform.position - transform.position;
             difference = difference.normalized * thrust;
+            Debug.Log(difference);
             if (controls.canDash && !stats.hurt && !hitbox.meleeCollider.enabled)
             { 
                 stats.DamageTaken(1);
+                
                 controls.canMove = false;
-                controls.isMoving = false;
-                enemy.isKinematic = false;
-                difference = transform.position - enemy.transform.position;
-                difference = difference.normalized * thrust;
-                Debug.Log(difference);
-                controls.body.AddForce(difference, ForceMode2D.Impulse);
+
+                controls.body.AddForce(-difference, ForceMode2D.Impulse);
                 StartCoroutine(kbCoroutine(controls.body));
-                enemy.isKinematic = true;
+                
                 controls.canMove = true;
-             
             }
             
             if(enemy != null && hitbox.meleeCollider.enabled)
             {
-                enemy.isKinematic = false;
+                difference = difference / 2;
                 enemy.AddForce(difference, ForceMode2D.Impulse);
                 StartCoroutine(kbCoroutine(enemy));
-                enemy.isKinematic = true;
             }
        }
        if (other.gameObject.tag.Equals("Heal"))
        {
-           Debug.Log("Grabbed Heart");
            stats.Healing(2);
            Destroy(other.gameObject);
        }
        if (other.gameObject.tag.Equals("Coin"))
        {
-            Debug.Log("Grabbed Coin");
             currency.ChangeCurrency(1);
             Destroy(other.gameObject);
        }
        if (other.gameObject.tag.Equals("Health Power Up"))
         {
-            Debug.Log("Health Power Up Picked Up");
+            //Debug.Log("Health Power Up Picked Up");
             stats.maxHealth += 2;
             stats.Healing(2);
             Destroy(other.gameObject);
@@ -65,9 +59,9 @@ public class CollisionHandler : MonoBehaviour
 
         if (other.gameObject.tag.Equals("Speed Power Up"))
         {
-            Debug.Log("Speed Power Up Picked Up");
-            controls.baseMoveSpeed += 5;
-            controls.activeMoveSpeed += 5;
+            //Debug.Log("Speed Power Up Picked Up");
+            controls.baseMoveSpeed += 3;
+            controls.activeMoveSpeed += 3;
             Destroy(other.gameObject);
         }
 
@@ -75,11 +69,11 @@ public class CollisionHandler : MonoBehaviour
 
     private IEnumerator kbCoroutine(Rigidbody2D tag)
     {
-        if(tag != null)
-        {
             yield return new WaitForSeconds(kbTime);
-            tag.velocity = Vector2.zero;
-        }
+            if(tag != null)
+            {
+                tag.velocity = Vector2.zero;
+            }
     }
 
 

@@ -36,12 +36,13 @@ public class MeleeHitbox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Enemy")
+        if(collision.gameObject.tag.Equals("Enemy"))
         {
             Enemy enemy = collision.GetComponent<Enemy>();
-            if(enemy != null)
+            if(enemy != null && !enemy.enemyHurt)
             {
                 enemy.Health -= attackDamage;
+                enemy.enemyHurt = true;
                 StartCoroutine(enemy.Damaged());
             }
         }

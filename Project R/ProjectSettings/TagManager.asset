@@ -7,6 +7,8 @@ TagManager:
   - Heal
   - Enemy
   - Coin
+  - Speed Power Up
+  - Health Power Up
   layers:
   - Default
   - TransparentFX
@@ -46,6 +48,9 @@ TagManager:
     locked: 0
   - name: Gameplay
     uniqueID: 99032631
+    locked: 0
+  - name: Entity
+    uniqueID: 2876993967
     locked: 0
   - name: Background
     uniqueID: 2351170515

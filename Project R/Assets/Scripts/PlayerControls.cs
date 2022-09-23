@@ -118,8 +118,8 @@ public class PlayerControls : MonoBehaviour
 
                 //No Collisions
                 //body.MovePosition(body.position + moveVector);
-                body.AddForce(moveVector);
-                //body.velocity = moveVector;
+                body.AddForce(moveVector, ForceMode2D.Force);
+
                 return true;
             }
             else
@@ -143,6 +143,7 @@ public class PlayerControls : MonoBehaviour
         isDashing = false;
         activeMoveSpeed = baseMoveSpeed;
         Physics2D.IgnoreLayerCollision(6, 8, false);
+        Physics2D.IgnoreLayerCollision(6, 7, false);
         yield return new WaitForSeconds(dashingCooldown);//wait dash cd
         canDash = true;
     }
@@ -150,10 +151,10 @@ public class PlayerControls : MonoBehaviour
     void OnDash()
     {
         Physics2D.IgnoreLayerCollision(6, 8, true);
+        Physics2D.IgnoreLayerCollision(6, 7, true);
         if (canDash)
         {
             animator.SetTrigger("isDashing");
-            Debug.Log("Dash");
             if (dashCoroutine != null)
             {
                 //stop condition for coroutine if you are already dashing
