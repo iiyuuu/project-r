@@ -2,35 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class weapon : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
-    public Transform firePoint;
     public GameObject bulletPrefab;
-    public Rigidbody2D target;
-    private float currDistance;
-    private float detectionDistance = 1f;
+    public Transform firePoint;
+    public float fireForce = 5f;
 
-
-    // Start is called before the first frame update
-    void Start()
+    public void Fire()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        currDistance = Vector3.Distance(target.position, firePoint.position);
-        if(currDistance > detectionDistance)
-        {
-            Shoot();
-        }
-        
-    }
-
-    public void Shoot()
-    {
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);
 
     }
 }

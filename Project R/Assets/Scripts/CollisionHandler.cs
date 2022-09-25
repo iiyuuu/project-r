@@ -65,6 +65,12 @@ public class CollisionHandler : MonoBehaviour
             Destroy(other.gameObject);
         }
 
+        if (other.gameObject.tag.Equals("Projectile Power Up"))
+        {
+            stats.projectilePowerUp += 5;
+            Destroy(other.gameObject);
+        }
+
     }
 
     private IEnumerator kbCoroutine(Rigidbody2D tag)
