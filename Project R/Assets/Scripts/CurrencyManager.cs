@@ -14,6 +14,14 @@ public class CurrencyManager : MonoBehaviour
     {
         currency += currencyValue;
         text.text = "X" + currency.ToString();
-        shop.CheckPurchasable();
+        if (shop != null)
+        {
+            if (shop.isEnabled)
+            {
+                shop.CheckPurchasable();
+            }
+        }
+        
+        
     }
 }
