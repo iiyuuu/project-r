@@ -5,24 +5,47 @@ using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
+
+    public bool isEnabled = false;
     public CurrencyManager currencyManager;
+    public GameObject shopUI;
+    public PlayerControls controls;
 
     public ShopItems[] shopItems;
     public ShopTemplate[] shopPanels;
     public GameObject[] shopPanelsObject;
     public Button[] shopButtons;
 
-    private void Start()
+    
+
+
+    private void Update()
     {
-        for(int i = 0; i < shopItems.Length; i++)
+        if (isEnabled)
         {
-            shopPanelsObject[i].gameObject.SetActive(true);
+            for (int i = 0; i < shopItems.Length; i++)
+            {
+                shopPanelsObject[i].gameObject.SetActive(true);
+            }
+            LoadPanels();
+            CheckPurchasable();
         }
-        LoadPanels();
-        CheckPurchasable();
+        
     }
 
+    public void EnableShop()
+    {
+        isEnabled = true;
+        shopUI.SetActive(true);
+        controls.canMove = false;
+    }
 
+    public void DisableShop()
+    {
+        isEnabled = false;
+        shopUI.SetActive(false);
+        controls.canMove = true;
+    }
 
 
     public void LoadPanels()
@@ -52,8 +75,9 @@ public class ShopManager : MonoBehaviour
 
     public void PurchaseItem(int buttonNo)
     {
-        if(currencyManager.currency >= shopItems[buttonNo].baseCost)
+        if (currencyManager.currency >= shopItems[buttonNo].baseCost)
         {
+            
             currencyManager.ChangeCurrency(-shopItems[buttonNo].baseCost);
             CheckPurchasable();
             //unlock item

@@ -150,6 +150,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 8244032549999730025}
+  currency: 0
+  shop: {fileID: 0}
 --- !u!1 &8244032550318191860
 GameObject:
   m_ObjectHideFlags: 0
