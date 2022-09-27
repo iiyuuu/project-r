@@ -15,8 +15,14 @@ public class Bullet : MonoBehaviour
                 enemy.Health -= 1;
                 enemy.enemyHurt = true;
                 StartCoroutine(enemy.Damaged());
-
+                //add kb coroutine
+                enemy.enemyHurt = false;
             }
         }
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(gameObject);
     }
 }

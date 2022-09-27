@@ -67,11 +67,12 @@ public class Enemy : MonoBehaviour
                 spriteRend.color = new Color(1, 0, 0, 0.5f);
                 yield return new WaitForSeconds(iFrameDuration / numberOfFlashes);
                 spriteRend.color = Color.white;
-                enemyHurt = false;
+                
             }
+
         }
-        
-        
+        enemyHurt = false;
+
     }
     
     void CheckDistance()

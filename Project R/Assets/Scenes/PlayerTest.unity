@@ -8172,6 +8172,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Currency
       objectReference: {fileID: 0}
+    - target: {fileID: 8244032549999730022, guid: 71591485496889d46a4e78de04f17175, type: 3}
+      propertyPath: shop
+      value: 
+      objectReference: {fileID: 1342209110}
+    - target: {fileID: 8244032549999730022, guid: 71591485496889d46a4e78de04f17175, type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 1823052645}
+    - target: {fileID: 8244032549999730022, guid: 71591485496889d46a4e78de04f17175, type: 3}
+      propertyPath: currency
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8244032549999730023, guid: 71591485496889d46a4e78de04f17175, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8535,6 +8547,17 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 5945133826773068698, guid: 28e879dd74f388b4ba8fe85a0d62462a, type: 3}
   m_PrefabInstance: {fileID: 876472459}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1823052645 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8244032549999730025, guid: 71591485496889d46a4e78de04f17175, type: 3}
+  m_PrefabInstance: {fileID: 1481908807}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2019584859
 GameObject:
   m_ObjectHideFlags: 0
