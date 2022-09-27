@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Android;
 using UnityEngine.InputSystem;
 
 public class PlayerControls : MonoBehaviour
@@ -28,6 +29,10 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] public bool isMoving = false;
     public MeleeHitbox melee;
 
+    public PauseMenu pause;
+    public ShopManager shopUI;
+    public GameObject prompt;
+
     //Vector 2 -> 2d Vector with X and Y speed
 
     void Start()
@@ -41,13 +46,13 @@ public class PlayerControls : MonoBehaviour
     //input
     void Update()
     {
-        //checks for space bar input then starts coroutine
 
     }
+
     //movement
     void FixedUpdate()
     {
-        if (canMove)
+        if (canMove && !pause.isPaused)
         { 
             //movement speed modifier
             if (isDashing)
@@ -186,8 +191,12 @@ public class PlayerControls : MonoBehaviour
     }
 
     void OnMelee()
-    { 
-        animator.SetTrigger("isAttacking");
+    {
+        if (!pause.isPaused && canMove)
+        {
+            animator.SetTrigger("isAttacking");
+        }
+        
     }
 
     public void MeleeAttack()
@@ -219,5 +228,32 @@ public class PlayerControls : MonoBehaviour
     public void UnlockMovement()
     {
         canMove = true;
+    }
+
+    public void OnPause()
+    {
+        if (!shopUI.isEnabled)
+        {
+            if (!pause.isPaused)
+            {
+                pause.isPaused = !pause.isPaused;
+                pause.Pause();
+            }
+            else
+            {
+                pause.isPaused = !pause.isPaused;
+                pause.Resume();
+            }
+        }
+        
+    }
+
+    public void PromptEnable()
+    {
+        prompt.SetActive(true);
+    }
+    public void PromptDisable()
+    {
+        prompt.SetActive(false);
     }
 }

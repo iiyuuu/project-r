@@ -493,12 +493,15 @@ MonoBehaviour:
   baseMoveSpeed: 15
   activeMoveSpeed: 0
   idleFriction: 0.9
-  dashingPower: 3
+  dashingPower: 5
   isDashing: 0
   canDash: 1
   canMove: 1
   isMoving: 0
   melee: {fileID: 5075760738389464468}
+  pause: {fileID: 0}
+  shopUI: {fileID: 0}
+  prompt: {fileID: 0}
 --- !u!114 &8479199668614094277
 MonoBehaviour:
   m_ObjectHideFlags: 0
