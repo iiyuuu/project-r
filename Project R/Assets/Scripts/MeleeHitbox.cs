@@ -44,6 +44,7 @@ public class MeleeHitbox : MonoBehaviour
                 enemy.Health -= attackDamage;
                 enemy.enemyHurt = true;
                 StartCoroutine(enemy.Damaged());
+                
             }
         }
     }

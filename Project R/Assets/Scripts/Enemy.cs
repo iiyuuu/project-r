@@ -51,15 +51,9 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         
-        //Vector3 direction = target.position - transform.position;
-        ////float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        ////rb.rotation = angle;
-        //direction.Normalize();
-        //moveDirection = direction;
     }
     private void FixedUpdate()
     {
-        if (enemyHurt) { return;}
         CheckDistance();
     }
 
@@ -69,12 +63,12 @@ public class Enemy : MonoBehaviour
         {
             for(int i = 0; i < numberOfFlashes; i++)
             {
+                rb.velocity = Vector2.zero;
                 spriteRend.color = new Color(1, 0, 0, 0.5f);
                 yield return new WaitForSeconds(iFrameDuration / numberOfFlashes);
                 spriteRend.color = Color.white;
-                
+                enemyHurt = false;
             }
-            enemyHurt = false;
         }
         
         
@@ -120,6 +114,7 @@ public class Enemy : MonoBehaviour
                     enemy.Health -= 1;
                     enemy.enemyHurt = true;
                     StartCoroutine(enemy.Damaged());
+                    enemy.enemyHurt = false;
                 }
                 
             }

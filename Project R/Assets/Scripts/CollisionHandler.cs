@@ -10,7 +10,7 @@ public class CollisionHandler : MonoBehaviour
     public PlayerControls controls;
 
     public float thrust;
-    [SerializeField] public float kbTime = 0.1f;
+    [SerializeField] public float kbTime = 0.2f;
 
     private void OnTriggerEnter2D(Collider2D other)
     {

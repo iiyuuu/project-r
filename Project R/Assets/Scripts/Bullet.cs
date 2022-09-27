@@ -4,8 +4,19 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public void OnCollisionEnter2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(gameObject);
+        if (collision.gameObject.tag.Equals("Enemy"))
+        {
+            Enemy enemy = collision.GetComponent<Enemy>();
+            if (enemy != null && !enemy.enemyHurt)
+            {
+                enemy.Health -= 1;
+                enemy.enemyHurt = true;
+                StartCoroutine(enemy.Damaged());
+
+            }
+        }
     }
 }
