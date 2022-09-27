@@ -9,11 +9,10 @@ public class RangedEnemy : MonoBehaviour
     private Rigidbody2D rb;
     public Transform target;
     private Vector2 moveDirection;
-    public float detectionDistance = 1f;
-    [SerializeField]private float currentDistance;
+    private float currentDistance;
     public GameObject firePoint;
 
-    public float chaseRadius;
+    public float chaseRadius = 100f;
     public Vector3 homePosition;
 
     public int Health
@@ -47,7 +46,6 @@ public class RangedEnemy : MonoBehaviour
     void Update()
     {
         Vector3 direction = target.position - transform.position;
-        currentDistance = Vector3.Distance(target.position, transform.position);
         //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
        // rb.rotation = angle;
         direction.Normalize();
@@ -56,6 +54,7 @@ public class RangedEnemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         CheckDistance();
 
     }
@@ -63,6 +62,7 @@ public class RangedEnemy : MonoBehaviour
     {
         if (Vector2.Distance(target.position, transform.position) <= chaseRadius)
         {
+<<<<<<< Updated upstream:Project R/Assets/RangedEnemy.cs
             Debug.Log("Fuck you");
             transform.position = Vector2.MoveTowards(transform.position, target.position, (-1)*moveSpeed * Time.fixedDeltaTime);
 
@@ -72,6 +72,12 @@ public class RangedEnemy : MonoBehaviour
             Debug.Log("Double fuck you");
             transform.position = Vector2.MoveTowards(transform.position, homePosition, (-1)*moveSpeed * Time.fixedDeltaTime);
         }
+=======
+   
+            transform.position = Vector2.MoveTowards(transform.position, target.position, (-1)*moveSpeed * Time.fixedDeltaTime);
+
+        }
+>>>>>>> Stashed changes:Project R/Assets/Scripts/RangedEnemy.cs
 
     }
 
