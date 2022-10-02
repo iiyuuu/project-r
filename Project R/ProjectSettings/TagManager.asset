@@ -9,6 +9,8 @@ TagManager:
   - Coin
   - Speed Power Up
   - Health Power Up
+  - Projectile Power Up
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Player
   - Enemy
   - Interactable
-  - 
+  - Projectile
   - 
   - 
   - 

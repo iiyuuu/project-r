@@ -124,11 +124,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   moveSpeed: 0.5
+  rb: {fileID: 0}
   target: {fileID: 0}
   chaseRadius: 2
   homePosition: {x: 0, y: 0, z: 0}
   iFrameDuration: 0.5
-  numberOfFlashes: 1
+  numberOfFlashes: 2
   enemyHurt: 0
 --- !u!58 &3569968416217482963
 CircleCollider2D:

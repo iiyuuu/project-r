@@ -6,8 +6,10 @@ public class CollisionHandler : MonoBehaviour
 {
     public PlayerStats stats;
     public CurrencyManager currency;
-    public MeleeHitbox hitbox;
+    public MeleeController hitbox;
     public PlayerControls controls;
+
+    IEnumerator coroutine;
 
     public float thrust;
     [SerializeField] public float kbTime = 0.2f;
@@ -18,25 +20,32 @@ public class CollisionHandler : MonoBehaviour
        {
             Rigidbody2D enemy = other.GetComponent<Rigidbody2D>();
             Vector2 difference = enemy.transform.position - transform.position;
-            difference = difference.normalized * thrust;
-            if (controls.canDash && !stats.hurt && !hitbox.meleeCollider.enabled)
-            { 
+            difference = difference.normalized * thrust * 2;
+            if (controls.canDash && !stats.hurt)
+            {
+                coroutine = kbCoroutine(controls.body);
+                if(coroutine != null)
+                {
+                    StopCoroutine(coroutine);
+                }
+                coroutine = other.GetComponent<Enemy>().Damaged();
+                if(coroutine != null)
+                {
+                    StopCoroutine(coroutine);
+                }
+
                 stats.DamageTaken(1);
                 
                 controls.canMove = false;
 
+                controls.body.velocity = Vector2.zero;
                 controls.body.AddForce(-difference, ForceMode2D.Impulse);
                 StartCoroutine(kbCoroutine(controls.body));
                 
                 controls.canMove = true;
             }
             
-            if(enemy != null && hitbox.meleeCollider.enabled)
-            {
-                difference = difference / 2;
-                enemy.AddForce(difference, ForceMode2D.Impulse);
-                StartCoroutine(kbCoroutine(enemy));
-            }
+
        }
        if (other.gameObject.tag.Equals("Heal"))
        {
@@ -72,13 +81,10 @@ public class CollisionHandler : MonoBehaviour
 
     }
 
-    private IEnumerator kbCoroutine(Rigidbody2D tag)
+    public IEnumerator kbCoroutine(Rigidbody2D tag)
     {
             yield return new WaitForSeconds(kbTime);
-            if(tag != null)
-            {
-                tag.velocity = Vector2.zero;
-            }
+            tag.velocity = Vector2.zero;
     }
 
 

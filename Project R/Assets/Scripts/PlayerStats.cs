@@ -19,6 +19,9 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] public bool hurt = false;
     private SpriteRenderer spriteRend;
 
+    public Animator animator;
+    public PlayerControls playerControls;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -36,8 +39,9 @@ public class PlayerStats : MonoBehaviour
         {
             currentHealth = 0;
             OnPlayerDeath?.Invoke();
-            Debug.Log("dejj");
-            //death animation
+            playerControls.canMove = false;
+            animator.SetTrigger("Death");
+            
             //fade out or game over scene
         }
     }

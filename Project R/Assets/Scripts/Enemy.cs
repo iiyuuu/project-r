@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 
     public int health = 3;
     [SerializeField] float moveSpeed = 3f;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     public Transform target;
 
     public float chaseRadius;
@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] public bool enemyHurt = false;
     private SpriteRenderer spriteRend;
 
+
     public int Health
     {
         set
@@ -29,7 +30,6 @@ public class Enemy : MonoBehaviour
             if(health <= 0)
             {
                 animator.SetTrigger("slimeDeath");
-                rb = null;
             }
         }
         get
@@ -48,27 +48,24 @@ public class Enemy : MonoBehaviour
         homePosition = transform.position;
     }
 
-    private void Update()
-    {
-        
-    }
     private void FixedUpdate()
     {
-        CheckDistance();
+        if (!enemyHurt)
+        {
+            CheckDistance();
+        }
+        
     }
 
     public IEnumerator Damaged()
     {
-        if(rb != null)
+        enemyHurt = true;
+        for (int i = 0; i < numberOfFlashes; i++)
         {
-            for(int i = 0; i < numberOfFlashes; i++)
-            {
-                rb.velocity = Vector2.zero;
-                spriteRend.color = new Color(1, 0, 0, 0.5f);
-                yield return new WaitForSeconds(iFrameDuration / numberOfFlashes);
-                spriteRend.color = Color.white;
-                
-            }
+            spriteRend.color = new Color(1, 0, 0, 0.5f);
+            yield return new WaitForSeconds(iFrameDuration / (numberOfFlashes * 2));
+            spriteRend.color = Color.white;
+            yield return new WaitForSeconds(iFrameDuration / (numberOfFlashes * 2));
 
         }
         enemyHurt = false;
@@ -107,15 +104,14 @@ public class Enemy : MonoBehaviour
         if(other.gameObject.tag.Equals("Enemy"))
         {
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
-            other.rigidbody.velocity = Vector2.zero;
-            if (enemyHurt)//checks if enemy is hurt and hurts both objects
+            enemy.rb.velocity = Vector2.zero;
+            rb.velocity = Vector2.zero;
+            if (enemyHurt && enemy != null)//checks if enemy is hurt and hurts both objects
             {
                 if(!enemy.enemyHurt)
                 {
                     enemy.Health -= 1;
-                    enemy.enemyHurt = true;
                     StartCoroutine(enemy.Damaged());
-                    enemy.enemyHurt = false;
                 }
                 
             }

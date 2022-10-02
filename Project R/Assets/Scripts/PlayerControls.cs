@@ -17,9 +17,11 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] public float idleFriction = 0.9f;
 
     IEnumerator dashCoroutine;
+    IEnumerator attackCoroutine;
     public float dashingPower = 24f;
     [SerializeField] public bool isDashing;
     [SerializeField] public bool canDash = true;
+    [SerializeField] private bool canAttack = true;
     private Vector2 dashDirection;
 
     Animator animator;
@@ -27,11 +29,14 @@ public class PlayerControls : MonoBehaviour
 
     [SerializeField] public bool canMove = true;
     [SerializeField] public bool isMoving = false;
-    public MeleeHitbox melee;
+    public MeleeController melee;
 
     public PauseMenu pause;
     public ShopManager shopUI;
     public GameObject prompt;
+
+    public SpriteRenderer characterRenderer, weaponRenderer;
+    public bool rightHand = true;
 
     //Vector 2 -> 2d Vector with X and Y speed
 
@@ -143,6 +148,7 @@ public class PlayerControls : MonoBehaviour
     private IEnumerator Dash(float dashingTime, float dashingCooldown)
     {
         canDash = false;
+        canAttack = false;
         isDashing = true;
         yield return new WaitForSeconds(dashingTime);//during dash
         isDashing = false;
@@ -151,6 +157,7 @@ public class PlayerControls : MonoBehaviour
         Physics2D.IgnoreLayerCollision(6, 7, false);
         yield return new WaitForSeconds(dashingCooldown);//wait dash cd
         canDash = true;
+        canAttack = true;
     }
 
     void OnDash()
@@ -192,31 +199,20 @@ public class PlayerControls : MonoBehaviour
 
     void OnMelee()
     {
-        if (!pause.isPaused && canMove)
+        if (canAttack)
         {
-            animator.SetTrigger("isAttacking");
-        }
-        
-    }
-
-    public void MeleeAttack()
-    {
-        LockMovement();
-        
-        if(spriteRenderer.flipX == true)
-        {
-            melee.AttackLeft();
-        }
-        else
-        {
-            melee.AttackRight();
+            if (attackCoroutine != null)
+            {
+                StopCoroutine(attackCoroutine);
+            }
+            attackCoroutine = AttackCoroutine(melee.attackRate);
+            StartCoroutine(attackCoroutine);
         }
     }
 
     public void EndAttack()
     {
         UnlockMovement();
-        melee.StopAttack();
     }
 
     public void LockMovement()
@@ -255,5 +251,35 @@ public class PlayerControls : MonoBehaviour
     public void PromptDisable()
     {
         prompt.SetActive(false);
+    }
+
+    private IEnumerator AttackCoroutine(float attackRate)
+    {
+        LockMovement();
+        canAttack = false;
+        if (rightHand)
+        {
+            //play this animation
+            //transition to different idle
+            rightHand = !rightHand;
+            weaponRenderer.sortingOrder = characterRenderer.sortingOrder - 1;
+        }
+        else
+        {
+            rightHand = !rightHand;
+            weaponRenderer.sortingOrder = characterRenderer.sortingOrder + 1;
+        }
+        if (spriteRenderer.flipX == true)
+        {
+            melee.flip = true;
+            melee.Attack();
+        }
+        else
+        {
+            melee.flip = false;
+            melee.Attack();
+        }
+        yield return new WaitForSeconds(1f / attackRate);
+        canAttack = true;
     }
 }

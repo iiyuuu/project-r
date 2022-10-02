@@ -8,19 +8,30 @@ public class WeaponController : MonoBehaviour
     public Weapon weapon;
     public PlayerStats stats;
 
+    public SpriteRenderer spriteRenderer;
     Vector2 mousePosition;
 
+    private void Start()
+    {
+        spriteRenderer.enabled = false;
+    }
     void Update()
     {
 
-         if (Input.GetMouseButtonDown(1))
+         if (stats.projectilePowerUp > 0)
          {
-            if (stats.projectilePowerUp > 0)
+            spriteRenderer.enabled = true;
+            if (Input.GetMouseButtonDown(1))//change this to new input system
             {
                 weapon.Fire();
                 stats.projectilePowerUp--;
             }
          }
+        else
+        {
+            spriteRenderer.enabled = false;
+        }
+
 
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
