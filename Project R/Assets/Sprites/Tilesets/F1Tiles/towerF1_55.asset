@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: TowerF1 v2_23
+  m_Name: towerF1_55
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 1730332151, guid: 5507d631ace0b5245be1c085e64fc87f, type: 3}
+  m_Sprite: {fileID: 396062864, guid: af66d9b0ad1e3c545865e666d3805e28, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
