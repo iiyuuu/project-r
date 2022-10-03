@@ -7,34 +7,29 @@ public class Enemy : MonoBehaviour
 
     public int health = 3;
     [SerializeField] float moveSpeed = 3f;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     public Transform target;
-    private Vector2 moveDirection;
-    public float detectionDistance = 1f;
-    private float currentDistance;
 
     public float chaseRadius;
-    public float attackRadius;
-    public Transform homePosition;
-    [SerializeField] public CollisionHandler collision_h;
+    public Vector3 homePosition;
 
     Animator animator;
 
     [Header("Damage Indicator")]
     public float iFrameDuration;
-    [SerializeField] private int numberOfFlashes;
+    [SerializeField] int numberOfFlashes;
     [SerializeField] public bool enemyHurt = false;
     private SpriteRenderer spriteRend;
+
 
     public int Health
     {
         set
         {
             health = value;
-
             if(health <= 0)
             {
-                Destroy(gameObject);
+                animator.SetTrigger("slimeDeath");
             }
         }
         get
@@ -49,31 +44,17 @@ public class Enemy : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform;
-        homePosition = this.transform;
-        //Debug.Log(homePosition.position);
+        spriteRend = GetComponent<SpriteRenderer>();
+        homePosition = transform.position;
     }
 
-    private void Update()
-    {
-        
-        if (enemyHurt) { return; }
-
-
-        //Vector3 direction = target.position - transform.position;
-        ////float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        ////rb.rotation = angle;
-        //direction.Normalize();
-        //moveDirection = direction;
-    }
     private void FixedUpdate()
     {
-        moveEnemy(moveDirection);
-        CheckDistance();
-    }
-
-    void moveEnemy(Vector2 direction)
-    {
-        //rb.MovePosition((Vector2)transform.position + (moveDirection * moveSpeed * Time.fixedDeltaTime));
+        if (!enemyHurt)
+        {
+            CheckDistance();
+        }
+        
     }
 
     public IEnumerator Damaged()
@@ -88,6 +69,7 @@ public class Enemy : MonoBehaviour
 
         }
         enemyHurt = false;
+
     }
     
     void CheckDistance()
@@ -99,9 +81,43 @@ public class Enemy : MonoBehaviour
         }
         else if (Vector2.Distance(target.position, transform.position) > chaseRadius)
         {
-            transform.position = Vector2.MoveTowards(transform.position, homePosition.position, moveSpeed * Time.fixedDeltaTime);
+            Invoke("MoveBack", 1f);//1s delay before moving back
         }
         
     }
+
+    void MoveBack()
+    {
+        if(Vector2.Distance(target.position, transform.position) > chaseRadius)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, homePosition, moveSpeed * Time.fixedDeltaTime);
+        }
+        
+    }
+
+    void Death()
+    {
+        Destroy(this.gameObject);
+    }
+
+    void OnCollisionEnter2D(Collision2D other){
+        if(other.gameObject.tag.Equals("Enemy"))
+        {
+            Enemy enemy = other.gameObject.GetComponent<Enemy>();
+            enemy.rb.velocity = Vector2.zero;
+            rb.velocity = Vector2.zero;
+            if (enemyHurt && enemy != null)//checks if enemy is hurt and hurts both objects
+            {
+                if(!enemy.enemyHurt)
+                {
+                    enemy.Health -= 1;
+                    StartCoroutine(enemy.Damaged());
+                }
+                
+            }
+        }
+        
+    }
+
 
 }

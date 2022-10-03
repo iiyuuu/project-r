@@ -6,11 +6,13 @@ public class CollisionHandler : MonoBehaviour
 {
     public PlayerStats stats;
     public CurrencyManager currency;
-    public MeleeHitbox hitbox;
+    public MeleeController hitbox;
     public PlayerControls controls;
 
+    IEnumerator coroutine;
+
     public float thrust;
-    [SerializeField] public float kbTime = 0.1f;
+    [SerializeField] public float kbTime = 0.2f;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -18,51 +20,71 @@ public class CollisionHandler : MonoBehaviour
        {
             Rigidbody2D enemy = other.GetComponent<Rigidbody2D>();
             Vector2 difference = enemy.transform.position - transform.position;
-            difference = difference.normalized * thrust;
-            if (controls.canDash && !stats.hurt && !hitbox.meleeCollider.enabled)
+            difference = difference.normalized * thrust * 2;
+            if (controls.canDash && !stats.hurt)
             {
+                coroutine = kbCoroutine(controls.body);
+                if(coroutine != null)
+                {
+                    StopCoroutine(coroutine);
+                }
+                coroutine = other.GetComponent<Enemy>().Damaged();
+                if(coroutine != null)
+                {
+                    StopCoroutine(coroutine);
+                }
+
                 stats.DamageTaken(1);
+                
                 controls.canMove = false;
-                controls.isMoving = false;
-                enemy.isKinematic = false;
-                difference = transform.position - enemy.transform.position;
-                difference = difference.normalized * thrust * controls.body.velocity;
-                controls.body.AddForce(difference, ForceMode2D.Impulse);
+
+                controls.body.velocity = Vector2.zero;
+                controls.body.AddForce(-difference, ForceMode2D.Impulse);
                 StartCoroutine(kbCoroutine(controls.body));
-                enemy.isKinematic = true;
+                
                 controls.canMove = true;
             }
             
-            if(enemy != null && hitbox.meleeCollider.enabled)
-            {
-                enemy.isKinematic = false;
-                enemy.AddForce(difference, ForceMode2D.Impulse);
-                StartCoroutine(kbCoroutine(enemy));
-                enemy.isKinematic = true;
-            }
+
        }
        if (other.gameObject.tag.Equals("Heal"))
        {
-           Debug.Log("Grabbed Heart");
            stats.Healing(2);
            Destroy(other.gameObject);
        }
        if (other.gameObject.tag.Equals("Coin"))
        {
-            Debug.Log("Grabbed Coin");
             currency.ChangeCurrency(1);
             Destroy(other.gameObject);
        }
+       if (other.gameObject.tag.Equals("Health Power Up"))
+        {
+            //Debug.Log("Health Power Up Picked Up");
+            stats.maxHealth += 2;
+            stats.Healing(2);
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.tag.Equals("Speed Power Up"))
+        {
+            //Debug.Log("Speed Power Up Picked Up");
+            controls.baseMoveSpeed += 3;
+            controls.activeMoveSpeed += 3;
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.tag.Equals("Projectile Power Up"))
+        {
+            stats.projectilePowerUp += 5;
+            Destroy(other.gameObject);
+        }
 
     }
 
-    private IEnumerator kbCoroutine(Rigidbody2D tag)
+    public IEnumerator kbCoroutine(Rigidbody2D tag)
     {
-        if(tag != null)
-        {
             yield return new WaitForSeconds(kbTime);
             tag.velocity = Vector2.zero;
-        }
     }
 
 

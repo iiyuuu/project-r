@@ -7,6 +7,7 @@ public class PlayerStats : MonoBehaviour
 {
     public int maxHealth = 6;
     public int currentHealth;
+    public int projectilePowerUp = 0;
 
     public static event Action OnPlayerDamaged;
     public static event Action OnPlayerDeath;
@@ -18,10 +19,14 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] public bool hurt = false;
     private SpriteRenderer spriteRend;
 
+    public Animator animator;
+    public PlayerControls playerControls;
+
     void Start()
     {
         currentHealth = maxHealth;
         spriteRend = GetComponent<SpriteRenderer>();
+        projectilePowerUp = 0;
     }
 
     public void DamageTaken(int amount)
@@ -34,8 +39,9 @@ public class PlayerStats : MonoBehaviour
         {
             currentHealth = 0;
             OnPlayerDeath?.Invoke();
-            Debug.Log("dejj");
-            //death animation
+            playerControls.canMove = false;
+            animator.SetTrigger("Death");
+            
             //fade out or game over scene
         }
     }
