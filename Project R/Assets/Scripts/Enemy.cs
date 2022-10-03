@@ -103,18 +103,24 @@ public class Enemy : MonoBehaviour
     void OnCollisionEnter2D(Collision2D other){
         if(other.gameObject.tag.Equals("Enemy"))
         {
-            Enemy enemy = other.gameObject.GetComponent<Enemy>();
-            enemy.rb.velocity = Vector2.zero;
-            rb.velocity = Vector2.zero;
-            if (enemyHurt && enemy != null)//checks if enemy is hurt and hurts both objects
+            if (enemyHurt)//checks if enemy is hurt and hurts both objects
             {
-                if(!enemy.enemyHurt)
+                Enemy enemy = other.gameObject.GetComponent<Enemy>();
+                enemy.rb.velocity = Vector2.zero;
+                rb.velocity = Vector2.zero;
+                print("collision");
+                if (enemy != null)
                 {
-                    enemy.Health -= 1;
-                    StartCoroutine(enemy.Damaged());
+                    if (!enemy.enemyHurt)
+                    {
+                        enemy.Health -= 1;
+                        StartCoroutine(enemy.Damaged());
+                    }
+
                 }
-                
+
             }
+            
         }
         
     }

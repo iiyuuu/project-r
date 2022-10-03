@@ -18,6 +18,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private int numberOfFlashes;
     [SerializeField] public bool hurt = false;
     private SpriteRenderer spriteRend;
+    public GameObject UIRender;
 
     public Animator animator;
     public PlayerControls playerControls;
@@ -41,7 +42,7 @@ public class PlayerStats : MonoBehaviour
             OnPlayerDeath?.Invoke();
             playerControls.canMove = false;
             animator.SetTrigger("Death");
-            
+            //spriteRend.sortingOrder = UIRender.sortingOrder + 1;
             //fade out or game over scene
         }
     }
