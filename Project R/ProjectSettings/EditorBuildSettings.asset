@@ -11,5 +11,23 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: efc77447456385c4a9f32346e6f240d0
+  - enabled: 0
+    path: Assets/Scenes/PlayerTest.unity
+    guid: ad7a021735b514942b469cbda408c9f2
+  - enabled: 1
+    path: Assets/Scenes/F1_Zone1.unity
+    guid: 0866fbab10c9a314a9f106f282699354
+  - enabled: 1
+    path: Assets/Scenes/F1_Zone2.unity
+    guid: 51d73f8391b3921449e64721898efd8e
+  - enabled: 1
+    path: Assets/Scenes/F1_Zone3.unity
+    guid: 31959bcce4665784e90272242e1b9cfd
+  - enabled: 1
+    path: Assets/Scenes/F1_Zone4.unity
+    guid: 4a7582be9a63db445ba416fb0f427478
+  - enabled: 1
+    path: Assets/Scenes/F1_BossRoom.unity
+    guid: 8ca6f29741e58d84bb0ad0903dd10fdd
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 36dae60a7b3a14ee5ac04d57ed15e2a7, type: 2}
