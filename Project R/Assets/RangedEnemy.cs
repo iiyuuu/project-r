@@ -62,23 +62,15 @@ public class RangedEnemy : MonoBehaviour
     {
         if (Vector2.Distance(target.position, transform.position) <= chaseRadius)
         {
-<<<<<<< Updated upstream:Project R/Assets/RangedEnemy.cs
             Debug.Log("Fuck you");
-            transform.position = Vector2.MoveTowards(transform.position, target.position, (-1)*moveSpeed * Time.fixedDeltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, target.position, (-1) * moveSpeed * Time.fixedDeltaTime);
 
         }
         else if (Vector2.Distance(target.position, transform.position) > chaseRadius)
         {
             Debug.Log("Double fuck you");
-            transform.position = Vector2.MoveTowards(transform.position, homePosition, (-1)*moveSpeed * Time.fixedDeltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, homePosition, (-1) * moveSpeed * Time.fixedDeltaTime);
         }
-=======
-   
-            transform.position = Vector2.MoveTowards(transform.position, target.position, (-1)*moveSpeed * Time.fixedDeltaTime);
-
-        }
->>>>>>> Stashed changes:Project R/Assets/Scripts/RangedEnemy.cs
-
     }
 
 
