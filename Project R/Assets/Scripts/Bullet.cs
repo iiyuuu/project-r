@@ -10,10 +10,11 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Enemy"))
         {
-            hitEnemy = true;
+            
             Enemy enemy = collision.GetComponent<Enemy>();
             if (enemy != null && !enemy.enemyHurt)
             {
+                hitEnemy = true;
                 IEnumerator coroutine = enemy.Damaged();
                 if (coroutine != null) { StopCoroutine(coroutine); }
                 enemy.rb.velocity = Vector2.zero;
