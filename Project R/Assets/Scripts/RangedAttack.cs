@@ -33,18 +33,18 @@ public class RangedAttack : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 aimDirection = mousePosition - body.position;
-        float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
-        body.rotation = aimAngle;
+        if (body.gameObject.tag.Equals("Player"))
+        {
+            Vector2 aimDirection = mousePosition - body.position;
+            float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
+            body.rotation = aimAngle;
+        }
     }
     public void Fire()
     {
-        if(stats.currentAmmo > 0)
-        {
-            stats.currentAmmo -= 1;
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);
-        }
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);
+        Destroy(bullet, 5);
     }
 
     public IEnumerator Refill()

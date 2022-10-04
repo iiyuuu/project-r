@@ -35,6 +35,7 @@ public class PlayerControls : MonoBehaviour
     public ShopManager shopUI;
     public GameObject prompt;
     public RangedAttack rangedAttack;
+    public PlayerStats playerStats;
 
     public SpriteRenderer characterRenderer, weaponRenderer;
 
@@ -272,6 +273,11 @@ public class PlayerControls : MonoBehaviour
 
     public void OnFire()
     {
-        rangedAttack.Fire();
+        if (playerStats.currentAmmo > 0)
+        {
+            playerStats.currentAmmo--;
+            rangedAttack.Fire();
+        }
+        
     }
 }

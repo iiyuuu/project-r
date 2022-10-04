@@ -41,7 +41,6 @@ public class CollisionHandler : MonoBehaviour
                 controls.body.velocity = Vector2.zero;
                 if (!controls.isMoving) { difference = (controls.body.mass * difference) / Time.fixedDeltaTime; }
                 else { difference *= 3; }
-                Debug.Log(difference);
                 controls.body.AddForce(-difference, ForceMode2D.Impulse);
                 StartCoroutine(kbCoroutine(controls.body));
                 

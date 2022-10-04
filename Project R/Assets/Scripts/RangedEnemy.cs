@@ -5,8 +5,15 @@ using UnityEngine;
 
 public class RangedEnemy : Enemy
 {
-    public GameObject firePoint;
+    public Transform firePoint;
     public float attackRadius;
+    public RangedAttack rangedAttack;
+
+    public GameObject bulletPrefab;
+    public float fireForce;
+    public float firingCooldown;
+
+    bool isFiring = false;
 
     // Start is called before the first frame update
 
@@ -17,7 +24,10 @@ public class RangedEnemy : Enemy
     }
     private void FixedUpdate()
     {
-        CheckDistance();
+        if (!enemyHurt)
+        {
+            CheckDistance();
+        }
     }
     public override void CheckDistance()
     {
@@ -29,7 +39,20 @@ public class RangedEnemy : Enemy
         }
         else if (Vector2.Distance(target.position, transform.position) > chaseRadius && Vector2.Distance(target.position, transform.position) < attackRadius)
         {
-            //Debug.Log("Fire");
+            //coroutine, trigger, coroutine, trigger
+            Vector2 difference = target.position - transform.position;
+            float aimAngle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg - 90f;
+            rangedAttack.body.rotation = aimAngle;
+
+            if (!isFiring)
+            {
+                animator.SetTrigger("attack");
+                StartCoroutine(FiringCooldown());
+                //make enemy projectile prefab with dmg values
+            }
+            
+            
+            
             if (target.position.x > transform.position.x) { spriteRend.flipX = true; }
             else { spriteRend.flipX = false; }
         }
@@ -38,6 +61,21 @@ public class RangedEnemy : Enemy
             Invoke("MoveBack", 1f);
         }
 
+    }
+
+    public IEnumerator FiringCooldown()
+    {
+        
+        isFiring = true;
+        yield return new WaitForSeconds(firingCooldown);
+        isFiring = false;
+    }
+
+    void Fire()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);
+        Destroy(bullet, 5);
     }
 
 

@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     public bool ranged;
 
 
-    Animator animator;
+    public Animator animator;
 
     [Header("Damage Indicator")]
     public float iFrameDuration;
@@ -31,7 +31,8 @@ public class Enemy : MonoBehaviour
             health = value;
             if(health <= 0)
             {
-                animator.SetTrigger("slimeDeath");
+                animator.SetTrigger("enemyDeath");
+                
             }
         }
         get
@@ -43,7 +44,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        rb = this.GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform;
         spriteRend = GetComponent<SpriteRenderer>();
@@ -105,7 +106,8 @@ public class Enemy : MonoBehaviour
 
     void Death()
     {
-        Destroy(this.gameObject);
+        StopAllCoroutines();
+        Destroy(gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D other){
