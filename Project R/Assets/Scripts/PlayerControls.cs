@@ -34,9 +34,9 @@ public class PlayerControls : MonoBehaviour
     public PauseMenu pause;
     public ShopManager shopUI;
     public GameObject prompt;
+    public RangedAttack rangedAttack;
 
     public SpriteRenderer characterRenderer, weaponRenderer;
-    public bool rightHand = true;
 
     //Vector 2 -> 2d Vector with X and Y speed
 
@@ -51,7 +51,7 @@ public class PlayerControls : MonoBehaviour
     //input
     void Update()
     {
-
+        //Debug.Log(body.velocity);
     }
 
     //movement
@@ -256,19 +256,6 @@ public class PlayerControls : MonoBehaviour
     private IEnumerator AttackCoroutine(float attackRate)
     {
         LockMovement();
-        canAttack = false;
-        if (rightHand)
-        {
-            //play this animation
-            //transition to different idle
-            rightHand = !rightHand;
-            weaponRenderer.sortingOrder = characterRenderer.sortingOrder - 1;
-        }
-        else
-        {
-            rightHand = !rightHand;
-            weaponRenderer.sortingOrder = characterRenderer.sortingOrder + 1;
-        }
         if (spriteRenderer.flipX == true)
         {
             melee.flip = true;
@@ -281,5 +268,10 @@ public class PlayerControls : MonoBehaviour
         }
         yield return new WaitForSeconds(1f / attackRate);
         canAttack = true;
+    }
+
+    public void OnFire()
+    {
+        rangedAttack.Fire();
     }
 }

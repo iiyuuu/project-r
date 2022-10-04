@@ -20,7 +20,7 @@ public class CollisionHandler : MonoBehaviour
        {
             Rigidbody2D enemy = other.GetComponent<Rigidbody2D>();
             Vector2 difference = enemy.transform.position - transform.position;
-            difference = difference.normalized * thrust * 2;
+            difference = difference.normalized * thrust;
             if (controls.canDash && !stats.hurt)
             {
                 coroutine = kbCoroutine(controls.body);
@@ -36,9 +36,12 @@ public class CollisionHandler : MonoBehaviour
 
                 stats.DamageTaken(1);
                 
-                controls.canMove = false;
+                controls.canMove = false;   
 
                 controls.body.velocity = Vector2.zero;
+                if (!controls.isMoving) { difference = (controls.body.mass * difference) / Time.fixedDeltaTime; }
+                else { difference *= 3; }
+                Debug.Log(difference);
                 controls.body.AddForce(-difference, ForceMode2D.Impulse);
                 StartCoroutine(kbCoroutine(controls.body));
                 
@@ -75,7 +78,7 @@ public class CollisionHandler : MonoBehaviour
 
         if (other.gameObject.tag.Equals("Projectile Power Up"))
         {
-            stats.projectilePowerUp += 5;
+            //stats.projectilePowerUp += 5;
             Destroy(other.gameObject);
         }
 

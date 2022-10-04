@@ -6,12 +6,14 @@ public class Enemy : MonoBehaviour
 {
 
     public int health = 3;
-    [SerializeField] float moveSpeed = 3f;
+    public float moveSpeed = 3f;
     public Rigidbody2D rb;
     public Transform target;
 
     public float chaseRadius;
     public Vector3 homePosition;
+    public bool ranged;
+
 
     Animator animator;
 
@@ -19,7 +21,7 @@ public class Enemy : MonoBehaviour
     public float iFrameDuration;
     [SerializeField] int numberOfFlashes;
     [SerializeField] public bool enemyHurt = false;
-    private SpriteRenderer spriteRend;
+    public SpriteRenderer spriteRend;
 
 
     public int Health
@@ -48,12 +50,18 @@ public class Enemy : MonoBehaviour
         homePosition = transform.position;
     }
 
+    public void Update()
+    {
+        if (target.position.x > transform.position.x) { spriteRend.flipX = true; }
+        else { spriteRend.flipX = false; }
+    }
     private void FixedUpdate()
     {
         if (!enemyHurt)
         {
-            CheckDistance();
+            if (!ranged) { CheckDistance(); }
         }
+        
         
     }
 
@@ -72,7 +80,7 @@ public class Enemy : MonoBehaviour
 
     }
     
-    void CheckDistance()
+    public virtual void CheckDistance()
     {
         if (Vector2.Distance(target.position, transform.position) <= chaseRadius)
         {
@@ -86,7 +94,7 @@ public class Enemy : MonoBehaviour
         
     }
 
-    void MoveBack()
+    public void MoveBack()
     {
         if(Vector2.Distance(target.position, transform.position) > chaseRadius)
         {

@@ -7,17 +7,18 @@ public class PlayerStats : MonoBehaviour
 {
     public int maxHealth = 6;
     public int currentHealth;
-    public int projectilePowerUp = 0;
+    public int maxAmmo;
+    public int currentAmmo;
 
     public static event Action OnPlayerDamaged;
     public static event Action OnPlayerDeath;
     public static event Action OnPlayerHeal;
 
-    [Header("damageFrames")]
+    [Header("Damage Frames")]
     [SerializeField] private float iFrameDuration;
     [SerializeField] private int numberOfFlashes;
-    [SerializeField] public bool hurt = false;
-    private SpriteRenderer spriteRend;
+    public bool hurt = false;
+    [SerializeField] private SpriteRenderer spriteRend;
     public GameObject UIRender;
 
     public Animator animator;
@@ -27,7 +28,7 @@ public class PlayerStats : MonoBehaviour
     {
         currentHealth = maxHealth;
         spriteRend = GetComponent<SpriteRenderer>();
-        projectilePowerUp = 0;
+        currentAmmo = maxAmmo;
     }
 
     public void DamageTaken(int amount)
@@ -58,6 +59,7 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    
     private IEnumerator Invulnerabilty()
     {
         hurt = true;

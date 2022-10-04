@@ -1,75 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class RangedEnemy : MonoBehaviour
+public class RangedEnemy : Enemy
 {
-    public int health = 3;
-    [SerializeField] float moveSpeed = 3f;
-    private Rigidbody2D rb;
-    public Transform target;
-    private Vector2 moveDirection;
-    private float currentDistance;
     public GameObject firePoint;
+    public float attackRadius;
 
-    public float chaseRadius = 100f;
-    public Vector3 homePosition;
-
-    public int Health
-    {
-        set
-        {
-            health = value;
-
-            if (health <= 0)
-            {
-                Destroy(gameObject);
-            }
-        }
-        get
-        {
-            return health;
-        }
-    }
     // Start is called before the first frame update
-    void Start()
-    {
-        rb = this.GetComponent<Rigidbody2D>();
-        homePosition = transform.position;
-
-        
-        
-    }
-
 
     // Update is called once per frame
-    void Update()
-    {
-        Vector3 direction = target.position - transform.position;
-        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-       // rb.rotation = angle;
-        direction.Normalize();
-        moveDirection = direction;
-    }
 
+    public new void Update()
+    {
+    }
     private void FixedUpdate()
     {
-
         CheckDistance();
-
     }
-    void CheckDistance()
+    public override void CheckDistance()
     {
-        if (Vector2.Distance(target.position, transform.position) <= chaseRadius)
+        if (Vector2.Distance(target.position, transform.position) <= chaseRadius)//if player is in aggro range
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, (-1)*moveSpeed * Time.fixedDeltaTime);
-
+            if(transform.position.x > target.position.x) { spriteRend.flipX = true; }
+            else { spriteRend.flipX = false;}
         }
-        else if (Vector2.Distance(target.position, transform.position) > chaseRadius)
+        else if (Vector2.Distance(target.position, transform.position) > chaseRadius && Vector2.Distance(target.position, transform.position) < attackRadius)
         {
-   
-            transform.position = Vector2.MoveTowards(transform.position, target.position, (-1)*moveSpeed * Time.fixedDeltaTime);
-
+            //Debug.Log("Fire");
+            if (target.position.x > transform.position.x) { spriteRend.flipX = true; }
+            else { spriteRend.flipX = false; }
+        }
+        else
+        {
+            Invoke("MoveBack", 1f);
         }
 
     }
