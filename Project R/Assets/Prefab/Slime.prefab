@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 3569968416217482969}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -171.076, y: 99.133, z: 0.5942269}
-  m_LocalScale: {x: 1.46, y: 1.46, z: 1.46}
+  m_LocalScale: {x: 0.68, y: 0.68, z: 0.68}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -128,9 +128,12 @@ MonoBehaviour:
   target: {fileID: 0}
   chaseRadius: 2
   homePosition: {x: 0, y: 0, z: 0}
+  ranged: 0
+  animator: {fileID: 0}
   iFrameDuration: 0.5
   numberOfFlashes: 2
   enemyHurt: 0
+  spriteRend: {fileID: 0}
 --- !u!58 &3569968416217482963
 CircleCollider2D:
   m_ObjectHideFlags: 0
