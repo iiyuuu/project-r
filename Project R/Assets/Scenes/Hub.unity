@@ -7257,11 +7257,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8244032549999730023, guid: 71591485496889d46a4e78de04f17175, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 136.69995
+      value: 145
       objectReference: {fileID: 0}
     - target: {fileID: 8244032549999730023, guid: 71591485496889d46a4e78de04f17175, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 17.599976
+      value: 14.600006
       objectReference: {fileID: 0}
     - target: {fileID: 8244032549999730023, guid: 71591485496889d46a4e78de04f17175, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7278,6 +7278,14 @@ PrefabInstance:
     - target: {fileID: 8244032549999730024, guid: 71591485496889d46a4e78de04f17175, type: 3}
       propertyPath: m_CullTransparentMesh
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244032550318191863, guid: 71591485496889d46a4e78de04f17175, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -127
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244032550318191863, guid: 71591485496889d46a4e78de04f17175, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -18601,7 +18609,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5945133826773068698, guid: 28e879dd74f388b4ba8fe85a0d62462a, type: 3}
       propertyPath: near clip plane
-      value: -33.26
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 5945133826773068699, guid: 28e879dd74f388b4ba8fe85a0d62462a, type: 3}
       propertyPath: m_RootOrder
