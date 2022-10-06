@@ -11,7 +11,7 @@ public class RangedEnemy : Enemy
 
     public GameObject bulletPrefab;
     public float fireForce;
-    public float firingCooldown;
+    public float fireRate;
 
     bool isFiring = false;
 
@@ -67,7 +67,7 @@ public class RangedEnemy : Enemy
     {
         
         isFiring = true;
-        yield return new WaitForSeconds(firingCooldown);
+        yield return new WaitForSeconds(1/ fireRate);
         isFiring = false;
     }
 

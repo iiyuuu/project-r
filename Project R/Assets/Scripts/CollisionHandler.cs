@@ -28,11 +28,7 @@ public class CollisionHandler : MonoBehaviour
                 {
                     StopCoroutine(coroutine);
                 }
-                coroutine = other.GetComponent<Enemy>().Damaged();
-                if(coroutine != null)
-                {
-                    StopCoroutine(coroutine);
-                }
+               
 
                 stats.DamageTaken(1);
                 

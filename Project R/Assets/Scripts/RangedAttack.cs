@@ -22,7 +22,7 @@ public class RangedAttack : MonoBehaviour
     {
         //add crosshair
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if(stats.currentAmmo <= 0)
+        if(stats != null && stats.currentAmmo <= 0)
         {
             coroutine = Refill();
             if(coroutine != null) { StopCoroutine(coroutine); }

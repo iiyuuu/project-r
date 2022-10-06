@@ -10,7 +10,6 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Enemy"))
         {
-            
             Enemy enemy = collision.GetComponent<Enemy>();
             if (enemy != null && !enemy.enemyHurt)
             {

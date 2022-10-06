@@ -908,7 +908,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 6
   currentHealth: 6
-  maxAmmo: 0
+  maxAmmo: 5
   currentAmmo: 0
   iFrameDuration: 1
   numberOfFlashes: 5
