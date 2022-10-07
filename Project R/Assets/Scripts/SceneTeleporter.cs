@@ -15,18 +15,23 @@ public class SceneTeleporter : MonoBehaviour
     System.Random rand = new System.Random();
 
 
+    public void OnTriggerEnter2D(Collider2D other) {
 
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        
-        if(other.CompareTag("Teleporter"))
-        {
-            isDuplicate = true;
+        if (other.CompareTag("Teleporter")) {
 
-            while(isDuplicate)
-            {
-                switch(rand.Next(1,4))
-                {
+            if (usedScenes.Count == 4) {
+                sceneToLoad = "F1_BossRoom";
+                isDuplicate = false;
+            }
+            else {
+                isDuplicate = true;
+            }
+
+            while (isDuplicate){
+
+                int num = rand.Next(1, 5);
+
+                switch (num) {
                     case 1:
                         sceneToLoad = "F1_Zone1";
                         break;
@@ -39,30 +44,27 @@ public class SceneTeleporter : MonoBehaviour
                     case 4:
                         sceneToLoad = "F1_Zone4";
                         break;
+                    case 5:
+                        print("5 chosen");
+                        break;
                 }
 
-                if(!(usedScenes.Contains(sceneToLoad)))
-                {
+                if (!(usedScenes.Contains(sceneToLoad)) && isDuplicate) {
                     usedScenes.Add(sceneToLoad);
                     isDuplicate = false;
                 }
-
-                if(usedScenes.Count == 4)
-                {
-                    sceneToLoad = "F1_BossRoom";
-                    isDuplicate = false;
-                }
             }
 
-            foreach(string x in usedScenes){
+            foreach (string x in usedScenes)
+            {
                 print(x);
             }
-            
+            print("\n---------\n");
 
             SceneManager.LoadScene(sceneToLoad);
             targetPosition.x = 0;
             targetPosition.y = 0;
             Player.position = targetPosition;
-        }
+        }       
     }
 }
