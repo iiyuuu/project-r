@@ -8,16 +8,18 @@ public class SceneTeleporter : MonoBehaviour
 {
 
     public string sceneToLoad;
-    public Vector2 playerPosition;
+    public Vector2 targetPosition;
+    public Transform Player;
     List<string> usedScenes = new List<string>(); //keeps track of used scenes
     bool isDuplicate = true;
     System.Random rand = new System.Random();
 
 
+
     public void OnTriggerEnter2D(Collider2D other)
     {
         
-        if(other.CompareTag("Player") && !other.isTrigger)
+        if(other.CompareTag("Teleporter"))
         {
             isDuplicate = true;
 
@@ -26,7 +28,7 @@ public class SceneTeleporter : MonoBehaviour
                 switch(rand.Next(1,4))
                 {
                     case 1:
-                        sceneToLoad = "F1_Zone1"; 
+                        sceneToLoad = "F1_Zone1";
                         break;
                     case 2:
                         sceneToLoad = "F1_Zone2";
@@ -51,9 +53,16 @@ public class SceneTeleporter : MonoBehaviour
                     isDuplicate = false;
                 }
             }
+
+            foreach(string x in usedScenes){
+                print(x);
+            }
             
-            //playerStorage.initialValue = playerPosition;
+
             SceneManager.LoadScene(sceneToLoad);
+            targetPosition.x = 0;
+            targetPosition.y = 0;
+            Player.position = targetPosition;
         }
     }
 }
