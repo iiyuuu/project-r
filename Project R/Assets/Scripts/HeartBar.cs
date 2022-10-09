@@ -42,7 +42,6 @@ public class HeartBar : MonoBehaviour
             hearts[i].SetHeartImage((HeartStatus)heartStatusRemainder);
         }
     }
-
     public void CreateEmptyHeart()
     {
         GameObject newHeart = Instantiate(heartPrefab);//instantiate prefab

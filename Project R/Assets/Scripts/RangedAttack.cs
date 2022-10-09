@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class RangedAttack : MonoBehaviour
 {
     public GameObject bulletPrefab;
@@ -53,5 +53,12 @@ public class RangedAttack : MonoBehaviour
         yield return new WaitForSeconds(reloadTime);
         stats.currentAmmo = stats.maxAmmo;
         reloading = false;
+    }
+
+    public void Reload()
+    {
+        coroutine = Refill();
+        if (coroutine != null) { StopCoroutine(coroutine); }
+        if (!reloading) { StartCoroutine(coroutine); }
     }
 }
