@@ -24,6 +24,11 @@ public class RangedEnemy : Enemy
     }
     private void FixedUpdate()
     {
+        if(Health <= 0)
+        {
+            StopAllCoroutines();
+            return;
+        }
         if (!enemyHurt)
         {
             CheckDistance();

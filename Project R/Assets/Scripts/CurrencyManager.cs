@@ -9,6 +9,7 @@ public class CurrencyManager : MonoBehaviour
     public TextMeshProUGUI text;
     public int currency;
     public ShopManager shop;
+    
 
     public void ChangeCurrency(int currencyValue)
     {

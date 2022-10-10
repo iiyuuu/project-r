@@ -106,7 +106,6 @@ public class Enemy : MonoBehaviour
 
     void Death()
     {
-        StopAllCoroutines();
         Destroy(gameObject);
     }
 

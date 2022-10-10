@@ -16,7 +16,7 @@ public class CollisionHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-       if(other.gameObject.tag.Equals("Enemy"))
+       if(other.gameObject.tag.Equals("Enemy") || other.gameObject.tag.Equals("Enemy Projectile"))
        {
             Rigidbody2D enemy = other.GetComponent<Rigidbody2D>();
             Vector2 difference = enemy.transform.position - transform.position;
