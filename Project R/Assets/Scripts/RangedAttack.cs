@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 public class RangedAttack : MonoBehaviour
 {
     public GameObject bulletPrefab;
@@ -11,25 +12,41 @@ public class RangedAttack : MonoBehaviour
     [SerializeField] private float reloadTime;
     [SerializeField] private bool reloading = false;
     [SerializeField] private bool firing = false;
+    [SerializeField] private float currentDelay;
 
     public Rigidbody2D body;
     public PlayerStats stats;
+    public PlayerControls controls;
+    public UnityEvent<float> OnReloading;
 
 
     IEnumerator coroutine;
 
     Vector2 mousePosition;
 
+    private void Start()
+    {
+        OnReloading?.Invoke(currentDelay);
+    }
     void Update()
     {
         //add crosshair
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if(stats != null && stats.currentAmmo <= 0)
+        if(stats != null && stats.currentAmmo <= 0 && controls != null)
         {
             coroutine = Refill();
             if(coroutine != null) { StopCoroutine(coroutine); }
-            if (!reloading) { StartCoroutine(coroutine); }
-            
+            if (!reloading) 
+            {
+                currentDelay = reloadTime; 
+                StartCoroutine(coroutine); 
+            }
+            if (reloading)
+            {
+                currentDelay -= Time.deltaTime;
+                OnReloading?.Invoke(currentDelay / reloadTime);
+            }
+
         }
     }
 
@@ -40,11 +57,16 @@ public class RangedAttack : MonoBehaviour
             Vector2 aimDirection = mousePosition - body.position;
             float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
             body.rotation = aimAngle;
+            if (controls.isDashing && Refill() != null)
+            {
+                StopCoroutine(Refill());
+            }
         }
+        
     }
     public void Fire()
     {
-        if (!firing)
+        if (!firing && !reloading)
         {
             stats.currentAmmo--;
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
@@ -76,4 +98,7 @@ public class RangedAttack : MonoBehaviour
         yield return new WaitForSeconds(1f / fireRate);
         firing = false;
     }
+    
+
+
 }
