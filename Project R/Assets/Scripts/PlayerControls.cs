@@ -275,7 +275,6 @@ public class PlayerControls : MonoBehaviour
     {
         if (playerStats.currentAmmo > 0)
         {
-            playerStats.currentAmmo--;
             rangedAttack.Fire();
         }
         

@@ -7,8 +7,10 @@ public class RangedAttack : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
     public float fireForce = 3f;
+    [SerializeField] private float fireRate;
     [SerializeField] private float reloadTime;
     [SerializeField] private bool reloading = false;
+    [SerializeField] private bool firing = false;
 
     public Rigidbody2D body;
     public PlayerStats stats;
@@ -42,9 +44,15 @@ public class RangedAttack : MonoBehaviour
     }
     public void Fire()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);
-        Destroy(bullet, 5);
+        if (!firing)
+        {
+            stats.currentAmmo--;
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);
+            Destroy(bullet, 5);
+            StartCoroutine(FireRate());
+        }
+        
     }
 
     public IEnumerator Refill()
@@ -60,5 +68,12 @@ public class RangedAttack : MonoBehaviour
         coroutine = Refill();
         if (coroutine != null) { StopCoroutine(coroutine); }
         if (!reloading) { StartCoroutine(coroutine); }
+    }
+    
+    public IEnumerator FireRate()
+    {
+        firing = true;
+        yield return new WaitForSeconds(1f / fireRate);
+        firing = false;
     }
 }
