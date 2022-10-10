@@ -49,20 +49,20 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Gameplay
-    uniqueID: 99032631
-    locked: 0
-  - name: Entity
-    uniqueID: 2876993967
-    locked: 0
-  - name: InteractablesBG
-    uniqueID: 286131375
-    locked: 0
   - name: Background
     uniqueID: 2351170515
     locked: 0
   - name: Foreground
     uniqueID: 3108536963
+    locked: 0
+  - name: Interactables
+    uniqueID: 286131375
+    locked: 0
+  - name: Gameplay
+    uniqueID: 99032631
+    locked: 0
+  - name: Entity
+    uniqueID: 2876993967
     locked: 0
   - name: Collision Object
     uniqueID: 4143883949

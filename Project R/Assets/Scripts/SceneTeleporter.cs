@@ -19,7 +19,12 @@ public class SceneTeleporter : MonoBehaviour
 
         if (other.CompareTag("Teleporter")) {
 
-            if (usedScenes.Count == 4) {
+            if(SceneManager.GetActiveScene().name == "Tutorial level") {
+                Debug.Log(SceneManager.GetActiveScene().name);
+                sceneToLoad = "Hub";
+                isDuplicate = false;
+            }
+            else if (usedScenes.Count == 4) {
                 sceneToLoad = "F1_BossRoom";
                 isDuplicate = false;
             }
@@ -27,7 +32,7 @@ public class SceneTeleporter : MonoBehaviour
                 isDuplicate = true;
             }
 
-            while (isDuplicate){
+            while (isDuplicate) {
 
                 int num = rand.Next(1, 5);
 
