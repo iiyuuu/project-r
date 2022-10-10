@@ -202,6 +202,7 @@ public class PlayerControls : MonoBehaviour
     {
         if (canAttack)
         {
+            canAttack = false;
             if (attackCoroutine != null)
             {
                 StopCoroutine(attackCoroutine);
@@ -278,5 +279,13 @@ public class PlayerControls : MonoBehaviour
             rangedAttack.Fire();
         }
         
+    }
+
+    public void OnReload()
+    {
+        if (!isDashing && canAttack)
+        {
+            rangedAttack.reloadTrigger = true;
+        }
     }
 }

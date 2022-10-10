@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
             if(health <= 0)
             {
                 animator.SetTrigger("enemyDeath");
-                
+                rb = null;
             }
         }
         get

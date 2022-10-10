@@ -8,11 +8,14 @@ public class RangedAttack : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
     public float fireForce = 3f;
+    public bool reloadTrigger = false;
+
     [SerializeField] private float fireRate;
     [SerializeField] private float reloadTime;
     [SerializeField] private bool reloading = false;
     [SerializeField] private bool firing = false;
     [SerializeField] private float currentDelay;
+    
 
     public Rigidbody2D body;
     public PlayerStats stats;
@@ -32,7 +35,7 @@ public class RangedAttack : MonoBehaviour
     {
         //add crosshair
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if(stats != null && stats.currentAmmo <= 0 && controls != null)
+        if(stats != null && controls != null && (stats.currentAmmo <= 0 || reloadTrigger))
         {
             coroutine = Refill();
             if(coroutine != null) { StopCoroutine(coroutine); }
@@ -59,7 +62,11 @@ public class RangedAttack : MonoBehaviour
             body.rotation = aimAngle;
             if (controls.isDashing && Refill() != null)
             {
-                StopCoroutine(Refill());
+                StopCoroutine(coroutine);
+                currentDelay = 0;
+                OnReloading?.Invoke(0);
+                reloading = false;
+                reloadTrigger = false;
             }
         }
         
@@ -81,15 +88,9 @@ public class RangedAttack : MonoBehaviour
     {
         reloading = true;
         yield return new WaitForSeconds(reloadTime);
-        stats.currentAmmo = stats.maxAmmo;
+        if (reloadTrigger) { stats.currentAmmo = stats.maxAmmo; }
         reloading = false;
-    }
-
-    public void Reload()
-    {
-        coroutine = Refill();
-        if (coroutine != null) { StopCoroutine(coroutine); }
-        if (!reloading) { StartCoroutine(coroutine); }
+        reloadTrigger = false;
     }
     
     public IEnumerator FireRate()
