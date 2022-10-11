@@ -3,43 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using UnityEngine.UI;
 
 public class SceneTeleporter : MonoBehaviour
 {
 
     public string sceneToLoad;
-    public Vector2 targetPosition;
-    public Transform Player;
+    public GameObject loadingScreen;
+    public Slider loadingBar;
+    public Vector2 playerPosition;
     List<string> usedScenes = new List<string>(); //keeps track of used scenes
     bool isDuplicate = true;
     System.Random rand = new System.Random();
 
 
-    public void OnTriggerEnter2D(Collider2D other) {
+    public void OnTriggerEnter2D(Collider2D other)
+    {
 
-        if (other.CompareTag("Teleporter")) {
+        if (other.CompareTag("Player") && !other.isTrigger)
+        {
+            isDuplicate = true;
 
-            if (SceneManager.GetActiveScene().name == "Tutorial level") {
-                sceneToLoad = "Hub";
-                isDuplicate = false;
-            }
-            else if (SceneManager.GetActiveScene().name == "Hub") {
-                sceneToLoad = "F1_Zone1";
-                isDuplicate = false;
-            }
-            else if (usedScenes.Count == 3) {
-                sceneToLoad = "F1_BossRoom";
-                isDuplicate = false;
-            }
-            else {
-                isDuplicate = true;
-            }
-
-            while (isDuplicate) {
-
-                int num = rand.Next(2, 5);
-
-                switch (num) {
+            while (isDuplicate)
+            {
+                switch (rand.Next(1, 4))
+                {
+                    case 1:
+                        sceneToLoad = "F1_Zone1";
+                        break;
                     case 2:
                         sceneToLoad = "F1_Zone2";
                         break;
@@ -50,26 +41,41 @@ public class SceneTeleporter : MonoBehaviour
                         sceneToLoad = "F1_Zone4";
                         break;
                     default:
-                        Debug.Log("No room exists for this number : " + num.ToString());
+                        //Debug.Log("No room exists for this number : " + num.ToString());
                         break;
                 }
 
-                if (!(usedScenes.Contains(sceneToLoad)) && isDuplicate) {
+                if (!(usedScenes.Contains(sceneToLoad)))
+                {
                     usedScenes.Add(sceneToLoad);
+                    isDuplicate = false;
+                }
+
+                if (usedScenes.Count == 4)
+                {
+                    sceneToLoad = "F1_BossRoom";
                     isDuplicate = false;
                 }
             }
 
-            foreach (string x in usedScenes)
-            {
-                print(x);
-            }
-            print("\n---------\n");
+            //playerStorage.initialValue = playerPosition;
+            //SceneManager.LoadScene(sceneToLoad);
 
-            SceneManager.LoadScene(sceneToLoad);
-            targetPosition.x = 0;
-            targetPosition.y = 0;
-            Player.position = targetPosition;
-        }       
+            StartCoroutine(LoadSceneAsynchronously(sceneToLoad));
+
+        }
+    }
+
+    IEnumerator LoadSceneAsynchronously(string sceneToLoad)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneToLoad);
+        loadingScreen.SetActive(true);
+
+        while (!operation.isDone)
+        {
+            loadingBar.value = operation.progress;
+            
+            yield return null;
+        }
     }
 }
