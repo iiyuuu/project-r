@@ -35,7 +35,7 @@ public class RangedAttack : MonoBehaviour
     {
         //add crosshair
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if(stats != null && controls != null && (stats.currentAmmo <= 0 || reloadTrigger))
+        if(stats != null && controls != null && (stats.currentAmmo <= 0 || reloadTrigger) && stats.currentAmmo != stats.maxAmmo)
         {
             coroutine = Refill();
             if(coroutine != null) { StopCoroutine(coroutine); }
@@ -60,7 +60,7 @@ public class RangedAttack : MonoBehaviour
             Vector2 aimDirection = mousePosition - body.position;
             float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
             body.rotation = aimAngle;
-            if (controls.isDashing && Refill() != null)
+            if (controls.isDashing && coroutine != null)
             {
                 StopCoroutine(coroutine);
                 currentDelay = 0;
