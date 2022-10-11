@@ -47,6 +47,7 @@ public class PlayerControls : MonoBehaviour
         animator = GetComponent<Animator>();//added some animation precode
         spriteRenderer = GetComponent<SpriteRenderer>();//sprite render for flipping sprite (no need for both left and right sprite now)
         activeMoveSpeed = baseMoveSpeed;
+        DontDestroyOnLoad(this.gameObject);//Lets play persist through scene changes
 
     }
     //input

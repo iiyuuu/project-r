@@ -49,18 +49,29 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 2351170515
+    locked: 0
+  - name: Foreground
+    uniqueID: 3108536963
+    locked: 0
+  - name: Interactables
+    uniqueID: 286131375
+    locked: 0
   - name: Gameplay
     uniqueID: 99032631
     locked: 0
   - name: Entity
     uniqueID: 2876993967
     locked: 0
-  - name: Background
-    uniqueID: 2351170515
-    locked: 0
   - name: Collision Object
     uniqueID: 4143883949
     locked: 0
   - name: UI
     uniqueID: 1370054541
+  - name: Decoration
+    uniqueID: 1151254031
+    locked: 0
+  - name: Player
+    uniqueID: 2281218489
     locked: 0

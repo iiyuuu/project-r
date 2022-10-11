@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 132369949207369951}
   - component: {fileID: 132369949207369948}
   - component: {fileID: 132369949207369950}
-  - component: {fileID: 132369949207369945}
   m_Layer: 0
   m_Name: Teleporter
   m_TagString: Teleporter
@@ -33,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1839735485 &132369949207369951
 Tilemap:
@@ -182,16 +181,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
---- !u!114 &132369949207369945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 132369949207369890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d37d9ce1339356b4d905d04bb3352d04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneToLoad: F1_Zone1

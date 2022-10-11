@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using UnityEngine.UI;
 
 public class SceneTeleporter : MonoBehaviour
 {
 
     public string sceneToLoad;
+    public GameObject loadingScreen;
+    public Slider loadingBar;
     public Vector2 playerPosition;
     List<string> usedScenes = new List<string>(); //keeps track of used scenes
     bool isDuplicate = true;
@@ -16,17 +19,17 @@ public class SceneTeleporter : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        
-        if(other.CompareTag("Player") && !other.isTrigger)
+
+        if (other.CompareTag("Player") && !other.isTrigger)
         {
             isDuplicate = true;
 
-            while(isDuplicate)
+            while (isDuplicate)
             {
-                switch(rand.Next(1,4))
+                switch (rand.Next(1, 4))
                 {
                     case 1:
-                        sceneToLoad = "F1_Zone1"; 
+                        sceneToLoad = "F1_Zone1";
                         break;
                     case 2:
                         sceneToLoad = "F1_Zone2";
@@ -37,23 +40,42 @@ public class SceneTeleporter : MonoBehaviour
                     case 4:
                         sceneToLoad = "F1_Zone4";
                         break;
+                    default:
+                        //Debug.Log("No room exists for this number : " + num.ToString());
+                        break;
                 }
 
-                if(!(usedScenes.Contains(sceneToLoad)))
+                if (!(usedScenes.Contains(sceneToLoad)))
                 {
                     usedScenes.Add(sceneToLoad);
                     isDuplicate = false;
                 }
 
-                if(usedScenes.Count == 4)
+                if (usedScenes.Count == 4)
                 {
                     sceneToLoad = "F1_BossRoom";
                     isDuplicate = false;
                 }
             }
-            
+
             //playerStorage.initialValue = playerPosition;
-            SceneManager.LoadScene(sceneToLoad);
+            //SceneManager.LoadScene(sceneToLoad);
+
+            StartCoroutine(LoadSceneAsynchronously(sceneToLoad));
+
+        }
+    }
+
+    IEnumerator LoadSceneAsynchronously(string sceneToLoad)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneToLoad);
+        loadingScreen.SetActive(true);
+
+        while (!operation.isDone)
+        {
+            loadingBar.value = operation.progress;
+            
+            yield return null;
         }
     }
 }
