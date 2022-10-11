@@ -88,7 +88,7 @@ public class RangedAttack : MonoBehaviour
     {
         reloading = true;
         yield return new WaitForSeconds(reloadTime);
-        if (reloadTrigger) { stats.currentAmmo = stats.maxAmmo; }
+        stats.currentAmmo = stats.maxAmmo;
         reloading = false;
         reloadTrigger = false;
     }

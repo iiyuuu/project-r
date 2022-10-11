@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class SceneTeleporter : MonoBehaviour
 {
@@ -11,18 +12,30 @@ public class SceneTeleporter : MonoBehaviour
     public string sceneToLoad;
     public GameObject loadingScreen;
     public Slider loadingBar;
-    public Vector2 playerPosition;
+    public PlayerControls controls;
     List<string> usedScenes = new List<string>(); //keeps track of used scenes
     bool isDuplicate = true;
     System.Random rand = new System.Random();
 
+    public void Start()
+    {
+        isDuplicate = true;
+        controls = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
+    }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
 
         if (other.CompareTag("Player") && !other.isTrigger)
         {
-            isDuplicate = true;
+            
+
+            if(sceneToLoad != null)//if there is already a thing in the fill bar
+            {
+                isDuplicate = false;
+                StartCoroutine(LoadSceneAsynchronously(sceneToLoad));
+                
+            }
 
             while (isDuplicate)
             {
@@ -78,4 +91,11 @@ public class SceneTeleporter : MonoBehaviour
             yield return null;
         }
     }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        controls.body.position = GameObject.FindWithTag("Spawn").transform.position;
+    }
+
+    //return to hub function
 }

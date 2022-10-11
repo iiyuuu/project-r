@@ -377,10 +377,18 @@ MonoBehaviour:
   bulletPrefab: {fileID: 373667894874720840, guid: 88fe1c2b8c637824cb9d5f44a90a134e, type: 3}
   firePoint: {fileID: 0}
   fireForce: 3
+  reloadTrigger: 0
+  fireRate: 0
   reloadTime: 2
   reloading: 0
+  firing: 0
+  currentDelay: 0
   body: {fileID: 223288027}
   stats: {fileID: 0}
+  controls: {fileID: 0}
+  OnReloading:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!233 &223288026
 HingeJoint2D:
   m_ObjectHideFlags: 0
@@ -396,7 +404,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: -0.060022216}
+  m_ConnectedAnchor: {x: 0, y: -0.06}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -983,7 +991,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1151254031
-  m_SortingLayer: 7
+  m_SortingLayer: 8
   m_SortingOrder: -4
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -1939,7 +1947,7 @@ GameObject:
   - component: {fileID: 1039564840}
   m_Layer: 0
   m_Name: SpawnPoint
-  m_TagString: Untagged
+  m_TagString: Spawn
   m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8681,7 +8689,6 @@ GameObject:
   - component: {fileID: 1996825678}
   - component: {fileID: 1996825677}
   - component: {fileID: 1996825676}
-  - component: {fileID: 1996825675}
   m_Layer: 6
   m_Name: AmmoCount
   m_TagString: Untagged
@@ -8689,14 +8696,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!33 &1996825675
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1996825674}
-  m_Mesh: {fileID: 0}
 --- !u!114 &1996825676
 MonoBehaviour:
   m_ObjectHideFlags: 0
