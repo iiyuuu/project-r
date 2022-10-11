@@ -22,6 +22,7 @@ public class HeartBar : MonoBehaviour
 
     private void Start()
     {
+        _playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         DrawHearts();
     }
 

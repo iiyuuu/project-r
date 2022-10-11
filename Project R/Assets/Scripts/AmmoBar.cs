@@ -13,6 +13,7 @@ public class AmmoBar : MonoBehaviour
     void Start()
     {
         DrawBullets();
+        _playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         Ammo = _playerStats.maxAmmo;
     }
 

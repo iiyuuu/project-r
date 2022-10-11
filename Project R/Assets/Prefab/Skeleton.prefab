@@ -30,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777386639253033905}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -169.3434, y: 99.9101, z: -80.3143}
-  m_LocalScale: {x: 1.9945968, y: 2.0504131, z: 0.63717}
+  m_LocalPosition: {x: -169.3434, y: 99.9101, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 777386640743146266}
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1417973329
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 1232690417, guid: 7f134c2331d371f46bc834370755d6f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -140,7 +140,7 @@ MonoBehaviour:
   rangedAttack: {fileID: 777386640743146269}
   bulletPrefab: {fileID: 373667894874720840, guid: 88fe1c2b8c637824cb9d5f44a90a134e, type: 3}
   fireForce: 1
-  firingCooldown: 1
+  fireRate: 0
 --- !u!58 &777386639253033909
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -372,7 +372,15 @@ MonoBehaviour:
   bulletPrefab: {fileID: 373667894874720840, guid: 88fe1c2b8c637824cb9d5f44a90a134e, type: 3}
   firePoint: {fileID: 777386640502084997}
   fireForce: 3
+  reloadTrigger: 0
+  fireRate: 0
   reloadTime: 2
   reloading: 0
+  firing: 0
+  currentDelay: 0
   body: {fileID: 777386640743146271}
   stats: {fileID: 0}
+  controls: {fileID: 0}
+  OnReloading:
+    m_PersistentCalls:
+      m_Calls: []

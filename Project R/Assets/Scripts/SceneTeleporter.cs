@@ -21,6 +21,7 @@ public class SceneTeleporter : MonoBehaviour
     {
         isDuplicate = true;
         controls = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
+        controls.gameObject.transform.position = GameObject.FindWithTag("Spawn").transform.position;
     }
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -94,7 +95,7 @@ public class SceneTeleporter : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        controls.body.position = GameObject.FindWithTag("Spawn").transform.position;
+        controls.gameObject.transform.position = GameObject.FindWithTag("Spawn").transform.position;
     }
 
     //return to hub function
