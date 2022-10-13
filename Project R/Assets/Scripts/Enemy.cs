@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     public bool ranged;
 
 
+    IEnumerator coroutine;
     public Animator animator;
 
     [Header("Damage Indicator")]
@@ -132,6 +133,31 @@ public class Enemy : MonoBehaviour
             
         }
         
+    }
+
+    public IEnumerator OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Projectile"))
+        {
+            if(rb != null && !enemyHurt)
+            {
+                Bullet bullet = collision.GetComponent<Bullet>();
+                bullet.hitEnemy = true;
+
+                if(coroutine != null)
+                {
+                    StopCoroutine(coroutine);
+                }
+                coroutine = Damaged();
+
+                rb.velocity = Vector2.zero;
+                Health -= 1;
+                bullet.spriteRenderer.enabled = false;
+                yield return StartCoroutine(Damaged());
+                Destroy(bullet.gameObject);
+                
+            }
+        }
     }
 
 
