@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] public bool enemyHurt = false;
     public SpriteRenderer spriteRend;
 
+    IEnumerator coroutine;
+
 
     public int Health
     {
@@ -107,6 +109,7 @@ public class Enemy : MonoBehaviour
 
     void Death()
     {
+        StopAllCoroutines();
         Destroy(gameObject);
     }
 
@@ -118,13 +121,21 @@ public class Enemy : MonoBehaviour
                 Enemy enemy = other.gameObject.GetComponent<Enemy>();
                 enemy.rb.velocity = Vector2.zero;
                 rb.velocity = Vector2.zero;
-                print("collision");
                 if (enemy != null)
                 {
+                    if(Health <= 0 || enemy.Health <= 0)
+                    {
+                        return;
+                    }
                     if (!enemy.enemyHurt)
                     {
+                        if(coroutine != null)
+                        {
+                            StopCoroutine(coroutine);
+                        }
+                        coroutine = enemy.Damaged();
                         enemy.Health -= 1;
-                        StartCoroutine(enemy.Damaged());
+                        StartCoroutine(coroutine);
                     }
 
                 }

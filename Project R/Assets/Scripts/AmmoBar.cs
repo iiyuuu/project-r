@@ -19,7 +19,8 @@ public class AmmoBar : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(_playerStats.currentAmmo < Ammo)
+        _playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+        if (_playerStats.currentAmmo < Ammo)
         {
             removeBullet();
             Ammo -= 1;

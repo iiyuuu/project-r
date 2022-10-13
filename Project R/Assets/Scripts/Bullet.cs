@@ -14,4 +14,10 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public IEnumerator kbCoroutine(Rigidbody2D tag, float kbTime)
+    {
+        yield return new WaitForSeconds(kbTime);
+        tag.velocity = Vector2.zero;
+    }
 }

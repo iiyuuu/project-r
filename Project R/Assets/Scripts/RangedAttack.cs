@@ -37,12 +37,11 @@ public class RangedAttack : MonoBehaviour
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if(stats != null && controls != null && (stats.currentAmmo <= 0 || reloadTrigger) && stats.currentAmmo != stats.maxAmmo)
         {
-            coroutine = Refill();
-            if(coroutine != null) { StopCoroutine(coroutine); }
             if (!reloading) 
             {
-                currentDelay = reloadTime; 
-                StartCoroutine(coroutine); 
+                currentDelay = reloadTime;
+                coroutine = Refill();
+                StartCoroutine(coroutine);
             }
             if (reloading)
             {
@@ -55,15 +54,15 @@ public class RangedAttack : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (body.gameObject.tag.Equals("Player"))
+        if (gameObject.tag.Equals("Player"))
         {
             Vector2 aimDirection = mousePosition - body.position;
             float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
             body.rotation = aimAngle;
-            if (controls.isDashing && coroutine != null)
+            if (controls.isDashing && coroutine != null)//reload cancelling
             {
+                
                 StopCoroutine(coroutine);
-                currentDelay = 0;
                 OnReloading?.Invoke(0);
                 reloading = false;
                 reloadTrigger = false;
@@ -78,7 +77,7 @@ public class RangedAttack : MonoBehaviour
             stats.currentAmmo--;
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);
-            Destroy(bullet, 5);
+            Destroy(bullet, 1);
             StartCoroutine(FireRate());
         }
         

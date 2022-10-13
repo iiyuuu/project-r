@@ -20,6 +20,7 @@ public class MeleeController : MonoBehaviour
     public Transform attackPoint;
     public LayerMask enemyLayers;
     IEnumerator coroutine;
+    IEnumerator coroutine2;
 
     public bool flip;
 
@@ -51,17 +52,18 @@ public class MeleeController : MonoBehaviour
                     Vector2 difference = enemyBody.transform.position - attackPoint.position;
                     difference = difference.normalized * collisionHandler.thrust;
 
+                    if (coroutine != null) { StopCoroutine(coroutine); }
                     coroutine = collisionHandler.kbCoroutine(enemyBody);
-                    if(coroutine != null) { StopCoroutine(coroutine); }
                     enemyBody.velocity = Vector2.zero;
                     enemyBody.AddForce(difference, ForceMode2D.Impulse);
                     StartCoroutine(collisionHandler.kbCoroutine(enemyBody));
 
-                    coroutine = enemyComponent.Damaged();
-                    if(coroutine != null) { StopCoroutine(coroutine); }
+                    if (coroutine2 != null) { StopCoroutine(coroutine); }
+                    coroutine2 = enemyComponent.Damaged();
+                    
                    
                     enemyComponent.Health -= attackDamage;
-                    StartCoroutine(enemyComponent.Damaged());
+                    StartCoroutine(coroutine2);
 
                 }
             }

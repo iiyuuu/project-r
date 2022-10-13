@@ -95,7 +95,7 @@ public class SceneTeleporter : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        controls.gameObject.transform.position = GameObject.FindWithTag("SpawnPoint").transform.position;
+        controls.gameObject.transform.position = GameObject.FindGameObjectWithTag("Spawn").transform.position;
     }
 
     //return to hub function

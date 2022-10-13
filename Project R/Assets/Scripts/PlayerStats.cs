@@ -50,6 +50,10 @@ public class PlayerStats : MonoBehaviour
 
     void MainMenu()
     {
+        foreach (GameObject o in FindObjectsOfType<GameObject>())
+        {
+            Destroy(o);
+        }
         SceneManager.LoadScene("Menu");
     }
     public void Healing(int amount)
