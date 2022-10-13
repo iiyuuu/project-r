@@ -39,7 +39,7 @@ public class HeartBar : MonoBehaviour
 
         for(int i = 0; i < hearts.Count; i++)
         {
-            int heartStatusRemainder = (int)Mathf.Clamp(_playerStats.currentHealth - (i * 2), 0, 2);
+            int heartStatusRemainder = Mathf.Clamp(_playerStats.currentHealth - (i * 2), 0, 2);
             hearts[i].SetHeartImage((HeartStatus)heartStatusRemainder);
         }
     }

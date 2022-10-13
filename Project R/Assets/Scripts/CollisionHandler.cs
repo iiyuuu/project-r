@@ -13,7 +13,7 @@ public class CollisionHandler : MonoBehaviour
     IEnumerator coroutine;
 
     public float thrust;
-    [SerializeField] public float kbTime = 0.2f;
+    public float kbTime = 0.2f;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -24,22 +24,20 @@ public class CollisionHandler : MonoBehaviour
             difference = difference.normalized * thrust;
             if (controls.canDash && !stats.hurt)
             {
-                coroutine = kbCoroutine(controls.body);
-                if(coroutine != null)
+                if (coroutine != null)
                 {
                     StopCoroutine(coroutine);
                 }
+                coroutine = kbCoroutine(controls.body);
                
-
                 stats.DamageTaken(1);
                 
-                controls.canMove = false;   
-
+                controls.canMove = false;
                 controls.body.velocity = Vector2.zero;
                 if (!controls.isMoving) { difference = (controls.body.mass * difference) / Time.fixedDeltaTime; }
-                else { difference *= 3; }
+                else { difference *= 4; }
                 controls.body.AddForce(-difference, ForceMode2D.Impulse);
-                StartCoroutine(kbCoroutine(controls.body));
+                StartCoroutine(coroutine);
                 
                 controls.canMove = true;
             }

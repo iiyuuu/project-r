@@ -27,6 +27,10 @@ public class PauseMenu : MonoBehaviour
 
     public void MainMenu()
     {
+        foreach (GameObject o in Object.FindObjectsOfType<GameObject>())
+        {
+            Destroy(o);
+        }
         SceneManager.LoadScene("Menu");
     }
 
