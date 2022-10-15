@@ -18,7 +18,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float iFrameDuration;
     [SerializeField] private int numberOfFlashes;
     public bool hurt = false;
-    [SerializeField] private SpriteRenderer spriteRend;
+    private SpriteRenderer spriteRend;
     public GameObject UIRender;
 
     public Animator animator;

@@ -15,13 +15,13 @@ public class Enemy : MonoBehaviour
     public bool ranged;
 
 
-    IEnumerator coroutine;
+    IEnumerator kbCoroutine;
     public Animator animator;
 
     [Header("Damage Indicator")]
     public float iFrameDuration;
     [SerializeField] int numberOfFlashes;
-    [SerializeField] public bool enemyHurt = false;
+    public bool enemyHurt = false;
     public SpriteRenderer spriteRend;
 
     IEnumerator coroutine;
@@ -78,7 +78,6 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(iFrameDuration / (numberOfFlashes * 2));
             spriteRend.color = Color.white;
             yield return new WaitForSeconds(iFrameDuration / (numberOfFlashes * 2));
-
         }
         enemyHurt = false;
 
@@ -110,40 +109,8 @@ public class Enemy : MonoBehaviour
     void Death()
     {
         StopAllCoroutines();
+        enemyHurt = false;
         Destroy(gameObject);
-    }
-
-    void OnCollisionEnter2D(Collision2D other){
-        if(other.gameObject.tag.Equals("Enemy"))
-        {
-            if (enemyHurt)//checks if enemy is hurt and hurts both objects
-            {
-                Enemy enemy = other.gameObject.GetComponent<Enemy>();
-                enemy.rb.velocity = Vector2.zero;
-                rb.velocity = Vector2.zero;
-                if (enemy != null)
-                {
-                    if(Health <= 0 || enemy.Health <= 0)
-                    {
-                        return;
-                    }
-                    if (!enemy.enemyHurt)
-                    {
-                        if(coroutine != null)
-                        {
-                            StopCoroutine(coroutine);
-                        }
-                        coroutine = enemy.Damaged();
-                        enemy.Health -= 1;
-                        StartCoroutine(coroutine);
-                    }
-
-                }
-
-            }
-            
-        }
-        
     }
 
     public IEnumerator OnTriggerEnter2D(Collider2D collision)
@@ -164,10 +131,54 @@ public class Enemy : MonoBehaviour
                 rb.velocity = Vector2.zero;
                 Health -= 1;
                 bullet.spriteRenderer.enabled = false;
-                yield return StartCoroutine(Damaged());
+
+                kbCoroutine = bullet.kbCoroutine(rb, 0.2f);
+                if(kbCoroutine != null)
+                {
+                    StopCoroutine(kbCoroutine);
+                }
+
+                
+                StartCoroutine(coroutine);
+                yield return StartCoroutine(kbCoroutine);
                 Destroy(bullet.gameObject);
                 
             }
+        }
+        if (collision.gameObject.tag.Equals("Enemy"))
+        {
+            if (enemyHurt)//checks if enemy is hurt and hurts both objects
+            {
+                Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+
+                if (enemy != null)
+                {
+
+                    if (rb == null || enemy.rb == null)
+                    {
+                        yield return null;
+                    }
+                    enemy.rb.velocity = Vector2.zero;
+                    rb.velocity = Vector2.zero;
+                }
+
+                if (Health <= 0 || enemy.Health <= 0)
+                {
+                    yield return null;
+                }
+                if (!enemy.enemyHurt)
+                {
+                    //if (coroutine != null)
+                    //{
+                    //    StopCoroutine(coroutine);
+                    //}
+                    coroutine = enemy.Damaged();
+                    enemy.Health -= 1;
+                    StartCoroutine(coroutine);
+                }
+
+            }
+
         }
     }
 

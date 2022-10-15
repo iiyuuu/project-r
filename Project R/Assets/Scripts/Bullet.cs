@@ -17,7 +17,14 @@ public class Bullet : MonoBehaviour
 
     public IEnumerator kbCoroutine(Rigidbody2D tag, float kbTime)
     {
-        yield return new WaitForSeconds(kbTime);
-        tag.velocity = Vector2.zero;
+        
+        if(tag != null)
+        {
+            yield return new WaitForSeconds(kbTime);
+            tag.velocity = Vector2.zero;
+
+        }
+        else { yield return null; }
+        
     }
 }
