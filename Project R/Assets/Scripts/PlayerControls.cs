@@ -55,7 +55,7 @@ public class PlayerControls : MonoBehaviour
     //movement
     void FixedUpdate()
     {
-        pause = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<PauseMenu>(true);
+        //pause = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<PauseMenu>(true);
         shopUI = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<ShopManager>(true);
         if (canMove && !pause.isPaused)
         { 

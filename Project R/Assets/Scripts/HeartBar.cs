@@ -27,12 +27,17 @@ public class HeartBar : MonoBehaviour
     private void Start()
     {
         _playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-        _playerStats.currentHealth = _playerStats.maxHealth;
+        //_playerStats.currentHealth = _playerStats.maxHealth;
         DrawHearts();
     }
     private void Update()
     {
-        _playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+        if(_playerStats == null)
+        {
+            _playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+        }
+        DrawHearts();
+
     }
 
     public void DrawHearts()
