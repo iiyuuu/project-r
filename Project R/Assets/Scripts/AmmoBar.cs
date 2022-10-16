@@ -6,43 +6,45 @@ public class AmmoBar : MonoBehaviour
 {
     public GameObject ammoPreFab;
     public PlayerStats _playerStats;
+    public RangedAttack rangedAttack;
     List<Bullet> bullets = new List<Bullet>();
     int Ammo;
     int help = 0;
     // Start is called before the first frame update
-    private void OnLevelWasLoaded()
+    private void OnEnable()
     {
-        DrawBullets();
+       RangedAttack.OnPlayerFire += DrawBullets;
     }
+
+    private void OnDisable()
+    {
+        RangedAttack.OnPlayerFire -= DrawBullets;
+    }
+    //private void OnLevelWasLoaded()
+    //{
+    //    DrawBullets();
+    //}
     void Start()
     {
-        
+        rangedAttack = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<RangedAttack>();
         _playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-        Ammo = _playerStats.maxAmmo;
         DrawBullets();
     }
 
     private void FixedUpdate()
     {
-        _playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-        if (_playerStats.currentAmmo < Ammo)
+        if(_playerStats == null)
         {
-            removeBullet();
-            Ammo -= 1;
+            _playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         }
-        else if (_playerStats.currentAmmo > Ammo)
-        {
-            CreateBullet();
-            Ammo += 1;
-        }
+        DrawBullets();
+
     }
 
     public void DrawBullets()
     {
         ClearBullets();
-
-        float maxAmmo = _playerStats.maxAmmo;//checks how many half bullets to add to the end
-        for(int i = 0; i < maxAmmo; i++)//create empty bullet shell depending on ammo
+        for(int i = 0; i < _playerStats.currentAmmo; i++)//create empty bullet shell depending on ammo
         {
             CreateBullet();
         }

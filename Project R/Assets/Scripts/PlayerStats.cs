@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class PlayerStats : MonoBehaviour
 {
-    public int maxHealth = 6;
+    public int maxHealth;
     public int currentHealth;
     public int maxAmmo;
     public int currentAmmo;

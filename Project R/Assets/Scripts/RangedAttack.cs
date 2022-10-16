@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using Unity.VisualScripting;
+using System;
+
 public class RangedAttack : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform firePoint;
     public float fireForce = 3f;
     public bool reloadTrigger = false;
+
+    public static event Action OnPlayerFire;
 
     [SerializeField] private float fireRate;
     [SerializeField] private float reloadTime;
@@ -30,7 +35,7 @@ public class RangedAttack : MonoBehaviour
     private void Start()
     {
         OnReloading?.Invoke(currentDelay);
-        
+
     }
     void Update()
     {
@@ -76,6 +81,7 @@ public class RangedAttack : MonoBehaviour
     {
         if (!firing && !reloading)
         {
+            OnPlayerFire?.Invoke();
             stats.currentAmmo--;
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);

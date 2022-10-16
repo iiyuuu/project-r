@@ -1329,10 +1329,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ammo
       objectReference: {fileID: 0}
-    - target: {fileID: 2937364144677578846, guid: 6773ece3d6dbf4a4796cdbbcaf84c7f2, type: 3}
-      propertyPath: m_TagString
-      value: UI
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 6773ece3d6dbf4a4796cdbbcaf84c7f2, type: 3}

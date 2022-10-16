@@ -20,7 +20,7 @@ public class SceneTeleporter : MonoBehaviour
     public void Start()
     {
         isDuplicate = true;
-        
+   
     }
 
     private void FixedUpdate()

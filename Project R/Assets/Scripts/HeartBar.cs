@@ -7,6 +7,7 @@ public class HeartBar : MonoBehaviour
 {
     public GameObject heartPrefab;
     public PlayerStats _playerStats;
+
     List<Heart> hearts = new List<Heart>();
 
     private void OnEnable()
@@ -20,14 +21,14 @@ public class HeartBar : MonoBehaviour
         PlayerStats.OnPlayerHeal -= DrawHearts;
     }
 
-    private void OnLevelWasLoaded()
-    {
-        DrawHearts();
-    }
+    //private void OnLevelWasLoaded()
+    //{
+    //    DrawHearts();
+    //}
     private void Start()
     {
         _playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-        //_playerStats.currentHealth = _playerStats.maxHealth;
+        _playerStats.currentHealth = _playerStats.maxHealth;
         DrawHearts();
     }
     private void Update()

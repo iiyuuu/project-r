@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1969314627999596054}
   - component: {fileID: 3615025794742428192}
   - component: {fileID: 2691610095128693357}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AmmoImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,8 +78,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1370054541
-  m_SortingLayer: 7
-  m_SortingOrder: 0
+  m_SortingLayer: 9
+  m_SortingOrder: 10
   m_Sprite: {fileID: 2053938439, guid: 9435bcfa5671e1d40a09910915d934b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
