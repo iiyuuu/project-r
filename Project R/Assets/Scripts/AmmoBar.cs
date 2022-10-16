@@ -10,11 +10,16 @@ public class AmmoBar : MonoBehaviour
     int Ammo;
     int help = 0;
     // Start is called before the first frame update
-    void Start()
+    private void OnLevelWasLoaded()
     {
         DrawBullets();
+    }
+    void Start()
+    {
+        
         _playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         Ammo = _playerStats.maxAmmo;
+        DrawBullets();
     }
 
     private void FixedUpdate()
@@ -36,8 +41,8 @@ public class AmmoBar : MonoBehaviour
     {
         ClearBullets();
 
-        float maxAmmo = _playerStats.maxAmmo;//checks how many half hearts to add to the end
-        for(int i = 0; i < maxAmmo; i++)//create empty heart shell depending on hp
+        float maxAmmo = _playerStats.maxAmmo;//checks how many half bullets to add to the end
+        for(int i = 0; i < maxAmmo; i++)//create empty bullet shell depending on ammo
         {
             CreateBullet();
         }

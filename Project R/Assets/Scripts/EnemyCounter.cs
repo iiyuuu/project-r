@@ -6,16 +6,16 @@ using UnityEngine;
 public class EnemyCounter : MonoBehaviour
 {
     GameObject[] enemies;
-    GameObject[] Teleporters;
+    GameObject[] Exit;
     public TextMeshProUGUI text;
 
     private void Start()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        Teleporters = GameObject.FindGameObjectsWithTag("Teleporter");
-        foreach (GameObject teleporter in Teleporters)
+        Exit = GameObject.FindGameObjectsWithTag("Exit");
+        foreach (GameObject door in Exit)
         {
-            teleporter.SetActive(false);
+            door.SetActive(true);
         }
     }
     private void FixedUpdate()
@@ -29,9 +29,9 @@ public class EnemyCounter : MonoBehaviour
         text.text = "Enemies: " + enemies.Length;
         if (enemies.Length <= 0)
         {
-            foreach(GameObject teleporter in Teleporters)
+            foreach(GameObject door in Exit)
         {
-                teleporter.SetActive(true);
+                door.SetActive(false);
             }
         }
     }

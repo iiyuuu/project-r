@@ -7,28 +7,28 @@ using UnityEngine.InputSystem;
 public class PlayerControls : MonoBehaviour
 {
     private List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
-    [SerializeField] public float collisionOffset = 0.05f;
+    public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
-    [SerializeField] public Rigidbody2D body;
+    public Rigidbody2D body;
     public Vector2 moveInput;
 
     public float baseMoveSpeed = 50f;
-    [SerializeField] public float activeMoveSpeed;
-    [SerializeField] public float idleFriction = 0.9f;
+    public float activeMoveSpeed;
+    public float idleFriction = 0.9f;
 
     IEnumerator dashCoroutine;
     IEnumerator attackCoroutine;
     public float dashingPower = 24f;
-    [SerializeField] public bool isDashing;
-    [SerializeField] public bool canDash = true;
+    public bool isDashing;
+    public bool canDash = true;
     [SerializeField] private bool canAttack = true;
     private Vector2 dashDirection;
 
     Animator animator;
     SpriteRenderer spriteRenderer;
 
-    [SerializeField] public bool canMove = true;
-    [SerializeField] public bool isMoving = false;
+    public bool canMove = true;
+    public bool isMoving = false;
     public MeleeController melee;
 
     public PauseMenu pause;
@@ -43,6 +43,7 @@ public class PlayerControls : MonoBehaviour
 
     void Start()
     {
+        
         body = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();//added some animation precode
         spriteRenderer = GetComponent<SpriteRenderer>();//sprite render for flipping sprite (no need for both left and right sprite now)
@@ -50,15 +51,12 @@ public class PlayerControls : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);//Lets play persist through scene changes
 
     }
-    //input
-    void Update()
-    {
-        //Debug.Log(body.velocity);
-    }
 
     //movement
     void FixedUpdate()
     {
+        pause = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<PauseMenu>(true);
+        shopUI = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<ShopManager>(true);
         if (canMove && !pause.isPaused)
         { 
             //movement speed modifier
@@ -110,8 +108,12 @@ public class PlayerControls : MonoBehaviour
     }
     private void OnMove(InputValue value)
     {
+        if (!pause.isPaused)
+        {
+            moveInput = value.Get<Vector2>();
+        }
         //gathers user movement inputs
-        moveInput = value.Get<Vector2>();
+        
     }
 
     private bool PlayerMovement(Vector2 direction)
@@ -166,7 +168,7 @@ public class PlayerControls : MonoBehaviour
     {
         Physics2D.IgnoreLayerCollision(6, 8, true);
         Physics2D.IgnoreLayerCollision(6, 7, true);
-        if (canDash)
+        if (canDash && !pause.isPaused)
         {
             animator.SetTrigger("isDashing");
             if (dashCoroutine != null)
@@ -201,7 +203,7 @@ public class PlayerControls : MonoBehaviour
 
     void OnMelee()
     {
-        if (canAttack)
+        if (canAttack && !pause.isPaused && canMove)
         {
             canAttack = false;
             if (attackCoroutine != null)
@@ -237,11 +239,13 @@ public class PlayerControls : MonoBehaviour
             {
                 pause.isPaused = !pause.isPaused;
                 pause.Pause();
+                moveInput = Vector2.zero;
             }
             else
             {
                 pause.isPaused = !pause.isPaused;
                 pause.Resume();
+                body.velocity = Vector2.Lerp(body.velocity, Vector2.zero, 0.9f);
             }
         }
         
@@ -275,7 +279,7 @@ public class PlayerControls : MonoBehaviour
 
     public void OnFire()
     {
-        if (playerStats.currentAmmo > 0)
+        if (playerStats.currentAmmo > 0 && !pause.isPaused && canMove)
         {
             rangedAttack.Fire();
         }
@@ -284,7 +288,7 @@ public class PlayerControls : MonoBehaviour
 
     public void OnReload()
     {
-        if (!isDashing && canAttack)
+        if (!isDashing && canAttack && !pause.isPaused)
         {
             rangedAttack.reloadTrigger = true;
         }

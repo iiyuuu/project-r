@@ -15,6 +15,10 @@ public class CollisionHandler : MonoBehaviour
     public float thrust;
     public float kbTime = 0.2f;
 
+    public void Update()
+    {
+        currency = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<CurrencyManager>();
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
        if(other.gameObject.tag.Equals("Enemy") || other.gameObject.tag.Equals("Enemy Projectile"))

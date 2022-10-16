@@ -138,9 +138,9 @@ MonoBehaviour:
   firePoint: {fileID: 777386640502084997}
   attackRadius: 2
   rangedAttack: {fileID: 777386640743146269}
-  bulletPrefab: {fileID: 373667894874720840, guid: 88fe1c2b8c637824cb9d5f44a90a134e, type: 3}
+  bulletPrefab: {fileID: 373667894874720840, guid: e5997bfc2bc52a7439ded3a8361f877f, type: 3}
   fireForce: 1
-  fireRate: 0
+  fireRate: 1
 --- !u!58 &777386639253033909
 CircleCollider2D:
   m_ObjectHideFlags: 0

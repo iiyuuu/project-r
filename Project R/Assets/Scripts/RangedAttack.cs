@@ -30,6 +30,7 @@ public class RangedAttack : MonoBehaviour
     private void Start()
     {
         OnReloading?.Invoke(currentDelay);
+        
     }
     void Update()
     {
@@ -56,6 +57,7 @@ public class RangedAttack : MonoBehaviour
     {
         if (gameObject.tag.Equals("Player"))
         {
+            controls = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
             Vector2 aimDirection = mousePosition - body.position;
             float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
             body.rotation = aimAngle;

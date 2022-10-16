@@ -9,13 +9,16 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/_preload.unity
+    guid: 6c4f174bb30e82248a8789fb69e4204c
+  - enabled: 1
     path: Assets/Scenes/Tutorial level.unity
     guid: 204409d75c6c56040aa27d749dbed835
   - enabled: 0
     path: Assets/Scenes/Game.unity
     guid: efc77447456385c4a9f32346e6f240d0
   - enabled: 1
-    path: Assets/Scenes/PlayerTest.unity
+    path: Assets/Scenes/Debug Room.unity
     guid: ad7a021735b514942b469cbda408c9f2
   - enabled: 1
     path: Assets/Scenes/F1_Zone1.unity

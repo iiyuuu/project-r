@@ -139,6 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEnemy: 0
   spriteRenderer: {fileID: 3023824293796179152}
+  kbPower: 2
 --- !u!95 &8489884045642226970
 Animator:
   serializedVersion: 4

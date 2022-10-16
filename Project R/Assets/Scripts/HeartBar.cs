@@ -20,10 +20,19 @@ public class HeartBar : MonoBehaviour
         PlayerStats.OnPlayerHeal -= DrawHearts;
     }
 
+    private void OnLevelWasLoaded()
+    {
+        DrawHearts();
+    }
     private void Start()
     {
         _playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+        _playerStats.currentHealth = _playerStats.maxHealth;
         DrawHearts();
+    }
+    private void Update()
+    {
+        _playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
     }
 
     public void DrawHearts()

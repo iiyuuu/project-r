@@ -16,8 +16,12 @@ public class ShopManager : MonoBehaviour
     public GameObject[] shopPanelsObject;
     public Button[] shopButtons;
 
-    
 
+    public void Start()
+    {
+        controls = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
+        currencyManager = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<CurrencyManager>();
+    }
 
     private void Update()
     {

@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
             {
                 animator.SetTrigger("enemyDeath");
                 rb = null;
+                Physics2D.IgnoreLayerCollision(7, 6);
             }
         }
         get
@@ -113,7 +114,7 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public IEnumerator OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Projectile"))
         {
@@ -133,15 +134,21 @@ public class Enemy : MonoBehaviour
                 bullet.spriteRenderer.enabled = false;
 
                 kbCoroutine = bullet.kbCoroutine(rb, 0.2f);
-                if(kbCoroutine != null)
+                if(kbCoroutine != null && bullet != null)
                 {
                     StopCoroutine(kbCoroutine);
                 }
-
+                if(rb != null)
+                {
+                    Vector2 difference = rb.transform.position - bullet.rb.transform.position;
+                    difference = difference.normalized * bullet.kbPower;
+                    rb.AddForce(difference, ForceMode2D.Impulse);
+                }
+                
                 
                 StartCoroutine(coroutine);
-                yield return StartCoroutine(kbCoroutine);
-                Destroy(bullet.gameObject);
+                StartCoroutine(kbCoroutine);
+                
                 
             }
         }
@@ -156,7 +163,7 @@ public class Enemy : MonoBehaviour
 
                     if (rb == null || enemy.rb == null)
                     {
-                        yield return null;
+                        return;
                     }
                     enemy.rb.velocity = Vector2.zero;
                     rb.velocity = Vector2.zero;
@@ -164,7 +171,7 @@ public class Enemy : MonoBehaviour
 
                 if (Health <= 0 || enemy.Health <= 0)
                 {
-                    yield return null;
+                    return;
                 }
                 if (!enemy.enemyHurt)
                 {

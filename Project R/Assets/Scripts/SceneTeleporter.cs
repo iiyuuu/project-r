@@ -20,10 +20,13 @@ public class SceneTeleporter : MonoBehaviour
     public void Start()
     {
         isDuplicate = true;
-        controls = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
-        controls.gameObject.transform.position = GameObject.FindWithTag("Spawn").transform.position;
+        
     }
 
+    private void FixedUpdate()
+    {
+        controls = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
+    }
     public void OnTriggerEnter2D(Collider2D other)
     {
 
@@ -93,7 +96,7 @@ public class SceneTeleporter : MonoBehaviour
         }
     }
 
-    private void OnLevelWasLoaded(int level)
+    private void OnLevelWasLoaded()
     {
         controls.gameObject.transform.position = GameObject.FindGameObjectWithTag("Spawn").transform.position;
     }
