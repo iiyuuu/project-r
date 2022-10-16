@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 132369949207369951}
   - component: {fileID: 132369949207369948}
   - component: {fileID: 132369949207369950}
-  - component: {fileID: 597953325772381698}
+  - component: {fileID: 4933373860573959700}
   m_Layer: 0
   m_Name: Teleporter
   m_TagString: Teleporter
@@ -145,8 +145,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 286131375
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -182,7 +182,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.34310722, y: 0.34230804}
   m_EdgeRadius: 0
---- !u!114 &597953325772381698
+--- !u!114 &4933373860573959700
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -194,7 +194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37d9ce1339356b4d905d04bb3352d04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Hub
+  sceneToLoad: 
   loadingScreen: {fileID: 0}
   loadingBar: {fileID: 0}
   controls: {fileID: 0}
+  spawn: {fileID: 0}

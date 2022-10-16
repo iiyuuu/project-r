@@ -709,6 +709,22 @@ PrefabInstance:
       propertyPath: loadingScreen
       value: 
       objectReference: {fileID: 1941460356}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: controls
+      value: 
+      objectReference: {fileID: 1860529328}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: loadingBar
+      value: 
+      objectReference: {fileID: 584783922}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: sceneToLoad
+      value: F1_Zone4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: loadingScreen
+      value: 
+      objectReference: {fileID: 1941460356}
     m_RemovedComponents: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 132369949207369949, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
@@ -892,6 +908,22 @@ PrefabInstance:
       value: F1_Zone3
       objectReference: {fileID: 0}
     - target: {fileID: 597953325772381698, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: loadingScreen
+      value: 
+      objectReference: {fileID: 1941460356}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: controls
+      value: 
+      objectReference: {fileID: 1860529328}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: loadingBar
+      value: 
+      objectReference: {fileID: 584783922}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: sceneToLoad
+      value: F1_Zone3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
       propertyPath: loadingScreen
       value: 
       objectReference: {fileID: 1941460356}
@@ -1574,6 +1606,22 @@ PrefabInstance:
       value: F1_Zone1
       objectReference: {fileID: 0}
     - target: {fileID: 597953325772381698, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: loadingScreen
+      value: 
+      objectReference: {fileID: 1941460356}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: controls
+      value: 
+      objectReference: {fileID: 1860529328}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: loadingBar
+      value: 
+      objectReference: {fileID: 584783922}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: sceneToLoad
+      value: F1_Zone1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
       propertyPath: loadingScreen
       value: 
       objectReference: {fileID: 1941460356}
@@ -4719,7 +4767,7 @@ Tilemap:
       - {fileID: 1822243277, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -824224458, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -1144722836, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
-      m_AnimationSpeed: 6.0000005
+      m_AnimationSpeed: 6
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 13, y: 1, z: 0}
@@ -5229,6 +5277,22 @@ PrefabInstance:
       value: F1_Zone2
       objectReference: {fileID: 0}
     - target: {fileID: 597953325772381698, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: loadingScreen
+      value: 
+      objectReference: {fileID: 1941460356}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: controls
+      value: 
+      objectReference: {fileID: 1860529328}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: loadingBar
+      value: 
+      objectReference: {fileID: 584783922}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: sceneToLoad
+      value: F1_Zone2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
       propertyPath: loadingScreen
       value: 
       objectReference: {fileID: 1941460356}
@@ -8944,6 +9008,22 @@ PrefabInstance:
       propertyPath: loadingScreen
       value: 
       objectReference: {fileID: 1941460356}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: controls
+      value: 
+      objectReference: {fileID: 1860529328}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: loadingBar
+      value: 
+      objectReference: {fileID: 584783922}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: sceneToLoad
+      value: F1_BossRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: loadingScreen
+      value: 
+      objectReference: {fileID: 1941460356}
     m_RemovedComponents: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 132369949207369949, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
@@ -9484,6 +9564,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 584783922}
     - target: {fileID: 597953325772381698, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: loadingScreen
+      value: 
+      objectReference: {fileID: 1941460356}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: controls
+      value: 
+      objectReference: {fileID: 1860529328}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: loadingBar
+      value: 
+      objectReference: {fileID: 584783922}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: sceneToLoad
+      value: Hub
+      objectReference: {fileID: 0}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
       propertyPath: loadingScreen
       value: 
       objectReference: {fileID: 1941460356}
@@ -10090,6 +10186,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1140699358615018801, guid: e6b4ba2c4db487d478ed59ce291c9924, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1299.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140699358615018801, guid: e6b4ba2c4db487d478ed59ce291c9924, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 688.8
+      objectReference: {fileID: 0}
     - target: {fileID: 2058322209254518712, guid: e6b4ba2c4db487d478ed59ce291c9924, type: 3}
       propertyPath: m_Layer
       value: 5
@@ -10170,10 +10274,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 7936552682648092762, guid: e6b4ba2c4db487d478ed59ce291c9924, type: 3}
-      propertyPath: m_UIInputModule
-      value: 
-      objectReference: {fileID: 1434872763}
     - target: {fileID: 8052561593067863759, guid: e6b4ba2c4db487d478ed59ce291c9924, type: 3}
       propertyPath: m_Name
       value: Canvas

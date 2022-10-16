@@ -19,13 +19,13 @@ public class ShopManager : MonoBehaviour
 
     public void Start()
     {
-        controls = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
-        currencyManager = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<CurrencyManager>();
     }
 
     private void Update()
     {
-        if (isEnabled)
+        controls = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
+        currencyManager = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<CurrencyManager>();
+        if (isEnabled && controls != null)
         {
             for (int i = 0; i < shopItems.Length; i++)
             {
@@ -39,6 +39,7 @@ public class ShopManager : MonoBehaviour
 
     public void EnableShop()
     {
+        controls = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
         isEnabled = true;
         shopUI.SetActive(true);
         controls.canMove = false;

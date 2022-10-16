@@ -13,6 +13,7 @@ public class SceneTeleporter : MonoBehaviour
     public GameObject loadingScreen;
     public Slider loadingBar;
     public PlayerControls controls;
+    public GameObject spawn;
     List<string> usedScenes = new List<string>(); //keeps track of used scenes
     bool isDuplicate = true;
     System.Random rand = new System.Random();
@@ -20,11 +21,12 @@ public class SceneTeleporter : MonoBehaviour
     public void Start()
     {
         isDuplicate = true;
-   
+        spawn = GameObject.FindGameObjectWithTag("Spawn");
     }
 
     private void FixedUpdate()
     {
+        spawn = GameObject.FindGameObjectWithTag("Spawn");
         controls = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
     }
     public void OnTriggerEnter2D(Collider2D other)
@@ -98,7 +100,8 @@ public class SceneTeleporter : MonoBehaviour
 
     private void OnLevelWasLoaded()
     {
-        controls.gameObject.transform.position = GameObject.FindGameObjectWithTag("Spawn").transform.position;
+        spawn = GameObject.FindGameObjectWithTag("Spawn");
+        controls.gameObject.transform.position = spawn.transform.position;
     }
 
     //return to hub function
