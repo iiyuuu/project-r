@@ -60,15 +60,13 @@ public class RangedAttack : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (gameObject.tag.Equals("Player"))
+        if (gameObject.tag.Equals("Player Ranged"))
         {
-            controls = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
             Vector2 aimDirection = mousePosition - body.position;
             float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
             body.rotation = aimAngle;
             if (controls.isDashing && coroutine != null)//reload cancelling
             {
-                
                 StopCoroutine(coroutine);
                 OnReloading?.Invoke(0);
                 reloading = false;

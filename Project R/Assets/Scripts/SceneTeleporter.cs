@@ -14,73 +14,77 @@ public class SceneTeleporter : MonoBehaviour
     public Slider loadingBar;
     public PlayerControls controls;
     public GameObject spawn;
-    List<string> usedScenes = new List<string>(); //keeps track of used scenes
     bool isDuplicate = true;
     System.Random rand = new System.Random();
 
     public void Start()
     {
         isDuplicate = true;
-        spawn = GameObject.FindGameObjectWithTag("Spawn");
-    }
-
-    private void FixedUpdate()
-    {
+        loadingScreen = GameObject.FindGameObjectWithTag("Loading Screen").transform.GetChild(0).gameObject;
+        loadingBar = loadingScreen.GetComponentInChildren<Slider>(true);
         spawn = GameObject.FindGameObjectWithTag("Spawn");
         controls = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
+        OnLevelFinishedLoading();
     }
+
     public void OnTriggerEnter2D(Collider2D other)
     {
 
         if (other.CompareTag("Player") && !other.isTrigger)
         {
-            
 
-            if(sceneToLoad != null)//if there is already a thing in the fill bar
+            if (controls.usedScenes.Count == 4)
+            {
+                sceneToLoad = "F1_BossRoom";
+                isDuplicate = false;
+            }
+
+            if (sceneToLoad.Length != 0)//if there is already a thing in the fill bar
             {
                 isDuplicate = false;
-                StartCoroutine(LoadSceneAsynchronously(sceneToLoad));
                 
             }
-
-            while (isDuplicate)
+            else
             {
-                switch (rand.Next(1, 4))
+                while (isDuplicate)
                 {
-                    case 1:
-                        sceneToLoad = "F1_Zone1";
-                        break;
-                    case 2:
-                        sceneToLoad = "F1_Zone2";
-                        break;
-                    case 3:
-                        sceneToLoad = "F1_Zone3";
-                        break;
-                    case 4:
-                        sceneToLoad = "F1_Zone4";
-                        break;
-                    default:
-                        //Debug.Log("No room exists for this number : " + num.ToString());
-                        break;
-                }
+                    switch (rand.Next(1, 5))
+                    {
+                        case 1:
+                            sceneToLoad = "F1_Zone1";
+                            break;
+                        case 2:
+                            sceneToLoad = "F1_Zone2";
+                            break;
+                        case 3:
+                            sceneToLoad = "F1_Zone3";
+                            break;
+                        case 4:
+                            sceneToLoad = "F1_Zone4";
+                            break;
+                        default:
+                            //Debug.Log("No room exists for this number : " + num.ToString());
+                            break;
+                    }
 
-                if (!(usedScenes.Contains(sceneToLoad)))
-                {
-                    usedScenes.Add(sceneToLoad);
-                    isDuplicate = false;
-                }
+                    if (!(controls.usedScenes.Contains(sceneToLoad)))
+                    {
+                        controls.usedScenes.Add(sceneToLoad);
+                        isDuplicate = false;
+                    }
 
-                if (usedScenes.Count == 4)
-                {
-                    sceneToLoad = "F1_BossRoom";
-                    isDuplicate = false;
+                    
                 }
+                
             }
+            StartCoroutine(LoadSceneAsynchronously(sceneToLoad));
+
+
 
             //playerStorage.initialValue = playerPosition;
             //SceneManager.LoadScene(sceneToLoad);
 
-            StartCoroutine(LoadSceneAsynchronously(sceneToLoad));
+
 
         }
     }
@@ -98,10 +102,11 @@ public class SceneTeleporter : MonoBehaviour
         }
     }
 
-    private void OnLevelWasLoaded()
+    private void OnLevelFinishedLoading()
     {
-        spawn = GameObject.FindGameObjectWithTag("Spawn");
+        //Debug.Log(controls.usedScenes.Count);
         controls.gameObject.transform.position = spawn.transform.position;
+        loadingScreen.SetActive(false);
     }
 
     //return to hub function

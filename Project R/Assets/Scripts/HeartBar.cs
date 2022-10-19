@@ -27,7 +27,7 @@ public class HeartBar : MonoBehaviour
     //}
     private void Start()
     {
-        _playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+        //_playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         _playerStats.currentHealth = _playerStats.maxHealth;
         DrawHearts();
     }
@@ -35,7 +35,7 @@ public class HeartBar : MonoBehaviour
     {
         if(_playerStats == null)
         {
-            _playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+           // _playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         }
         DrawHearts();
 

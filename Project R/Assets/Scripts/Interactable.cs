@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +8,12 @@ public class Interactable : MonoBehaviour
 {
     public bool isInRange;
     public KeyCode[] interactKey;
-    public UnityEvent interactAction;
-    public UnityEvent uninteractAction;
+    public ShopManager shop;
 
+    private void Start()
+    {
+        shop = GameObject.FindGameObjectWithTag("Shop").GetComponentInChildren<ShopManager>(true);
+    }
 
     void Update()
     {
@@ -17,11 +21,11 @@ public class Interactable : MonoBehaviour
         {
             if (Input.GetKeyDown(interactKey[0]))
             {
-                interactAction.Invoke();
+                shop.EnableShop();
             }
             else if (Input.GetKeyDown(interactKey[1]))
             {
-                uninteractAction.Invoke();
+                shop.DisableShop();
             }
         }
 

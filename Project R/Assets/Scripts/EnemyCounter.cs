@@ -30,8 +30,12 @@ public class EnemyCounter : MonoBehaviour
         if (enemies.Length <= 0)
         {
             foreach(GameObject door in Exit)
-        {
-                door.SetActive(false);
+            {
+                if(door != null)
+                {
+                    door.SetActive(false);
+                }
+                
             }
         }
     }

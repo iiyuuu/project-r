@@ -17,8 +17,8 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
     
-    List<int> widths = new List<int>() {568, 960, 1280, 1920};
-    List<int> heights = new List<int>() {320, 540, 800, 1080};
+    List<int> widths = new List<int>() {800, 1280, 1366, 1920};
+    List<int> heights = new List<int>() {600, 729, 768, 1080};
 
     public void SetScreenSize (int index) 
     {

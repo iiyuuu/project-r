@@ -23,6 +23,7 @@ public class PlayerControls : MonoBehaviour
     public bool canDash = true;
     [SerializeField] private bool canAttack = true;
     private Vector2 dashDirection;
+    
 
     Animator animator;
     SpriteRenderer spriteRenderer;
@@ -30,6 +31,8 @@ public class PlayerControls : MonoBehaviour
     public bool canMove = true;
     public bool isMoving = false;
     public MeleeController melee;
+
+    public List<string> usedScenes = new List<string>();
 
     public PauseMenu pause;
     public ShopManager shopUI;
@@ -56,7 +59,7 @@ public class PlayerControls : MonoBehaviour
     void FixedUpdate()
     {
         //pause = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<PauseMenu>(true);
-        shopUI = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<ShopManager>(true);
+        //shopUI = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<ShopManager>(true);
         if (canMove && !pause.isPaused)
         { 
             //movement speed modifier

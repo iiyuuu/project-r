@@ -8,14 +8,13 @@ public class TextSlider : MonoBehaviour
 {
   public TextMeshProUGUI numberText;
 
-  private Slider slider;
+  [SerializeField] private Slider slider;
 
   void Start() {
-      slider = GetComponent<Slider>();
-      SetNumberText(slider.value);
+
   }
 
   public void SetNumberText(float value) {
-      numberText.text = value.ToString();
+        numberText.text = value.ToString();
   }
 }
