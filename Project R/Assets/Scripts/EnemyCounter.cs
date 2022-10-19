@@ -12,11 +12,7 @@ public class EnemyCounter : MonoBehaviour
     private void Start()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        Exit = GameObject.FindGameObjectsWithTag("Exit");
-        foreach (GameObject door in Exit)
-        {
-            door.SetActive(true);
-        }
+        InitializeExit();
     }
     private void FixedUpdate()
     {
@@ -37,6 +33,19 @@ public class EnemyCounter : MonoBehaviour
                 }
                 
             }
+        }
+        else
+        {
+            InitializeExit();
+        }
+    }
+
+    public void InitializeExit()
+    {
+        Exit = GameObject.FindGameObjectsWithTag("Exit");
+        foreach (GameObject door in Exit)
+        {
+            door.SetActive(true);
         }
     }
 }

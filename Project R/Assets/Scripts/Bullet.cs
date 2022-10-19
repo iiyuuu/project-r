@@ -28,9 +28,17 @@ public class Bullet : MonoBehaviour
         {
             yield return new WaitForSeconds(kbTime);
             tag.velocity = Vector2.zero;
-
+            Destroy(gameObject);
         }
         else { yield return null; }
-        Destroy(gameObject);
+        
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Enemy Projectile"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -36,7 +36,10 @@ public class Enemy : MonoBehaviour
             {
                 animator.SetTrigger("enemyDeath");
                 rb = null;
-                Physics2D.IgnoreLayerCollision(7, 6);
+                foreach (CircleCollider2D circle in gameObject.GetComponents<CircleCollider2D>())
+                {
+                    circle.enabled = false;
+                }
             }
         }
         get
@@ -46,7 +49,7 @@ public class Enemy : MonoBehaviour
     }
     
 
-    private void Start()
+    protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -103,6 +106,18 @@ public class Enemy : MonoBehaviour
         if(Vector2.Distance(target.position, transform.position) > chaseRadius)
         {
             transform.position = Vector2.MoveTowards(transform.position, homePosition, moveSpeed * Time.fixedDeltaTime);
+            if(homePosition.x < transform.position.x)
+            {
+                spriteRend.flipX = false;
+            }
+            else if (homePosition == transform.position) 
+            {
+                spriteRend.flipX = false;
+            }
+            else
+            {
+                spriteRend.flipX = true;
+            }
         }
         
     }
