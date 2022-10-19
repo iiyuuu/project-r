@@ -13,6 +13,9 @@ public class RangedEnemy : Enemy
     public float fireForce;
     public float fireRate;
 
+    public Vector2 hingeLeft;
+    public Vector2 hingeRight;
+
     bool isFiring = false;
 
     // Start is called before the first frame update
@@ -21,6 +24,11 @@ public class RangedEnemy : Enemy
 
     public new void Update()
     {
+        if(hingeLeft == null && hingeRight == null)
+        {
+            hingeLeft = rangedAttack.transform.position;
+            hingeRight = new Vector2(-rangedAttack.transform.position.x, rangedAttack.transform.position.y);
+        }
     }
     private void FixedUpdate()
     {
@@ -40,7 +48,7 @@ public class RangedEnemy : Enemy
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, (-1)*moveSpeed * Time.fixedDeltaTime);
             if(transform.position.x > target.position.x) { spriteRend.flipX = true; }
-            else { spriteRend.flipX = false;}
+            else { spriteRend.flipX = false; }
         }
         else if (Vector2.Distance(target.position, transform.position) > chaseRadius && Vector2.Distance(target.position, transform.position) < attackRadius)
         {
@@ -48,6 +56,8 @@ public class RangedEnemy : Enemy
             Vector2 difference = target.position - transform.position;
             float aimAngle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg - 90f;
             rangedAttack.body.rotation = aimAngle;
+            if (target.position.x > transform.position.x) { spriteRend.flipX = true; rangedAttack.transform.localPosition = hingeLeft; }
+            else { spriteRend.flipX = false; rangedAttack.transform.localPosition = hingeRight; }
 
             if (!isFiring)
             {
@@ -58,8 +68,7 @@ public class RangedEnemy : Enemy
             
             
             
-            if (target.position.x > transform.position.x) { spriteRend.flipX = true; }
-            else { spriteRend.flipX = false; }
+            
         }
         else
         {
