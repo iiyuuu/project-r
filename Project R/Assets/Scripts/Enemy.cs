@@ -49,21 +49,25 @@ public class Enemy : MonoBehaviour
     }
     
 
-    protected virtual void Start()
-    {
+     public virtual void Start()
+     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player").transform;
         spriteRend = GetComponent<SpriteRenderer>();
         homePosition = transform.position;
-    }
+     }
 
     public void Update()
     {
-        if (target.position.x > transform.position.x) { spriteRend.flipX = true; }
-        else { spriteRend.flipX = false; }
+        if (!ranged)
+        {
+            if (target.position.x > transform.position.x) { spriteRend.flipX = true; }
+            else { spriteRend.flipX = false; }
+        }
+        
     }
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if (!enemyHurt)
         {
@@ -147,18 +151,21 @@ public class Enemy : MonoBehaviour
                 rb.velocity = Vector2.zero;
                 Health -= 1;
                 bullet.spriteRenderer.enabled = false;
+                bullet.rb.velocity = Vector2.zero;
+                bullet.GetComponent<CircleCollider2D>().enabled = false;
 
                 kbCoroutine = bullet.kbCoroutine(rb, 0.2f);
                 if(kbCoroutine != null && bullet != null)
                 {
                     StopCoroutine(kbCoroutine);
                 }
-                if(rb != null)
+                if (rb != null && bullet.rb != null)
                 {
                     Vector2 difference = rb.transform.position - bullet.rb.transform.position;
                     difference = difference.normalized * bullet.kbPower;
                     rb.AddForce(difference, ForceMode2D.Impulse);
                 }
+                bullet.rb = null;
                 
                 
                 StartCoroutine(coroutine);

@@ -111,7 +111,7 @@ public class PlayerControls : MonoBehaviour
     }
     private void OnMove(InputValue value)
     {
-        if (!pause.isPaused)
+        if (!pause.isPaused && canMove)
         {
             moveInput = value.Get<Vector2>();
         }

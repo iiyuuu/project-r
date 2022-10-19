@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
     }
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!hitEnemy)
+        if (!collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(gameObject);
         }
@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
 
     public IEnumerator kbCoroutine(Rigidbody2D tag, float kbTime)
     {
-        rb.velocity = Vector2.zero;
+        
         if(tag != null)
         {
             yield return new WaitForSeconds(kbTime);
