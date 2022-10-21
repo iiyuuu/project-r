@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     [Header("Stats")]
     public int health = 3;
     public float moveSpeed = 3f;
-    public Vector2 moveInput;
+    public static Vector2 moveInput;
     public Rigidbody2D rb;
     public Transform target;
 
@@ -74,11 +74,11 @@ public class Enemy : MonoBehaviour
         //{
         //    if (!ranged) { CheckDistance(); }
         //}
-        //if(moveInput != null)
-        //{
-        //    rb.velocity = moveInput * moveSpeed;
-        //}
-        
+        if (moveInput != null)
+        {
+            rb.velocity = moveInput * moveSpeed;
+        }
+
     }
 
     public IEnumerator Damaged()

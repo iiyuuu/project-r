@@ -80,7 +80,9 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
+            
             float distance = Vector2.Distance(aiData.currentTarget.position, transform.position);
+            Debug.Log(distance);
 
             if (distance < attackDistance)
             {
@@ -92,6 +94,7 @@ public class EnemyAI : MonoBehaviour
             }
             else
             {
+                Debug.Log("Moving");
                 //Chase logic
                 movementInput = movementDirectionSolver.GetDirectionToMove(steeringBehaviours, aiData);
                 yield return new WaitForSeconds(aiUpdateDelay);
