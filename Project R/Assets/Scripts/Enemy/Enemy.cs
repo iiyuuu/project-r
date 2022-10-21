@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
+    [Header("Stats")]
     public int health = 3;
     public float moveSpeed = 3f;
+    public Vector2 moveInput;
     public Rigidbody2D rb;
     public Transform target;
 
@@ -69,11 +70,14 @@ public class Enemy : MonoBehaviour
     }
     protected virtual void FixedUpdate()
     {
-        if (!enemyHurt)
-        {
-            if (!ranged) { CheckDistance(); }
-        }
-        
+        //if (!enemyHurt)
+        //{
+        //    if (!ranged) { CheckDistance(); }
+        //}
+        //if(moveInput != null)
+        //{
+        //    rb.velocity = moveInput * moveSpeed;
+        //}
         
     }
 
@@ -192,6 +196,10 @@ public class Enemy : MonoBehaviour
 
                 if (Health <= 0 || enemy.Health <= 0)
                 {
+                    StopAllCoroutines();
+                    enemy.enemyHurt = false;
+                    enemyHurt = false;
+                    enemy.StopAllCoroutines();
                     return;
                 }
                 if (!enemy.enemyHurt)

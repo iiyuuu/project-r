@@ -57,9 +57,15 @@ public class PlayerControls : MonoBehaviour
 
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(new Vector2(transform.position.x, transform.position.y) + dashDirection/1.3f, 0.15f);
+    }
+
     //movement
     void FixedUpdate()
     {
+        Debug.DrawRay(body.transform.position, dashDirection/1.3f);
         //pause = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<PauseMenu>(true);
         //shopUI = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<ShopManager>(true);
         if (canMove && !pause.isPaused)
@@ -67,18 +73,16 @@ public class PlayerControls : MonoBehaviour
             //movement speed modifier
             if (isDashing)
             {
-                
-                body.velocity = dashDirection.normalized * dashingPower;
                 Debug.Log(dashDirection);
-                Debug.Log(dashingPower);
-                
+                body.velocity = dashDirection.normalized * dashingPower;
+
                 //dashCast = Physics2D.Raycast(body.transform.position, dashDirection.normalized, dashingPower/2, LayerMask.GetMask("Interactable"));
-                //Debug.DrawRay(body.transform.position, dashDirection.normalized * dashingPower / 6);
-                //if (dashCast.collider != null)
-                //{
-                //    Physics2D.IgnoreLayerCollision(6, 8, false);
-                //    Physics2D.IgnoreLayerCollision(6, 7, false);
-                //}
+
+                if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y) + dashDirection/1.3f, 0.15f, LayerMask.GetMask("Interactable")) !=  null)
+                {
+                    Physics2D.IgnoreLayerCollision(6, 8, false);
+                    Physics2D.IgnoreLayerCollision(6, 7, false);
+                }
                 return;
             }
 
