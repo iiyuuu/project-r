@@ -129,7 +129,6 @@ public class Enemy : MonoBehaviour
     void Death()
     {
         StopAllCoroutines();
-        enemyHurt = false;
         Destroy(gameObject);
     }
 
@@ -197,10 +196,11 @@ public class Enemy : MonoBehaviour
                 }
                 if (!enemy.enemyHurt)
                 {
-                    //if (coroutine != null)
-                    //{
-                    //    StopCoroutine(coroutine);
-                    //}
+                    if (coroutine != null)
+                    {
+                        enemy.enemyHurt = false;
+                        StopCoroutine(coroutine);
+                    }
                     coroutine = enemy.Damaged();
                     enemy.Health -= 1;
                     StartCoroutine(coroutine);

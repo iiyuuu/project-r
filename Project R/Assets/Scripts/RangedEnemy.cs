@@ -51,7 +51,7 @@ public class RangedEnemy : Enemy
             if(transform.position.x > target.position.x) { print("True");  spriteRend.flipX = true; }
             else { spriteRend.flipX = false; }
         }
-        else if (Vector2.Distance(target.position, transform.position) > chaseRadius && Vector2.Distance(target.position, transform.position) < attackRadius)
+        else if (Vector2.Distance(target.position, transform.position) > chaseRadius && Vector2.Distance(target.position, transform.position) < attackRadius && !isFiring)
         {
             //coroutine, trigger, coroutine, trigger
             Vector2 difference = target.position - rangedAttack.transform.position;

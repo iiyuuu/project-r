@@ -12,6 +12,8 @@ public class PlayerControls : MonoBehaviour
     public Rigidbody2D body;
     public Vector2 moveInput;
 
+    private RaycastHit2D dashCast;
+
     public float baseMoveSpeed = 50f;
     public float activeMoveSpeed;
     public float idleFriction = 0.9f;
@@ -65,8 +67,18 @@ public class PlayerControls : MonoBehaviour
             //movement speed modifier
             if (isDashing)
             {
-
+                
                 body.velocity = dashDirection.normalized * dashingPower;
+                Debug.Log(dashDirection);
+                Debug.Log(dashingPower);
+                
+                //dashCast = Physics2D.Raycast(body.transform.position, dashDirection.normalized, dashingPower/2, LayerMask.GetMask("Interactable"));
+                //Debug.DrawRay(body.transform.position, dashDirection.normalized * dashingPower / 6);
+                //if (dashCast.collider != null)
+                //{
+                //    Physics2D.IgnoreLayerCollision(6, 8, false);
+                //    Physics2D.IgnoreLayerCollision(6, 7, false);
+                //}
                 return;
             }
 
@@ -115,6 +127,10 @@ public class PlayerControls : MonoBehaviour
         {
             moveInput = value.Get<Vector2>();
         }
+        else
+        {
+            moveInput = Vector2.zero;
+        }
         //gathers user movement inputs
         
     }
@@ -159,12 +175,13 @@ public class PlayerControls : MonoBehaviour
         isDashing = true;
         yield return new WaitForSeconds(dashingTime);//during dash
         isDashing = false;
+        canAttack = true;
         activeMoveSpeed = baseMoveSpeed;
         Physics2D.IgnoreLayerCollision(6, 8, false);
         Physics2D.IgnoreLayerCollision(6, 7, false);
         yield return new WaitForSeconds(dashingCooldown);//wait dash cd
         canDash = true;
-        canAttack = true;
+        
     }
 
     void OnDash()
@@ -208,7 +225,6 @@ public class PlayerControls : MonoBehaviour
     {
         if (canAttack && !pause.isPaused && canMove)
         {
-            canAttack = false;
             if (attackCoroutine != null)
             {
                 StopCoroutine(attackCoroutine);
@@ -226,6 +242,7 @@ public class PlayerControls : MonoBehaviour
     public void LockMovement()
     {
         canMove = false;
+        canAttack = false;
         body.velocity = Vector2.zero;
     }
 
