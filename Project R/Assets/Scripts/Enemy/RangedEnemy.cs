@@ -6,18 +6,21 @@ using UnityEngine;
 
 public class RangedEnemy : Enemy
 {
+    [Header("Components")]
     public Transform firePoint;
-    public float attackRadius;
     public RangedAttack rangedAttack;
-
     public Vector2 hingeBase;
-
     public GameObject bulletPrefab;
+
+    [Header("Stats")]
+    public float aggroRange;
     public float fireForce;
     public float fireRate;
 
-
-    bool isFiring = false;
+    [SerializeField]
+    private bool isFiring = false;
+    [SerializeField]
+    private bool isRunning = false;
 
     // Start is called before the first frame update
 
@@ -32,7 +35,7 @@ public class RangedEnemy : Enemy
     {
         if (!enemyHurt)
         {
-            if (spriteRend.flipX    )
+            if (spriteRend.flipX)//flip firing hinge
             {
                 rangedAttack.transform.localPosition = new Vector2(-hingeBase.x, hingeBase.y);
             }
@@ -40,26 +43,42 @@ public class RangedEnemy : Enemy
             {
                 rangedAttack.transform.localPosition = hingeBase;
             }
+            rb.velocity = MoveInput.normalized * moveSpeed;//chase player, if at certain range, then fire
             CheckDistance();
+            
         }
     }
     public override void CheckDistance()
     {
-        if (Vector2.Distance(target.position, transform.position) <= chaseRadius)//if player is in aggro range
+        if (Vector2.Distance(PointerInput, transform.position) <= chaseRadius)//if player is in aggro range
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, (-1)*moveSpeed * Time.fixedDeltaTime);
-            if(transform.position.x > target.position.x) { print("True");  spriteRend.flipX = true; }
+            Debug.Log("Too Close");
+            isRunning = true;
+            transform.position = Vector2.MoveTowards(transform.position, PointerInput, (-1)*moveSpeed * Time.fixedDeltaTime);
+            if(transform.position.x > PointerInput.x) { print("True");  spriteRend.flipX = true; }
             else { spriteRend.flipX = false; }
         }
-        else if (Vector2.Distance(target.position, transform.position) > chaseRadius && Vector2.Distance(target.position, transform.position) < attackRadius && !isFiring)
+        else if(Vector2.Distance(PointerInput, transform.position) > aggroRange && rb.velocity == Vector2.zero)
         {
-            //coroutine, trigger, coroutine, trigger
-            Vector2 difference = target.position - rangedAttack.transform.position;
+            if (!isFiring)
+            {
+                Invoke("MoveBack", 3f);
+            }
+            
+        }
+        
+    }
+
+    public void Shoot()
+    {
+        //Debug.Log(PointerInput);
+        if (!isRunning)
+        {
+            Vector2 difference = PointerInput - (Vector2)rangedAttack.transform.position;
             float aimAngle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg - 90f;
             rangedAttack.body.rotation = aimAngle;
 
-
-            if (target.position.x > transform.position.x) { spriteRend.flipX = true; }//point at player
+            if (PointerInput.x > transform.position.x) { spriteRend.flipX = true; }//point at player
             else { spriteRend.flipX = false; }
 
             if (!isFiring)
@@ -67,11 +86,6 @@ public class RangedEnemy : Enemy
                 animator.SetTrigger("attack");
                 StartCoroutine(FiringCooldown());
             }
-            
-        }
-        else
-        {
-            Invoke("MoveBack", 1f);
         }
         
     }
@@ -91,5 +105,9 @@ public class RangedEnemy : Enemy
         Destroy(bullet, 5);
     }
 
-
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 1f);
+    }
 }

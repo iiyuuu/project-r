@@ -73,7 +73,7 @@ public class PlayerControls : MonoBehaviour
             //movement speed modifier
             if (isDashing)
             {
-                Debug.Log(dashDirection);
+                //Debug.Log(dashDirection);
                 body.velocity = dashDirection.normalized * dashingPower;
 
                 //dashCast = Physics2D.Raycast(body.transform.position, dashDirection.normalized, dashingPower/2, LayerMask.GetMask("Interactable"));

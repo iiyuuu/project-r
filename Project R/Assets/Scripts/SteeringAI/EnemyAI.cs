@@ -22,7 +22,7 @@ public class EnemyAI : MonoBehaviour
 
     //Inputs sent from the Enemy AI to the Enemy controller
     public UnityEvent OnAttackPressed;
-    public UnityEvent<Vector2> OnMovementInput;
+    public UnityEvent<Vector2> OnMovementInput, OnPointerInput;
 
     [SerializeField]
     private Vector2 movementInput;
@@ -52,7 +52,7 @@ public class EnemyAI : MonoBehaviour
         if (aiData.currentTarget != null)
         {
             //Looking at the Target
-            // OnPointerInput?.Invoke(aiData.currentTarget.position);
+            OnPointerInput?.Invoke(aiData.currentTarget.position);
             if (following == false)
             {
                 following = true;
@@ -82,7 +82,6 @@ public class EnemyAI : MonoBehaviour
         {
             
             float distance = Vector2.Distance(aiData.currentTarget.position, transform.position);
-            Debug.Log(distance);
 
             if (distance < attackDistance)
             {

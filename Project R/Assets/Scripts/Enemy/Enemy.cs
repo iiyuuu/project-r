@@ -7,15 +7,17 @@ public class Enemy : MonoBehaviour
     [Header("Stats")]
     public int health = 3;
     public float moveSpeed = 3f;
-    public static Vector2 moveInput;
     public Rigidbody2D rb;
-    public Transform target;
+
+    [Header("Movement")]
+    private Vector2 moveInput;
+    private Vector2 pointerInput;
+    public Vector2 PointerInput { get => pointerInput; set => pointerInput = value; }
+    public Vector2 MoveInput { get => moveInput; set => moveInput = value; }
+    public Vector3 homePosition;
 
     public float chaseRadius;
-    public Vector3 homePosition;
     public bool ranged;
-
-
     IEnumerator kbCoroutine;
     public Animator animator;
 
@@ -36,7 +38,6 @@ public class Enemy : MonoBehaviour
             if(health <= 0)
             {
                 animator.SetTrigger("enemyDeath");
-                rb = null;
                 foreach (CircleCollider2D circle in gameObject.GetComponents<CircleCollider2D>())
                 {
                     circle.enabled = false;
@@ -54,31 +55,19 @@ public class Enemy : MonoBehaviour
      {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        target = GameObject.FindWithTag("Player").transform;
         spriteRend = GetComponent<SpriteRenderer>();
         homePosition = transform.position;
      }
 
-    public void Update()
-    {
-        if (!ranged)
-        {
-            if (target.position.x > transform.position.x) { spriteRend.flipX = true; }
-            else { spriteRend.flipX = false; }
-        }
-        
-    }
     protected virtual void FixedUpdate()
     {
-        //if (!enemyHurt)
-        //{
-        //    if (!ranged) { CheckDistance(); }
-        //}
-        if (moveInput != null)
+        if (!enemyHurt && !ranged)
         {
-            rb.velocity = moveInput * moveSpeed;
+            rb.velocity = MoveInput.normalized * moveSpeed;
+            if (PointerInput.x > transform.position.x) { spriteRend.flipX = true; }
+            else { spriteRend.flipX = false; }
+            CheckDistance();
         }
-
     }
 
     public IEnumerator Damaged()
@@ -97,12 +86,7 @@ public class Enemy : MonoBehaviour
     
     public virtual void CheckDistance()
     {
-        if (Vector2.Distance(target.position, transform.position) <= chaseRadius)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, moveSpeed * Time.fixedDeltaTime);
-                
-        }
-        else if (Vector2.Distance(target.position, transform.position) > chaseRadius)
+        if(Vector2.Distance(PointerInput, transform.position) > chaseRadius && rb.velocity == Vector2.zero)
         {
             Invoke("MoveBack", 1f);//1s delay before moving back
         }
@@ -111,7 +95,8 @@ public class Enemy : MonoBehaviour
 
     public void MoveBack()
     {
-        if(Vector2.Distance(target.position, transform.position) > chaseRadius)
+        Debug.Log("Moving Back");
+        if (Vector2.Distance(PointerInput, transform.position) > chaseRadius)
         {
             transform.position = Vector2.MoveTowards(transform.position, homePosition, moveSpeed * Time.fixedDeltaTime);
             if(homePosition.x < transform.position.x)
@@ -132,6 +117,7 @@ public class Enemy : MonoBehaviour
 
     void Death()
     {
+        enemyHurt = true;
         StopAllCoroutines();
         Destroy(gameObject);
     }
