@@ -60,11 +60,16 @@ public class RangedEnemy : Enemy
         }
         else if(Vector2.Distance(PointerInput, transform.position) > aggroRange && rb.velocity == Vector2.zero)
         {
+            isRunning = false;
             if (!isFiring)
             {
                 Invoke("MoveBack", 3f);
             }
             
+        }
+        else
+        {
+            isRunning = false;
         }
         
     }

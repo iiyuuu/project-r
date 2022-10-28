@@ -19,6 +19,23 @@ public class ObstacleDetector : Detector
     {
         colliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius, layerMask);
         aiData.obstacles = colliders;
+
+        foreach(Collider2D collider in colliders)
+        {
+            SpriteRenderer render = collider.GetComponent<SpriteRenderer>();
+            if (render != null)
+            {
+                if (gameObject.transform.position.y > collider.transform.position.y)
+                {
+                    render.sortingOrder = gameObject.GetComponentInParent<SpriteRenderer>().sortingOrder + 1;
+                }
+                else
+                {
+                    render.sortingOrder = gameObject.GetComponentInParent<SpriteRenderer>().sortingOrder - 1;
+                }
+            }
+            
+        }
     }
 
     private void OnDrawGizmos()
