@@ -93,6 +93,7 @@ public class SceneTeleporter : MonoBehaviour
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneToLoad);
         loadingScreen.SetActive(true);
+        yield return new WaitForSeconds(1);
 
         while (!operation.isDone)
         {
