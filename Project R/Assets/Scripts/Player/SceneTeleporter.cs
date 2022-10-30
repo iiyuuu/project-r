@@ -43,10 +43,7 @@ public class SceneTeleporter : MonoBehaviour
                 isDuplicate = false;
                 controls.floor_number++;
                 
-                foreach(string used in controls.usedScenes)
-                {
-                    controls.usedScenes.Remove(used);
-                }
+                controls.usedScenes.RemoveAll(s => s.Length != 0);
             }
             else if (controls.usedScenes.Count == 6 && controls.floor_number == 2)
             {
@@ -132,7 +129,16 @@ public class SceneTeleporter : MonoBehaviour
                 }
                 
             }
-            StartCoroutine(loader.LoadingLevel(sceneToLoad));
+            if (loader != null)
+            {
+                StartCoroutine(loader.LoadingLevel(sceneToLoad));
+            }
+            else
+            {
+                SceneManager.LoadScene(sceneToLoad);
+                controls.canMove = true;
+            }
+            
             
 
 

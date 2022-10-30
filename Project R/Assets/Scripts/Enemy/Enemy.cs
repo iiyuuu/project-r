@@ -131,8 +131,9 @@ public class Enemy : MonoBehaviour
             {
                 Bullet bullet = collision.GetComponent<Bullet>();
 
-                //if(coroutine != null)
+                //if (coroutine != null)
                 //{
+                //    enemyHurt = false;
                 //    StopCoroutine(coroutine);
                 //}
 
@@ -164,7 +165,7 @@ public class Enemy : MonoBehaviour
                 
             }
         }
-        if (collision.gameObject.tag.Equals("Enemy"))
+        if (collision.CompareTag("Enemy"))
         {
             if (enemyHurt)//checks if enemy is hurt and hurts both objects
             {
@@ -181,21 +182,13 @@ public class Enemy : MonoBehaviour
                     rb.velocity = Vector2.zero;
                 }
 
-                if (Health <= 0 || enemy.Health <= 0)
-                {
-                    StopAllCoroutines();
-                    enemy.enemyHurt = false;
-                    enemyHurt = false;
-                    enemy.StopAllCoroutines();
-                    return;
-                }
                 if (!enemy.enemyHurt)
                 {
-                    if (coroutine != null)
-                    {
-                        enemy.enemyHurt = false;
-                        StopCoroutine(coroutine);
-                    }
+                    //if (coroutine != null)
+                    //{
+                    //    enemy.enemyHurt = false;
+                    //    StopCoroutine(coroutine);
+                    //}
                     coroutine = enemy.Damaged();
                     enemy.Health -= 1;
                     StartCoroutine(coroutine);
