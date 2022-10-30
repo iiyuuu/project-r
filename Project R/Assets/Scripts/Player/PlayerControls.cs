@@ -11,9 +11,11 @@ public class PlayerControls : MonoBehaviour
     public ContactFilter2D movementFilter;
     public Rigidbody2D body;
     public Vector2 moveInput;
+    public int floor_number = 1;
 
     private RaycastHit2D dashCast;
 
+    [Header("Movement")]
     public float baseMoveSpeed = 50f;
     public float activeMoveSpeed;
     public float idleFriction = 0.9f;
@@ -21,28 +23,31 @@ public class PlayerControls : MonoBehaviour
     IEnumerator dashCoroutine;
     IEnumerator attackCoroutine;
     public float dashingPower = 24f;
-    public bool isDashing;
-    public bool canDash = true;
-    [SerializeField] private bool canAttack = true;
     private Vector2 dashDirection;
     
 
-    Animator animator;
-    SpriteRenderer spriteRenderer;
-
+    [Header("Bools")]
+    public bool isDashing;
+    public bool canDash = true;
+    [SerializeField] private bool canAttack = true;
     public bool canMove = true;
     public bool isMoving = false;
-    public MeleeController melee;
 
+
+    
     public List<string> usedScenes = new List<string>();
 
+    [Header("Borrowed Components")]
+    public MeleeController melee;
     public PauseMenu pause;
     public ShopManager shopUI;
     public GameObject prompt;
     public RangedAttack rangedAttack;
     public PlayerStats playerStats;
 
-    public SpriteRenderer characterRenderer, weaponRenderer;
+    public SpriteRenderer characterRenderer, weaponRenderer, spriteRenderer;
+
+    Animator animator;
 
     //Vector 2 -> 2d Vector with X and Y speed
 

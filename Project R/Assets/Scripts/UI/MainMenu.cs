@@ -5,20 +5,19 @@ using System.Collections.Generic;
 
 public class MainMenu : MonoBehaviour
 {
-
+    public LevelLoader loader;
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        StartCoroutine(loader.LoadingLevel("Tutorial Level"));
     }
 
     public void QuitGame()
     {
-        Debug.Log("QUIT");
-        Application.Quit();
+        StartCoroutine(QuitRoutine()); 
     }
     
     List<int> widths = new List<int>() {800, 1280, 1366, 1920};
-    List<int> heights = new List<int>() {600, 729, 768, 1080};
+    List<int> heights = new List<int>() {600, 720, 768, 1080};
 
     public void SetScreenSize (int index) 
     {
@@ -31,6 +30,16 @@ public class MainMenu : MonoBehaviour
     public void SetFullscreen (bool _fullscreen)
     {
         Screen.fullScreen = _fullscreen;
+    }
+
+    public IEnumerator QuitRoutine()
+    {
+        loader.animator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(1);
+
+        Debug.Log("QUIT");
+        Application.Quit();
     }
 
 }

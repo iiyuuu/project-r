@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public Rigidbody2D rb;
+
     [Header("Stats")]
     public int health = 3;
     public float moveSpeed = 3f;
-    public Rigidbody2D rb;
+    public float chaseRadius;
+    public bool ranged;
 
     [Header("Movement")]
     private Vector2 moveInput;
@@ -15,10 +18,7 @@ public class Enemy : MonoBehaviour
     public Vector2 PointerInput { get => pointerInput; set => pointerInput = value; }
     public Vector2 MoveInput { get => moveInput; set => moveInput = value; }
     public Vector3 homePosition;
-
-    public float chaseRadius;
-    public bool ranged;
-    IEnumerator kbCoroutine;
+    
     public Animator animator;
 
     [Header("Damage Indicator")]
@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour
     public SpriteRenderer spriteRend;
 
     IEnumerator coroutine;
+    IEnumerator kbCoroutine;
 
 
     public int Health
@@ -129,12 +130,12 @@ public class Enemy : MonoBehaviour
             if(rb != null && !enemyHurt)
             {
                 Bullet bullet = collision.GetComponent<Bullet>();
-                bullet.hitEnemy = true;
 
-                if(coroutine != null)
-                {
-                    StopCoroutine(coroutine);
-                }
+                //if(coroutine != null)
+                //{
+                //    StopCoroutine(coroutine);
+                //}
+
                 coroutine = Damaged();
 
                 rb.velocity = Vector2.zero;

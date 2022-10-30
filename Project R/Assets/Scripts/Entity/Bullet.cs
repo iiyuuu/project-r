@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public bool hitEnemy = false;
     public SpriteRenderer spriteRenderer;
     public float kbPower = 1f;
     public Rigidbody2D rb;

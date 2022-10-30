@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class HealingPool : MonoBehaviour
 {
-    public GameObject healingPrefab;
     public PlayerStats stats;
 
     private void Start()

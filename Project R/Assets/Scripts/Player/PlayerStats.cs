@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class PlayerStats : MonoBehaviour
 {
+    [Header("Stats")]
     public int maxHealth;
     public int currentHealth;
     public int maxAmmo;
@@ -18,11 +19,13 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private float iFrameDuration;
     [SerializeField] private int numberOfFlashes;
     public bool hurt = false;
+    
+    
     private SpriteRenderer spriteRend;
     public GameObject UIRender;
-
     public Animator animator;
     public PlayerControls playerControls;
+    public LevelLoader loader;
 
     void Start()
     {
@@ -42,19 +45,42 @@ public class PlayerStats : MonoBehaviour
             currentHealth = 0;
             OnPlayerDeath?.Invoke();
             playerControls.canMove = false;
+
+            Canvas[] canvases = FindObjectsOfType<Canvas>(true);
+            foreach(Canvas c in canvases)
+            {
+                if (c.CompareTag("Respawn"))
+                {
+                    continue;
+                }
+                c.gameObject.SetActive(false);
+            }
+
+
+            SceneManager.LoadSceneAsync("Death");
             animator.SetTrigger("Death");
-            //spriteRend.sortingOrder = UIRender.sortingOrder + 1;
+            //move to death scene
+            //turn off everything except player
+            //play animation after transition to scene
+            //fade to hub
             //fade out or game over scene
         }
     }
 
-    void MainMenu()
+    void Respawn()
     {
-        foreach (GameObject o in FindObjectsOfType<GameObject>())
+        loader = FindObjectOfType<LevelLoader>();
+
+        StartCoroutine(loader.LoadingLevel("Hub"));
+        animator.SetTrigger("Respawn");
+
+        Canvas[] canvases = FindObjectsOfType<Canvas>(true);
+        foreach (Canvas c in canvases)
         {
-            Destroy(o);
+            c.gameObject.SetActive(true);
         }
-        SceneManager.LoadScene("Menu");
+        currentHealth = maxHealth;
+        playerControls.canMove = true;
     }
     public void Healing(int amount)
     {

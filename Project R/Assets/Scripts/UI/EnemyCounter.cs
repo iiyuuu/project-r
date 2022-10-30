@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyCounter : MonoBehaviour
 {
@@ -16,7 +17,15 @@ public class EnemyCounter : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        EnemyCount();
+        if(SceneManager.GetActiveScene().name == "Hub")
+        {
+            text = null;
+        }
+        else
+        {
+            EnemyCount();
+        }
+        
     }
 
     public void EnemyCount()

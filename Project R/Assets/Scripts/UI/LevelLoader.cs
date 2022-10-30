@@ -5,18 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
-    public void LoadLevel(string sceneName)
-    {
-        StartCoroutine(LoadAsynchronously(sceneName));
-    }
+    public Animator animator;
+    public float transitionTime;
+    public SceneTeleporter teleporter;
 
-    IEnumerator LoadAsynchronously (string sceneName)
+    public IEnumerator LoadingLevel(string scene)
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+        animator.SetTrigger("Start");
 
-        while (!operation.isDone)
+        yield return new WaitForSeconds(transitionTime);
+
+        if(scene != null)
         {
-            yield return null;
+            SceneManager.LoadScene(scene);
+
+            if (teleporter != null)
+            {
+                teleporter.StartLoad(scene);
+            }
         }
+        
+        
     }
 }

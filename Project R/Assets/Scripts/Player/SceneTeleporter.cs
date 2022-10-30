@@ -17,6 +17,8 @@ public class SceneTeleporter : MonoBehaviour
     bool isDuplicate = true;
     System.Random rand = new System.Random();
 
+    public LevelLoader loader;
+
     public void Start()
     {
         isDuplicate = true;
@@ -33,10 +35,29 @@ public class SceneTeleporter : MonoBehaviour
         if (other.CompareTag("Player") && !other.isTrigger)
         {
 
-            if (controls.usedScenes.Count == 4)
+            controls.canMove = false;
+
+            if (controls.usedScenes.Count == 4 && controls.floor_number == 1)
             {
                 sceneToLoad = "F1_BossRoom";
                 isDuplicate = false;
+                controls.floor_number++;
+                
+                foreach(string used in controls.usedScenes)
+                {
+                    controls.usedScenes.Remove(used);
+                }
+            }
+            else if (controls.usedScenes.Count == 6 && controls.floor_number == 2)
+            {
+                sceneToLoad = "F2_BossRoom";
+                isDuplicate = false;
+                controls.floor_number++;
+
+                foreach (string used in controls.usedScenes)
+                {
+                    controls.usedScenes.Remove(used);
+                }
             }
 
             if (sceneToLoad.Length != 0)//if there is already a thing in the fill bar
@@ -48,24 +69,58 @@ public class SceneTeleporter : MonoBehaviour
             {
                 while (isDuplicate)
                 {
-                    switch (rand.Next(1, 5))
+                    switch (controls.floor_number)
                     {
                         case 1:
-                            sceneToLoad = "F1_Zone1";
+                            switch (rand.Next(1, 5))
+                            {
+                                case 1:
+                                    sceneToLoad = "F1_Zone1";
+                                    break;
+                                case 2:
+                                    sceneToLoad = "F1_Zone2";
+                                    break;
+                                case 3:
+                                    sceneToLoad = "F1_Zone3";
+                                    break;
+                                case 4:
+                                    sceneToLoad = "F1_Zone4";
+                                    break;
+                                default:
+                                    //Debug.Log("No room exists for this number : " + num.ToString());
+                                    break;
+                            }
                             break;
                         case 2:
-                            sceneToLoad = "F1_Zone2";
-                            break;
-                        case 3:
-                            sceneToLoad = "F1_Zone3";
-                            break;
-                        case 4:
-                            sceneToLoad = "F1_Zone4";
+                            switch (rand.Next(1, 7))
+                            {
+                                case 1:
+                                    sceneToLoad = "F2_Zone1";
+                                    break;
+                                case 2:
+                                    sceneToLoad = "F2_Zone2";
+                                    break;
+                                case 3:
+                                    sceneToLoad = "F2_Zone3";
+                                    break;
+                                case 4:
+                                    sceneToLoad = "F2_Zone4";
+                                    break;
+                                case 5:
+                                    sceneToLoad = "F2_Zone5";
+                                    break;
+                                case 6:
+                                    sceneToLoad = "F2_Zone6";
+                                    break;
+                                default:
+                                    //Debug.Log("No room exists for this number : " + num.ToString());
+                                    break;
+                            }
                             break;
                         default:
-                            //Debug.Log("No room exists for this number : " + num.ToString());
                             break;
                     }
+                    
 
                     if (!(controls.usedScenes.Contains(sceneToLoad)))
                     {
@@ -77,7 +132,8 @@ public class SceneTeleporter : MonoBehaviour
                 }
                 
             }
-            StartCoroutine(LoadSceneAsynchronously(sceneToLoad));
+            StartCoroutine(loader.LoadingLevel(sceneToLoad));
+            
 
 
 
@@ -89,8 +145,15 @@ public class SceneTeleporter : MonoBehaviour
         }
     }
 
+    public void StartLoad(string scene)
+    {
+        StartCoroutine(LoadSceneAsynchronously(scene));
+    }
+
     IEnumerator LoadSceneAsynchronously(string sceneToLoad)
     {
+        
+        
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneToLoad);
         loadingScreen.SetActive(true);
         yield return new WaitForSeconds(1);
@@ -98,14 +161,16 @@ public class SceneTeleporter : MonoBehaviour
         while (!operation.isDone)
         {
             loadingBar.value = operation.progress;
-            
-            yield return null;
+
+            yield return new WaitForSeconds(1);
         }
+
     }
 
     private void OnLevelFinishedLoading()
     {
         //Debug.Log(controls.usedScenes.Count);
+        controls.canMove = true;
         controls.gameObject.transform.position = spawn.transform.position;
         loadingScreen.SetActive(false);
     }
