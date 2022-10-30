@@ -57,7 +57,7 @@ public class PlayerStats : MonoBehaviour
             }
 
 
-            SceneManager.LoadSceneAsync("Death");
+            SceneManager.LoadScene("Death");
             animator.SetTrigger("Death");
             //move to death scene
             //turn off everything except player
@@ -67,11 +67,11 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    void Respawn()
+    IEnumerator Respawn()
     {
         loader = FindObjectOfType<LevelLoader>();
 
-        StartCoroutine(loader.LoadingLevel("Hub"));
+        yield return StartCoroutine(loader.LoadingLevel("Hub"));
         animator.SetTrigger("Respawn");
 
         Canvas[] canvases = FindObjectsOfType<Canvas>(true);

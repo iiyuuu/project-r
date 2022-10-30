@@ -19,7 +19,7 @@ public class EnemyCounter : MonoBehaviour
     {
         if(SceneManager.GetActiveScene().name == "Hub")
         {
-            text = null;
+            text.text = "";
         }
         else
         {

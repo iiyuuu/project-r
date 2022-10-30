@@ -30,6 +30,13 @@ public class Stopwatch : MonoBehaviour
             toggle.isOn = true;
         }
 
+        if((SceneManager.GetActiveScene().name.Contains("Hub") || 
+            SceneManager.GetActiveScene().name.Contains("F2_Rest")) && 
+            toggle.isOn)
+        {
+            toggle.isOn = false;
+        }
+
         if (toggle.isOn)
         {
             currentTime = currentTime + Time.deltaTime;

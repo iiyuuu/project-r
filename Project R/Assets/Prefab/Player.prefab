@@ -843,8 +843,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2013748807
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -879159589, guid: bed847c902f498946be3dbf1b2835a43, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -933,6 +933,7 @@ MonoBehaviour:
     maxNormalAngle: 0
   body: {fileID: 0}
   moveInput: {x: 0, y: 0}
+  floor_number: 1
   baseMoveSpeed: 15
   activeMoveSpeed: 0
   idleFriction: 0.9
@@ -942,8 +943,8 @@ MonoBehaviour:
   canAttack: 1
   canMove: 1
   isMoving: 0
-  melee: {fileID: 5075760738389464468}
   usedScenes: []
+  melee: {fileID: 5075760738389464468}
   pause: {fileID: 0}
   shopUI: {fileID: 0}
   prompt: {fileID: 5954727294577848768}
@@ -951,6 +952,7 @@ MonoBehaviour:
   playerStats: {fileID: 8479199668614094277}
   characterRenderer: {fileID: 8479199668614094281}
   weaponRenderer: {fileID: 4711941875214280317}
+  spriteRenderer: {fileID: 0}
 --- !u!114 &8479199668614094277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -963,8 +965,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6529c38fc406fc5488646fd1c7562603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 6
-  currentHealth: 6
+  maxHealth: 3
+  currentHealth: 3
   maxAmmo: 5
   currentAmmo: 0
   iFrameDuration: 1
@@ -973,6 +975,7 @@ MonoBehaviour:
   UIRender: {fileID: 0}
   animator: {fileID: 8479199668614094276}
   playerControls: {fileID: 8479199668614094284}
+  loader: {fileID: 0}
 --- !u!114 &5002295740580372872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -989,7 +992,7 @@ MonoBehaviour:
   currency: {fileID: 0}
   hitbox: {fileID: 5075760738389464468}
   controls: {fileID: 8479199668614094284}
-  thrust: 3
+  thrust: 5
   kbTime: 0.2
 --- !u!95 &8479199668614094276
 Animator:
