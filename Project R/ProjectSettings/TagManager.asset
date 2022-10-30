@@ -16,6 +16,9 @@ TagManager:
   - Exit
   - UI
   - Enemy Projectile
+  - Shop
+  - Player Ranged
+  - Loading Screen
   layers:
   - Default
   - TransparentFX
@@ -56,11 +59,11 @@ TagManager:
   - name: Background
     uniqueID: 2351170515
     locked: 0
-  - name: Foreground
-    uniqueID: 3108536963
-    locked: 0
   - name: Collision Object
     uniqueID: 4143883949
+    locked: 0
+  - name: Foreground
+    uniqueID: 3108536963
     locked: 0
   - name: Interactables
     uniqueID: 286131375
