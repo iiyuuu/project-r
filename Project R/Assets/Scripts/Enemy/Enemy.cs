@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public float moveSpeed = 3f;
     public float chaseRadius;
     public bool ranged;
+    public int attackDamage;
 
     [Header("Movement")]
     private Vector2 moveInput;
@@ -65,8 +66,22 @@ public class Enemy : MonoBehaviour
         if (!enemyHurt && !ranged)
         {
             rb.velocity = MoveInput.normalized * moveSpeed;
-            if (PointerInput.x > transform.position.x) { spriteRend.flipX = true; }
-            else { spriteRend.flipX = false; }
+            if(rb.velocity != Vector2.zero)
+            {
+                animator.SetBool("Moving", true);
+            }
+            else 
+            { 
+                animator.SetBool("Moving", false); 
+            }
+            if (PointerInput.x > transform.position.x) 
+            { 
+                spriteRend.flipX = true; 
+            }
+            else 
+            { 
+                spriteRend.flipX = false; 
+            }
             CheckDistance();
         }
     }

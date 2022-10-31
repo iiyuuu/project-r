@@ -19,12 +19,12 @@ public class CollisionHandler : MonoBehaviour
     {
         currency = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<CurrencyManager>();
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
        if(other.gameObject.tag.Equals("Enemy") || other.gameObject.tag.Equals("Enemy Projectile"))
        {
-            Rigidbody2D enemy = other.GetComponent<Rigidbody2D>();
-            Vector2 difference = transform.position - enemy.transform.position;
+            Enemy enemy = other.GetComponent<Enemy>();
+            Vector2 difference = transform.position - enemy.rb.transform.position;
             difference = difference.normalized * thrust; //(1, 0) - (3, 0) = (-2, 0) -> (-1, 0) * thrust (3) = (-3, 0) force
             if (controls.canDash && !stats.hurt)
             {
@@ -34,7 +34,15 @@ public class CollisionHandler : MonoBehaviour
                 }
                 coroutine = kbCoroutine(controls.body);
                
-                stats.DamageTaken(1);
+                if(enemy.attackDamage <= 0)
+                {
+                    stats.DamageTaken(1);
+                }
+                else
+                {
+                    stats.DamageTaken(enemy.attackDamage);
+                }
+                
                
                 //difference = (controls.body.mass * difference) / Time.fixedDeltaTime;
                 Debug.Log(difference);
