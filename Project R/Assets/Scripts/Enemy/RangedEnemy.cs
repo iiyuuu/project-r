@@ -17,10 +17,8 @@ public class RangedEnemy : Enemy
     public float fireForce;
     public float fireRate;
 
-    [SerializeField]
-    private bool isFiring = false;
-    [SerializeField]
-    private bool isRunning = false;
+    [SerializeField] private bool canFire = true;
+    [SerializeField] private bool canRun = false;
 
     // Start is called before the first frame update
 
@@ -43,68 +41,55 @@ public class RangedEnemy : Enemy
             {
                 rangedAttack.transform.localPosition = hingeBase;
             }
-            rb.velocity = MoveInput.normalized * moveSpeed;//chase player, if at certain range, then fire
+            
             CheckDistance();
             
         }
     }
     public override void CheckDistance()
     {
-        if (Vector2.Distance(PointerInput, transform.position) <= chaseRadius)//if player is in aggro range
+        if (Vector2.Distance(PointerInput, transform.position) <= chaseRadius && canRun)//if player is in sweet zone
         {
-            Debug.Log("Too Close");
-            isRunning = true;
-            transform.position = Vector2.MoveTowards(transform.position, PointerInput, (-1)*moveSpeed * Time.fixedDeltaTime);
-            if(transform.position.x > PointerInput.x) { print("True");  spriteRend.flipX = true; }
+            transform.position = Vector2.MoveTowards(transform.position, PointerInput, (-1) * moveSpeed * Time.fixedDeltaTime);
+            if (transform.position.x > PointerInput.x) { print("True"); spriteRend.flipX = true; }//look away from player when running
             else { spriteRend.flipX = false; }
+
+            Debug.Log("Too Close");
+            
         }
-        else if(Vector2.Distance(PointerInput, transform.position) > aggroRange && rb.velocity == Vector2.zero)
+        else if(Vector2.Distance(PointerInput, transform.position) > aggroRange && rb.velocity == Vector2.zero)//if skele isnt moving and is out of aggro range
         {
-            isRunning = false;
-            if (!isFiring)
+            if (canFire)
             {
                 Invoke("MoveBack", 3f);
             }
-            
         }
-        else
+        else//if player is in attack range but out of aggro range
         {
-            isRunning = false;
+            rb.velocity = MoveInput.normalized * moveSpeed;//chase player, if at certain range, then fire
         }
         
     }
 
     public void Shoot()
     {
-        //Debug.Log(PointerInput);
-        if (!isRunning)
+        if (canFire)//shoots if it isnt firing and sets cd
         {
-            Vector2 difference = PointerInput - (Vector2)rangedAttack.transform.position;
-            float aimAngle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg - 90f;
-            rangedAttack.body.rotation = aimAngle;
-
-            if (PointerInput.x > transform.position.x) { spriteRend.flipX = true; }//point at player
-            else { spriteRend.flipX = false; }
-
-            if (!isFiring)
-            {
-                animator.SetTrigger("attack");
-                StartCoroutine(FiringCooldown());
-            }
+            animator.SetTrigger("attack");
         }
-        
     }
 
     public IEnumerator FiringCooldown()
     {
-        
-        isFiring = true;
-        yield return new WaitForSeconds(1/ fireRate);
-        isFiring = false;
+        yield return new WaitForSeconds(1 / fireRate);//the cooldown
+        canFire = true;
     }
 
     void Fire()
     {
+        //Debug.Log(PointerInput);
+        
+        UnlockMovement();
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);
         Destroy(bullet, 5);
@@ -114,5 +99,24 @@ public class RangedEnemy : Enemy
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, 1f);
+    }
+
+    public void LockMovement()
+    {
+        Vector2 difference = PointerInput - (Vector2)rangedAttack.transform.position;
+        float aimAngle = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg - 90f;//aiming code
+        rangedAttack.body.rotation = aimAngle;
+
+        if (PointerInput.x > transform.position.x) { spriteRend.flipX = true; }//point at player
+        else { spriteRend.flipX = false; }
+        canRun = false;
+        canFire = false;
+        rb.velocity = Vector2.zero;//stop moving
+        StartCoroutine(FiringCooldown());
+    }
+
+    public void UnlockMovement()
+    {
+        canRun = true;
     }
 }

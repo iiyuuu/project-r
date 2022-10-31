@@ -572,6 +572,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3911795455050588110, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 2072947458}
+    - target: {fileID: 3911795455050588110, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
       propertyPath: OnReloading.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -598,6 +602,10 @@ PrefabInstance:
     - target: {fileID: 3911795455050588110, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
       propertyPath: OnReloading.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002295740580372872, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
+      propertyPath: thrust
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5002295740580372872, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
       propertyPath: currency
@@ -9807,10 +9815,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 777386639253033907, guid: b8a1876b341ea7a4fa8ccf34a36c9195, type: 3}
-      propertyPath: attackRadius
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: b8a1876b341ea7a4fa8ccf34a36c9195, type: 3}
@@ -10022,7 +10026,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1751636132
 Animator:
   serializedVersion: 4
@@ -11058,6 +11062,11 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &2072947458 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8479199668614094276, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
+  m_PrefabInstance: {fileID: 290905369}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2090597133
 GameObject:
   m_ObjectHideFlags: 0

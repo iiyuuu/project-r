@@ -16,12 +16,13 @@ public class PlayerStats : MonoBehaviour
     public static event Action OnPlayerHeal;
 
     [Header("Damage Frames")]
+    public bool hurt = false;
     [SerializeField] private float iFrameDuration;
     [SerializeField] private int numberOfFlashes;
-    public bool hurt = false;
     
-    
-    private SpriteRenderer spriteRend;
+
+    [Header("Borrowed Componments")]
+    [SerializeField] private SpriteRenderer spriteRend;
     public GameObject UIRender;
     public Animator animator;
     public PlayerControls playerControls;

@@ -8,24 +8,27 @@ using System;
 
 public class RangedAttack : MonoBehaviour
 {
-    public GameObject bulletPrefab;
-    public Transform firePoint;
-    public float fireForce = 3f;
-    public bool reloadTrigger = false;
-
-    public static event Action OnPlayerFire;
-
+    [Header("Stats")]
     [SerializeField] private float fireRate;
     [SerializeField] private float reloadTime;
+    public float fireForce = 3f;
+    [SerializeField] private float currentDelay;
+
+    [Header("Bools")]
+    public bool reloadTrigger = false;
     [SerializeField] private bool reloading = false;
     [SerializeField] private bool firing = false;
-    [SerializeField] private float currentDelay;
-    
 
+    [Header("Borrowed Components")]
+    public GameObject bulletPrefab;
+    public Transform firePoint;
     public Rigidbody2D body;
     public PlayerStats stats;
     public PlayerControls controls;
+    public Animator animator;
+
     public UnityEvent<float> OnReloading;
+    public static event Action OnPlayerFire;//action for ammo bar
 
 
     IEnumerator coroutine;
@@ -77,8 +80,9 @@ public class RangedAttack : MonoBehaviour
     }
     public void Fire()
     {
-        if (!firing && !reloading)
+        if (!firing && !reloading && controls.canDash)
         {
+            animator.SetTrigger("Fireball");//locks movement, then unlocks movement
             OnPlayerFire?.Invoke();
             stats.currentAmmo--;
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

@@ -89,7 +89,7 @@ Transform:
   - {fileID: 4457828284934256890}
   - {fileID: 8535903383254400524}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &777386639253033911
 SpriteRenderer:
@@ -176,12 +176,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51eedb46d524043de8ea3e5f29f0d280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   health: 3
   moveSpeed: 0.5
-  rb: {fileID: 0}
-  homePosition: {x: 0, y: 0, z: 0}
   chaseRadius: 1
   ranged: 1
+  attackDamage: 0
+  homePosition: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
   iFrameDuration: 0.5
   numberOfFlashes: 2
@@ -194,8 +195,8 @@ MonoBehaviour:
   aggroRange: 2
   fireForce: 1
   fireRate: 1
-  isFiring: 0
-  isRunning: 0
+  canFire: 1
+  canRun: 0
 --- !u!58 &777386639253033909
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -284,7 +285,7 @@ MonoBehaviour:
   aiData: {fileID: 4159087927053192127}
   detectionDelay: 0.05
   aiUpdateDelay: 0.06
-  attackDelay: 1
+  attackDelay: 0.05
   attackDistance: 1.5
   OnAttackPressed:
     m_PersistentCalls:
@@ -392,7 +393,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777386640743146267}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.13, y: 0.118, z: 0}
+  m_LocalPosition: {x: -0.127, y: 0.008, z: 0}
   m_LocalScale: {x: 0.03626464, y: 0.21166468, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -488,7 +489,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.13, y: 0.11800003}
+  m_ConnectedAnchor: {x: -0.12700003, y: 0.008000016}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

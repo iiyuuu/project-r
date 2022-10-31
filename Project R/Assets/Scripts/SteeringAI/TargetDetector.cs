@@ -29,7 +29,7 @@ public class TargetDetector : Detector
             BoxCollider2D box = playerCollider.gameObject.GetComponent<BoxCollider2D>();
             Vector2 newOffset = new Vector2(box.offset.x, box.offset.y / 1.3f);
             Vector2 direction = ((Vector2)playerCollider.transform.position + newOffset - (Vector2)transform.position).normalized;
-            Debug.Log(direction);
+            //Debug.Log(direction);
             RaycastHit2D hit =
                 Physics2D.Raycast(transform.position, direction, targetDetectionRange, obstaclesLayerMask);
             Debug.DrawRay(transform.position, direction * targetDetectionRange, Color.blue);

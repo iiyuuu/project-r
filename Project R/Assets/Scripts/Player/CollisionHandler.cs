@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class CollisionHandler : MonoBehaviour
 {
+    [Header("Stats")]
+    [Range(1, 10)] public float thrust;
+    public float kbTime = 0.2f;
+
+
+    [Header("Borrowed Components")]
     public PlayerStats stats;
     public CurrencyManager currency;
     public MeleeController hitbox;
@@ -12,8 +18,8 @@ public class CollisionHandler : MonoBehaviour
 
     IEnumerator coroutine;
 
-    public float thrust;
-    public float kbTime = 0.2f;
+    
+    
 
     public void Update()
     {
@@ -21,10 +27,9 @@ public class CollisionHandler : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
-       if(other.gameObject.tag.Equals("Enemy") || other.gameObject.tag.Equals("Enemy Projectile"))
+       if(other.CompareTag("Enemy") || other.CompareTag("Enemy Projectile"))
        {
-            Enemy enemy = other.GetComponent<Enemy>();
-            Vector2 difference = transform.position - enemy.rb.transform.position;
+            Vector2 difference = transform.position - other.transform.position;
             difference = difference.normalized * thrust; //(1, 0) - (3, 0) = (-2, 0) -> (-1, 0) * thrust (3) = (-3, 0) force
             if (controls.canDash && !stats.hurt)
             {
@@ -33,15 +38,24 @@ public class CollisionHandler : MonoBehaviour
                     StopCoroutine(coroutine);
                 }
                 coroutine = kbCoroutine(controls.body);
-               
-                if(enemy.attackDamage <= 0)
+
+                if (other.CompareTag("Enemy"))
+                {
+                    Enemy enemy = other.GetComponent<Enemy>();
+                    if (enemy.attackDamage <= 0)
+                    {
+                        stats.DamageTaken(1);
+                    }
+                    else
+                    {
+                        stats.DamageTaken(enemy.attackDamage);
+                    }
+                }
+                else if (other.CompareTag("Enemy Projectile"))
                 {
                     stats.DamageTaken(1);
                 }
-                else
-                {
-                    stats.DamageTaken(enemy.attackDamage);
-                }
+                
                 
                
                 //difference = (controls.body.mass * difference) / Time.fixedDeltaTime;

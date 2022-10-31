@@ -6,16 +6,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerControls : MonoBehaviour
 {
-    private List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
+    [Header("Collider")]
     public float collisionOffset = 0.05f;
+    [SerializeField] private List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
     public ContactFilter2D movementFilter;
-    public Rigidbody2D body;
-    public Vector2 moveInput;
-    public int floor_number = 1;
-
-    private RaycastHit2D dashCast;
+    [SerializeField] private RaycastHit2D dashCast;
 
     [Header("Movement")]
+    public Vector2 moveInput;
     public float baseMoveSpeed = 50f;
     public float activeMoveSpeed;
     public float idleFriction = 0.9f;
@@ -33,11 +31,12 @@ public class PlayerControls : MonoBehaviour
     public bool canMove = true;
     public bool isMoving = false;
 
-
-    
+    [Space(20)]
+    public int floor_number = 1;
     public List<string> usedScenes = new List<string>();
 
     [Header("Borrowed Components")]
+    public Rigidbody2D body;
     public MeleeController melee;
     public PauseMenu pause;
     public ShopManager shopUI;
@@ -45,7 +44,7 @@ public class PlayerControls : MonoBehaviour
     public RangedAttack rangedAttack;
     public PlayerStats playerStats;
 
-    public SpriteRenderer characterRenderer, weaponRenderer, spriteRenderer;
+    public SpriteRenderer weaponRenderer, spriteRenderer;
 
     Animator animator;
 
@@ -62,7 +61,7 @@ public class PlayerControls : MonoBehaviour
 
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(new Vector2(transform.position.x, transform.position.y) + dashDirection/1.3f, 0.15f);
     }
@@ -239,6 +238,7 @@ public class PlayerControls : MonoBehaviour
                 StopCoroutine(attackCoroutine);
             }
             attackCoroutine = AttackCoroutine(melee.attackRate);
+            canAttack = false;
             StartCoroutine(attackCoroutine);
         }
     }
@@ -250,8 +250,7 @@ public class PlayerControls : MonoBehaviour
 
     public void LockMovement()
     {
-        canMove = false;
-        canAttack = false;
+        canMove = false;       
         body.velocity = Vector2.zero;
     }
 
