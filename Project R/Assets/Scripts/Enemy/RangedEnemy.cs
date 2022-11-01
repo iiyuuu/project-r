@@ -31,7 +31,7 @@ public class RangedEnemy : Enemy
 
     protected override void FixedUpdate()
     {
-        if (!enemyHurt)
+        if (!enemyHurt && Health > 0)
         {
             if (spriteRend.flipX)//flip firing hinge
             {
@@ -73,7 +73,7 @@ public class RangedEnemy : Enemy
 
     public void Shoot()
     {
-        if (canFire)//shoots if it isnt firing and sets cd
+        if (canFire && Health > 0)//shoots if it isnt firing and sets cd
         {
             animator.SetTrigger("attack");
         }

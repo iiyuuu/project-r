@@ -496,7 +496,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: -0.059999984}
+  m_ConnectedAnchor: {x: 0, y: -0.06}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -517,21 +517,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d17f352d7e9b4051a4fcce8d931a95f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 373667894874720840, guid: 88fe1c2b8c637824cb9d5f44a90a134e, type: 3}
-  firePoint: {fileID: 6964965268148871372}
-  fireForce: 3
-  reloadTrigger: 0
   fireRate: 2
   reloadTime: 2
+  fireForce: 3
+  currentDelay: 0
+  reloadTrigger: 0
   reloading: 0
   firing: 0
-  currentDelay: 0
+  bulletPrefab: {fileID: 373667894874720840, guid: 88fe1c2b8c637824cb9d5f44a90a134e, type: 3}
+  firePoint: {fileID: 6964965268148871372}
   body: {fileID: 163697858814120481}
   stats: {fileID: 8479199668614094277}
   controls: {fileID: 8479199668614094284}
+  animator: {fileID: 8479199668614094276}
   OnReloading:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2306697102429395366}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
+        m_MethodName: set_value
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4438418881195071626
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,9 +944,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  body: {fileID: 0}
   moveInput: {x: 0, y: 0}
-  floor_number: 1
   baseMoveSpeed: 15
   activeMoveSpeed: 0
   idleFriction: 0.9
@@ -943,14 +954,15 @@ MonoBehaviour:
   canAttack: 1
   canMove: 1
   isMoving: 0
+  floor_number: 1
   usedScenes: []
+  body: {fileID: 0}
   melee: {fileID: 5075760738389464468}
   pause: {fileID: 0}
   shopUI: {fileID: 0}
   prompt: {fileID: 5954727294577848768}
   rangedAttack: {fileID: 3911795455050588110}
   playerStats: {fileID: 8479199668614094277}
-  characterRenderer: {fileID: 8479199668614094281}
   weaponRenderer: {fileID: 4711941875214280317}
   spriteRenderer: {fileID: 0}
 --- !u!114 &8479199668614094277
@@ -969,9 +981,10 @@ MonoBehaviour:
   currentHealth: 3
   maxAmmo: 5
   currentAmmo: 0
+  hurt: 0
   iFrameDuration: 1
   numberOfFlashes: 5
-  hurt: 0
+  spriteRend: {fileID: 0}
   UIRender: {fileID: 0}
   animator: {fileID: 8479199668614094276}
   playerControls: {fileID: 8479199668614094284}
@@ -988,12 +1001,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51892f1e03bb3fa449b752028a8b56c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thrust: 5
+  kbTime: 0.2
   stats: {fileID: 8479199668614094277}
   currency: {fileID: 0}
   hitbox: {fileID: 5075760738389464468}
   controls: {fileID: 8479199668614094284}
-  thrust: 5
-  kbTime: 0.2
 --- !u!95 &8479199668614094276
 Animator:
   serializedVersion: 4

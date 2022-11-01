@@ -14,7 +14,9 @@ public class EnemyMelee : MonoBehaviour
     public Animator animator;
     public SpriteRenderer spriteRenderer;
     public Transform attackPoint;
+    public Enemy enemy;
     public LayerMask playerLayer;
+    
 
     private IEnumerator coroutine;
     
@@ -26,7 +28,8 @@ public class EnemyMelee : MonoBehaviour
     }
 
     public void Attack()
-    {
+    { 
+        if(enemy.Health <= 0) { return; }
         Debug.Log("attack");
         if (spriteRenderer.flipX == true)
         {

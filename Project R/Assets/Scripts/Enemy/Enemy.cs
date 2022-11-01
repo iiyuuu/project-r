@@ -39,6 +39,7 @@ public class Enemy : MonoBehaviour
             health = value;
             if(health <= 0)
             {
+                animator.SetBool("Dead", true);
                 animator.SetTrigger("enemyDeath");
                 foreach (CircleCollider2D circle in gameObject.GetComponents<CircleCollider2D>())
                 {
@@ -63,7 +64,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        if (!enemyHurt && !ranged)
+        if (!enemyHurt && !ranged && Health > 0)
         {
             rb.velocity = MoveInput.normalized * moveSpeed;
             if(rb.velocity != Vector2.zero)
@@ -133,8 +134,6 @@ public class Enemy : MonoBehaviour
 
     void Death()
     {
-        enemyHurt = true;
-        StopAllCoroutines();
         Destroy(gameObject);
     }
 
@@ -146,11 +145,11 @@ public class Enemy : MonoBehaviour
             {
                 Bullet bullet = collision.GetComponent<Bullet>();
 
-                //if (coroutine != null)
-                //{
-                //    enemyHurt = false;
-                //    StopCoroutine(coroutine);
-                //}
+                if (coroutine != null && Health > 0)
+                {
+                    enemyHurt = false;
+                    StopCoroutine(coroutine);
+                }
 
                 coroutine = Damaged();
 
@@ -179,6 +178,10 @@ public class Enemy : MonoBehaviour
                 
                 
             }
+            else
+            {
+                Destroy(collision.gameObject);
+            }
         }
         if (collision.CompareTag("Enemy"))
         {
@@ -197,13 +200,13 @@ public class Enemy : MonoBehaviour
                     rb.velocity = Vector2.zero;
                 }
 
-                if (!enemy.enemyHurt)
+                if (!enemy.enemyHurt && Health > 0)
                 {
-                    //if (coroutine != null)
-                    //{
-                    //    enemy.enemyHurt = false;
-                    //    StopCoroutine(coroutine);
-                    //}
+                    if (coroutine != null)
+                    {
+                        enemy.enemyHurt = false;
+                        StopCoroutine(coroutine);
+                    }
                     coroutine = enemy.Damaged();
                     enemy.Health -= 1;
                     StartCoroutine(coroutine);
