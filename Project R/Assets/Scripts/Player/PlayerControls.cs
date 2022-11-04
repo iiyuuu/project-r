@@ -124,7 +124,7 @@ public class PlayerControls : MonoBehaviour
             {
                 isMoving = false;
                 animator.SetBool("isMoving", false);
-                body.velocity = Vector2.Lerp(body.velocity, Vector2.zero, 0.9f);
+                body.velocity = Vector2.Lerp(body.velocity, Vector2.zero, 0.95f);
             }
         }
         
@@ -151,7 +151,7 @@ public class PlayerControls : MonoBehaviour
             direction,
             movementFilter,
             castCollisions,
-            activeMoveSpeed * Time.fixedDeltaTime + collisionOffset);
+            collisionOffset);
 
             if (count == 0)
             {

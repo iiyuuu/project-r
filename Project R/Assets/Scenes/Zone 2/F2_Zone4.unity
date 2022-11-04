@@ -23945,6 +23945,10 @@ PrefabInstance:
       propertyPath: loader
       value: 
       objectReference: {fileID: 1507612395}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: sceneToLoad
+      value: F2_Zone5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}

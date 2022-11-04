@@ -50,6 +50,7 @@ MonoBehaviour:
   animator: {fileID: 4785558742122789421}
   spriteRenderer: {fileID: 4785558742122789422}
   attackPoint: {fileID: 4785558741677811251}
+  enemy: {fileID: 4785558742122789423}
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
