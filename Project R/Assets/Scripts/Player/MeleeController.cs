@@ -14,10 +14,6 @@ public class MeleeController : MonoBehaviour
     public int attackDamage = 1;
     public float attackRate = 2f;
     public float attackRange = 0.5f;
-    [Range(0f, 2f)]
-    public float offsetx;
-    [Range(0f, 2f)]
-    public float offsety;
 
     [Header("Backend stuff")]
     public Animator animator;
@@ -42,11 +38,11 @@ public class MeleeController : MonoBehaviour
             transform.localPosition = new Vector2(rightAttackOffset.x * -1, rightAttackOffset.y);
         }
         else
-            {
+        {
             transform.localPosition = rightAttackOffset;
-            }
+        }
         animator.SetTrigger("isAttacking");
-        List<Collider2D> enemiesAbove = new List<Collider2D>(Physics2D.OverlapAreaAll(new Vector2(attackPoint.position.x - .28f, attackPoint.position.y + .1f), new Vector2(transform.localPosition.x - .2f, transform.localPosition.y + .05f), enemyLayers));
+        List<Collider2D> enemiesAbove = new List<Collider2D>(Physics2D.OverlapAreaAll(new Vector2(attackPoint.position.x - .25f, attackPoint.position.y + .1f), new Vector2(transform.localPosition.x - .2f, transform.localPosition.y + 0f), enemyLayers));
         List<Collider2D> hitEnemies = new List<Collider2D>(Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers));
         List<Collider2D> allHits = new List<Collider2D>(Physics2D.OverlapCircleAll(attackPoint.position, attackRange));
         foreach (Collider2D hit in enemiesAbove)
@@ -91,7 +87,6 @@ public class MeleeController : MonoBehaviour
     {
         if(attackPoint == null) { return; }
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-        Gizmos.DrawWireCube(new Vector2(attackPoint.position.x - offsetx, transform.position.y + offsety), new Vector2(-.2f, .2f));
     }
 
 
