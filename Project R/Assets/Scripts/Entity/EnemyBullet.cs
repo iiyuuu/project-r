@@ -19,13 +19,6 @@ public class EnemyBullet : MonoBehaviour
         {
             Erase();
         }
-        else if (collision.gameObject.tag.Equals("Player"))
-        {
-            if (collision.gameObject.GetComponent<PlayerStats>().hurt && !animator.GetCurrentAnimatorStateInfo(0).IsName("enemyFireballImpact"))//if player is hurt already
-            {
-                Erase();
-            }
-        }
     }
 
     public void Erase()
