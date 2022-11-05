@@ -148,7 +148,6 @@ public class Enemy : MonoBehaviour
 
                 rb.velocity = Vector2.zero;
                 Health -= 1;
-                bullet.spriteRenderer.enabled = false;
                 bullet.rb.velocity = Vector2.zero;
                 bullet.GetComponent<CircleCollider2D>().enabled = false;
 
