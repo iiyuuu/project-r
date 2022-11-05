@@ -35,7 +35,7 @@ public class CollisionHandler : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
-       if(other.CompareTag("Enemy") || other.CompareTag("Enemy Projectile"))
+        if (other.CompareTag("Enemy") || other.CompareTag("Enemy Projectile") || other.CompareTag("Projectile"))
        {
             Vector2 difference = transform.position - other.transform.position;
             difference = difference.normalized * thrust; //(1, 0) - (3, 0) = (-2, 0) -> (-1, 0) * thrust (3) = (-3, 0) force
