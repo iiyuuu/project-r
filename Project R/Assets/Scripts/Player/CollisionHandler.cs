@@ -77,6 +77,13 @@ public class CollisionHandler : MonoBehaviour
                     
                     
                 }
+                else if (other.CompareTag("Projectile"))
+                {
+                    //get other object
+                    //damage character
+                    //call coroutine
+                    //destroy object
+                }
                 
                 
                

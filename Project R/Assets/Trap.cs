@@ -35,4 +35,9 @@ public class Trap : MonoBehaviour
         sprite.sprite = oldSprite;
     }
 
+    public void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Debug.DrawRay(firepoint.position, firepoint.right * force / 3);
+    }
 }
