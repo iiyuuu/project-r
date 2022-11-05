@@ -84,6 +84,14 @@ public class RangedAttack : MonoBehaviour
         {
             animator.SetTrigger("Fireball");//locks movement, then unlocks movement
             OnPlayerFire?.Invoke();
+            if (0 <= body.rotation && body.rotation < 180f)
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>().flipX = false;
+            }
             stats.currentAmmo--;
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * fireForce, ForceMode2D.Impulse);

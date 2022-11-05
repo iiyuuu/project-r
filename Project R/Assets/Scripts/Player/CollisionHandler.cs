@@ -25,6 +25,14 @@ public class CollisionHandler : MonoBehaviour
     {
         currency = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<CurrencyManager>();
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            OnTriggerEnter2D(collision);
+        }
+    }
     public void OnTriggerEnter2D(Collider2D other)
     {
        if(other.CompareTag("Enemy") || other.CompareTag("Enemy Projectile"))

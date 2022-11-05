@@ -159,7 +159,7 @@ Transform:
   - {fileID: 4785558741993645713}
   - {fileID: 4785558741535014744}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &4785558742122789408
 Rigidbody2D:
@@ -321,7 +321,7 @@ MonoBehaviour:
   rb: {fileID: 4785558742122789408}
   health: 6
   moveSpeed: 0.3
-  chaseRadius: 1
+  chaseRadius: 2
   ranged: 0
   attackDamage: 0
   homePosition: {x: 0, y: 0, z: 0}
@@ -646,7 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5457d110aa4d4934095e5075404df6f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetDetectionRange: 1
+  targetDetectionRange: 2
   obstaclesLayerMask:
     serializedVersion: 2
     m_Bits: 320

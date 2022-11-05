@@ -251,7 +251,7 @@ public class PlayerControls : MonoBehaviour
     public void LockMovement()
     {
         canMove = false;       
-        body.velocity = Vector2.zero;
+        
     }
 
     public void UnlockMovement()
