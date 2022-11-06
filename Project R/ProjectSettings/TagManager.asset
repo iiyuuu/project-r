@@ -19,6 +19,8 @@ TagManager:
   - Shop
   - Player Ranged
   - Loading Screen
+  - Stopwatch
+  - Overlay UI
   layers:
   - Default
   - TransparentFX

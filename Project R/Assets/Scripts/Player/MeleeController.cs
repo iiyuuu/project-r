@@ -33,44 +33,57 @@ public class MeleeController : MonoBehaviour
 
     public void Attack()
     {
-            if (flip)
+        if (flip)
+        {
+            transform.localPosition = new Vector2(rightAttackOffset.x * -1, rightAttackOffset.y);
+        }
+        else
+        {
+            transform.localPosition = rightAttackOffset;
+        }
+        animator.SetTrigger("isAttacking");
+        List<Collider2D> enemiesAbove = new List<Collider2D>(Physics2D.OverlapAreaAll(new Vector2(attackPoint.position.x - .25f, attackPoint.position.y + .1f), new Vector2(transform.localPosition.x - .2f, transform.localPosition.y + 0f), enemyLayers));
+        List<Collider2D> hitEnemies = new List<Collider2D>(Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers));
+        List<Collider2D> allHits = new List<Collider2D>(Physics2D.OverlapCircleAll(attackPoint.position, attackRange));
+        foreach (Collider2D hit in enemiesAbove)
+        {
+            hitEnemies.Add(hit);
+        }
+        foreach (Collider2D hit in allHits)
+        {
+            if (hit.CompareTag("Enemy Projectile"))
             {
-                transform.localPosition = new Vector2(rightAttackOffset.x * -1, rightAttackOffset.y);
+                Destroy(hit.gameObject);
             }
-            else
+        }
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            Enemy enemyComponent = enemy.GetComponent<Enemy>();
+            if (enemyComponent != null && !enemyComponent.enemyHurt)
             {
-                transform.localPosition = rightAttackOffset;
-            }
-            animator.SetTrigger("isAttacking");
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-            foreach (Collider2D enemy in hitEnemies)
-            {
-                Enemy enemyComponent = enemy.GetComponent<Enemy>();
-                if (enemyComponent != null && !enemyComponent.enemyHurt)
-                {
-                    Rigidbody2D enemyBody = enemyComponent.GetComponent<Rigidbody2D>();
-                    Vector2 difference = enemyBody.transform.position - attackPoint.position;
-                    difference = difference.normalized * collisionHandler.thrust;
+                Rigidbody2D enemyBody = enemyComponent.GetComponent<Rigidbody2D>();
+                Vector2 difference = enemyBody.transform.position - attackPoint.position;
+                difference = difference.normalized * collisionHandler.thrust;
 
-                    if (coroutine != null) { StopCoroutine(coroutine); }
-                    coroutine = collisionHandler.kbCoroutine(enemyBody);
-                    enemyBody.velocity = Vector2.zero;
-                    enemyBody.AddForce(difference, ForceMode2D.Impulse);
-                    StartCoroutine(collisionHandler.kbCoroutine(enemyBody));
+                if (coroutine != null) { StopCoroutine(coroutine); }
+                coroutine = collisionHandler.kbCoroutine(enemyBody);
+                enemyBody.velocity = Vector2.zero;
+                enemyBody.AddForce(difference, ForceMode2D.Impulse);
+                StartCoroutine(collisionHandler.kbCoroutine(enemyBody));
 
-                    if (coroutine2 != null) { StopCoroutine(coroutine); }
-                    coroutine2 = enemyComponent.Damaged();
+                if (coroutine2 != null) { StopCoroutine(coroutine); }
+                coroutine2 = enemyComponent.Damaged();
                     
                    
-                    enemyComponent.Health -= attackDamage;
-                    StartCoroutine(coroutine2);
+                enemyComponent.Health -= attackDamage;
+                StartCoroutine(coroutine2);
 
-                }
             }
+        }
         
     }
 
-    private void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected()
     {
         if(attackPoint == null) { return; }
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);

@@ -29,8 +29,8 @@ public class EnemyMelee : MonoBehaviour
 
     public void Attack()
     { 
-        if(enemy.Health <= 0) { return; }
-        Debug.Log("attack");
+        if(enemy.Health <= 0) { Destroy(gameObject); return; }
+        //Debug.Log("attack");
         if (spriteRenderer.flipX == true)
         {
             attackPoint.transform.localPosition = new Vector2(-leftAttackOffset.x, leftAttackOffset.y);

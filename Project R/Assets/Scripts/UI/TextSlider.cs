@@ -10,8 +10,10 @@ public class TextSlider : MonoBehaviour
 
   [SerializeField] private Slider slider;
 
-  void Start() {
-
+  void Start() 
+  {
+        slider = GetComponent<Slider>();
+        SetNumberText(slider.value);
   }
 
   public void SetNumberText(float value) {

@@ -7,4 +7,5 @@ public class PowerupTemplate : MonoBehaviour
 {
     public TMP_Text titleText;
     public TMP_Text descriptionText;
+    public Powerup powerup;
 }

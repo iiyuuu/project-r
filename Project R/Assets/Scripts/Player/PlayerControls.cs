@@ -47,12 +47,15 @@ public class PlayerControls : MonoBehaviour
     public SpriteRenderer weaponRenderer, spriteRenderer;
 
     Animator animator;
+    BoxCollider2D box;
+    Vector2 boxOffset;
 
     //Vector 2 -> 2d Vector with X and Y speed
 
     void Start()
     {
-        
+        box = GetComponent<BoxCollider2D>();
+        boxOffset = new Vector2(box.offset.x, box.offset.y / 1.33f);
         body = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();//added some animation precode
         spriteRenderer = GetComponent<SpriteRenderer>();//sprite render for flipping sprite (no need for both left and right sprite now)
@@ -63,13 +66,14 @@ public class PlayerControls : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(new Vector2(transform.position.x, transform.position.y) + dashDirection/1.3f, 0.15f);
+        Debug.DrawRay((Vector2)transform.position + boxOffset, dashDirection / 1.33f);
+        Gizmos.DrawWireSphere((Vector2)transform.position + boxOffset + dashDirection/1.33f, .14f);
+
     }
 
     //movement
     void FixedUpdate()
     {
-        Debug.DrawRay(body.transform.position, dashDirection/1.3f);
         //pause = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<PauseMenu>(true);
         //shopUI = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<ShopManager>(true);
         if (canMove && !pause.isPaused)
@@ -79,10 +83,11 @@ public class PlayerControls : MonoBehaviour
             {
                 //Debug.Log(dashDirection);
                 body.velocity = dashDirection.normalized * dashingPower;
+                
 
                 //dashCast = Physics2D.Raycast(body.transform.position, dashDirection.normalized, dashingPower/2, LayerMask.GetMask("Interactable"));
 
-                if (Physics2D.OverlapCircle(new Vector2(transform.position.x, transform.position.y) + dashDirection/1.3f, 0.15f, LayerMask.GetMask("Interactable")) !=  null)
+                if (Physics2D.OverlapPoint((Vector2)transform.position + boxOffset + dashDirection/1.33f, LayerMask.GetMask("Interactable")) !=  null)
                 {
                     Physics2D.IgnoreLayerCollision(6, 8, false);
                     Physics2D.IgnoreLayerCollision(6, 7, false);
@@ -124,7 +129,7 @@ public class PlayerControls : MonoBehaviour
             {
                 isMoving = false;
                 animator.SetBool("isMoving", false);
-                body.velocity = Vector2.Lerp(body.velocity, Vector2.zero, 0.9f);
+                body.velocity = Vector2.Lerp(body.velocity, Vector2.zero, 0.95f);
             }
         }
         
@@ -134,10 +139,6 @@ public class PlayerControls : MonoBehaviour
         if (!pause.isPaused && canMove)
         {
             moveInput = value.Get<Vector2>();
-        }
-        else
-        {
-            moveInput = Vector2.zero;
         }
         //gathers user movement inputs
         
@@ -151,7 +152,7 @@ public class PlayerControls : MonoBehaviour
             direction,
             movementFilter,
             castCollisions,
-            activeMoveSpeed * Time.fixedDeltaTime + collisionOffset);
+            collisionOffset);
 
             if (count == 0)
             {
@@ -181,12 +182,14 @@ public class PlayerControls : MonoBehaviour
         canDash = false;
         canAttack = false;
         isDashing = true;
+        Physics2D.IgnoreLayerCollision(6, 8, true);
+        Physics2D.IgnoreLayerCollision(6, 7, true);
         yield return new WaitForSeconds(dashingTime);//during dash
+        Physics2D.IgnoreLayerCollision(6, 8, false);
+        Physics2D.IgnoreLayerCollision(6, 7, false);
         isDashing = false;
         canAttack = true;
         activeMoveSpeed = baseMoveSpeed;
-        Physics2D.IgnoreLayerCollision(6, 8, false);
-        Physics2D.IgnoreLayerCollision(6, 7, false);
         yield return new WaitForSeconds(dashingCooldown);//wait dash cd
         canDash = true;
         
@@ -194,8 +197,7 @@ public class PlayerControls : MonoBehaviour
 
     void OnDash()
     {
-        Physics2D.IgnoreLayerCollision(6, 8, true);
-        Physics2D.IgnoreLayerCollision(6, 7, true);
+        
         if (canDash && !pause.isPaused)
         {
             animator.SetTrigger("isDashing");
@@ -209,11 +211,11 @@ public class PlayerControls : MonoBehaviour
             {
                 if (spriteRenderer.flipX && moveInput.y == 0)//if sprite is facing left
                 {
-                    dashDirection = new Vector2(-transform.localScale.x, 0);//move in set y direction
+                    dashDirection = new Vector2(-1, 0);//move in set y direction
                 }
                 else if (!spriteRenderer.flipX && moveInput.y == 0)//if sprite is facing right
                 {
-                    dashDirection = new Vector2(transform.localScale.x, 0);//move in set x direction
+                    dashDirection = new Vector2(1f, 0);//move in set x direction
                 }
             }
             else
@@ -233,6 +235,17 @@ public class PlayerControls : MonoBehaviour
     {
         if (canAttack && !pause.isPaused && canMove)
         {
+            int num = Random.Range(1, 3);
+            switch (num)
+            {
+                case 1:
+                    FindObjectOfType<AudioManager>().Play("Sword Slash1");
+                    break;
+                case 2:
+                    FindObjectOfType<AudioManager>().Play("Sword Slash2");
+                    break;
+            }
+            
             if (attackCoroutine != null)
             {
                 StopCoroutine(attackCoroutine);
@@ -251,7 +264,7 @@ public class PlayerControls : MonoBehaviour
     public void LockMovement()
     {
         canMove = false;       
-        body.velocity = Vector2.zero;
+        
     }
 
     public void UnlockMovement()
@@ -267,7 +280,7 @@ public class PlayerControls : MonoBehaviour
             {
                 pause.isPaused = !pause.isPaused;
                 pause.Pause();
-                moveInput = Vector2.zero;
+                body.velocity = Vector2.zero;
             }
             else
             {

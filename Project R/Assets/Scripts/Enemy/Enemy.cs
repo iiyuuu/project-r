@@ -112,7 +112,7 @@ public class Enemy : MonoBehaviour
 
     public void MoveBack()
     {
-        Debug.Log("Moving Back");
+        //Debug.Log("Moving Back");
         if (Vector2.Distance(PointerInput, transform.position) > chaseRadius)
         {
             transform.position = Vector2.MoveTowards(transform.position, homePosition, moveSpeed * Time.fixedDeltaTime);
@@ -139,31 +139,19 @@ public class Enemy : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals("Projectile"))
+        if (collision.CompareTag("Projectile"))
         {
             if(rb != null && !enemyHurt)
             {
                 Bullet bullet = collision.GetComponent<Bullet>();
-
-                if (coroutine != null && Health > 0)
-                {
-                    enemyHurt = false;
-                    StopCoroutine(coroutine);
-                }
-
                 coroutine = Damaged();
 
                 rb.velocity = Vector2.zero;
                 Health -= 1;
-                bullet.spriteRenderer.enabled = false;
                 bullet.rb.velocity = Vector2.zero;
                 bullet.GetComponent<CircleCollider2D>().enabled = false;
 
                 kbCoroutine = bullet.kbCoroutine(rb, 0.2f);
-                if(kbCoroutine != null && bullet != null)
-                {
-                    StopCoroutine(kbCoroutine);
-                }
                 if (rb != null && bullet.rb != null)
                 {
                     Vector2 difference = rb.transform.position - bullet.rb.transform.position;
@@ -183,32 +171,32 @@ public class Enemy : MonoBehaviour
                 Destroy(collision.gameObject);
             }
         }
+        if (collision.CompareTag("Trap"))
+        {
+            if (!enemyHurt)
+            {
+                coroutine = Damaged();
+                rb.velocity = Vector2.zero;
+                Health -= 1;
+                Destroy(collision.gameObject);
+            }
+        }
         if (collision.CompareTag("Enemy"))
         {
             if (enemyHurt)//checks if enemy is hurt and hurts both objects
             {
-                Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+                Enemy other = collision.gameObject.GetComponent<Enemy>();
 
-                if (enemy != null)
+                if (other != null)
                 {
-
-                    if (rb == null || enemy.rb == null)
-                    {
-                        return;
-                    }
-                    enemy.rb.velocity = Vector2.zero;
+                    other.rb.velocity = Vector2.zero;
                     rb.velocity = Vector2.zero;
                 }
 
-                if (!enemy.enemyHurt && Health > 0)
+                if (!other.enemyHurt && Health > 0)
                 {
-                    if (coroutine != null)
-                    {
-                        enemy.enemyHurt = false;
-                        StopCoroutine(coroutine);
-                    }
-                    coroutine = enemy.Damaged();
-                    enemy.Health -= 1;
+                    coroutine = other.Damaged();
+                    other.Health -= 1;
                     StartCoroutine(coroutine);
                 }
 
