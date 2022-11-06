@@ -14,8 +14,8 @@ public class Enemy : MonoBehaviour
     public int attackDamage;
 
     [Header("Movement")]
-    private Vector2 moveInput;
-    private Vector2 pointerInput;
+    protected Vector2 moveInput;//move input
+    protected Vector2 pointerInput;//target ransform position
     public Vector2 PointerInput { get => pointerInput; set => pointerInput = value; }
     public Vector2 MoveInput { get => moveInput; set => moveInput = value; }
     public Vector3 homePosition;
