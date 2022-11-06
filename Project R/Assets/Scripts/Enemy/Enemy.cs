@@ -171,6 +171,16 @@ public class Enemy : MonoBehaviour
                 Destroy(collision.gameObject);
             }
         }
+        if (collision.CompareTag("Trap"))
+        {
+            if (!enemyHurt)
+            {
+                coroutine = Damaged();
+                rb.velocity = Vector2.zero;
+                Health -= 1;
+                Destroy(collision.gameObject);
+            }
+        }
         if (collision.CompareTag("Enemy"))
         {
             if (enemyHurt)//checks if enemy is hurt and hurts both objects

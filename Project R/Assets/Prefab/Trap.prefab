@@ -76,7 +76,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -156,9 +156,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ee557b8718eb94997e868ad8a32de5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectPrefab: {fileID: 0}
-  firepoint: {fileID: 4619833924988944394}
+  objectPrefab: {fileID: 1701832432939808325, guid: 95fb09ae289fad0498ca838474386015, type: 3}
+  firepoint: []
   force: 1
+  horizontal: 0
+  vertical: 0
   sprite: {fileID: 6575313657047485768}
   oldSprite: {fileID: 884362487, guid: 5a9d9fbeec7229440922231dd673af30, type: 3}
   newSprite: {fileID: -294743732, guid: 5a9d9fbeec7229440922231dd673af30, type: 3}
