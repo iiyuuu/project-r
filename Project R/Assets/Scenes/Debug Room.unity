@@ -2762,6 +2762,106 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1606798537}
   m_SourcePrefab: {fileID: 100100000, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+--- !u!1 &788110947
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 788110949}
+  - component: {fileID: 788110948}
+  - component: {fileID: 788110950}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &788110948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788110947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ff9b385ff2d1046bafd0aabd4ecb2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Fireball1
+    clip: {fileID: 8300000, guid: 2a5a77cded6823a4aa6951bd58071d2c, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Fireball2
+    clip: {fileID: 8300000, guid: 4e82ddb0d5e519b4fb37528317db0d68, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Fireball Impact
+    clip: {fileID: 8300000, guid: 27190d3d30e04ae418041a63b2932e41, type: 3}
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Sword Slash1
+    clip: {fileID: 8300000, guid: 615ba80e94597c646a00acf0b1242eb6, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Sword Slash2
+    clip: {fileID: 8300000, guid: 196366e03053cbd4888a5486932bb98c, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Player Hurt
+    clip: {fileID: 8300000, guid: b0c430df062956b47ae41e075a9b7ae5, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Footstep Grass
+    clip: {fileID: 8300000, guid: 2c2267772da2ef34daff823b3b3f43f3, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+--- !u!4 &788110949
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788110947}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &788110950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788110947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b5f2d2778c14f448bcf8bbc2919326b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &788245065 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 132369949207369949, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
@@ -2830,7 +2930,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3569968416217482969, guid: a774a8996485e124dad7311311dd8305, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -5953,7 +6053,7 @@ Tilemap:
       - {fileID: 1822243277, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -824224458, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -1144722836, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
-      m_AnimationSpeed: 6
+      m_AnimationSpeed: 6.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 13, y: 3, z: 0}

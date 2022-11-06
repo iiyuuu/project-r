@@ -98,6 +98,7 @@ public class PlayerStats : MonoBehaviour
     private IEnumerator Invulnerabilty()
     {
         hurt = true;
+        FindObjectOfType<AudioManager>().Play("Player Hurt");
         for (int i = 0; i < numberOfFlashes; i++)
         {
             spriteRend.color = new Color(1, 0, 0,0.5f);

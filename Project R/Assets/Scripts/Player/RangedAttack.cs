@@ -83,6 +83,19 @@ public class RangedAttack : MonoBehaviour
         if (!firing && !reloading && controls.canDash)
         {
             animator.SetTrigger("Fireball");//locks movement, then unlocks movement
+
+            int num = UnityEngine.Random.Range(1, 3);
+            switch (num)
+            {
+                case 1:
+                    FindObjectOfType<AudioManager>().Play("Fireball1");
+                    break;
+                case 2:
+                    FindObjectOfType<AudioManager>().Play("Fireball2");
+                    break;
+
+            }
+
             OnPlayerFire?.Invoke();
             if (0 <= body.rotation && body.rotation < 180f)
             {

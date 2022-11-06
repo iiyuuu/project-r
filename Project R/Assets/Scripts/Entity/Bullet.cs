@@ -25,6 +25,7 @@ public class Bullet : MonoBehaviour
     public IEnumerator kbCoroutine(Rigidbody2D tag, float kbTime)
     {
         animator.SetTrigger("Impact");
+        FindObjectOfType<AudioManager>().Play("Fireball Impact");
         if (tag != null)
         {
             yield return new WaitForSeconds(kbTime);

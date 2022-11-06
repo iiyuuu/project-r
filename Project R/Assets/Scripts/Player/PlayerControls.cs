@@ -140,10 +140,6 @@ public class PlayerControls : MonoBehaviour
         {
             moveInput = value.Get<Vector2>();
         }
-        else
-        {
-            moveInput = Vector2.zero;
-        }
         //gathers user movement inputs
         
     }
@@ -239,6 +235,17 @@ public class PlayerControls : MonoBehaviour
     {
         if (canAttack && !pause.isPaused && canMove)
         {
+            int num = Random.Range(1, 3);
+            switch (num)
+            {
+                case 1:
+                    FindObjectOfType<AudioManager>().Play("Sword Slash1");
+                    break;
+                case 2:
+                    FindObjectOfType<AudioManager>().Play("Sword Slash2");
+                    break;
+            }
+            
             if (attackCoroutine != null)
             {
                 StopCoroutine(attackCoroutine);
@@ -273,7 +280,7 @@ public class PlayerControls : MonoBehaviour
             {
                 pause.isPaused = !pause.isPaused;
                 pause.Pause();
-                moveInput = Vector2.zero;
+                body.velocity = Vector2.zero;
             }
             else
             {
