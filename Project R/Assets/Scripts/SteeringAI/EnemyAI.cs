@@ -73,7 +73,7 @@ public class EnemyAI : MonoBehaviour
         if (aiData.currentTarget == null)
         {
             //Stopping Logic
-            Debug.Log("Stopping");
+            //Debug.Log("Stopping");
             movementInput = Vector2.zero;
             following = false;
             yield break;
@@ -93,7 +93,7 @@ public class EnemyAI : MonoBehaviour
             }
             else
             {
-                Debug.Log("Moving");
+                //Debug.Log("Moving");
                 //Chase logic
                 movementInput = movementDirectionSolver.GetDirectionToMove(steeringBehaviours, aiData);
                 yield return new WaitForSeconds(aiUpdateDelay);

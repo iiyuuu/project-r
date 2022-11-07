@@ -1,33 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class flyingEnemy : Enemy
 {
     [Header("Attack Stuff")]
     public float chargeTime = 2f;
-    public Transform firePoint;
+    public float dashingCooldown = 1.5f;
+    public float dashForce;
 
-    private bool lockedOn = false;
+    Vector2 moveVector;
+    public Vector2 targetPosition;
+    Collider2D hit;
 
-    float dashingCooldown = 1.5f;
-
-    public float dashingTime;
-
-    public LayerMask layerMask;
-    public RaycastHit2D hit;
-
+    [Header("State")]
+    public State currentState;
     public enum State
     {
         charging,
         dashing,
-        idle
+        idle,
+        cooldown
     }
 
-    public void Update()
+    public override void Start()
     {
-        if (firePoint.rotation.eulerAngles.z > 179) { spriteRend.flipY = true; }
-        else { spriteRend.flipY = false; }
+        base.Start();
+        currentState = State.idle;
     }
 
     protected override void FixedUpdate()
@@ -36,73 +36,103 @@ public class flyingEnemy : Enemy
         //play charge animation
         //track player until fire
         //dash coroutine
+        hit = Physics2D.OverlapCircle(transform.position, chaseRadius, LayerMask.GetMask("Player"));
+        if((transform.right.x <= 0))
+        {
+            spriteRend.flipX = true;
+        }
+        else
+        {
+            spriteRend.flipX = false;
+        }
         if (!enemyHurt)
         {
-            Charge();
-
+            switch (currentState)
+            {
+                case State.idle:
+                    Charge();
+                    break;
+                case State.dashing:
+                    if (Vector2.Distance((Vector2)transform.position, targetPosition) <= .1f || rb.velocity == Vector2.zero)//if eye reches target posiion (the player dodges it)
+                    {
+                        rb.velocity = Vector2.zero;
+                        StartCoroutine(DashCooldown(dashingCooldown));
+                    }
+                    break;
+                case State.cooldown:
+                    rb.velocity = Vector2.zero;
+                    break;
+                case State.charging:
+                    transform.right = (Vector2)transform.position - pointerInput;
+                    break;
+            }
         }
-
 
     }
 
 
     public void Charge()
     {
-        if (canRotate && canDash)
+        IEnumerator coroutine = Charging(chargeTime);
+        if (hit == null)//if player walks out of range
         {
-            hit = Physics2D.Raycast(firePoint.position, pointerInput, layerMask);
-            if (hit)
+            if(coroutine != null)
             {
-                canRotate = false;
+                StopCoroutine(coroutine);
             }
-            else
-            {
-                transform.Rotate(transform.forward);
-            }
+            currentState = State.idle;
+            return;
         }
-        else
-        {
-            //Vector3 temp = new Vector3(0, -offset, 0);
-            if (lockedOn && canDash && !isDashing)
-            {
-                if(Vector3.Distance(hit.collider.transform.position, transform.position) > 1.75f)
-                {
-                    rb.AddForce((hit.collider.transform.position - transform.position) * 1.25f, ForceMode2D.Impulse);
-                }
-                else
-                {
-                    rb.AddForce((hit.collider.transform.position - transform.position) * 3.25f, ForceMode2D.Impulse);
-                }
-  
-      
-                isDashing = true;
-                //if it reaches a distance call cooldown
-                //maybe do movetowards instead of add force
-                StartCoroutine(DashCooldown());
-                lockedOn = false;
-                canRotate = true;
+        StartCoroutine(coroutine);
 
-
-            }
-            else
-            {
-                
-                lockedOn = true;
-            }
-
-        }
     }
 
-    IEnumerator DashCooldown()
+    public void Dash()
     {
-        canDash = false;
-        yield return new WaitForSeconds(dashingTime);
-        isDashing = false;
-        rb.velocity = new Vector2(0f, 0f);
-        yield return new WaitForSeconds(dashingCooldown);//wait dash cd
-        
-        canDash = true;
+        transform.right = (Vector2)transform.position - pointerInput;
+        targetPosition = pointerInput;
+        moveVector = (-(Vector2)transform.position + pointerInput).normalized;
+        targetPosition = moveVector * 1.25f + (Vector2)transform.position;//past the target 
+
+        RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, moveVector, Vector2.Distance((Vector2)transform.position, targetPosition), LayerMask.GetMask("Interactable"));
+        if (hit.collider != null)
+        {
+            targetPosition = hit.transform.position;
+        }
+        currentState = State.dashing;
+        rb.AddForce(moveVector * dashForce, ForceMode2D.Impulse);
+
     }
 
+    IEnumerator Charging(float chargeTime)
+    {
+        currentState = State.charging;
+        yield return new WaitForSeconds(chargeTime);
+        Dash();
+    }
+
+    IEnumerator DashCooldown(float dashCooldown)
+    {
+        currentState = State.cooldown;
+        yield return new WaitForSeconds(dashCooldown);
+        currentState = State.idle;
+
+    }
+
+    public void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(targetPosition, .05f);
+        Debug.DrawRay(transform.position, moveVector);
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            StartCoroutine(DashCooldown(dashingCooldown));//start cooldown on collision
+        }
+
+    }
 
 }

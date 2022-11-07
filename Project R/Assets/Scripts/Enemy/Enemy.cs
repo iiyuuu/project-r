@@ -14,7 +14,9 @@ public class Enemy : MonoBehaviour
     public int attackDamage;
 
     [Header("Movement")]
+    [SerializeField]
     protected Vector2 moveInput;//move input
+    [SerializeField]
     protected Vector2 pointerInput;//target ransform position
     public Vector2 PointerInput { get => pointerInput; set => pointerInput = value; }
     public Vector2 MoveInput { get => moveInput; set => moveInput = value; }

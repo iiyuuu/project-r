@@ -5991,7 +5991,7 @@ Tilemap:
       - {fileID: 1822243277, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -824224458, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -1144722836, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
-      m_AnimationSpeed: 6
+      m_AnimationSpeed: 6.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 13, y: 2, z: 0}
@@ -6082,7 +6082,7 @@ Tilemap:
       - {fileID: 1822243277, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -824224458, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -1144722836, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
-      m_AnimationSpeed: 6.0000005
+      m_AnimationSpeed: 6
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 13, y: 12, z: 0}
@@ -6095,7 +6095,7 @@ Tilemap:
       - {fileID: 1822243277, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -824224458, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -1144722836, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
-      m_AnimationSpeed: 6.0000005
+      m_AnimationSpeed: 6
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -12924,25 +12924,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlyingEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 7194221344439264789, guid: d22424b510b4b4505b98404a5df64fbd, type: 3}
-      propertyPath: target
+    - target: {fileID: 7194221344439264792, guid: d22424b510b4b4505b98404a5df64fbd, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194221344439264793, guid: d22424b510b4b4505b98404a5df64fbd, type: 3}
+      propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 682016958}
+      objectReference: {fileID: -565423958, guid: be12cad0a72de4e6cbb4aae276787940, type: 3}
     - target: {fileID: 7194221344439264794, guid: d22424b510b4b4505b98404a5df64fbd, type: 3}
       propertyPath: m_RootOrder
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7194221344439264794, guid: d22424b510b4b4505b98404a5df64fbd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5557423
+      value: 0.068
       objectReference: {fileID: 0}
     - target: {fileID: 7194221344439264794, guid: d22424b510b4b4505b98404a5df64fbd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.45013162
+      value: 0.285
       objectReference: {fileID: 0}
     - target: {fileID: 7194221344439264794, guid: d22424b510b4b4505b98404a5df64fbd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.00944967
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7194221344439264794, guid: d22424b510b4b4505b98404a5df64fbd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12950,15 +12954,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7194221344439264794, guid: d22424b510b4b4505b98404a5df64fbd, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7194221344439264794, guid: d22424b510b4b4505b98404a5df64fbd, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7194221344439264794, guid: d22424b510b4b4505b98404a5df64fbd, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7194221344439264794, guid: d22424b510b4b4505b98404a5df64fbd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
