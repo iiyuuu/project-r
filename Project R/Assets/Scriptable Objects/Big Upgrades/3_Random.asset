@@ -15,4 +15,4 @@ MonoBehaviour:
   title: three
   description: tree
   ID: 3
-  sprite: {fileID: 0}
+  sprite: {fileID: -1860862986, guid: ffd930831f0c6f746a8523bfc1e4ab68, type: 3}

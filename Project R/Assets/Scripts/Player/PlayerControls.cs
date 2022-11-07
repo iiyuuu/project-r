@@ -43,6 +43,7 @@ public class PlayerControls : MonoBehaviour
     public GameObject prompt;
     public RangedAttack rangedAttack;
     public PlayerStats playerStats;
+    public PowerupSelection upgradeMenu;
 
     public SpriteRenderer weaponRenderer, spriteRenderer;
 
@@ -136,10 +137,7 @@ public class PlayerControls : MonoBehaviour
     }
     private void OnMove(InputValue value)
     {
-        if (!pause.isPaused && canMove)
-        {
-            moveInput = value.Get<Vector2>();
-        }
+        moveInput = value.Get<Vector2>();
         //gathers user movement inputs
         
     }
@@ -256,15 +254,11 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
-    public void EndAttack()
-    {
-        UnlockMovement();
-    }
 
     public void LockMovement()
     {
-        canMove = false;       
-        
+        canMove = false;
+        isMoving = false;
     }
 
     public void UnlockMovement()
@@ -274,7 +268,7 @@ public class PlayerControls : MonoBehaviour
 
     public void OnPause()
     {
-        if (!shopUI.isEnabled)
+        if (!shopUI.isEnabled && !upgradeMenu.isActiveAndEnabled)
         {
             if (!pause.isPaused)
             {
@@ -303,7 +297,6 @@ public class PlayerControls : MonoBehaviour
 
     private IEnumerator AttackCoroutine(float attackRate)
     {
-        LockMovement();
         if (spriteRenderer.flipX == true)
         {
             melee.flip = true;

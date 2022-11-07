@@ -12,6 +12,7 @@ public class flyingEnemy : Enemy
 
     Vector2 moveVector;
     public Vector2 targetPosition;
+    float aimAngle;
     Collider2D hit;
 
     [Header("State")]
@@ -28,6 +29,7 @@ public class flyingEnemy : Enemy
     {
         base.Start();
         currentState = State.idle;
+        aimAngle = 180f;
     }
 
     protected override void FixedUpdate()
@@ -37,14 +39,7 @@ public class flyingEnemy : Enemy
         //track player until fire
         //dash coroutine
         hit = Physics2D.OverlapCircle(transform.position, chaseRadius, LayerMask.GetMask("Player"));
-        if((transform.right.x <= 0))
-        {
-            spriteRend.flipX = true;
-        }
-        else
-        {
-            spriteRend.flipX = false;
-        }
+        spriteRend.flipX = (aimAngle > -90f && aimAngle < 90f) ? true : false;
         if (!enemyHurt)
         {
             switch (currentState)
@@ -61,9 +56,29 @@ public class flyingEnemy : Enemy
                     break;
                 case State.cooldown:
                     rb.velocity = Vector2.zero;
+                    moveVector = (-(Vector2)transform.position + pointerInput).normalized;
+                    aimAngle = Mathf.Atan2(moveVector.y, moveVector.x) * Mathf.Rad2Deg;
+                    if (!spriteRend.flipX)
+                    {
+                        transform.rotation = Quaternion.AngleAxis(aimAngle + 180f, Vector3.forward);
+                    }
+                    else
+                    {
+                        transform.rotation = Quaternion.AngleAxis(aimAngle, Vector3.forward);
+                    }
                     break;
                 case State.charging:
-                    transform.right = (Vector2)transform.position - pointerInput;
+                    moveVector = (-(Vector2)transform.position + pointerInput).normalized;
+                    aimAngle = Mathf.Atan2(moveVector.y, moveVector.x) * Mathf.Rad2Deg;
+                    if (!spriteRend.flipX)
+                    {
+                        transform.rotation = Quaternion.AngleAxis(aimAngle + 180f, Vector3.forward);
+                    }
+                    else
+                    {
+                        transform.rotation = Quaternion.AngleAxis(aimAngle, Vector3.forward);
+                    }
+                    
                     break;
             }
         }
@@ -89,9 +104,16 @@ public class flyingEnemy : Enemy
 
     public void Dash()
     {
-        transform.right = (Vector2)transform.position - pointerInput;
-        targetPosition = pointerInput;
         moveVector = (-(Vector2)transform.position + pointerInput).normalized;
+        aimAngle = Mathf.Atan2(moveVector.y, moveVector.x) * Mathf.Rad2Deg;
+        if (!spriteRend.flipX)
+        {
+            transform.rotation = Quaternion.AngleAxis(aimAngle + 180f, Vector3.forward);
+        }
+        else
+        {
+            transform.rotation = Quaternion.AngleAxis(aimAngle, Vector3.forward);
+        }
         targetPosition = moveVector * 1.25f + (Vector2)transform.position;//past the target 
 
         RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, moveVector, Vector2.Distance((Vector2)transform.position, targetPosition), LayerMask.GetMask("Interactable"));
@@ -122,13 +144,13 @@ public class flyingEnemy : Enemy
     public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(targetPosition, .05f);
+        Gizmos.DrawSphere(targetPosition, .01f);
         Debug.DrawRay(transform.position, moveVector);
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
             StartCoroutine(DashCooldown(dashingCooldown));//start cooldown on collision
         }

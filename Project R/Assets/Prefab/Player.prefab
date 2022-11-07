@@ -710,7 +710,6 @@ GameObject:
   - component: {fileID: 5002295740580372872}
   - component: {fileID: 8479199668614094276}
   - component: {fileID: 8479199668614094282}
-  - component: {fileID: 7116992595770348894}
   - component: {fileID: 5490593441369642361}
   m_Layer: 6
   m_Name: Player
@@ -778,7 +777,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -879159589, guid: bed847c902f498946be3dbf1b2835a43, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -815,7 +814,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.1617859, y: 0.05771292}
-  m_EdgeRadius: 0.001
+  m_EdgeRadius: 0.01
 --- !u!50 &8479199668614094283
 Rigidbody2D:
   serializedVersion: 4
@@ -883,6 +882,7 @@ MonoBehaviour:
   prompt: {fileID: 5954727294577848768}
   rangedAttack: {fileID: 3911795455050588110}
   playerStats: {fileID: 8479199668614094277}
+  upgradeMenu: {fileID: 0}
   weaponRenderer: {fileID: 4711941875214280317}
   spriteRenderer: {fileID: 0}
 --- !u!114 &8479199668614094277
@@ -1045,18 +1045,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &7116992595770348894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8479199668614094285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c771d2de26cc8f341a6ef70f3f8b1698, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5490593441369642361
 MonoBehaviour:
   m_ObjectHideFlags: 0

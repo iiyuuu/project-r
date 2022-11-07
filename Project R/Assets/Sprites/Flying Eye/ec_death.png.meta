@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ffd930831f0c6f746a8523bfc1e4ab68
+guid: ca4dd3f3269656d42b1d31709fe02f6e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -107,49 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: coinSprites_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 88a2ac8b7c44bb24eb401f90fc7e0811
-      internalID: -1860862986
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: coinSprites_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 06e495e2815ef8d41b4a2cf7b4fdfb8d
-      internalID: 472696286
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: coinSprites_2
+      name: ec_death_0
       rect:
         serializedVersion: 2
         x: 0
@@ -163,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69f724a9cd8aac946876cdf0e4ef968c
-      internalID: 2001705314
+      spriteID: 88937fd4f21f921428af04ef5597797b
+      internalID: 423692176
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: coinSprites_3
+      name: ec_death_1
       rect:
         serializedVersion: 2
         x: 32
@@ -184,8 +142,155 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34f1347a6ab5aa24195943d59a56864d
-      internalID: 695641861
+      spriteID: 0c42dc9f0e052f64da066e4099ee7610
+      internalID: 1215203504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ec_death_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05bb47b85be1870408d86b7bf501f28d
+      internalID: 1138249522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ec_death_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 978ea16232774a74d85272f1ea2b6f54
+      internalID: -874105015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ec_death_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73592ccec8d948945ad0a654c425bc01
+      internalID: 1971819626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ec_death_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f918186f4b62f854793e1a76ee759ecb
+      internalID: -373390318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ec_death_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d040a12758aece64e89c8dea2d452bfd
+      internalID: 885039704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ec_death_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59d571c3c084de945b4419ed99173d49
+      internalID: 16684101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ec_death_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 978e031a842948244a6a6daf3328ff91
+      internalID: -721541638
       vertices: []
       indices: 
       edges: []
@@ -201,10 +306,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      coinSprites_1: 472696286
-      coinSprites_3: 695641861
-      coinSprites_2: 2001705314
-      coinSprites_0: -1860862986
+      ec_death_3: -874105015
+      ec_death_4: 1971819626
+      ec_death_6: 885039704
+      ec_death_7: 16684101
+      ec_death_2: 1138249522
+      ec_death_8: -721541638
+      ec_death_1: 1215203504
+      ec_death_5: -373390318
+      ec_death_0: 423692176
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

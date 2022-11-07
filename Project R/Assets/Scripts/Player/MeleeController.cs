@@ -42,14 +42,9 @@ public class MeleeController : MonoBehaviour
             transform.localPosition = rightAttackOffset;
         }
         animator.SetTrigger("isAttacking");
-        List<Collider2D> enemiesAbove = new List<Collider2D>(Physics2D.OverlapAreaAll(new Vector2(attackPoint.position.x - .25f, attackPoint.position.y + .1f), new Vector2(transform.localPosition.x - .2f, transform.localPosition.y + 0f), enemyLayers));
+    
         List<Collider2D> hitEnemies = new List<Collider2D>(Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers));
-        List<Collider2D> allHits = new List<Collider2D>(Physics2D.OverlapCircleAll(attackPoint.position, attackRange));
-        foreach (Collider2D hit in enemiesAbove)
-        {
-            hitEnemies.Add(hit);
-        }
-        foreach (Collider2D hit in allHits)
+        foreach (Collider2D hit in hitEnemies)
         {
             if (hit.CompareTag("Enemy Projectile"))
             {
