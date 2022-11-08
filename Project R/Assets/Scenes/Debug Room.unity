@@ -12305,6 +12305,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -245.4956
       objectReference: {fileID: 0}
+    - target: {fileID: 7177053931222208014, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: powerupPool.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7436297343168213515, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
