@@ -87,13 +87,13 @@ public class PowerupSelection : MonoBehaviour
 
     public void RemoveFromPool(int index)      
     {
-        Powerup powerup = powerupPanels[index].gameObject.GetComponentInChildren<PowerupTemplate>().powerup;
+        Powerup powerup = powerupPanels[index].gameObject.GetComponentInChildren<PowerupTemplate>(true).powerup;
         powerupPool.Remove(powerup);
     }
 
     public void ActivateUpgrade(int index)
     {
-        Powerup powerup = powerupPanels[index].gameObject.GetComponentInChildren<PowerupTemplate>().powerup;
+        Powerup powerup = powerupPanels[index].gameObject.GetComponentInChildren<PowerupTemplate>(true).powerup;
         powerup.Activate(GameObject.FindGameObjectWithTag("Player"));
     }
 
