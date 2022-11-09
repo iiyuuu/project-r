@@ -22,15 +22,18 @@ public class ObstacleDetector : Detector
 
         foreach(Collider2D collider in colliders)
         {
-            SpriteRenderer render = collider.GetComponent<SpriteRenderer>();
+            SpriteRenderer render = collider.GetComponent<SpriteRenderer>();//other game object layer
             if (render != null)
             {
+                print(render.gameObject);
                 if (gameObject.transform.position.y > collider.transform.position.y)
                 {
+                    render.sortingLayerName = "Player";
                     render.sortingOrder = gameObject.GetComponentInParent<SpriteRenderer>().sortingOrder + 1;
                 }
                 else
                 {
+                    render.sortingLayerName = "Player";
                     render.sortingOrder = gameObject.GetComponentInParent<SpriteRenderer>().sortingOrder - 1;
                 }
             }

@@ -1,22 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class TextSlider : MonoBehaviour
 {
-  public TextMeshProUGUI numberText;
+     public TextMeshProUGUI numberText;
+     public AudioMixer mixer;
 
-  [SerializeField] private Slider slider;
+     [SerializeField] private Slider slider;
 
-  void Start() 
-  {
+     void Start() 
+     {
         slider = GetComponent<Slider>();
         SetNumberText(slider.value);
-  }
+     }
 
-  public void SetNumberText(float value) {
-        numberText.text = value.ToString();
-  }
+     public void SetNumberText(float value)
+     {
+        value *= 100;
+        numberText.text = value.ToString("F0");
+     }
+
+    public void SetLevel(float level)
+    {
+        mixer.SetFloat("MasterVol", Mathf.Log10(level) * 20);
+    }
 }

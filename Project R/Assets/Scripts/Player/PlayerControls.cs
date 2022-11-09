@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Android;
 using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -72,6 +73,7 @@ public class PlayerControls : MonoBehaviour
 
     }
 
+
     //movement
     void FixedUpdate()
     {
@@ -106,8 +108,10 @@ public class PlayerControls : MonoBehaviour
                 if (!success)
                 {
                     success = PlayerMovement(new Vector2(moveInput.x, 0));
+                    print("Moving L/R");
                     if (!success)
                     {
+                        print("Moving Up");
                         success = PlayerMovement(new Vector2(0, moveInput.y));
                     }
                 }
@@ -118,9 +122,11 @@ public class PlayerControls : MonoBehaviour
                 if (moveInput.x < 0)
                 {
                     spriteRenderer.flipX = true;
+                    //GameObject.Find("MeleeWeapon").GetComponent<Animator>().SetBool("weaponFlip", true);
                 }
                 else if (moveInput.x > 0)
                 {
+                    //GameObject.Find("MeleeWeapon").GetComponent<Animator>().SetBool("weaponFlip", false);
                     spriteRenderer.flipX = false;
                 }
 
@@ -297,6 +303,7 @@ public class PlayerControls : MonoBehaviour
 
     private IEnumerator AttackCoroutine(float attackRate)
     {
+        //GameObject.Find("MeleeWeapon").GetComponent<Animator>().SetTrigger("weaponAttack");
         if (spriteRenderer.flipX == true)
         {
             melee.flip = true;
@@ -327,4 +334,5 @@ public class PlayerControls : MonoBehaviour
             rangedAttack.reloadTrigger = true;
         }
     }
+
 }

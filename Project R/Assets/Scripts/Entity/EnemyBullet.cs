@@ -19,8 +19,19 @@ public class EnemyBullet : MonoBehaviour
         {
             Erase();
         }
+        else if (collision.collider.CompareTag("Projectile"))
+        {
+            Erase();
+        }
     }
 
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Projectile"))
+        {
+            Erase();
+        }
+    }
     public void Erase()
     {
         Destroy(gameObject);

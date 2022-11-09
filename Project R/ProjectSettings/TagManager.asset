@@ -21,6 +21,7 @@ TagManager:
   - Loading Screen
   - Stopwatch
   - Overlay UI
+  - Trap
   layers:
   - Default
   - TransparentFX
