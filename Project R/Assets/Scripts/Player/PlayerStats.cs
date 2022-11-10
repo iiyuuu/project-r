@@ -10,6 +10,10 @@ public class PlayerStats : MonoBehaviour
     public int currentHealth;
     public int maxAmmo;
     public int currentAmmo;
+    public int currency;
+    public int attackDamage;
+
+    public bool savedata;
 
     public static event Action OnPlayerDamaged;
     public static event Action OnPlayerDeath;
@@ -19,7 +23,6 @@ public class PlayerStats : MonoBehaviour
     public bool hurt = false;
     [SerializeField] private float iFrameDuration;
     [SerializeField] private int numberOfFlashes;
-    
 
     [Header("Borrowed Componments")]
     [SerializeField] private SpriteRenderer spriteRend;
@@ -33,6 +36,38 @@ public class PlayerStats : MonoBehaviour
         currentHealth = maxHealth;
         spriteRend = GetComponent<SpriteRenderer>();
         currentAmmo = maxAmmo;
+    }
+    private void Update()
+    {
+        if (!savedata)
+        {
+            currency = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<CurrencyManager>(true).currency;
+            attackDamage = GetComponentInChildren<MeleeController>(true).attackDamage;
+        }
+        
+    }
+
+    public void Save()
+    {
+        SaveManager.SavePlayer(this);
+        savedata = true;
+    }
+
+    public void Load()
+    {
+        if (savedata)
+        {
+            PlayerData data = SaveManager.LoadPlayer();
+            currency = data.currency;
+            attackDamage = data.attackDamage;
+            maxHealth = data.maxHealth;
+            maxAmmo = data.maxAmmo;
+        }
+        else
+        {
+            return;
+        }
+        
     }
 
     public void DamageTaken(int amount)
@@ -82,6 +117,8 @@ public class PlayerStats : MonoBehaviour
         }
         currentHealth = maxHealth;
         playerControls.canMove = true;
+        playerControls.floor_number = 1;
+        playerControls.usedScenes.Clear();
     }
     public void Healing(int amount)
     {

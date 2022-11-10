@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public float chaseRadius;
     public bool ranged;
     public int attackDamage;
+    public GameObject[] drops;
 
     [Header("Movement")]
     [SerializeField]
@@ -136,6 +137,12 @@ public class Enemy : MonoBehaviour
 
     void Death()
     {
+        foreach (GameObject item in drops)
+        {
+            Transform targetLocation = gameObject.transform;
+            targetLocation.Translate(new Vector2(Random.Range(0.1f, 0.3f), Random.Range(0.1f, 0.3f)));
+            Instantiate(item, targetLocation);
+        }
         Destroy(gameObject);
     }
 

@@ -179,6 +179,11 @@ public class SceneTeleporter : MonoBehaviour
         controls.canMove = true;
         controls.gameObject.transform.position = spawn.transform.position;
         loadingScreen.SetActive(false);
+        if(SceneManager.GetActiveScene().name == "Hub")//load first then save, to check if there is data
+        {
+            GameObject.FindObjectOfType<PlayerStats>().Save();
+            GameObject.FindObjectOfType<PlayerStats>().Load();
+        }
     }
 
     //return to hub function

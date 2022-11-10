@@ -23,7 +23,11 @@ public class CollisionHandler : MonoBehaviour
 
     public void Update()
     {
-        currency = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<CurrencyManager>(true);
+        if(currency == null)
+        {
+            currency = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<CurrencyManager>(true);
+        }
+        
     }
 
     private void OnTriggerStay2D(Collider2D collision)

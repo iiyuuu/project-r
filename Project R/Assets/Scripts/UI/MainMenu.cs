@@ -2,13 +2,35 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System.IO;
 
 public class MainMenu : MonoBehaviour
 {
     public LevelLoader loader;
+    public PlayerData playerdata;
+    public GameObject playerPrefab;
     public void PlayGame()
     {
+        string path = Application.persistentDataPath + "/player.data";//path for save file
+        if (File.Exists(path))
+        {
+            LoadGame();//make a player, add variables into it, then throw it into hub
+        }
+        else
+        {
+            NewGame();
+        }
+       
+    }
+
+    public void NewGame()
+    {
         StartCoroutine(loader.LoadingLevel("Tutorial Level"));
+    }
+    public void LoadGame()
+    {
+        GameObject player = Instantiate(playerPrefab);
+        player.GetComponent<PlayerStats>().Load();  
     }
 
     public void QuitGame()
