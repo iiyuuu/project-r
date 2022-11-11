@@ -181,8 +181,8 @@ public class SceneTeleporter : MonoBehaviour
         loadingScreen.SetActive(false);
         if(SceneManager.GetActiveScene().name == "Hub")//load first then save, to check if there is data
         {
-            GameObject.FindObjectOfType<PlayerStats>().Save();
-            GameObject.FindObjectOfType<PlayerStats>().Load();
+            FindObjectOfType<PlayerStats>().Save();
+            FindObjectOfType<PlayerStats>().Load();
         }
     }
 

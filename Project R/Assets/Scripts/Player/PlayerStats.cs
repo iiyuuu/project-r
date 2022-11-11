@@ -49,7 +49,7 @@ public class PlayerStats : MonoBehaviour
 
     public void Save()
     {
-        SaveManager.SavePlayer(this);
+        SaveManager.SavePlayer(gameObject.GetComponent<PlayerStats>());
         savedata = true;
     }
 

@@ -26,8 +26,8 @@ public class AmmoBar : MonoBehaviour
     //}
     void Start()
     {
-        //rangedAttack = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<RangedAttack>();
-        //_playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+        rangedAttack = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<RangedAttack>();
+        _playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         DrawBullets();
     }
 

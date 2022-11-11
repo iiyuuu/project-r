@@ -5,18 +5,18 @@ using UnityEngine;
 public class DontDestroyOnLoad : MonoBehaviour
 {
     // Start is called before the first frame update
-    public static DontDestroyOnLoad instance;
+    public GameObject instance;
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        if (instance != null && instance != gameObject.GetComponent<DontDestroyOnLoad>())
+        if (instance != null && instance == gameObject)
         {
             Destroy(gameObject);
             return;
         }
         else
         {
-            instance = this;
+            instance = gameObject;
         }
         
     }
