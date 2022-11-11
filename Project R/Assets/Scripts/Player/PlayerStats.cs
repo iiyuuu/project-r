@@ -13,8 +13,6 @@ public class PlayerStats : MonoBehaviour
     public int currency;
     public int attackDamage;
 
-    public bool savedata;
-
     public static event Action OnPlayerDamaged;
     public static event Action OnPlayerDeath;
     public static event Action OnPlayerHeal;
@@ -39,35 +37,23 @@ public class PlayerStats : MonoBehaviour
     }
     private void Update()
     {
-        if (!savedata)
-        {
-            currency = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<CurrencyManager>(true).currency;
-            attackDamage = GetComponentInChildren<MeleeController>(true).attackDamage;
-        }
+        currency = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<CurrencyManager>(true).currency;
+        attackDamage = GetComponentInChildren<MeleeController>(true).attackDamage;
         
     }
 
     public void Save()
     {
         SaveManager.SavePlayer(gameObject.GetComponent<PlayerStats>());
-        savedata = true;
     }
 
     public void Load()
     {
-        if (savedata)
-        {
-            PlayerData data = SaveManager.LoadPlayer();
-            currency = data.currency;
-            attackDamage = data.attackDamage;
-            maxHealth = data.maxHealth;
-            maxAmmo = data.maxAmmo;
-        }
-        else
-        {
-            return;
-        }
-        
+        PlayerData data = SaveManager.LoadPlayer();
+        currency = data.currency;
+        attackDamage = data.attackDamage;
+        maxHealth = data.maxHealth;
+        maxAmmo = data.maxAmmo;
     }
 
     public void DamageTaken(int amount)

@@ -43,6 +43,7 @@ public class ShopManager : MonoBehaviour
         isEnabled = true;
         shopUI.SetActive(true);
         controls.canMove = false;
+        Cursor.visible = true;
     }
 
     public void DisableShop()
@@ -50,6 +51,7 @@ public class ShopManager : MonoBehaviour
         isEnabled = false;
         shopUI.SetActive(false);
         controls.canMove = true;
+        Cursor.visible = false;
     }
 
 

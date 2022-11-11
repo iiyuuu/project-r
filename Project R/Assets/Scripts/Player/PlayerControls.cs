@@ -62,9 +62,8 @@ public class PlayerControls : MonoBehaviour
         animator = GetComponent<Animator>();//added some animation precode
         spriteRenderer = GetComponent<SpriteRenderer>();//sprite render for flipping sprite (no need for both left and right sprite now)
         activeMoveSpeed = baseMoveSpeed;
-        DontDestroyOnLoad(gameObject);//Lets play persist through scene changes
-        shopUI = FindObjectOfType<ShopManager>(true).GetComponent<ShopManager>();
-        pause = FindObjectOfType<PauseMenu>(true).GetComponent<PauseMenu>();
+        upgradeMenu = FindObjectOfType<PowerupSelection>(true);
+
 
 
     }
@@ -80,8 +79,9 @@ public class PlayerControls : MonoBehaviour
     //movement
     void FixedUpdate()
     {
-        //pause = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<PauseMenu>(true);
-        //shopUI = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<ShopManager>(true);
+        shopUI = FindObjectOfType<ShopManager>(true);
+        pause = FindObjectOfType<PauseMenu>(true);
+        upgradeMenu = FindObjectOfType<PowerupSelection>(true);
         if (canMove && !pause.isPaused)
         { 
             //movement speed modifier

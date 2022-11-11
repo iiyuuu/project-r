@@ -8,7 +8,7 @@ public class Crosshair : MonoBehaviour
     {
         Cursor.visible = false;
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if(Time.timeScale != 0)
         {

@@ -6845,6 +6845,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loader: {fileID: 209898888}
+  playerdata:
+    currency: 0
+    attackDamage: 0
+    maxHealth: 0
+    maxAmmo: 0
+    savedata: 0
+  playerPrefab: {fileID: 8479199668614094285, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

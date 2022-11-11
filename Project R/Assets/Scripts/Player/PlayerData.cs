@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class PlayerData : MonoBehaviour
+public class PlayerData
 {
     public int currency;
     public int attackDamage;
@@ -18,7 +18,6 @@ public class PlayerData : MonoBehaviour
         attackDamage = player.attackDamage;
         maxHealth = player.maxHealth;
         maxAmmo = player.maxAmmo;
-        savedata = player.savedata;
     }
 
 

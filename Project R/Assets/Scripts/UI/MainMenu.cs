@@ -30,7 +30,8 @@ public class MainMenu : MonoBehaviour
     public void LoadGame()
     {
         GameObject player = Instantiate(playerPrefab);
-        player.GetComponent<PlayerStats>().Load();  
+        player.GetComponent<PlayerStats>().Load();
+        StartCoroutine(loader.LoadingLevel("Hub"));
     }
 
     public void QuitGame()
