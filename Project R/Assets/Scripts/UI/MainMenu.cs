@@ -25,7 +25,7 @@ public class MainMenu : MonoBehaviour
 
     public void NewGame()
     {
-        StartCoroutine(loader.LoadingLevel("Tutorial Level"));
+        StartCoroutine(loader.LoadingLevel("New Game"));
     }
     public void LoadGame()
     {

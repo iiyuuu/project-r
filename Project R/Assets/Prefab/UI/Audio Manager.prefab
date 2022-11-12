@@ -1,0 +1,163 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3022621858816388369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3022621858816388382}
+  - component: {fileID: 3022621858816388383}
+  - component: {fileID: 3022621858816388368}
+  m_Layer: 7
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3022621858816388382
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3022621858816388369}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3022621858816388383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3022621858816388369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ff9b385ff2d1046bafd0aabd4ecb2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScene: 
+  sounds:
+  - name: Fireball1
+    clip: {fileID: 8300000, guid: 2a5a77cded6823a4aa6951bd58071d2c, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Fireball2
+    clip: {fileID: 8300000, guid: 4e82ddb0d5e519b4fb37528317db0d68, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Fireball Impact
+    clip: {fileID: 8300000, guid: 27190d3d30e04ae418041a63b2932e41, type: 3}
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Sword Slash1
+    clip: {fileID: 8300000, guid: bfe5673e5bb2b094f8b9e2cd7e80c034, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Sword Slash2
+    clip: {fileID: 8300000, guid: b1c9c6e4869e09d4e9f54f2630345b7b, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Player Hurt
+    clip: {fileID: 8300000, guid: 5a1380b52ccd334488469a7907bb974b, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Footstep Grass
+    clip: {fileID: 8300000, guid: 2c2267772da2ef34daff823b3b3f43f3, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Skeleton Hurt1
+    clip: {fileID: 8300000, guid: 86c77945964d5024898864ab1b28ec76, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Skeleton Hurt2
+    clip: {fileID: 8300000, guid: 2906f30a5c8ec3f468bfec6506caef4f, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Skeleton Death
+    clip: {fileID: 8300000, guid: e63761ebb450c794a8bc3ddea1066feb, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Knight Hurt1
+    clip: {fileID: 8300000, guid: 86c77945964d5024898864ab1b28ec76, type: 3}
+    volume: 0.4
+    pitch: 0.3
+    loop: 0
+    source: {fileID: 0}
+  - name: Knight Hurt2
+    clip: {fileID: 8300000, guid: 2906f30a5c8ec3f468bfec6506caef4f, type: 3}
+    volume: 0.4
+    pitch: 0.3
+    loop: 0
+    source: {fileID: 0}
+  - name: Knight Death
+    clip: {fileID: 8300000, guid: e63761ebb450c794a8bc3ddea1066feb, type: 3}
+    volume: 0.4
+    pitch: 0.3
+    loop: 0
+    source: {fileID: 0}
+  - name: Skeleton Walk1
+    clip: {fileID: 8300000, guid: 3949f37f4266eab4d819b78b0b7c36db, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Skeleton Walk2
+    clip: {fileID: 8300000, guid: 92a5eb89c75d52441979550492b11808, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: F1 BGM
+    clip: {fileID: 8300000, guid: ccdb8b22986369d499653d23a9d8ee12, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: F2 BGM
+    clip: {fileID: 8300000, guid: db7e2ef07d2b44d4494e421d2192bf09, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+--- !u!114 &3022621858816388368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3022621858816388369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b5f2d2778c14f448bcf8bbc2919326b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

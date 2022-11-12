@@ -9,7 +9,7 @@ public class ShopCaller : MonoBehaviour
 
     private void Update()
     {
-        shop = GameObject.FindGameObjectWithTag("Shop").GetComponentInChildren<ShopManager>(true);
+        shop = GameObject.FindObjectOfType<ShopManager>(true);
     }
 
     public void CallShop()

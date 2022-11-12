@@ -7,6 +7,7 @@ public class Intro : MonoBehaviour
 {
     public float duration;
     private IEnumerator coroutine;
+    public string level;
     [SerializeField] private Animator animator;
     public float transitionTime;
     void Start()
@@ -36,6 +37,6 @@ public class Intro : MonoBehaviour
 
         yield return new WaitForSeconds(transitionTime);
 
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene(level);
     }
 }
