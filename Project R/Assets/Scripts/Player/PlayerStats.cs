@@ -37,7 +37,10 @@ public class PlayerStats : MonoBehaviour
     }
     private void Update()
     {
-        currency = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<CurrencyManager>(true).currency;
+        if (currency == null)
+        {
+            currency = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<CurrencyManager>(true).currency;
+        }
         attackDamage = GetComponentInChildren<MeleeController>(true).attackDamage;
         
     }

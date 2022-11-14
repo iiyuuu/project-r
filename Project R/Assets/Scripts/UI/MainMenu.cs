@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     public LevelLoader loader;
     public PlayerData playerdata;
     public GameObject playerPrefab;
+    public GameObject[] dependencies;
     public void PlayGame()
     {
         string path = Application.persistentDataPath + "/player.data";//path for save file
@@ -31,6 +32,11 @@ public class MainMenu : MonoBehaviour
     {
         GameObject player = Instantiate(playerPrefab);
         player.GetComponent<PlayerStats>().Load();
+        foreach (GameObject go in dependencies)
+        {
+            Instantiate(go);
+            go.SetActive(true);
+        }
         StartCoroutine(loader.LoadingLevel("Hub"));
     }
 

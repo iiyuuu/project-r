@@ -85,7 +85,7 @@ MonoBehaviour:
   attackPoint: {fileID: 6056745490297014063}
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 1152
   flip: 0
 --- !u!1 &1777289893490082973
 GameObject:
@@ -416,7 +416,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: -0.06}
+  m_ConnectedAnchor: {x: 0, y: -0.060029868}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -736,7 +736,7 @@ Transform:
   - {fileID: 3886497121818961120}
   - {fileID: 8571696030462500065}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8479199668614094281
 SpriteRenderer:
@@ -904,7 +904,6 @@ MonoBehaviour:
   currentAmmo: 0
   currency: 0
   attackDamage: 0
-  savedata: 0
   hurt: 0
   iFrameDuration: 1
   numberOfFlashes: 5
@@ -1078,4 +1077,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b5f2d2778c14f448bcf8bbc2919326b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: {fileID: 0}

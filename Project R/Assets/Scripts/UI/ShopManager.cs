@@ -50,7 +50,10 @@ public class ShopManager : MonoBehaviour
     {
         isEnabled = false;
         shopUI.SetActive(false);
-        controls.canMove = true;
+        if (!controls.canMove)
+        {
+            controls.canMove = true;
+        }
         Cursor.visible = false;
     }
 
