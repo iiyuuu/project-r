@@ -7,6 +7,7 @@ public class CurrencyManager : MonoBehaviour
 {
     public static CurrencyManager instance;
     public TextMeshProUGUI text;
+    public TextMeshProUGUI shopText;
     public int currency;
     public ShopManager shop;
     
@@ -15,10 +16,13 @@ public class CurrencyManager : MonoBehaviour
     {
         currency += currencyValue;
         text.text = "X" + currency.ToString();
+        
         if (shop != null)
         {
+            
             if (shop.isEnabled)
             {
+                shopText.text = "X" + currency.ToString();
                 shop.CheckPurchasable();
             }
         }

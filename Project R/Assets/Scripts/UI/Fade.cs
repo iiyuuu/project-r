@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Fade : MonoBehaviour
@@ -10,17 +11,22 @@ public class Fade : MonoBehaviour
     [SerializeField] private bool fadeIn = false;
     [SerializeField] private bool fadeOut = false;
     [SerializeField] private float fadeSpeed;
+    
+    public UnityEvent onEnable;
+    public UnityEvent onDisable;
 
     public void ShowUI()
     {
         fadeIn = true;
         canvasGroup.gameObject.GetComponent<Image>().raycastTarget = true;
+        onEnable.Invoke();
     }
 
     public void HideUI()
     {
         fadeOut = true;
         canvasGroup.gameObject.GetComponent<Image>().raycastTarget = false;
+        onDisable.Invoke();
     }
 
     private void Update()

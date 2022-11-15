@@ -37,7 +37,7 @@ public class PlayerStats : MonoBehaviour
     }
     private void Update()
     {
-        if (currency == null)
+        if (currency < 0)
         {
             currency = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<CurrencyManager>(true).currency;
         }
@@ -70,6 +70,13 @@ public class PlayerStats : MonoBehaviour
             currentHealth = 0;
             OnPlayerDeath?.Invoke();
             playerControls.canMove = false;
+            playerControls.canDash = false;
+            playerControls.isMoving = false;
+            playerControls.isDeath = true;
+            foreach(Sound sound in FindObjectOfType<AudioManager>().sounds)
+            {
+                sound.source.Stop();
+            }
 
             Canvas[] canvases = FindObjectsOfType<Canvas>(true);
             foreach(Canvas c in canvases)
@@ -80,7 +87,8 @@ public class PlayerStats : MonoBehaviour
                 }
                 c.gameObject.SetActive(false);
             }
-
+            FindObjectOfType<AudioManager>().Stop("F1 BGM");
+            FindObjectOfType<AudioManager>().Stop("F2 BGM");
 
             SceneManager.LoadScene("Death");
             animator.SetTrigger("Death");
@@ -99,6 +107,7 @@ public class PlayerStats : MonoBehaviour
         yield return StartCoroutine(loader.LoadingLevel("Hub"));
         animator.SetTrigger("Respawn");
 
+
         Canvas[] canvases = FindObjectsOfType<Canvas>(true);
         foreach (Canvas c in canvases)
         {
@@ -106,6 +115,9 @@ public class PlayerStats : MonoBehaviour
         }
         currentHealth = maxHealth;
         playerControls.canMove = true;
+        playerControls.canDash = true;
+        playerControls.isMoving = true;
+        playerControls.isDeath = false;
         playerControls.floor_number = 1;
         playerControls.usedScenes.Clear();
     }

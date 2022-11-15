@@ -182,6 +182,19 @@ MonoBehaviour:
   chaseRadius: 1
   ranged: 1
   attackDamage: 0
+  drops:
+  - {fileID: 2438602980245766496, guid: 3fbf55d0e4ff7ad4fa9d219a667ddd26, type: 3}
+  - {fileID: 2438602980245766496, guid: 3fbf55d0e4ff7ad4fa9d219a667ddd26, type: 3}
+  - {fileID: 2438602980245766496, guid: 3fbf55d0e4ff7ad4fa9d219a667ddd26, type: 3}
+  - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
+  - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
+  - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
+  - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
+  - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
+  - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
+  - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
+  moveInput: {x: 0, y: 0}
+  pointerInput: {x: 0, y: 0}
   homePosition: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
   iFrameDuration: 0.5
@@ -510,18 +523,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d17f352d7e9b4051a4fcce8d931a95f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 373667894874720840, guid: 88fe1c2b8c637824cb9d5f44a90a134e, type: 3}
-  firePoint: {fileID: 777386640502084997}
-  fireForce: 3
-  reloadTrigger: 0
   fireRate: 0
   reloadTime: 2
+  fireForce: 3
+  currentDelay: 0
+  reloadTrigger: 0
   reloading: 0
   firing: 0
-  currentDelay: 0
+  bulletPrefab: {fileID: 373667894874720840, guid: 88fe1c2b8c637824cb9d5f44a90a134e, type: 3}
+  firePoint: {fileID: 777386640502084997}
   body: {fileID: 777386640743146271}
   stats: {fileID: 0}
   controls: {fileID: 0}
+  animator: {fileID: 0}
   OnReloading:
     m_PersistentCalls:
       m_Calls: []

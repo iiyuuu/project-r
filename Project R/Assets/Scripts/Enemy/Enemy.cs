@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -48,6 +49,11 @@ public class Enemy : MonoBehaviour
                 {
                     circle.enabled = false;
                 }
+                foreach (BoxCollider2D box in gameObject.GetComponents<BoxCollider2D>())
+                {
+                    box.enabled = false;
+                }
+                rb = null;
             }
         }
         get
@@ -137,12 +143,11 @@ public class Enemy : MonoBehaviour
 
     void Death()
     {
-        foreach (GameObject item in drops)
-        {
-            Transform targetLocation = gameObject.transform;
-            targetLocation.Translate(new Vector2(Random.Range(0.1f, 0.3f), Random.Range(0.1f, 0.3f)));
-            Instantiate(item, targetLocation);
-        }
+        
+        Transform targetLocation = gameObject.transform;
+        targetLocation.Translate(new Vector2(Random.Range(0.1f, 0.3f), Random.Range(0.1f, 0.3f)));
+        Instantiate(drops[Random.Range(0, drops.Length)], targetLocation);
+        
         Destroy(gameObject);
     }
 

@@ -27,7 +27,7 @@ public class TargetDetector : Detector
 
             //Check if you see the player
             BoxCollider2D box = playerCollider.gameObject.GetComponent<BoxCollider2D>();
-            Vector2 newOffset = new Vector2(box.offset.x, box.offset.y / 1.33f);
+            Vector2 newOffset = new Vector2(box.offset.x, box.offset.y / 1.5f);
             Vector2 direction = ((Vector2)playerCollider.transform.position + newOffset - (Vector2)transform.position).normalized;
             //Debug.Log(direction);
             RaycastHit2D hit =

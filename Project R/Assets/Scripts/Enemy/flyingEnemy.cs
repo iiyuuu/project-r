@@ -40,7 +40,7 @@ public class flyingEnemy : Enemy
         //dash coroutine
         hit = Physics2D.OverlapCircle(transform.position, chaseRadius, LayerMask.GetMask("Player"));
         spriteRend.flipX = (aimAngle > -90f && aimAngle < 90f) ? true : false;
-        if (!enemyHurt)
+        if (!enemyHurt && rb != null)
         {
             switch (currentState)
             {

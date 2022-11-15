@@ -36,6 +36,10 @@ public class SceneTeleporter : MonoBehaviour
         {
 
             controls.canMove = false;
+            if(SceneManager.GetActiveScene().name == "Hub")
+            {
+                FindObjectOfType<PlayerStats>().Save();
+            }
 
             if (controls.usedScenes.Count == 4 && controls.floor_number == 1)
             {

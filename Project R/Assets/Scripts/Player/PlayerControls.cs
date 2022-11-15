@@ -31,6 +31,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private bool canAttack = true;
     public bool canMove = true;
     public bool isMoving = false;
+    public bool isDeath = false;
 
     [Space(20)]
     public int floor_number = 1;
@@ -82,7 +83,7 @@ public class PlayerControls : MonoBehaviour
         shopUI = FindObjectOfType<ShopManager>(true);
         pause = FindObjectOfType<PauseMenu>(true);
         upgradeMenu = FindObjectOfType<PowerupSelection>(true);
-        if (canMove && !pause.isPaused)
+        if (canMove && !pause.isPaused && !isDeath)
         { 
             //movement speed modifier
             if (isDashing)
@@ -205,7 +206,7 @@ public class PlayerControls : MonoBehaviour
     void OnDash()
     {
         
-        if (canDash && !pause.isPaused)
+        if (canDash && !pause.isPaused && !isDeath)
         {
             animator.SetTrigger("isDashing");
             if (dashCoroutine != null)
@@ -240,7 +241,7 @@ public class PlayerControls : MonoBehaviour
 
     void OnMelee()
     {
-        if (canAttack && !pause.isPaused && canMove)
+        if (canAttack && !pause.isPaused && canMove && !isDeath)
         {
             int num = Random.Range(1, 3);
             switch (num)
@@ -277,7 +278,7 @@ public class PlayerControls : MonoBehaviour
 
     public void OnPause()
     {
-        if (!shopUI.isEnabled && !upgradeMenu.isActiveAndEnabled)
+        if (!shopUI.isEnabled && !upgradeMenu.isActiveAndEnabled && !isDeath)
         {
             if (!pause.isPaused)
             {

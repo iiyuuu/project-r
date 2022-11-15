@@ -6206,6 +6206,10 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 3569968416217482967, guid: a774a8996485e124dad7311311dd8305, type: 3}
+      propertyPath: drops.Array.size
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 3569968416217482969, guid: a774a8996485e124dad7311311dd8305, type: 3}
       propertyPath: m_Name
       value: Slime

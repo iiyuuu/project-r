@@ -2,14 +2,18 @@ using UnityEngine.Audio;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Cinemachine.DocumentationSortingAttribute;
 
 [System.Serializable]
 public class AudioManager : MonoBehaviour
 {
     public string currentScene;
+    public AudioMixer mixer;
+    [SerializeField]
+    private float masterVolume;
     public Sound[] sounds;
     public static AudioManager instance;
-    public static AudioMixer mixer;
+    
 
     private void Awake()
     {
@@ -27,9 +31,21 @@ public class AudioManager : MonoBehaviour
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
 
-            s.source.volume = s.volume;
+            s.source.volume = s.volume - GetMasterVolume();
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+        }
+    }
+
+    public float GetMasterVolume()
+    {
+        if(mixer.GetFloat("MasterVol", out masterVolume))
+        {
+            return 10 * Mathf.Log10(masterVolume);
+        }
+        else
+        {
+            return 0f;
         }
     }
 

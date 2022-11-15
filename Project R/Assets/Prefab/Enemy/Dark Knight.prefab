@@ -195,7 +195,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.012508433, y: -0.0047302544}
+  m_Offset: {x: 0.0061893165, y: -0.0047302544}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -206,8 +206,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.26080617, y: 0.3199106}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.23805732, y: 0.29968935}
+  m_EdgeRadius: 0.01
 --- !u!61 &4785558742122789413
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -221,7 +221,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.011470005, y: 0.0010363162}
+  m_Offset: {x: 0.006414771, y: -0.002755165}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -232,8 +232,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.18956372, y: 0.22673053}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.19967437, y: 0.26464534}
+  m_EdgeRadius: 0.01
 --- !u!212 &4785558742122789422
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -324,6 +324,19 @@ MonoBehaviour:
   chaseRadius: 2
   ranged: 0
   attackDamage: 0
+  drops:
+  - {fileID: 2438602980245766496, guid: 3fbf55d0e4ff7ad4fa9d219a667ddd26, type: 3}
+  - {fileID: 2438602980245766496, guid: 3fbf55d0e4ff7ad4fa9d219a667ddd26, type: 3}
+  - {fileID: 2438602980245766496, guid: 3fbf55d0e4ff7ad4fa9d219a667ddd26, type: 3}
+  - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
+  - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
+  - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
+  - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
+  - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
+  - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
+  - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
+  moveInput: {x: 0, y: 0}
+  pointerInput: {x: 0, y: 0}
   homePosition: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
   iFrameDuration: 0.5

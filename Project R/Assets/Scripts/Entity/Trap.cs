@@ -31,7 +31,7 @@ public class Trap : MonoBehaviour
                     {
                         if(force <= 0)
                         {
-                            sprite.flipX = true;
+                            trapObject.GetComponent<SpriteRenderer>().flipX = true;
                         }
                         trapObject.GetComponent<Rigidbody2D>().AddForce(f.right * force, ForceMode2D.Impulse);
                     }

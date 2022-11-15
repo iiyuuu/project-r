@@ -1,8 +1,8 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System.IO;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -10,6 +10,9 @@ public class MainMenu : MonoBehaviour
     public PlayerData playerdata;
     public GameObject playerPrefab;
     public GameObject[] dependencies;
+    private int height;
+    private int width;
+    public string dataJSON;
     public void PlayGame()
     {
         string path = Application.persistentDataPath + "/player.data";//path for save file
@@ -51,8 +54,8 @@ public class MainMenu : MonoBehaviour
     public void SetScreenSize (int index) 
     {
         bool fullscreen = Screen.fullScreen;
-        int width = widths[index];
-        int height = heights[index];
+        width = widths[index];
+        height = heights[index];
         Screen.SetResolution(width, height, fullscreen);
     }
 
@@ -69,6 +72,24 @@ public class MainMenu : MonoBehaviour
 
         Debug.Log("QUIT");
         Application.Quit();
+    }
+
+    public void SaveSettings()
+    {
+        SettingsData data = new SettingsData(height, width, Screen.fullScreen, FindObjectOfType<Slider>().value);
+        Debug.Log(Application.persistentDataPath);
+        string savedata = JsonUtility.ToJson(data);
+        File.WriteAllText(Application.persistentDataPath + "/PlayerSettings.json", savedata);
+    }
+
+    public void LoadSettings() 
+    {
+        if(File.Exists(Application.persistentDataPath + "/PlayerSettings.json"))
+        {
+            dataJSON = File.ReadAllText(Application.persistentDataPath + "/PlayerSettings.json");
+            JsonUtility.FromJson<SettingsData>(dataJSON);
+            Debug.Log(JsonUtility.FromJson<SettingsData>(dataJSON));
+        }
     }
 
 }

@@ -50,7 +50,7 @@ public class CollisionHandler : MonoBehaviour
                     Destroy(other.gameObject);
                 }
             }
-            if (controls.canDash && !stats.hurt)
+            if (!controls.isDashing && !stats.hurt)
             {
                 if (coroutine != null)
                 {
@@ -100,7 +100,7 @@ public class CollisionHandler : MonoBehaviour
                 
                
                 //difference = (controls.body.mass * difference) / Time.fixedDeltaTime;
-                Debug.Log(difference);
+                //Debug.Log(difference);
                 controls.body.AddForce(difference, ForceMode2D.Impulse);
                 StartCoroutine(coroutine);
                 

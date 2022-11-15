@@ -55,6 +55,7 @@ public class ShopManager : MonoBehaviour
             controls.canMove = true;
         }
         Cursor.visible = false;
+        FindObjectOfType<PlayerStats>().Save();
     }
 
 

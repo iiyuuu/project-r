@@ -1589,7 +1589,7 @@ GameObject:
   - component: {fileID: 1295942074}
   - component: {fileID: 1295942073}
   - component: {fileID: 1295942075}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28162,7 +28162,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1929503547
 Transform:
   m_ObjectHideFlags: 0

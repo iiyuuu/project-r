@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelLoader : MonoBehaviour
 {
@@ -13,12 +14,17 @@ public class LevelLoader : MonoBehaviour
     public IEnumerator LoadingLevel(string scene)
     {
         animator.SetTrigger("Start");
-        StartCoroutine(StartFade(FindObjectOfType<AudioSource>(), transitionTime, 0f));
+        foreach (AudioSource source in FindObjectsOfType<AudioSource>())
+        {
+            StartCoroutine(StartFade(source, transitionTime, 0f));
+        }
+        
 
         yield return new WaitForSeconds(transitionTime);
 
         if(scene != null)
         {
+            
             SceneManager.LoadScene(scene);
 
             if (teleporter != null)
@@ -26,8 +32,6 @@ public class LevelLoader : MonoBehaviour
                 teleporter.StartLoad(scene);
             }
         }
-        
-        
     }
 
     public static IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume)
@@ -40,6 +44,9 @@ public class LevelLoader : MonoBehaviour
             audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
             yield return null;
         }
+        audioSource.Stop();
+
         yield break;
     }
+
 }

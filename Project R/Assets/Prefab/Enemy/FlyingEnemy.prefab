@@ -323,7 +323,7 @@ GameObject:
   - component: {fileID: 7194221344439264789}
   - component: {fileID: 7194221344911867128}
   - component: {fileID: 7194221344911867129}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: FlyingEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -490,6 +490,8 @@ MonoBehaviour:
   chaseRadius: 1
   ranged: 0
   attackDamage: 0
+  drops:
+  - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
   moveInput: {x: 0, y: 0}
   pointerInput: {x: 0, y: 0}
   homePosition: {x: 0, y: 0, z: 0}

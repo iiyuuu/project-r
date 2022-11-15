@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScene: 
+  mixer: {fileID: 24100000, guid: ed6df74631140ab4588ad612f38051eb, type: 2}
+  masterVolume: 0
   sounds:
   - name: Fireball1
     clip: {fileID: 8300000, guid: 2a5a77cded6823a4aa6951bd58071d2c, type: 3}
