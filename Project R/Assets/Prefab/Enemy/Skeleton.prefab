@@ -185,7 +185,6 @@ MonoBehaviour:
   drops:
   - {fileID: 2438602980245766496, guid: 3fbf55d0e4ff7ad4fa9d219a667ddd26, type: 3}
   - {fileID: 2438602980245766496, guid: 3fbf55d0e4ff7ad4fa9d219a667ddd26, type: 3}
-  - {fileID: 2438602980245766496, guid: 3fbf55d0e4ff7ad4fa9d219a667ddd26, type: 3}
   - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
   - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
   - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
@@ -193,6 +192,8 @@ MonoBehaviour:
   - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
   - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
   - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
+  - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
+  type: 1
   moveInput: {x: 0, y: 0}
   pointerInput: {x: 0, y: 0}
   homePosition: {x: 0, y: 0, z: 0}

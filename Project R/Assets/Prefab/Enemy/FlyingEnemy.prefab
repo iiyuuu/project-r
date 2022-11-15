@@ -492,12 +492,13 @@ MonoBehaviour:
   attackDamage: 0
   drops:
   - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
+  type: 2
   moveInput: {x: 0, y: 0}
   pointerInput: {x: 0, y: 0}
   homePosition: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
-  iFrameDuration: 0
-  numberOfFlashes: 0
+  iFrameDuration: 0.5
+  numberOfFlashes: 2
   enemyHurt: 0
   spriteRend: {fileID: 0}
   chargeTime: 1

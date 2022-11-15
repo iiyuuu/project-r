@@ -46,6 +46,15 @@ public class RangedEnemy : Enemy
             
         }
     }
+
+    public void PlaySkeletonSound1()
+    {
+        FindObjectOfType<AudioManager>().Play("Skeleton Walk1");
+    }
+    public void PlaySkeletonSound2()
+    {
+        FindObjectOfType<AudioManager>().Play("Skeleton Walk2");
+    }
     public override void CheckDistance()
     {
         if (Vector2.Distance(PointerInput, transform.position) <= chaseRadius && canRun)//if player is in sweet zone

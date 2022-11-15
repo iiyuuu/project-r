@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -14,6 +15,15 @@ public class Enemy : MonoBehaviour
     public bool ranged;
     public int attackDamage;
     public GameObject[] drops;
+    public enum EnemyType
+    {
+        Slime,
+        Skeleton,
+        Eye,
+        Knight,
+    }
+
+    public EnemyType type;
 
     [Header("Movement")]
     [SerializeField]
@@ -95,10 +105,75 @@ public class Enemy : MonoBehaviour
             CheckDistance();
         }
     }
+    
+    public void PlaySlimeSound()
+    {
+        int num = Random.Range(0, 2);
+        if(num == 0)
+        {
+            FindObjectOfType<AudioManager>().Play("Slime Walk1");
+        }
+        else
+        {
+            FindObjectOfType<AudioManager>().Play("Slime Walk2");
+        }
+    }
+
+    public void PlayKnightWalk1()
+    {
+        FindObjectOfType<AudioManager>().Play("Knight Walk1");
+    }
+    public void PlayKnightWalk2()
+    {
+        FindObjectOfType<AudioManager>().Play("Knight Walk2");
+    }
+
+    public void PlaySlimeDeath()
+    {
+        FindObjectOfType<AudioManager>().Play("Slime Death");
+    }
+    public void PlayKnightDeath()
+    {
+        FindObjectOfType<AudioManager>().Play("Knight Death");
+    }
+    public void PlaySkeletonDeath()
+    {
+        FindObjectOfType<AudioManager>().Play("Skeleton Death");
+    }
 
     public IEnumerator Damaged()
     {
         enemyHurt = true;
+        switch (type)
+        {
+            case EnemyType.Slime:
+                FindObjectOfType<AudioManager>().Play("Slime Walk1");
+                break;
+            case EnemyType.Skeleton:
+                int num = Random.Range(0, 2);
+                if (num == 0)
+                {
+                    FindObjectOfType<AudioManager>().Play("Skeleton Hurt1");
+                }
+                else
+                {
+                    FindObjectOfType<AudioManager>().Play("Skeleton Hurt2");
+                }
+                break;
+            case EnemyType.Eye:
+                break;
+            case EnemyType.Knight:
+                num = Random.Range(0, 2);
+                if (num == 0)
+                {
+                    FindObjectOfType<AudioManager>().Play("Knight Hurt1");
+                }
+                else
+                {
+                    FindObjectOfType<AudioManager>().Play("Knight Hurt2");
+                }
+                break;
+        }
         for (int i = 0; i < numberOfFlashes; i++)
         {
             spriteRend.color = new Color(1, 0, 0, 0.5f);
@@ -143,11 +218,12 @@ public class Enemy : MonoBehaviour
 
     void Death()
     {
-        
-        Transform targetLocation = gameObject.transform;
-        targetLocation.Translate(new Vector2(Random.Range(0.1f, 0.3f), Random.Range(0.1f, 0.3f)));
-        Instantiate(drops[Random.Range(0, drops.Length)], targetLocation);
-        
+
+        Vector3 targetLocation = new Vector3(transform.position.x + Random.Range(0.05f, 0.1f), transform.position.y + Random.Range(0.05f, 0.1f), 0);
+        Debug.Log(targetLocation);
+        int index = Random.Range(0, drops.Length);
+        GameObject drop = Instantiate(drops[index], targetLocation, Quaternion.identity);
+        drop.SetActive(true);
         Destroy(gameObject);
     }
 

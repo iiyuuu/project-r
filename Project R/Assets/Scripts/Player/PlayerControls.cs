@@ -76,6 +76,11 @@ public class PlayerControls : MonoBehaviour
 
     }
 
+    public void PlayDashSound()
+    {
+        FindObjectOfType<AudioManager>().Play("Footstep Grass");
+    }
+
 
     //movement
     void FixedUpdate()

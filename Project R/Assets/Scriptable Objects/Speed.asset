@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Speed
   description: Movespeed +5
-  baseCost: 50
+  baseCost: 100
