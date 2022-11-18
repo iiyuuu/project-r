@@ -10,8 +10,11 @@ public class CurrencyManager : MonoBehaviour
     public TextMeshProUGUI shopText;
     public int currency;
     public ShopManager shop;
-    
 
+    public void Awake()
+    {
+        shopText = FindObjectOfType<ShopManager>(true).GetComponentInChildren<TextMeshProUGUI>();
+    }
     public void ChangeCurrency(int currencyValue)
     {
         currency += currencyValue;

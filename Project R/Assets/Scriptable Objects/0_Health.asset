@@ -9,9 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e222fdc5e1eb8644d8e67c026796184b, type: 3}
-  m_Name: Health
+  m_Script: {fileID: 11500000, guid: c8fe9be75d9525848abaf728e16c3ae3, type: 3}
+  m_Name: 0_Health
   m_EditorClassIdentifier: 
-  title: Health
-  description: Starting Health +2
+  title: Health Boost
+  description: Increases Starting HP
+  ID: 0
+  enabled: 0
   baseCost: 100
+  purchasable: 1
+  sprite: {fileID: 21300000, guid: 740d9a6d2b9308340a5a272502e6025f, type: 3}
+  amount: 2
+  level: 1

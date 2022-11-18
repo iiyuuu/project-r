@@ -874,6 +874,7 @@ MonoBehaviour:
   canAttack: 1
   canMove: 1
   isMoving: 0
+  isDeath: 0
   floor_number: 1
   usedScenes: []
   body: {fileID: 0}
@@ -904,6 +905,10 @@ MonoBehaviour:
   currentAmmo: 0
   currency: 0
   attackDamage: 0
+  smallPowerups:
+  - {fileID: 11400000, guid: 9d3bd69df570cf04fadf16427835829b, type: 2}
+  - {fileID: 11400000, guid: 6ef80d46b1d0ea44bb1670b4c8311a25, type: 2}
+  - {fileID: 11400000, guid: ab5156ed78250f74a90d461440b4609c, type: 2}
   hurt: 0
   iFrameDuration: 1
   numberOfFlashes: 5

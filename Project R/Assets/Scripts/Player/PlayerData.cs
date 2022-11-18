@@ -10,6 +10,7 @@ public class PlayerData
     public int maxHealth;
     public int maxAmmo;
     public bool savedata;
+    public List<ShopItems> smallPowerups;
 
     //spapwn in hub with current data on load
     public PlayerData (PlayerStats player)
@@ -18,6 +19,7 @@ public class PlayerData
         attackDamage = player.attackDamage;
         maxHealth = player.maxHealth;
         maxAmmo = player.maxAmmo;
+        smallPowerups = player.smallPowerups;
     }
 
 

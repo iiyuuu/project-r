@@ -9,7 +9,6 @@ public class HealthBoost : Powerup
 
     public override void Activate(GameObject parent)
     {
-        Debug.Log("Active");
         parent.GetComponent<PlayerStats>().maxHealth += amount;
         parent.GetComponent<PlayerStats>().currentHealth += amount;
 

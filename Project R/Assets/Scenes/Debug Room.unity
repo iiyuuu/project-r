@@ -796,7 +796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7826874460322773490, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -0.059999984
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 8479199668614094277, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
       propertyPath: maxAmmo
@@ -1383,6 +1383,10 @@ PrefabInstance:
       propertyPath: _playerStats
       value: 
       objectReference: {fileID: 1860529332}
+    - target: {fileID: 2137202072461733025, guid: e6b4ba2c4db487d478ed59ce291c9924, type: 3}
+      propertyPath: shopText
+      value: 
+      objectReference: {fileID: 1745806113}
     - target: {fileID: 6059071507081580451, guid: e6b4ba2c4db487d478ed59ce291c9924, type: 3}
       propertyPath: _playerStats
       value: 
@@ -11535,6 +11539,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 395257471}
   m_SourcePrefab: {fileID: 100100000, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+--- !u!114 &1745806113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1006411761257938086, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+  m_PrefabInstance: {fileID: 1887215050}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1761296164
 GameObject:
   m_ObjectHideFlags: 0
@@ -12137,6 +12152,54 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 558305225444457068, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 558305225444457068, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 558305225444457068, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 558305225444457068, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 626066095961119584, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_Name
+      value: Melee Boost
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975598386461700083, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975598386461700083, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975598386461700083, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1975598386461700083, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3009388979271975889, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3009388979271975889, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 490.9912
+      objectReference: {fileID: 0}
+    - target: {fileID: 3009388979642841713, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3009388980783032800, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -12228,6 +12291,22 @@ PrefabInstance:
     - target: {fileID: 5123560548853822168, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
       propertyPath: m_Name
       value: Overlay Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652102478691865786, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652102478691865786, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652102478691865786, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652102478691865786, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

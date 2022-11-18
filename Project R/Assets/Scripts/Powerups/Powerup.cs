@@ -9,6 +9,7 @@ public class Powerup : ScriptableObject
     public string title;
     public string description;
     public int ID;
+    public bool enabled;
 
     public Sprite sprite;
 

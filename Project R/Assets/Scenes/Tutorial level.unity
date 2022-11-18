@@ -88209,19 +88209,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 558305225444457068, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 558305225444457068, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 558305225444457068, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 960.4548
       objectReference: {fileID: 0}
     - target: {fileID: 558305225444457068, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -85.1652
+      objectReference: {fileID: 0}
+    - target: {fileID: 626066095961119584, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_Name
+      value: Melee Boost
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006411761257938086, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_fontSize
+      value: 143.6
       objectReference: {fileID: 0}
     - target: {fileID: 1006411761257938086, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
       propertyPath: m_HorizontalAlignment
@@ -88291,13 +88299,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2239255431775724176, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 1106540881}
     - target: {fileID: 3009388979271975889, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 0.9095459
       objectReference: {fileID: 0}
     - target: {fileID: 3009388979271975889, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 490.9912
       objectReference: {fileID: 0}
     - target: {fileID: 3009388979594965543, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
       propertyPath: m_Color.a
@@ -88317,7 +88329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3009388979642841713, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3009388980783032800, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -88338,6 +88350,18 @@ PrefabInstance:
     - target: {fileID: 3889517323702158080, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463521448328259942, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_text
+      value: Description
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463521448328259942, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463521448328259942, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4538091644207151149, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
       propertyPath: m_AnchorMax.y
@@ -88473,19 +88497,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6652102478691865786, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6652102478691865786, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6652102478691865786, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 960.4548
       objectReference: {fileID: 0}
     - target: {fileID: 6652102478691865786, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -245.4956
       objectReference: {fileID: 0}
     - target: {fileID: 6682004792950604578, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
       propertyPath: m_AnchorMax.y
@@ -88561,6 +88585,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1447096928ac08243929dec13e5c963c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1106540881 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8062614480233969357, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+  m_PrefabInstance: {fileID: 1106540879}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1114212417 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6636966778158899222, guid: b2050ab9056828743967e9106327f027, type: 3}
@@ -91298,7 +91327,7 @@ Tilemap:
       - {fileID: 1822243277, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -824224458, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -1144722836, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
-      m_AnimationSpeed: 6
+      m_AnimationSpeed: 6.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 13, y: -5, z: 0}
@@ -91428,7 +91457,7 @@ Tilemap:
       - {fileID: 1600228275, guid: 798f6a30f32bb814d880faa714079550, type: 3}
       - {fileID: 527064027, guid: 798f6a30f32bb814d880faa714079550, type: 3}
       - {fileID: 709154982, guid: 798f6a30f32bb814d880faa714079550, type: 3}
-      m_AnimationSpeed: 6
+      m_AnimationSpeed: 6.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 15, y: 1, z: 0}
@@ -91532,7 +91561,7 @@ Tilemap:
       - {fileID: 1600228275, guid: 798f6a30f32bb814d880faa714079550, type: 3}
       - {fileID: 527064027, guid: 798f6a30f32bb814d880faa714079550, type: 3}
       - {fileID: 709154982, guid: 798f6a30f32bb814d880faa714079550, type: 3}
-      m_AnimationSpeed: 6.0000005
+      m_AnimationSpeed: 6
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 15, y: 9, z: 0}
@@ -91545,7 +91574,7 @@ Tilemap:
       - {fileID: 1600228275, guid: 798f6a30f32bb814d880faa714079550, type: 3}
       - {fileID: 527064027, guid: 798f6a30f32bb814d880faa714079550, type: 3}
       - {fileID: 709154982, guid: 798f6a30f32bb814d880faa714079550, type: 3}
-      m_AnimationSpeed: 6.0000005
+      m_AnimationSpeed: 6
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 16, y: 9, z: 0}
@@ -91597,7 +91626,7 @@ Tilemap:
       - {fileID: 1600228275, guid: 798f6a30f32bb814d880faa714079550, type: 3}
       - {fileID: 527064027, guid: 798f6a30f32bb814d880faa714079550, type: 3}
       - {fileID: 709154982, guid: 798f6a30f32bb814d880faa714079550, type: 3}
-      m_AnimationSpeed: 6
+      m_AnimationSpeed: 6.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 16, y: 14, z: 0}
@@ -91623,7 +91652,7 @@ Tilemap:
       - {fileID: 1822243277, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -824224458, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -1144722836, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
-      m_AnimationSpeed: 6
+      m_AnimationSpeed: 6.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 14, y: 15, z: 0}
@@ -91636,7 +91665,7 @@ Tilemap:
       - {fileID: 1600228275, guid: 798f6a30f32bb814d880faa714079550, type: 3}
       - {fileID: 527064027, guid: 798f6a30f32bb814d880faa714079550, type: 3}
       - {fileID: 709154982, guid: 798f6a30f32bb814d880faa714079550, type: 3}
-      m_AnimationSpeed: 6
+      m_AnimationSpeed: 6.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 15, y: 15, z: 0}
@@ -91701,7 +91730,7 @@ Tilemap:
       - {fileID: 1600228275, guid: 798f6a30f32bb814d880faa714079550, type: 3}
       - {fileID: 527064027, guid: 798f6a30f32bb814d880faa714079550, type: 3}
       - {fileID: 709154982, guid: 798f6a30f32bb814d880faa714079550, type: 3}
-      m_AnimationSpeed: 6.0000005
+      m_AnimationSpeed: 6
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 16, y: 20, z: 0}
@@ -91766,7 +91795,7 @@ Tilemap:
       - {fileID: 1822243277, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -824224458, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -1144722836, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
-      m_AnimationSpeed: 6
+      m_AnimationSpeed: 6.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 13, y: 28, z: 0}
@@ -91779,7 +91808,7 @@ Tilemap:
       - {fileID: 1822243277, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -824224458, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -1144722836, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
-      m_AnimationSpeed: 6
+      m_AnimationSpeed: 6.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 14, y: 28, z: 0}
@@ -91831,7 +91860,7 @@ Tilemap:
       - {fileID: 1822243277, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -824224458, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -1144722836, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
-      m_AnimationSpeed: 6
+      m_AnimationSpeed: 6.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 14, y: 29, z: 0}
@@ -91857,7 +91886,7 @@ Tilemap:
       - {fileID: 1600228275, guid: 798f6a30f32bb814d880faa714079550, type: 3}
       - {fileID: 527064027, guid: 798f6a30f32bb814d880faa714079550, type: 3}
       - {fileID: 709154982, guid: 798f6a30f32bb814d880faa714079550, type: 3}
-      m_AnimationSpeed: 6
+      m_AnimationSpeed: 6.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 16, y: 29, z: 0}
@@ -100513,6 +100542,10 @@ PrefabInstance:
     - target: {fileID: 5075760738389464468, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
       propertyPath: enemyLayers.m_Bits
       value: 1152
+      objectReference: {fileID: 0}
+    - target: {fileID: 7826874460322773490, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 8339228994945835082, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
       propertyPath: m_IsActive

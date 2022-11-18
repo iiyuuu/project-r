@@ -66,6 +66,7 @@ public class ShopManager : MonoBehaviour
             shopPanels[i].titleText.text = shopItems[i].title;
             shopPanels[i].descriptionText.text = shopItems[i].description;
             shopPanels[i].costText.text = shopItems[i].baseCost.ToString();
+            shopPanelsObject[i].transform.GetChild(0).GetComponent<Image>().sprite = shopItems[i].sprite;
         }
     }
 
@@ -73,7 +74,7 @@ public class ShopManager : MonoBehaviour
     {
         for(int i = 0; i < shopItems.Length; i++)
         {
-            if (currencyManager.currency >= shopItems[i].baseCost)
+            if (currencyManager.currency >= shopItems[i].baseCost && shopItems[i].purchasable)
             {
                 shopButtons[i].interactable = true;
             }
@@ -88,10 +89,9 @@ public class ShopManager : MonoBehaviour
     {
         if (currencyManager.currency >= shopItems[buttonNo].baseCost)
         {
-            
             currencyManager.ChangeCurrency(-shopItems[buttonNo].baseCost);
             CheckPurchasable();
-            //unlock item
+            shopItems[buttonNo].Activate(GameObject.FindGameObjectWithTag("Player"));
         }
     }
 }

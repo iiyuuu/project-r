@@ -12,6 +12,8 @@ public class PlayerStats : MonoBehaviour
     public int currentAmmo;
     public int currency;
     public int attackDamage;
+    [SerializeField]
+    public List<ShopItems> smallPowerups;
 
     public static event Action OnPlayerDamaged;
     public static event Action OnPlayerDeath;
