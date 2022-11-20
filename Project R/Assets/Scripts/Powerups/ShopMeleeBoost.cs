@@ -4,7 +4,6 @@ using UnityEngine;
 public class ShopMeleeBoost : ShopItems
 {
     public int amount;
-    public int level = 1;
     private int maxLevel = 3;
 
     public override void Activate(GameObject parent)

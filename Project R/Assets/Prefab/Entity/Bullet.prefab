@@ -139,6 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 3023824293796179152}
   kbPower: 2
+  damage: 1
   rb: {fileID: 0}
 --- !u!95 &8489884045642226970
 Animator:

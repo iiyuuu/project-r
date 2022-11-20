@@ -31,6 +31,10 @@ public class SceneTeleporter : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
+        if (controls.gameObject.GetComponent<PlayerStats>().smallPowerups[3].enabled)
+        {
+            controls.gameObject.GetComponent<PlayerStats>().Healing(controls.gameObject.GetComponent<PlayerStats>().smallPowerups[3].level * 2);
+        }
 
         if (other.CompareTag("Player") && !other.isTrigger)
         {

@@ -152,9 +152,8 @@ public class PlayerControls : MonoBehaviour
     }
     private void OnMove(InputValue value)
     {
-        moveInput = value.Get<Vector2>();
-        //gathers user movement inputs
-        
+        moveInput = value.Get<Vector2>();    
+        //gathers user movement inputs    
     }
 
     private bool PlayerMovement(Vector2 direction)
@@ -211,7 +210,7 @@ public class PlayerControls : MonoBehaviour
     void OnDash()
     {
         
-        if (canDash && !pause.isPaused && !isDeath)
+        if (canDash && !pause.isPaused && !isDeath && canMove)
         {
             animator.SetTrigger("isDashing");
             if (dashCoroutine != null)
@@ -233,7 +232,7 @@ public class PlayerControls : MonoBehaviour
             }
             else
             {
-                dashDirection = new Vector2(moveInput.x, moveInput.y);//will dash in diagonal movement
+                dashDirection = new Vector2(moveInput.x, moveInput.y).normalized;//will dash in diagonal movement
             }
             dashCoroutine = Dash(0.2f, 0.5f);//calls coroutine for dash manuever
             StartCoroutine(dashCoroutine);

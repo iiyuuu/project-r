@@ -7,10 +7,16 @@ public class Bullet : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     private Animator animator;
     public float kbPower = 1f;
+    public int damage;
     public Rigidbody2D rb;
+
 
     public void Start()
     {
+        if (FindObjectOfType<PlayerStats>().smallPowerups[4].enabled)
+        {
+            damage *= 2;
+        }
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }

@@ -1,24 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ShopMenu", menuName = "Scriptable Objects/Health Boost", order = 2)]
-public class ShopHealthBoost : ShopItems
+[CreateAssetMenu(fileName = "ShopMenu", menuName = "Scriptable Objects/Bullet Damage Boost")]
+public class ShopBulletDamage : ShopItems
 {
     public int amount;
-    private int maxLevel = 3;
+    private int maxLevel = 1;
 
     public override void Activate(GameObject parent)
     {
         parent.GetComponent<PlayerStats>().smallPowerups[ID].enabled = true;
-        parent.GetComponent<PlayerStats>().maxHealth += amount;
-        parent.GetComponent<PlayerStats>().currentHealth += amount;
         LevelUp();
     }
 
     public void LevelUp()
     {
-        if(level < maxLevel)
+        if (level < maxLevel)
         {
             level += 1;
             baseCost *= 10 / level;

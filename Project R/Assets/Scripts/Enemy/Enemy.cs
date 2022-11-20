@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
         Skeleton,
         Eye,
         Knight,
+        Other
     }
 
     public EnemyType type;
@@ -237,7 +238,7 @@ public class Enemy : MonoBehaviour
                 coroutine = Damaged();
 
                 rb.velocity = Vector2.zero;
-                Health -= 1;
+                Health -= bullet.damage;
                 bullet.rb.velocity = Vector2.zero;
                 bullet.GetComponent<CircleCollider2D>().enabled = false;
 

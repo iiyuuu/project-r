@@ -63,7 +63,7 @@ public class ShopManager : MonoBehaviour
     {
         for(int i = 0; i < shopPanels.Length; i++)
         {
-            shopPanels[i].titleText.text = shopItems[i].title;
+            shopPanels[i].titleText.text = shopItems[i].title + " " + new string('I', shopItems[i].level);
             shopPanels[i].descriptionText.text = shopItems[i].description;
             shopPanels[i].costText.text = shopItems[i].baseCost.ToString();
             shopPanelsObject[i].transform.GetChild(0).GetComponent<Image>().sprite = shopItems[i].sprite;

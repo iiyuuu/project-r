@@ -1,16 +1,15 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ShopMenu", menuName = "Scriptable Objects/Ammo Boost", order = 4)]
-public class ShopAmmoBoost : ShopItems
+[CreateAssetMenu(fileName = "ShopMenu", menuName = "Scriptable Objects/Healing", order = 2)]
+public class ShopHealing : ShopItems
 {
     public int amount;
-    private int maxLevel = 3;
+    private int maxLevel = 2;
 
     public override void Activate(GameObject parent)
     {
         parent.GetComponent<PlayerStats>().smallPowerups[ID].enabled = true;
-        parent.GetComponent<PlayerStats>().maxAmmo += amount;
-        parent.GetComponent<PlayerStats>().currentAmmo += amount;
+        //check for this ID powerup and see if its enabled
         LevelUp();
     }
 
@@ -19,7 +18,8 @@ public class ShopAmmoBoost : ShopItems
         if (level < maxLevel)
         {
             level += 1;
-            baseCost *= 5 / level;
+            baseCost *= 2;
+            amount *= level;
         }
         else
         {

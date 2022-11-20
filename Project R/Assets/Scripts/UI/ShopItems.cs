@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ShopMenu", menuName = "Scriptable Objects/Shop Item", order = 1)]
+[System.Serializable]
 public class ShopItems : ScriptableObject
 {
     public string title;
     public string description;
+    public int level = 1;
     public int ID;
     public bool enabled = false;
     public int baseCost;
