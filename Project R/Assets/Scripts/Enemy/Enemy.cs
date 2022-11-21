@@ -12,7 +12,6 @@ public class Enemy : MonoBehaviour
     public int health = 3;
     public float moveSpeed = 3f;
     public float chaseRadius;
-    public bool ranged;
     public int attackDamage;
     public GameObject[] drops;
     public enum EnemyType
@@ -84,7 +83,7 @@ public class Enemy : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
-        if (!enemyHurt && !ranged && Health > 0)
+        if (!enemyHurt && (type == EnemyType.Slime || type == EnemyType.Knight) && Health > 0)
         {
             rb.velocity = MoveInput.normalized * moveSpeed;
             if(rb.velocity != Vector2.zero)

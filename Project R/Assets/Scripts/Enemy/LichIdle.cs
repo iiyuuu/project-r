@@ -8,7 +8,7 @@ public class LichIdle : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     Enemy self;
     int maxHealth;
-    float cooldown;
+    float cooldown = 5;
     float currentTime;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
