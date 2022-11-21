@@ -15,7 +15,7 @@ public class IceTile : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerControls>().activeMoveSpeed /= .5f;
+            collision.gameObject.GetComponent<PlayerControls>().activeMoveSpeed = collision.gameObject.GetComponent<PlayerControls>().baseMoveSpeed;
             collision.gameObject.GetComponent<Rigidbody2D>().drag = 10;
         }
     }

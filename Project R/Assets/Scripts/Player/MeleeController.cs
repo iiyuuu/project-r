@@ -53,7 +53,7 @@ public class MeleeController : MonoBehaviour
             else
             {
                 Enemy enemyComponent = enemy.GetComponent<Enemy>();
-                if (enemyComponent != null && !enemyComponent.enemyHurt)
+                if (enemyComponent != null && !enemyComponent.enemyHurt && !enemyComponent.invulnerable)
                 {
                     Rigidbody2D enemyBody = enemyComponent.GetComponent<Rigidbody2D>();
                     Vector2 difference = enemyBody.transform.position - attackPoint.position;

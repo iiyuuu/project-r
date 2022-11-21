@@ -60,7 +60,7 @@ public class AudioManager : MonoBehaviour
             Stop("F1 BGM");
             Play("Hub Rest");
         }
-        else if (currentScene.Contains("F2_Zone"))
+        else if (currentScene.Contains("F2"))
         {
             Stop("Hub Rest");
             Play("F2 BGM");

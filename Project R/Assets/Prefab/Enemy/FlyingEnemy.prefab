@@ -387,7 +387,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1417973329
   m_SortingLayer: 6
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1866112376, guid: be12cad0a72de4e6cbb4aae276787940, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -485,10 +485,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 7194221344439264792}
+  invulnerable: 0
   health: 1
+  maxHealth: 3
   moveSpeed: 0
   chaseRadius: 1
-  ranged: 0
   attackDamage: 0
   drops:
   - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}

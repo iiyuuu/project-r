@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class BossCasting : MonoBehaviour
 {
-    List<GameObject> casts;
-    List<Transform> fireballSpawns;//use this for bullethell attack
-    List<Transform> laserSpawns;
-    List<Transform> addSpawns;
+    public List<GameObject> casts;
     int phase = 1;
 
     public void Cast()
@@ -16,31 +13,49 @@ public class BossCasting : MonoBehaviour
         {
             case >= 0 and <= 4:
                 //for loop to pick from spawnpoints to do stuff
-                for(int i = 0; i < phase; i++)
-                {
-                    Instantiate(casts[0], fireballSpawns[Random.Range(0, fireballSpawns.Count)]);
-                }
+                Debug.Log("Fireball");
+                StartCoroutine(FireRate());
                 break;
             case >4 and <= 6:
                 for(int i = 0; i < phase; i++)
                 {
-                    Instantiate(casts[1], laserSpawns[Random.Range(0, laserSpawns.Count)]);
+                    Debug.Log("Laser");
+                    Instantiate(casts[1], GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);//laser spawning
                 }
                 break;
             case > 6 and <= 8:
                 for(int i = 0; i < phase; i++)
                 {
-                    Instantiate(casts[2], fireballSpawns[Random.Range(0, fireballSpawns.Count)]);
+                    Debug.Log("Bullet Hell");
+                    Instantiate(casts[2], (Vector2)transform.position + (Random.insideUnitCircle), Quaternion.identity);//spread fireball spawning
                 }
                 break;
             case >8 and <= 10:
                 for(int i = 0; i < phase; i++)
                 {
-                    Instantiate(casts[3], addSpawns[Random.Range(0, addSpawns.Count)]);
+                    Debug.Log("Adds");
+                    Instantiate(casts[3], (Vector2)transform.position + (Random.insideUnitCircle), Quaternion.identity);//adds spawning
                 }
                 break;
             default:
                 break;
         }
+    }
+
+    public IEnumerator FireRate()
+    {
+        List<GameObject> fireballs = new List<GameObject>();
+        for (int i = 0; i < 3 * phase; i ++)
+        {
+            fireballs.Add(Instantiate(casts[0], (Vector2)transform.position + (Random.insideUnitCircle), Quaternion.identity));//fireball cast)
+
+            yield return new WaitForSeconds(.2f);
+        }
+
+    }
+
+    public void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere((Vector2)transform.position, 1);
     }
 }

@@ -7,10 +7,12 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public bool invulnerable = false;
 
     [Header("Stats")]
-    public int health = 3;
-    public float moveSpeed = 3f;
+    public int health;
+    public int maxHealth = 3;
+    public float moveSpeed;
     public float chaseRadius;
     public int attackDamage;
     public GameObject[] drops;
@@ -75,6 +77,7 @@ public class Enemy : MonoBehaviour
 
      public virtual void Start()
      {
+        Health = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
@@ -218,12 +221,16 @@ public class Enemy : MonoBehaviour
 
     void Death()
     {
-
         Vector3 targetLocation = new Vector3(transform.position.x + Random.Range(0.05f, 0.1f), transform.position.y + Random.Range(0.05f, 0.1f), 0);
         Debug.Log(targetLocation);
-        int index = Random.Range(0, drops.Length);
-        GameObject drop = Instantiate(drops[index], targetLocation, Quaternion.identity);
-        drop.SetActive(true);
+        if (drops.Length != 0)
+        {
+            int index = Random.Range(0, drops.Length);
+            GameObject drop = Instantiate(drops[index], targetLocation, Quaternion.identity);
+            drop.SetActive(true);
+        }
+        
+        
         Destroy(gameObject);
     }
 
@@ -231,7 +238,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.CompareTag("Projectile"))
         {
-            if(rb != null && !enemyHurt)
+            if(rb != null && !enemyHurt && !invulnerable)
             {
                 Bullet bullet = collision.GetComponent<Bullet>();
                 coroutine = Damaged();
@@ -263,7 +270,7 @@ public class Enemy : MonoBehaviour
         }
         if (collision.CompareTag("Trap"))
         {
-            if (!enemyHurt)
+            if (!enemyHurt && !invulnerable)
             {
                 coroutine = Damaged();
                 rb.velocity = Vector2.zero;
