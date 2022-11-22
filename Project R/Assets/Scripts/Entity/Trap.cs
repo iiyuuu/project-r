@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Rendering.Universal;
 using UnityEngine;
 
 public class Trap : MonoBehaviour
@@ -62,6 +63,7 @@ public class Trap : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             sprite.sprite = newSprite;
+            GetComponent<Light2D>().enabled = true;
         }
         
     }
@@ -70,6 +72,7 @@ public class Trap : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             sprite.sprite = oldSprite;
+            GetComponent<Light2D>().enabled = false;
         }
             
     }
