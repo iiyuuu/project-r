@@ -31,7 +31,7 @@ public class AudioManager : MonoBehaviour
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
 
-            s.source.volume = s.volume - GetMasterVolume();
+            s.source.volume = s.volume + GetMasterVolume()/20;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
@@ -41,11 +41,12 @@ public class AudioManager : MonoBehaviour
     {
         if(mixer.GetFloat("MasterVol", out masterVolume))
         {
-            return 10 * Mathf.Log10(masterVolume);
+            Debug.Log(masterVolume);
+            return masterVolume;
         }
         else
         {
-            return 0f;
+            return 0.0001f;
         }
     }
 

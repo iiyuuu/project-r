@@ -19,13 +19,13 @@ public class SceneTeleporter : MonoBehaviour
 
     public LevelLoader loader;
 
-    public void Start()
+    public void Awake()
     {
         isDuplicate = true;
         loadingScreen = GameObject.FindGameObjectWithTag("Loading Screen").transform.GetChild(0).gameObject;
         loadingBar = loadingScreen.GetComponentInChildren<Slider>(true);
         spawn = GameObject.FindGameObjectWithTag("Spawn");
-        controls = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
+        controls = FindObjectOfType<PlayerControls>();
         OnLevelFinishedLoading();
     }
 
