@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ public class LichIdle : StateMachineBehaviour
     float currentTime;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        FindObjectOfType<CinemachineVirtualCamera>().m_Lens.OrthographicSize = 1.2f;
         self = animator.GetComponent<Enemy>();
         currentTime = cooldown;
     }
