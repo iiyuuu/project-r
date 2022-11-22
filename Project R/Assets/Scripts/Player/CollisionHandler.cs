@@ -61,14 +61,22 @@ public class CollisionHandler : MonoBehaviour
                 if (other.CompareTag("Enemy"))
                 {
                     Enemy enemy = other.GetComponent<Enemy>();
-                    if (enemy.attackDamage <= 0)
+                    if (enemy != null)
                     {
-                        stats.DamageTaken(1);
+                        if (enemy.attackDamage <= 0)
+                        {
+                            stats.DamageTaken(1);
+                        }
+                        else
+                        {
+                            stats.DamageTaken(enemy.attackDamage);
+                        }
                     }
                     else
                     {
-                        stats.DamageTaken(enemy.attackDamage);
+                        stats.DamageTaken(2);
                     }
+                    
                 }
                 else if (other.CompareTag("Enemy Projectile"))
                 {
@@ -116,6 +124,7 @@ public class CollisionHandler : MonoBehaviour
         if (other.gameObject.tag.Equals("Coin"))
         {
             currency.ChangeCurrency(1);
+            FindObjectOfType<AudioManager>().Play("Coin Collect");
             Destroy(other.gameObject);
         }
         if (other.gameObject.tag.Equals("Health Power Up"))

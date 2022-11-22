@@ -37,6 +37,7 @@ public class LineController : MonoBehaviour
         yield return new WaitForSeconds(.75f);
         GetComponent<BoxCollider2D>().enabled = true;
         GetComponent<Animator>().enabled = true;
+        FindObjectOfType<AudioManager>().Play("Laser Fire");
     }
 
     public void EndAttack()

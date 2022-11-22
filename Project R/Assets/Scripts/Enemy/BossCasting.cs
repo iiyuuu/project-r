@@ -9,6 +9,7 @@ public class BossCasting : MonoBehaviour
 
     public void Cast()
     {
+        transform.position = new Vector3(0.29f, 4.22f, 0);
         switch(Random.Range(0, 11))//random chance to cast certain abilities (will weight soon
         {
             case >= 0 and <= 4:
@@ -42,13 +43,18 @@ public class BossCasting : MonoBehaviour
         }
     }
 
+    public void PlaySound()
+    {
+        FindObjectOfType<AudioManager>().Play("Boss Cast");
+    }
+
     public IEnumerator FireRate()
     {
         List<GameObject> fireballs = new List<GameObject>();
         for (int i = 0; i < 3 * phase; i ++)
         {
             fireballs.Add(Instantiate(casts[0], (Vector2)transform.position + (Random.insideUnitCircle), Quaternion.identity));//fireball cast)
-
+            FindObjectOfType<AudioManager>().Play("Boss Fireball");
             yield return new WaitForSeconds(.2f);
         }
 
