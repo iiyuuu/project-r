@@ -111,37 +111,46 @@ public class Enemy : MonoBehaviour
     
     public void PlaySlimeSound()
     {
-        int num = Random.Range(0, 2);
-        if(num == 0)
+        if(Vector2.Distance((Vector2)transform.position, pointerInput) <= 1.5f)
         {
-            FindObjectOfType<AudioManager>().Play("Slime Walk1");
+            int num = Random.Range(0, 2);
+            if (num == 0)
+            {
+                FindObjectOfType<AudioManager>().Play("Slime Jump1");
+            }
+            else
+            {
+                FindObjectOfType<AudioManager>().Play("Slime Jump2");
+            }
         }
-        else
-        {
-            FindObjectOfType<AudioManager>().Play("Slime Walk2");
-        }
+        
     }
 
     public void PlayKnightWalk1()
     {
-        FindObjectOfType<AudioManager>().Play("Knight Walk1");
+        if (Vector2.Distance((Vector2)transform.position, pointerInput) <= 1.5f)
+            FindObjectOfType<AudioManager>().Play("Knight Walk1");
     }
     public void PlayKnightWalk2()
     {
-        FindObjectOfType<AudioManager>().Play("Knight Walk2");
+        if (Vector2.Distance((Vector2)transform.position, pointerInput) <= 1.5f)
+            FindObjectOfType<AudioManager>().Play("Knight Walk2");
     }
 
     public void PlaySlimeDeath()
     {
-        FindObjectOfType<AudioManager>().Play("Slime Death");
+        if (Vector2.Distance((Vector2)transform.position, pointerInput) <= 1.5f)
+            FindObjectOfType<AudioManager>().Play("Slime Death");
     }
     public void PlayKnightDeath()
     {
-        FindObjectOfType<AudioManager>().Play("Knight Death");
+        if (Vector2.Distance((Vector2)transform.position, pointerInput) <= 1.5f)
+            FindObjectOfType<AudioManager>().Play("Knight Death");
     }
     public void PlaySkeletonDeath()
     {
-        FindObjectOfType<AudioManager>().Play("Skeleton Death");
+        if (Vector2.Distance((Vector2)transform.position, pointerInput) <= 1.5f)
+            FindObjectOfType<AudioManager>().Play("Skeleton Death");
     }
 
     public IEnumerator Damaged()
@@ -150,7 +159,7 @@ public class Enemy : MonoBehaviour
         switch (type)
         {
             case EnemyType.Slime:
-                FindObjectOfType<AudioManager>().Play("Slime Walk1");
+                FindObjectOfType<AudioManager>().Play("Slime Jump1");
                 break;
             case EnemyType.Skeleton:
                 int num = Random.Range(0, 2);
@@ -164,6 +173,7 @@ public class Enemy : MonoBehaviour
                 }
                 break;
             case EnemyType.Eye:
+                FindObjectOfType<AudioManager>().Play("Slime Death");
                 break;
             case EnemyType.Knight:
                 num = Random.Range(0, 2);

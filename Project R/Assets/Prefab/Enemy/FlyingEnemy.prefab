@@ -345,7 +345,7 @@ Transform:
   - {fileID: 102085294}
   - {fileID: 243742925}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7194221344439264793
 SpriteRenderer:
@@ -490,7 +490,7 @@ MonoBehaviour:
   maxHealth: 3
   moveSpeed: 0
   chaseRadius: 1
-  attackDamage: 0
+  attackDamage: 1
   drops:
   - {fileID: 6636966778158899225, guid: b2050ab9056828743967e9106327f027, type: 3}
   type: 2

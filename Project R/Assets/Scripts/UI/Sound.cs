@@ -14,8 +14,6 @@ public class Sound
 
     public bool loop;
 
-    public bool isSpatial;
-
     [HideInInspector]
     public AudioSource source;
 
