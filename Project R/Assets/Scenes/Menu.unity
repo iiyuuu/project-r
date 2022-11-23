@@ -6872,7 +6872,6 @@ MonoBehaviour:
     powerups: []
   playerPrefab: {fileID: 8479199668614094285, guid: 896c11d44659b184cb54bef0601b101e, type: 3}
   dependencies:
-  - {fileID: 48081008790008482, guid: 9c66cf9a76cdd61489087d63b3c0eeb3, type: 3}
   - {fileID: 8052561593067863759, guid: e6b4ba2c4db487d478ed59ce291c9924, type: 3}
   - {fileID: 6147182511491283386, guid: f10f5176ed2a44aa983b9f9729e7871f, type: 3}
   - {fileID: 6542471994299922331, guid: 4b22cb2f57bbdf9488748be942b90622, type: 3}
