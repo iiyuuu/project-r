@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8052561593067863760}
   - component: {fileID: 8052561593067863764}
   - component: {fileID: 405732106}
+  - component: {fileID: 4867987387321514478}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: UI
@@ -39,7 +40,7 @@ RectTransform:
   - {fileID: 6622783193912168475}
   - {fileID: 3202606097458268385}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -138,6 +139,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b5f2d2778c14f448bcf8bbc2919326b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4867987387321514478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8052561593067863759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e198e65493765a47aec0e037ff57aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &3083628107587021975
@@ -570,18 +583,6 @@ PrefabInstance:
     - target: {fileID: 8244032549999730025, guid: 71591485496889d46a4e78de04f17175, type: 3}
       propertyPath: m_enableAutoSizing
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8244032550318191862, guid: 71591485496889d46a4e78de04f17175, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8244032550318191863, guid: 71591485496889d46a4e78de04f17175, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 168.7943
-      objectReference: {fileID: 0}
-    - target: {fileID: 8244032550318191863, guid: 71591485496889d46a4e78de04f17175, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 156.90837
       objectReference: {fileID: 0}
     - target: {fileID: 8244032550318191863, guid: 71591485496889d46a4e78de04f17175, type: 3}
       propertyPath: m_LocalPosition.x

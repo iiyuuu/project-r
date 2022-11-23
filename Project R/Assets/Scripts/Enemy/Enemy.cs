@@ -222,7 +222,7 @@ public class Enemy : MonoBehaviour
     void Death()
     {
         Vector3 targetLocation = new Vector3(transform.position.x + Random.Range(0.05f, 0.1f), transform.position.y + Random.Range(0.05f, 0.1f), 0);
-        Debug.Log(targetLocation);
+        //Debug.Log(targetLocation);
         if (drops.Length != 0)
         {
             int index = Random.Range(0, drops.Length);
@@ -270,7 +270,7 @@ public class Enemy : MonoBehaviour
         }
         if (collision.CompareTag("Trap"))
         {
-            if (!enemyHurt && !invulnerable)
+            if (!enemyHurt && !invulnerable && rb != null)
             {
                 coroutine = Damaged();
                 rb.velocity = Vector2.zero;
