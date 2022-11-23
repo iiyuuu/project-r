@@ -29,6 +29,7 @@ public static class SaveManager
 
             foreach(string resource in data.powerups)
             {
+
                 Resources.Load(resource);
             }
             stream.Close();

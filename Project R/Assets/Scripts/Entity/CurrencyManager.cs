@@ -11,22 +11,26 @@ public class CurrencyManager : MonoBehaviour
     public int currency;
     public ShopManager shop;
 
-    public void Awake()
+    public void Update()
     {
         shop = FindObjectOfType<ShopManager>(true);
-        shopText = shop.GetComponentInChildren<TextMeshProUGUI>(true);
+        shopText = shop.transform.GetChild(1).GetComponentInChildren<TextMeshProUGUI>(true);
+        if (shopText.enabled)
+        {
+            shopText.text = "X" + currency.ToString();
+        }
     }
     public void ChangeCurrency(int currencyValue)
     {
         currency += currencyValue;
         text.text = "X" + currency.ToString();
         
-        if (shop != null)
+        if (shop != null && shopText != null)
         {
             
             if (shop.isEnabled)
             {
-                shopText.text = "X" + currency.ToString();
+                //shopText.text = "X" + currency.ToString();
                 shop.CheckPurchasable();
             }
         }

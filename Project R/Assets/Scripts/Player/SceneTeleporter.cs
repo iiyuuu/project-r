@@ -19,13 +19,13 @@ public class SceneTeleporter : MonoBehaviour
 
     public LevelLoader loader;
 
-    public void Start()
+    public void Awake()
     {
         isDuplicate = true;
         loadingScreen = GameObject.FindGameObjectWithTag("Loading Screen").transform.GetChild(0).gameObject;
         loadingBar = loadingScreen.GetComponentInChildren<Slider>(true);
         spawn = GameObject.FindGameObjectWithTag("Spawn");
-        controls = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
+        controls = FindObjectOfType<PlayerControls>();
         OnLevelFinishedLoading();
     }
 
@@ -187,6 +187,7 @@ public class SceneTeleporter : MonoBehaviour
         controls.canMove = true;
         controls.gameObject.transform.position = spawn.transform.position;
         loadingScreen.SetActive(false);
+        FindObjectOfType<AudioManager>().RefreshSounds();
         if(SceneManager.GetActiveScene().name == "Hub")//load first then save, to check if there is data
         {
             FindObjectOfType<PlayerStats>().Save();

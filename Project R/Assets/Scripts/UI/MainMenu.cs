@@ -29,16 +29,18 @@ public class MainMenu : MonoBehaviour
 
     public void NewGame()
     {
+        Debug.Log("New Game");
         StartCoroutine(loader.LoadingLevel("New Game"));
     }
     public void LoadGame()
     {
+        Debug.Log("Load Game");
         GameObject player = Instantiate(playerPrefab);
         player.GetComponent<PlayerStats>().Load();
         foreach (GameObject go in dependencies)
         {
             Instantiate(go);
-            go.SetActive(true);
+            //go.SetActive(true);
         }
         StartCoroutine(loader.LoadingLevel("Hub"));
     }
