@@ -100,10 +100,12 @@ public class RangedAttack : MonoBehaviour
             if (0 <= body.rotation && body.rotation < 180f)
             {
                 GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>().flipX = true;
+                GameObject.Find("MeleeWeapon").GetComponent<Animator>().SetTrigger("rangedAttackFlip");
             }
             else
             {
                 GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>().flipX = false;
+                GameObject.Find("MeleeWeapon").GetComponent<Animator>().SetTrigger("rangedAttack");
             }
             stats.currentAmmo--;
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

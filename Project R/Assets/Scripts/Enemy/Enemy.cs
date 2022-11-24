@@ -139,18 +139,15 @@ public class Enemy : MonoBehaviour
 
     public void PlaySlimeDeath()
     {
-        if (Vector2.Distance((Vector2)transform.position, pointerInput) <= 1.5f)
-            FindObjectOfType<AudioManager>().Play("Slime Death");
+         FindObjectOfType<AudioManager>().Play("Slime Death");
     }
     public void PlayKnightDeath()
     {
-        if (Vector2.Distance((Vector2)transform.position, pointerInput) <= 1.5f)
-            FindObjectOfType<AudioManager>().Play("Knight Death");
+         FindObjectOfType<AudioManager>().Play("Knight Death");
     }
     public void PlaySkeletonDeath()
     {
-        if (Vector2.Distance((Vector2)transform.position, pointerInput) <= 1.5f)
-            FindObjectOfType<AudioManager>().Play("Skeleton Death");
+         FindObjectOfType<AudioManager>().Play("Skeleton Death");
     }
 
     public IEnumerator Damaged()

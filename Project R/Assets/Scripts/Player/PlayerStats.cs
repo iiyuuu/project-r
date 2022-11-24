@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 public class PlayerStats : MonoBehaviour
 {
@@ -41,7 +43,14 @@ public class PlayerStats : MonoBehaviour
     {
         currency = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<CurrencyManager>(true).currency;
         attackDamage = GetComponentInChildren<MeleeController>(true).attackDamage;
-        
+        if(currentHealth <= 2 && currentHealth != 0)
+        {
+            FindObjectOfType<Volume>().GetComponent<Volume>().enabled = true;
+        }
+        else
+        {
+            FindObjectOfType<Volume>().GetComponent<Volume>().enabled = false;
+        }
     }
 
     public void Save()

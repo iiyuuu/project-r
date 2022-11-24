@@ -131,7 +131,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 524292756732532894}
   toggleTransition: 1
   graphic: {fileID: 0}
@@ -500,8 +500,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerupPool:
   - {fileID: 11400000, guid: b0661e1351175cb4894a6a3c0384d269, type: 2}
-  - {fileID: 11400000, guid: fa13de5164befc14a9afdd32abd17090, type: 2}
-  - {fileID: 11400000, guid: dfad41e3b9af26a489de453451415353, type: 2}
+  - {fileID: 11400000, guid: da5e0eef8a632fb47bc4a79fa3f6e6b3, type: 2}
+  - {fileID: 11400000, guid: 67519063605dbae4ba19743e2556e916, type: 2}
+  - {fileID: 11400000, guid: 5c407031bd50d8d43958f4ffaf1a0f4a, type: 2}
+  - {fileID: 11400000, guid: 1a22366ecd7858a49b0ad5048eb52a45, type: 2}
+  - {fileID: 11400000, guid: d23832290bef38541ac75869fd367fd6, type: 2}
   powerupPanels:
   - {fileID: 7436297343277174728}
   - {fileID: 1830497906910572825}
@@ -548,7 +551,7 @@ RectTransform:
   - {fileID: 269880522332811982}
   - {fileID: 3949423899032504516}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1052,7 +1055,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1558682318025231638, guid: 752b6df8afd23304eabd72e2d0883107, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1558682318590243827, guid: 752b6df8afd23304eabd72e2d0883107, type: 3}
       propertyPath: m_Pivot.x
@@ -1173,6 +1176,38 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 8998977465806391608}
     m_Modifications:
+    - target: {fileID: 1335081827847887576, guid: aeeca7b9f117d234db3f5728d60982f6, type: 3}
+      propertyPath: m_Name
+      value: Melee Boost
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711486878367333662, guid: aeeca7b9f117d234db3f5728d60982f6, type: 3}
+      propertyPath: m_fontSize
+      value: 143.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3743737313086534558, guid: aeeca7b9f117d234db3f5728d60982f6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3743737313086534559, guid: aeeca7b9f117d234db3f5728d60982f6, type: 3}
+      propertyPath: m_Color.a
+      value: 0.84313726
+      objectReference: {fileID: 0}
+    - target: {fileID: 3743737313086534559, guid: aeeca7b9f117d234db3f5728d60982f6, type: 3}
+      propertyPath: m_Color.b
+      value: 0.49056602
+      objectReference: {fileID: 0}
+    - target: {fileID: 3743737313086534559, guid: aeeca7b9f117d234db3f5728d60982f6, type: 3}
+      propertyPath: m_Color.g
+      value: 0.49056602
+      objectReference: {fileID: 0}
+    - target: {fileID: 3743737313086534559, guid: aeeca7b9f117d234db3f5728d60982f6, type: 3}
+      propertyPath: m_Color.r
+      value: 0.49056602
+      objectReference: {fileID: 0}
+    - target: {fileID: 3743737313086534559, guid: aeeca7b9f117d234db3f5728d60982f6, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3743737313973795785, guid: aeeca7b9f117d234db3f5728d60982f6, type: 3}
       propertyPath: m_Name
       value: Shop
@@ -1260,6 +1295,22 @@ PrefabInstance:
     - target: {fileID: 3743737313973795790, guid: aeeca7b9f117d234db3f5728d60982f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4988920779593038304, guid: aeeca7b9f117d234db3f5728d60982f6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 543.4469
+      objectReference: {fileID: 0}
+    - target: {fileID: 4988920779593038304, guid: aeeca7b9f117d234db3f5728d60982f6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80.7772
+      objectReference: {fileID: 0}
+    - target: {fileID: 4988920779593038304, guid: aeeca7b9f117d234db3f5728d60982f6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 347.2827
+      objectReference: {fileID: 0}
+    - target: {fileID: 4988920779593038304, guid: aeeca7b9f117d234db3f5728d60982f6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -11.539804
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

@@ -17,31 +17,41 @@ public class MeleeController : MonoBehaviour
 
     [Header("Backend stuff")]
     public Animator animator;
+    public Animator weaponAnimator;
     public Transform attackPoint;
     public LayerMask enemyLayers;
     IEnumerator coroutine;
     IEnumerator coroutine2;
 
-    public bool flip;
-
 
     private void Start()
     {
-        rightAttackOffset = transform.localPosition;
-        flip = false;
+        rightAttackOffset = attackPoint.localPosition;
+    }
+    private void Update()
+    {
+        if (animator.gameObject.GetComponent<PlayerControls>().isDashing)
+        {
+            weaponAnimator.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        }
+        else
+        {
+            weaponAnimator.gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        }
     }
 
     public void Attack()
     {
-        if (flip)
+        if (animator.gameObject.GetComponent<SpriteRenderer>().flipX)
         {
-            transform.localPosition = new Vector2(rightAttackOffset.x * -1, rightAttackOffset.y);
+            attackPoint.localPosition = new Vector2(rightAttackOffset.x * -1, rightAttackOffset.y);
         }
         else
         {
-            transform.localPosition = rightAttackOffset;
+            attackPoint.localPosition = rightAttackOffset;
         }
         animator.SetTrigger("isAttacking");
+        weaponAnimator.SetTrigger("isAttacking");
     
         List<Collider2D> hitEnemies = new List<Collider2D>(Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers));
         foreach (Collider2D enemy in hitEnemies)

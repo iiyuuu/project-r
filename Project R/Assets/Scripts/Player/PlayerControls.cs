@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Android;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
 public class PlayerControls : MonoBehaviour
@@ -85,6 +87,14 @@ public class PlayerControls : MonoBehaviour
     //movement
     void FixedUpdate()
     {
+        if (SceneManager.GetActiveScene().name.Contains("F"))
+        {
+            gameObject.GetComponent<Light2D>().enabled = true;
+        }
+        else
+        {
+            gameObject.GetComponent<Light2D>().enabled = false;
+        }
         shopUI = FindObjectOfType<ShopManager>(true);
         pause = FindObjectOfType<PauseMenu>(true);
         upgradeMenu = FindObjectOfType<PowerupSelection>(true);
@@ -131,11 +141,11 @@ public class PlayerControls : MonoBehaviour
                 if (moveInput.x < 0)
                 {
                     spriteRenderer.flipX = true;
-                    //GameObject.Find("MeleeWeapon").GetComponent<Animator>().SetBool("weaponFlip", true);
+                    GameObject.Find("MeleeWeapon").GetComponent<Animator>().SetBool("weaponFlip", true);
                 }
                 else if (moveInput.x > 0)
                 {
-                    //GameObject.Find("MeleeWeapon").GetComponent<Animator>().SetBool("weaponFlip", false);
+                    GameObject.Find("MeleeWeapon").GetComponent<Animator>().SetBool("weaponFlip", false);
                     spriteRenderer.flipX = false;
                 }
 
@@ -314,12 +324,10 @@ public class PlayerControls : MonoBehaviour
         //GameObject.Find("MeleeWeapon").GetComponent<Animator>().SetTrigger("weaponAttack");
         if (spriteRenderer.flipX == true)
         {
-            melee.flip = true;
             melee.Attack();
         }
         else
         {
-            melee.flip = false;
             melee.Attack();
         }
         yield return new WaitForSeconds(1f / attackRate);
@@ -330,6 +338,7 @@ public class PlayerControls : MonoBehaviour
     {
         if (playerStats.currentAmmo > 0 && !pause.isPaused && canMove)
         {
+            
             rangedAttack.Fire();
         }
         

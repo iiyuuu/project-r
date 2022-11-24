@@ -59,10 +59,7 @@ public class SceneTeleporter : MonoBehaviour
                 isDuplicate = false;
                 controls.floor_number++;
 
-                foreach (string used in controls.usedScenes)
-                {
-                    controls.usedScenes.Remove(used);
-                }
+                controls.usedScenes.RemoveAll(s => s.Length != 0);
             }
 
             if (sceneToLoad.Length != 0)//if there is already a thing in the fill bar

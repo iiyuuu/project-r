@@ -119,33 +119,13 @@ public class CollisionHandler : MonoBehaviour
         if (other.gameObject.tag.Equals("Heal"))
         {
            stats.Healing(2);
+            FindObjectOfType<AudioManager>().Play("Heart");
            Destroy(other.gameObject);
         }
         if (other.gameObject.tag.Equals("Coin"))
         {
             currency.ChangeCurrency(1);
             FindObjectOfType<AudioManager>().Play("Coin Collect");
-            Destroy(other.gameObject);
-        }
-        if (other.gameObject.tag.Equals("Health Power Up"))
-        {
-            //Debug.Log("Health Power Up Picked Up");
-            stats.maxHealth += 2;
-            stats.Healing(2);
-            Destroy(other.gameObject);
-        }
-
-        if (other.gameObject.tag.Equals("Speed Power Up"))
-        {
-            //Debug.Log("Speed Power Up Picked Up");
-            controls.baseMoveSpeed += 3;
-            controls.activeMoveSpeed += 3;
-            Destroy(other.gameObject);
-        }
-
-        if (other.gameObject.tag.Equals("Projectile Power Up"))
-        {
-            //stats.projectilePowerUp += 5;
             Destroy(other.gameObject);
         }
 

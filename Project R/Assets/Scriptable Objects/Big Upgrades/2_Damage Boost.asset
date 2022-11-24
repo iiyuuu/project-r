@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afa887cbc10c5ac499214f6485f55bea, type: 3}
+  m_Script: {fileID: 11500000, guid: 829e186a46809c74c942f1a9bf4e26ae, type: 3}
   m_Name: 2_Damage Boost
   m_EditorClassIdentifier: 
   title: Damage Boost
-  description: Attack Damage +1
+  description: Melee Damage +1
   ID: 2
-  sprite: {fileID: 21300000, guid: b6a2942ab30809144acce551a8088386, type: 3}
+  enabled: 0
+  sprite: {fileID: 328393204, guid: b4171a484f56e3e4496822bc57c0b7d7, type: 3}
+  amount: 1
