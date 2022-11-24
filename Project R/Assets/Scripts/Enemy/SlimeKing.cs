@@ -22,6 +22,11 @@ public class SlimeKing : Enemy
     public GameObject firePoint6;
     public GameObject bulletPrefab;
     public float fireForce = 3f;
+    [Header("Audio Stuff")]
+    AudioSource audio;
+    public AudioClip bubblePop;
+    public AudioClip walkingSound;
+
 
     Vector2 moveVector;
     public Vector2 targetPosition;
@@ -32,12 +37,18 @@ public class SlimeKing : Enemy
     public override void Start()
     {
         base.Start();
+        audio = GetComponent<AudioSource>();
+        audio.Stop();
 
     }
 
     // Update is called once per frame
     protected override void FixedUpdate()
     {
+        if (rb.velocity != Vector2.zero && !audio.isPlaying)
+        {
+            audio.PlayOneShot(walkingSound,0.7f);
+        }
         if(Health <= 15 && Health > 8)
         {
             spriteRend.color = Color.yellow;
@@ -73,24 +84,31 @@ public class SlimeKing : Enemy
             GameObject bullet = Instantiate(bulletPrefab, firePoint1.transform.position, firePoint1.transform.rotation);
             bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint1.transform.up * fireForce, ForceMode2D.Impulse);
             Destroy(bullet, 5);
+            audio.PlayOneShot(bubblePop);
             bullet = Instantiate(bulletPrefab, firePoint2.transform.position, firePoint2.transform.rotation);
             bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint2.transform.up * fireForce, ForceMode2D.Impulse);
             Destroy(bullet, 5);
+            audio.PlayOneShot(bubblePop);
             bullet = Instantiate(bulletPrefab, firePoint3.transform.position, firePoint3.transform.rotation);
             bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint3.transform.up * fireForce, ForceMode2D.Impulse);
             Destroy(bullet, 5);
+            audio.PlayOneShot(bubblePop);
             bullet = Instantiate(bulletPrefab, firePoint4.transform.position, firePoint4.transform.rotation);
             bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint4.transform.up * fireForce, ForceMode2D.Impulse);
             Destroy(bullet, 5);
+            audio.PlayOneShot(bubblePop);
             bullet = Instantiate(bulletPrefab, firePoint5.transform.position, firePoint5.transform.rotation);
             bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint5.transform.up * fireForce, ForceMode2D.Impulse);
             Destroy(bullet, 5);
+            audio.PlayOneShot(bubblePop);
             bullet = Instantiate(bulletPrefab, firePoint6.transform.position, firePoint6.transform.rotation);
             bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint6.transform.up * fireForce, ForceMode2D.Impulse);
             Destroy(bullet, 5);
+            audio.PlayOneShot(bubblePop);
             bullet = Instantiate(bulletPrefab, firePoint0.transform.position, firePoint0.transform.rotation);
             bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint0.transform.up * fireForce, ForceMode2D.Impulse);
             Destroy(bullet, 5);
+            audio.PlayOneShot(bubblePop);
         }
         else
         {
@@ -101,36 +119,43 @@ public class SlimeKing : Enemy
                     GameObject bullet = Instantiate(bulletPrefab, firePoint1.transform.position, firePoint1.transform.rotation);
                     bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint1.transform.up * fireForce, ForceMode2D.Impulse);
                     Destroy(bullet, 5);
+                    audio.PlayOneShot(bubblePop);
                     break;
                 case 2:
                     bullet = Instantiate(bulletPrefab, firePoint2.transform.position, firePoint2.transform.rotation);
                     bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint2.transform.up * fireForce, ForceMode2D.Impulse);
                     Destroy(bullet, 5);
+                    audio.PlayOneShot(bubblePop);
                     break;
                 case 3:
                     bullet = Instantiate(bulletPrefab, firePoint3.transform.position, firePoint3.transform.rotation);
                     bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint3.transform.up * fireForce, ForceMode2D.Impulse);
                     Destroy(bullet, 5);
+                    audio.PlayOneShot(bubblePop);
                     break;
                 case 4:
                     bullet = Instantiate(bulletPrefab, firePoint4.transform.position, firePoint4.transform.rotation);
                     bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint4.transform.up * fireForce, ForceMode2D.Impulse);
                     Destroy(bullet, 5);
+                    audio.PlayOneShot(bubblePop);
                     break;
                 case 5:
                     bullet = Instantiate(bulletPrefab, firePoint5.transform.position, firePoint5.transform.rotation);
                     bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint5.transform.up * fireForce, ForceMode2D.Impulse);
                     Destroy(bullet, 5);
+                    audio.PlayOneShot(bubblePop);
                     break;
                 case 6:
                     bullet = Instantiate(bulletPrefab, firePoint6.transform.position, firePoint6.transform.rotation);
                     bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint6.transform.up * fireForce, ForceMode2D.Impulse);
                     Destroy(bullet, 5);
+                    audio.PlayOneShot(bubblePop);
                     break;
                 default:
                     bullet = Instantiate(bulletPrefab, firePoint0.transform.position, firePoint0.transform.rotation);
                     bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint0.transform.up * fireForce, ForceMode2D.Impulse);
                     Destroy(bullet, 5);
+                    audio.PlayOneShot(bubblePop);
                     break;
             }
         }
@@ -146,7 +171,15 @@ public class SlimeKing : Enemy
         {
             targetPosition = hit.transform.position;
         }
-        rb.AddForce(moveVector * dashForce, ForceMode2D.Impulse);
+        if (isFlipped)
+        {
+            rb.AddForce(-moveVector * dashForce, ForceMode2D.Impulse);
+        }
+        else
+        {
+            rb.AddForce(moveVector * dashForce, ForceMode2D.Impulse);
+        }
+      
 
     }
     IEnumerator specialAttackCooldown()

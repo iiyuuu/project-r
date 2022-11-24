@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6816542689272077691}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: firingPoint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23,14 +23,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3179372491821658303}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.4674835, w: 0.88400185}
   m_LocalPosition: {x: 0, y: -0.143, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3198999397129887414}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 55.742}
 --- !u!1 &4511074404739347889
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5541926047559821498}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: firingPoint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,14 +54,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4511074404739347889}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.50492764, w: 0.8631617}
   m_LocalPosition: {x: -0.086, y: -0.137, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3198999397129887414}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 60.653}
 --- !u!1 &6104115746345031372
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5947104721638162170}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: firingPoint6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,14 +85,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6104115746345031372}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.57697797, w: 0.81675977}
   m_LocalPosition: {x: 0.115, y: -0.055, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3198999397129887414}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -70.477}
 --- !u!1 &6142877350658254600
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1151780822310514422}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: firingPoint0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,14 +116,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6142877350658254600}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.5945772, w: 0.80403864}
   m_LocalPosition: {x: -0.082, y: -0.007, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3198999397129887414}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 72.965}
 --- !u!1 &7223361939982079646
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9105775674797041607}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: firingPoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,14 +147,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7223361939982079646}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.6908248, w: 0.7230223}
   m_LocalPosition: {x: -0.115, y: -0.051, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3198999397129887414}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 87.391}
 --- !u!1 &8087947287918534106
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3198999397129887414}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FiringPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,8 +260,9 @@ GameObject:
   - component: {fileID: 8374071490299391825}
   - component: {fileID: 205755847972638523}
   - component: {fileID: 205755847972638520}
-  m_Layer: 0
-  m_Name: slimeKing
+  - component: {fileID: 6235578842930111362}
+  m_Layer: 7
+  m_Name: SlimeKing
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -283,7 +284,7 @@ Transform:
   - {fileID: 8374071490721121827}
   - {fileID: 3198999397129887414}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8374071490299391829
 SpriteRenderer:
@@ -391,9 +392,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.06666631}
   serializedVersion: 2
-  m_Radius: 0.16
+  m_Radius: 0.093333706
 --- !u!58 &8374071490299391828
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -404,12 +405,12 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0037535669, y: -0.051427424}
   serializedVersion: 2
-  m_Radius: 0.16
+  m_Radius: 0.11617694
 --- !u!114 &8374071490299391824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,7 +513,7 @@ MonoBehaviour:
   moveSpeed: 0.25
   chaseRadius: 0
   ranged: 0
-  attackDamage: 0
+  attackDamage: 2
   moveInput: {x: 0, y: 0}
   pointerInput: {x: 0, y: 0}
   homePosition: {x: 0, y: 0, z: 0}
@@ -521,6 +522,7 @@ MonoBehaviour:
   numberOfFlashes: 0
   enemyHurt: 0
   spriteRend: {fileID: 8374071490299391829}
+  isFlipped: 0
   firePoint0: {fileID: 6142877350658254600}
   firePoint1: {fileID: 7223361939982079646}
   firePoint2: {fileID: 4511074404739347889}
@@ -528,8 +530,10 @@ MonoBehaviour:
   firePoint4: {fileID: 8932505576208963304}
   firePoint5: {fileID: 9105955702487768733}
   firePoint6: {fileID: 6104115746345031372}
-  bulletPrefab: {fileID: 373667894874720840, guid: 88fe1c2b8c637824cb9d5f44a90a134e, type: 3}
+  bulletPrefab: {fileID: 373667894874720840, guid: adc6de6f9b03842d29ed7b2d613b7a49, type: 3}
   fireForce: 3
+  bubblePop: {fileID: 8300000, guid: 8f502b3c09b8540dc82f1b3655693a11, type: 3}
+  walkingSound: {fileID: 8300000, guid: ed1684c45fe164afc882a0ff8ef04869, type: 3}
   targetPosition: {x: 0, y: 0}
   dashForce: 20
 --- !u!114 &205755847972638520
@@ -544,12 +548,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf73252cdaaab74d9218528fb841df2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  health: 3
+  rb: {fileID: 8374071490299391826}
+  health: 20
   moveSpeed: 0.25
   chaseRadius: 0
   ranged: 0
-  attackDamage: 0
+  attackDamage: 2
   moveInput: {x: 0, y: 0}
   pointerInput: {x: 0, y: 0}
   homePosition: {x: 0, y: 0, z: 0}
@@ -558,6 +562,103 @@ MonoBehaviour:
   numberOfFlashes: 0
   enemyHurt: 0
   spriteRend: {fileID: 0}
+  isFlipped: 0
+--- !u!82 &6235578842930111362
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8374071490299391848}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8f502b3c09b8540dc82f1b3655693a11, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8374071490334803942
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,7 +925,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3292371808365441952}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: firingPoint4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -838,14 +939,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8932505576208963304}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.5484323, w: 0.836195}
   m_LocalPosition: {x: 0.057, y: -0.137, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3198999397129887414}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -66.519}
 --- !u!1 &9105955702487768733
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,7 +956,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1919456552782610568}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: firingPoint5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -869,11 +970,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9105955702487768733}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.37934482, w: 0.9252554}
   m_LocalPosition: {x: 0.119, y: -0.093, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3198999397129887414}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -44.586}
