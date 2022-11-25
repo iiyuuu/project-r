@@ -354,8 +354,20 @@ public class PlayerControls : MonoBehaviour
 
     public void OnTab()
     {
-        FindObjectOfType<InventoryManager>(true).isEnabled = !FindObjectOfType<InventoryManager>(true).isEnabled;
-        FindObjectOfType<InventoryManager>(true).Update();
+        if (!pause.isPaused && !shopUI.isEnabled)
+        {
+            FindObjectOfType<InventoryManager>(true).isEnabled = !FindObjectOfType<InventoryManager>(true).isEnabled;
+            FindObjectOfType<InventoryManager>(true).Update();
+        }
+        if (FindObjectOfType<InventoryManager>(true).isEnabled)
+        {
+            FindObjectOfType<InventoryManager>(true).GetComponent<Fade>().ShowUI();
+        }
+        else
+        {
+            FindObjectOfType<InventoryManager>(true).GetComponent<Fade>().HideUI();
+        }
+       
     }
 
 }
