@@ -352,4 +352,10 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
+    public void OnTab()
+    {
+        FindObjectOfType<InventoryManager>(true).isEnabled = !FindObjectOfType<InventoryManager>(true).isEnabled;
+        FindObjectOfType<InventoryManager>(true).Update();
+    }
+
 }
