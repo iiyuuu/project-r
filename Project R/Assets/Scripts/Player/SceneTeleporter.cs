@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using System.Linq;
 using UnityEngine.UI;
 using Unity.VisualScripting;
+using System.IO;
 
 public class SceneTeleporter : MonoBehaviour
 {
@@ -184,11 +185,13 @@ public class SceneTeleporter : MonoBehaviour
         controls.canMove = true;
         controls.gameObject.transform.position = spawn.transform.position;
         loadingScreen.SetActive(false);
-        FindObjectOfType<AudioManager>().RefreshSounds();
-        if(SceneManager.GetActiveScene().name == "Hub")//load first then save, to check if there is data
+        foreach (Sound s in FindObjectOfType<AudioManager>().sounds)
+        {
+            s.source.volume = s.volume + FindObjectOfType<AudioManager>().GetMasterVolume() / 20;
+        }
+        if (SceneManager.GetActiveScene().name == "Hub")//load first then save, to check if there is data
         {
             FindObjectOfType<PlayerStats>().Save();
-            FindObjectOfType<PlayerStats>().Load();
         }
     }
 

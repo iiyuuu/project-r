@@ -14,7 +14,7 @@ public class LevelLoader : MonoBehaviour
         animator.SetTrigger("Start");
         foreach (AudioSource source in FindObjectsOfType<AudioSource>())
         {
-            if (!source.name.Contains("BGM"))
+            if (!source.clip.ToString().Contains("BGM"))
             {
                 StartCoroutine(StartFade(source, transitionTime, 0f));
             }

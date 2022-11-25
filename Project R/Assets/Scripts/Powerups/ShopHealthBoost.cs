@@ -6,7 +6,6 @@ using UnityEngine;
 public class ShopHealthBoost : ShopItems
 {
     public int amount;
-    private int maxLevel = 3;
 
     public override void Activate(GameObject parent)
     {

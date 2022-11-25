@@ -19,6 +19,7 @@ public class CurrencyManager : MonoBehaviour
         {
             shopText.text = "X" + currency.ToString();
         }
+        text.text = "X" + currency.ToString();
     }
     public void ChangeCurrency(int currencyValue)
     {

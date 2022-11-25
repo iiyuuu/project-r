@@ -55,6 +55,7 @@ public class Enemy : MonoBehaviour
             health = value;
             if(health <= 0)
             {
+                health = 0;
                 animator.SetBool("Dead", true);
                 animator.SetTrigger("enemyDeath");
                 foreach (CircleCollider2D circle in gameObject.GetComponents<CircleCollider2D>())
@@ -291,7 +292,7 @@ public class Enemy : MonoBehaviour
             {
                 Enemy other = collision.gameObject.GetComponent<Enemy>();
 
-                if (other != null)
+                if (other != null && rb != null)
                 {
                     other.rb.velocity = Vector2.zero;
                     rb.velocity = Vector2.zero;

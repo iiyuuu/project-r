@@ -22,7 +22,8 @@ public class flyingEnemy : Enemy
         charging,
         dashing,
         idle,
-        cooldown
+        cooldown, 
+        death
     }
 
     public override void Start()
@@ -38,51 +39,58 @@ public class flyingEnemy : Enemy
         //play charge animation
         //track player until fire
         //dash coroutine
-        hit = Physics2D.OverlapCircle(transform.position, chaseRadius, LayerMask.GetMask("Player"));
-        spriteRend.flipX = (aimAngle > -90f && aimAngle < 90f) ? true : false;
-        if (!enemyHurt && rb != null)
+        if(health > 0)
         {
-            switch (currentState)
+            hit = Physics2D.OverlapCircle(transform.position, chaseRadius, LayerMask.GetMask("Player"));
+            spriteRend.flipX = (aimAngle > -90f && aimAngle < 90f) ? true : false;
+            if (!enemyHurt && rb != null)
             {
-                case State.idle:
-                    Charge();
-                    break;
-                case State.dashing:
-                    if (Vector2.Distance((Vector2)transform.position, targetPosition) <= .1f || rb.velocity == Vector2.zero)//if eye reches target posiion (the player dodges it)
-                    {
+                switch (currentState)
+                {
+                    case State.idle:
+                        Charge();
+                        break;
+                    case State.dashing:
+                        if (Vector2.Distance((Vector2)transform.position, targetPosition) <= .1f || rb.velocity == Vector2.zero)//if eye reches target posiion (the player dodges it)
+                        {
+                            rb.velocity = Vector2.zero;
+                            StartCoroutine(DashCooldown(dashingCooldown));
+                        }
+                        break;
+                    case State.cooldown:
                         rb.velocity = Vector2.zero;
-                        StartCoroutine(DashCooldown(dashingCooldown));
-                    }
-                    break;
-                case State.cooldown:
-                    rb.velocity = Vector2.zero;
-                    moveVector = (-(Vector2)transform.position + pointerInput).normalized;
-                    aimAngle = Mathf.Atan2(moveVector.y, moveVector.x) * Mathf.Rad2Deg;
-                    if (!spriteRend.flipX)
-                    {
-                        transform.rotation = Quaternion.AngleAxis(aimAngle + 180f, Vector3.forward);
-                    }
-                    else
-                    {
-                        transform.rotation = Quaternion.AngleAxis(aimAngle, Vector3.forward);
-                    }
-                    break;
-                case State.charging:
-                    moveVector = (-(Vector2)transform.position + pointerInput).normalized;
-                    aimAngle = Mathf.Atan2(moveVector.y, moveVector.x) * Mathf.Rad2Deg;
-                    if (!spriteRend.flipX)
-                    {
-                        transform.rotation = Quaternion.AngleAxis(aimAngle + 180f, Vector3.forward);
-                    }
-                    else
-                    {
-                        transform.rotation = Quaternion.AngleAxis(aimAngle, Vector3.forward);
-                    }
-                    
-                    break;
+                        moveVector = (-(Vector2)transform.position + pointerInput).normalized;
+                        aimAngle = Mathf.Atan2(moveVector.y, moveVector.x) * Mathf.Rad2Deg;
+                        if (!spriteRend.flipX)
+                        {
+                            transform.rotation = Quaternion.AngleAxis(aimAngle + 180f, Vector3.forward);
+                        }
+                        else
+                        {
+                            transform.rotation = Quaternion.AngleAxis(aimAngle, Vector3.forward);
+                        }
+                        break;
+                    case State.charging:
+                        moveVector = (-(Vector2)transform.position + pointerInput).normalized;
+                        aimAngle = Mathf.Atan2(moveVector.y, moveVector.x) * Mathf.Rad2Deg;
+                        if (!spriteRend.flipX)
+                        {
+                            transform.rotation = Quaternion.AngleAxis(aimAngle + 180f, Vector3.forward);
+                        }
+                        else
+                        {
+                            transform.rotation = Quaternion.AngleAxis(aimAngle, Vector3.forward);
+                        }
+
+                        break;
+                }
             }
         }
-
+        else
+        {
+            currentState = State.death;
+            StopAllCoroutines();
+        }
     }
 
 

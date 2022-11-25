@@ -4,7 +4,6 @@ using UnityEngine;
 public class ShopBulletDamage : ShopItems
 {
     public int amount;
-    private int maxLevel = 1;
 
     public override void Activate(GameObject parent)
     {

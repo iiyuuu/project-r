@@ -26,11 +26,6 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        
-    }
-
-    public void RefreshSounds()
-    {
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
@@ -40,13 +35,15 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
+
     }
+
 
     public float GetMasterVolume()
     {
         if(mixer.GetFloat("MasterVol", out masterVolume))
         {
-            Debug.Log(masterVolume);
+            //Debug.Log(masterVolume);
             return masterVolume;
         }
         else

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -63,7 +64,15 @@ public class ShopManager : MonoBehaviour
     {
         for(int i = 0; i < shopPanels.Length; i++)
         {
-            shopPanels[i].titleText.text = shopItems[i].title + " " + new string('I', shopItems[i].level);
+            if(shopItems[i].level < shopItems[i].maxLevel)
+            {
+                shopPanels[i].titleText.text = shopItems[i].title + " " + new string('I', shopItems[i].level);
+            }
+            else
+            {
+                shopPanels[i].titleText.text = shopItems[i].title + " MAX";
+            }
+            
             shopPanels[i].descriptionText.text = shopItems[i].description;
             shopPanels[i].costText.text = shopItems[i].baseCost.ToString();
             shopPanelsObject[i].transform.GetChild(0).GetComponent<Image>().sprite = shopItems[i].sprite;
@@ -74,7 +83,7 @@ public class ShopManager : MonoBehaviour
     {
         for(int i = 0; i < shopItems.Length; i++)
         {
-            if (currencyManager.currency >= shopItems[i].baseCost && shopItems[i].purchasable)
+            if (currencyManager.currency >= shopItems[i].baseCost && shopItems[i].purchasable && shopItems[i].level < shopItems[i].maxLevel)
             {
                 shopButtons[i].interactable = true;
             }

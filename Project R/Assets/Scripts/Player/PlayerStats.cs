@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -41,7 +42,6 @@ public class PlayerStats : MonoBehaviour
     }
     private void Update()
     {
-        currency = GameObject.FindGameObjectWithTag("UI").GetComponentInChildren<CurrencyManager>(true).currency;
         attackDamage = GetComponentInChildren<MeleeController>(true).attackDamage;
         if(currentHealth <= 2 && currentHealth != 0)
         {
@@ -55,6 +55,7 @@ public class PlayerStats : MonoBehaviour
 
     public void Save()
     {
+        currency = FindObjectOfType<CurrencyManager>(true).currency;
         SaveManager.SavePlayer(gameObject.GetComponent<PlayerStats>());
     }
 
@@ -62,9 +63,19 @@ public class PlayerStats : MonoBehaviour
     {
         PlayerData data = SaveManager.LoadPlayer();
         currency = data.currency;
+        FindObjectOfType<CurrencyManager>(true).currency = currency;
         attackDamage = data.attackDamage;
         maxHealth = data.maxHealth;
         maxAmmo = data.maxAmmo;
+
+        for(int i = 0; i < smallPowerups.Count; i++)
+        {
+            if (smallPowerups[i].ID == data.powerups[i].ID)//check if there is matching ID in save data to inventory
+            {
+                smallPowerups[i].level = data.powerups[i].level;
+                smallPowerups[i].enabled = data.powerups[i].enabled;
+            }
+        }
     }
 
     public void DamageTaken(int amount)

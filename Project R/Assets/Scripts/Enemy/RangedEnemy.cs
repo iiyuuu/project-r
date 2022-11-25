@@ -10,6 +10,7 @@ public class RangedEnemy : Enemy
     public Transform firePoint;
     public RangedAttack rangedAttack;
     public Vector2 hingeBase;
+    public Vector3 lightScale;
     public GameObject bulletPrefab;
 
     [Header("Stats")]
@@ -27,6 +28,7 @@ public class RangedEnemy : Enemy
     {
         base.Start();
         hingeBase = rangedAttack.transform.localPosition;
+        lightScale = transform.GetChild(0).transform.localScale;
     }
 
     protected override void FixedUpdate()
@@ -36,10 +38,12 @@ public class RangedEnemy : Enemy
             if (spriteRend.flipX)//flip firing hinge
             {
                 rangedAttack.transform.localPosition = new Vector2(-hingeBase.x, hingeBase.y);
+                transform.GetChild(0).transform.localScale = new Vector3(-lightScale.x, lightScale.y, lightScale.z);
             }
             else
             {
                 rangedAttack.transform.localPosition = hingeBase;
+                transform.GetChild(0).transform.localScale = lightScale;
             }
             
             CheckDistance();

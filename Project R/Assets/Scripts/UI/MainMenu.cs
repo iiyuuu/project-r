@@ -15,10 +15,10 @@ public class MainMenu : MonoBehaviour
     public string dataJSON;
     public void PlayGame()
     {
-        string path = Application.persistentDataPath + "/player.data";//path for save file
+        string path = Path.Combine(Application.persistentDataPath, "player.data");//path for save file
         if (File.Exists(path))
         {
-            LoadGame();//make a player, add variables into it, then throw it into hub
+            StartCoroutine(LoadGame());//make a player, add variables into it, then throw it into hub
         }
         else
         {
@@ -32,17 +32,18 @@ public class MainMenu : MonoBehaviour
         Debug.Log("New Game");
         StartCoroutine(loader.LoadingLevel("New Game"));
     }
-    public void LoadGame()
+    public IEnumerator LoadGame()
     {
         Debug.Log("Load Game");
+        yield return StartCoroutine(loader.LoadingLevel("Hub"));
         GameObject player = Instantiate(playerPrefab);
-        player.GetComponent<PlayerStats>().Load();
         foreach (GameObject go in dependencies)
         {
             Instantiate(go);
             //go.SetActive(true);
         }
-        StartCoroutine(loader.LoadingLevel("Hub"));
+        player.GetComponent<PlayerStats>().Load();
+
     }
 
     public void QuitGame()

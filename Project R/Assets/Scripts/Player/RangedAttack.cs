@@ -97,15 +97,15 @@ public class RangedAttack : MonoBehaviour
             }
 
             OnPlayerFire?.Invoke();
-            if (0 <= body.rotation && body.rotation < 180f)
-            {
-                GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>().flipX = true;
-                GameObject.Find("MeleeWeapon").GetComponent<Animator>().SetTrigger("rangedAttackFlip");
-            }
-            else
+            if (FindObjectOfType<Crosshair>().transform.position.x > transform.position.x)
             {
                 GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>().flipX = false;
                 GameObject.Find("MeleeWeapon").GetComponent<Animator>().SetTrigger("rangedAttack");
+            }
+            else
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>().flipX = true;
+                GameObject.Find("MeleeWeapon").GetComponent<Animator>().SetTrigger("rangedAttackFlip");
             }
             stats.currentAmmo--;
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

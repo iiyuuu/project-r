@@ -7,6 +7,7 @@ public class ShopItems : ScriptableObject
     public string title;
     public string description;
     public int level = 1;
+    public int maxLevel;
     public int ID;
     public bool enabled = false;
     public int baseCost;

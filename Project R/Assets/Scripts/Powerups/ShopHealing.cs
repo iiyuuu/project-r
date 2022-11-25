@@ -4,7 +4,6 @@ using UnityEngine;
 public class ShopHealing : ShopItems
 {
     public int amount;
-    private int maxLevel = 2;
 
     public override void Activate(GameObject parent)
     {

@@ -80,12 +80,19 @@ public class CollisionHandler : MonoBehaviour
                 }
                 else if (other.CompareTag("Enemy Projectile"))
                 {
+                    if (controls.isDashing)
+                    {
+                        Destroy(other.gameObject);
+                    }
+                    else
+                    {
+                        EnemyBullet bullet = other.GetComponent<EnemyBullet>();
+                        bullet.rb.velocity = Vector2.zero;
+                        bullet.rb = null;
+                        bullet.animator.SetTrigger("Impact");
+                        stats.DamageTaken(1);
+                    }
                     
-                    EnemyBullet bullet = other.GetComponent<EnemyBullet>();
-                    bullet.rb.velocity = Vector2.zero;
-                    bullet.rb = null;
-                    bullet.animator.SetTrigger("Impact");
-                    stats.DamageTaken(1);
                     
                     
                 }

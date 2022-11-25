@@ -30,7 +30,7 @@ public class Trap : MonoBehaviour
                 {
                     if (horizontal)
                     {
-                        if(force <= 0)
+                        if(force >= 0)
                         {
                             trapObject.GetComponent<SpriteRenderer>().flipX = true;
                         }

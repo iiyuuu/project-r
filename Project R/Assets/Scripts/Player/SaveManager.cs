@@ -26,12 +26,6 @@ public static class SaveManager
             FileStream stream = new FileStream(path, FileMode.Open);//filestream just to open the file
 
             PlayerData data = formatter.Deserialize(stream) as PlayerData;
-
-            foreach(string resource in data.powerups)
-            {
-
-                Resources.Load(resource);
-            }
             stream.Close();
 
 
