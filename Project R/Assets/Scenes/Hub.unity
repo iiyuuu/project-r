@@ -103264,6 +103264,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3784357751595146413, guid: 75f2bb7a22f427b47a34bca9e12a3bc2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 35724003, guid: d6130e8de4f3887469795ff613f610eb, type: 3}
+    - target: {fileID: 3784357751595146413, guid: 75f2bb7a22f427b47a34bca9e12a3bc2, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784357751595146413, guid: 75f2bb7a22f427b47a34bca9e12a3bc2, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784357751595146413, guid: 75f2bb7a22f427b47a34bca9e12a3bc2, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784357751595146413, guid: 75f2bb7a22f427b47a34bca9e12a3bc2, type: 3}
+      propertyPath: m_SortingLayer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784357751595146413, guid: 75f2bb7a22f427b47a34bca9e12a3bc2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784357751595146413, guid: 75f2bb7a22f427b47a34bca9e12a3bc2, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1417973329
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784357751595146413, guid: 75f2bb7a22f427b47a34bca9e12a3bc2, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3784357751595146415, guid: 75f2bb7a22f427b47a34bca9e12a3bc2, type: 3}
       propertyPath: m_Name
       value: NPC
@@ -103377,3 +103409,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shop: {fileID: 0}
+--- !u!95 &3784357752538804310
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3784357752538804308}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c8521d478a1ae404ba9443bf1011a63f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

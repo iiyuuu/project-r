@@ -27019,6 +27019,7 @@ GameObject:
   - component: {fileID: 2034222863}
   - component: {fileID: 2034222862}
   - component: {fileID: 2034222864}
+  - component: {fileID: 2034222865}
   m_Layer: 8
   m_Name: Upgrade NPC
   m_TagString: NPC
@@ -27111,9 +27112,9 @@ SpriteRenderer:
   m_SortingLayerID: -1417973329
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1355423788, guid: 83f31261df5734c48b5f21f254cc1d4e, type: 3}
-  m_Color: {r: 0, g: 0.8842337, b: 1, a: 1}
-  m_FlipX: 0
+  m_Sprite: {fileID: 35724003, guid: d6130e8de4f3887469795ff613f610eb, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.32, y: 0.32}
@@ -27271,3 +27272,23 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!95 &2034222865
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034222857}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c8521d478a1ae404ba9443bf1011a63f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
