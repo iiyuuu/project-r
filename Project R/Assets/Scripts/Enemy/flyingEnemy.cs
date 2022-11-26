@@ -43,8 +43,9 @@ public class flyingEnemy : Enemy
         {
             hit = Physics2D.OverlapCircle(transform.position, chaseRadius, LayerMask.GetMask("Player"));
             spriteRend.flipX = (aimAngle > -90f && aimAngle < 90f) ? true : false;
-            if (!enemyHurt && rb != null)
+            if (hit != null)
             {
+                Debug.Log(currentState);
                 switch (currentState)
                 {
                     case State.idle:
@@ -138,7 +139,8 @@ public class flyingEnemy : Enemy
     {
         currentState = State.charging;
         yield return new WaitForSeconds(chargeTime);
-        Dash();
+        if(health > 0)
+            Dash();
     }
 
     IEnumerator DashCooldown(float dashCooldown)
@@ -153,6 +155,7 @@ public class flyingEnemy : Enemy
     {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(targetPosition, .01f);
+        Gizmos.DrawWireSphere(transform.position, chaseRadius);
         Debug.DrawRay(transform.position, moveVector);
     }
 

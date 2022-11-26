@@ -488,7 +488,7 @@ MonoBehaviour:
   rb: {fileID: 7194221344439264792}
   invulnerable: 0
   health: 1
-  maxHealth: 3
+  maxHealth: 1
   moveSpeed: 0
   chaseRadius: 1
   attackDamage: 1

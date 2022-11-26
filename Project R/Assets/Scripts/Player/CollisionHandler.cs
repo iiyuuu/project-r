@@ -45,7 +45,7 @@ public class CollisionHandler : MonoBehaviour
             difference = difference.normalized * thrust; //(1, 0) - (3, 0) = (-2, 0) -> (-1, 0) * thrust (3) = (-3, 0) force
             if(other.CompareTag("Enemy Projectile"))
             {
-                if (stats.hurt)
+                if (stats.hurt || controls.isDashing)//if during iframe or during roll frame
                 {
                     Destroy(other.gameObject);
                 }

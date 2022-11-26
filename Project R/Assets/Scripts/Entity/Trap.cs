@@ -21,6 +21,7 @@ public class Trap : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            FindObjectOfType<AudioManager>().Play("Sword Slash1");
             sprite.sprite = newSprite;
             //activate trap
             foreach(Transform f in firepoint)
