@@ -15,6 +15,7 @@ MonoBehaviour:
   title: Projectile Damage Boost
   description: Increases projecile damage
   level: 1
+  maxLevel: 1
   ID: 4
   enabled: 0
   baseCost: 1000

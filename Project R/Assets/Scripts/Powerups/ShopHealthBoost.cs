@@ -17,7 +17,7 @@ public class ShopHealthBoost : ShopItems
 
     public void LevelUp()
     {
-        if(level < maxLevel)
+        if(level <= maxLevel)
         {
             level += 1;
             baseCost *= 10 / level;

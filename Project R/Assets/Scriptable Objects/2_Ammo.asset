@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Ammo Increase
   description: Increases max ammo
+  level: 1
+  maxLevel: 3
   ID: 2
   enabled: 0
   baseCost: 200
   purchasable: 1
   sprite: {fileID: -1861187849, guid: 87ecb52c0b19cca48863251cd883a609, type: 3}
   amount: 1
-  level: 1

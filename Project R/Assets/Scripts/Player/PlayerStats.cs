@@ -122,7 +122,10 @@ public class PlayerStats : MonoBehaviour
     IEnumerator Respawn()
     {
         loader = FindObjectOfType<LevelLoader>();
-
+        foreach(AudioSource s in FindObjectOfType<AudioManager>().GetComponents<AudioSource>())
+        {
+            s.Stop();
+        }
         yield return StartCoroutine(loader.LoadingLevel("Hub"));
         animator.SetTrigger("Respawn");
 

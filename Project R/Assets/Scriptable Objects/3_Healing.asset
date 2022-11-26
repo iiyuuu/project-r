@@ -15,6 +15,7 @@ MonoBehaviour:
   title: Healing
   description: When you complete a room, heal some hearts
   level: 1
+  maxLevel: 2
   ID: 3
   enabled: 0
   baseCost: 500

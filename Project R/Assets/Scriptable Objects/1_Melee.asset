@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Melee Attack Boost
   description: Increases melee damage
+  level: 1
+  maxLevel: 2
   ID: 1
   enabled: 0
   baseCost: 200
   purchasable: 1
   sprite: {fileID: -995100901, guid: b4171a484f56e3e4496822bc57c0b7d7, type: 3}
   amount: 1
-  level: 1

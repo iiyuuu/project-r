@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Health Boost
   description: Increases Starting HP
+  level: 1
+  maxLevel: 3
   ID: 0
   enabled: 0
   baseCost: 100
   purchasable: 1
   sprite: {fileID: 21300000, guid: 740d9a6d2b9308340a5a272502e6025f, type: 3}
   amount: 2
-  level: 1
