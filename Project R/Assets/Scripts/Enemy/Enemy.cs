@@ -43,6 +43,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] int numberOfFlashes;
     public bool enemyHurt = false;
     public SpriteRenderer spriteRend;
+    public bool isFlipped = false;
 
     IEnumerator coroutine;
     IEnumerator kbCoroutine;
@@ -90,7 +91,7 @@ public class Enemy : MonoBehaviour
         if (!enemyHurt && (type == EnemyType.Slime || type == EnemyType.Knight) && Health > 0)
         {
             rb.velocity = MoveInput.normalized * moveSpeed;
-            if(rb.velocity != Vector2.zero)
+            if(rb.velocity != Vector2.zero) 
             {
                 animator.SetBool("Moving", true);
             }
@@ -214,14 +215,17 @@ public class Enemy : MonoBehaviour
             if(homePosition.x < transform.position.x)
             {
                 spriteRend.flipX = false;
+                isFlipped = false;
             }
             else if (homePosition == transform.position) 
             {
                 spriteRend.flipX = false;
+                isFlipped = false;
             }
             else
             {
                 spriteRend.flipX = true;
+                isFlipped = true;
             }
         }
         
