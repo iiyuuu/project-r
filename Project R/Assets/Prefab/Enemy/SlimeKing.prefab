@@ -276,7 +276,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8374071490299391848}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.099260524, y: 0.7467108, z: 0}
+  m_LocalPosition: {x: 0.467, y: 1.008, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -378,7 +378,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!58 &8374071490299391827
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -509,8 +509,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8374071490299391826}
-  health: 20
-  moveSpeed: 0.25
+  health: 30
+  moveSpeed: 0.4
   chaseRadius: 0
   ranged: 0
   attackDamage: 2
@@ -534,6 +534,7 @@ MonoBehaviour:
   fireForce: 3
   bubblePop: {fileID: 8300000, guid: 8f502b3c09b8540dc82f1b3655693a11, type: 3}
   walkingSound: {fileID: 8300000, guid: ed1684c45fe164afc882a0ff8ef04869, type: 3}
+  bossMusic: {fileID: 8300000, guid: e1fe4c812cdc44a83be7e99e20b0c764, type: 3}
   targetPosition: {x: 0, y: 0}
   dashForce: 20
 --- !u!114 &205755847972638520
@@ -549,8 +550,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8374071490299391826}
-  health: 20
-  moveSpeed: 0.25
+  health: 30
+  moveSpeed: 0.4
   chaseRadius: 0
   ranged: 0
   attackDamage: 2

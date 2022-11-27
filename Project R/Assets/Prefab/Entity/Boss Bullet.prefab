@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1150908443589775161}
   - component: {fileID: 7659262251896354395}
   - component: {fileID: 1945319079220533894}
-  - component: {fileID: 3363087090592691953}
   - component: {fileID: 6339909740644785832}
+  - component: {fileID: 913978135562230205}
   m_Layer: 10
   m_Name: Boss Bullet
   m_TagString: Enemy Projectile
@@ -142,20 +142,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3363087090592691953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 373667894874720840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b608ea28ec9bfb42ae652a851388b0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  animator: {fileID: 0}
 --- !u!95 &6339909740644785832
 Animator:
   serializedVersion: 4
@@ -176,3 +162,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &913978135562230205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373667894874720840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 330fd0fe271ca4d1bb0c15341a523c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  animator: {fileID: 0}
+  slime: {fileID: 3569968416217482967, guid: a774a8996485e124dad7311311dd8305, type: 3}

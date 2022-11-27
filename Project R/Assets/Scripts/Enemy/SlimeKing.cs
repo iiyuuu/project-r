@@ -26,6 +26,7 @@ public class SlimeKing : Enemy
     AudioSource audio;
     public AudioClip bubblePop;
     public AudioClip walkingSound;
+    public AudioClip bossMusic;
 
 
     Vector2 moveVector;
@@ -49,7 +50,7 @@ public class SlimeKing : Enemy
         {
             audio.PlayOneShot(walkingSound,0.7f);
         }
-        if(Health <= 15 && Health > 8)
+        if(Health <= 20 && Health > 10)
         {
             spriteRend.color = Color.yellow;
             int rand = Random.Range(0,6);
@@ -62,7 +63,7 @@ public class SlimeKing : Enemy
                 StartCoroutine(dashCo());
             }
         }
-        else if(Health <=8 && Health > 0)
+        else if(Health <=10 && Health > 0)
         {
             spriteRend.color = Color.red;
             shootRing = true;
@@ -83,31 +84,31 @@ public class SlimeKing : Enemy
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint1.transform.position, firePoint1.transform.rotation);
             bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint1.transform.up * fireForce, ForceMode2D.Impulse);
-            Destroy(bullet, 5);
+            Destroy(bullet, 2);
             audio.PlayOneShot(bubblePop);
             bullet = Instantiate(bulletPrefab, firePoint2.transform.position, firePoint2.transform.rotation);
             bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint2.transform.up * fireForce, ForceMode2D.Impulse);
-            Destroy(bullet, 5);
+            Destroy(bullet, 2);
             audio.PlayOneShot(bubblePop);
             bullet = Instantiate(bulletPrefab, firePoint3.transform.position, firePoint3.transform.rotation);
             bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint3.transform.up * fireForce, ForceMode2D.Impulse);
-            Destroy(bullet, 5);
+            Destroy(bullet, 2);
             audio.PlayOneShot(bubblePop);
             bullet = Instantiate(bulletPrefab, firePoint4.transform.position, firePoint4.transform.rotation);
             bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint4.transform.up * fireForce, ForceMode2D.Impulse);
-            Destroy(bullet, 5);
+            Destroy(bullet, 2);
             audio.PlayOneShot(bubblePop);
             bullet = Instantiate(bulletPrefab, firePoint5.transform.position, firePoint5.transform.rotation);
             bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint5.transform.up * fireForce, ForceMode2D.Impulse);
-            Destroy(bullet, 5);
+            Destroy(bullet, 2);
             audio.PlayOneShot(bubblePop);
             bullet = Instantiate(bulletPrefab, firePoint6.transform.position, firePoint6.transform.rotation);
             bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint6.transform.up * fireForce, ForceMode2D.Impulse);
-            Destroy(bullet, 5);
+            Destroy(bullet, 2);
             audio.PlayOneShot(bubblePop);
             bullet = Instantiate(bulletPrefab, firePoint0.transform.position, firePoint0.transform.rotation);
             bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint0.transform.up * fireForce, ForceMode2D.Impulse);
-            Destroy(bullet, 5);
+            Destroy(bullet, 2);
             audio.PlayOneShot(bubblePop);
         }
         else
@@ -118,43 +119,43 @@ public class SlimeKing : Enemy
                 case 1:
                     GameObject bullet = Instantiate(bulletPrefab, firePoint1.transform.position, firePoint1.transform.rotation);
                     bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint1.transform.up * fireForce, ForceMode2D.Impulse);
-                    Destroy(bullet, 5);
+                    Destroy(bullet, 2);
                     audio.PlayOneShot(bubblePop);
                     break;
                 case 2:
                     bullet = Instantiate(bulletPrefab, firePoint2.transform.position, firePoint2.transform.rotation);
                     bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint2.transform.up * fireForce, ForceMode2D.Impulse);
-                    Destroy(bullet, 5);
+                    Destroy(bullet, 2);
                     audio.PlayOneShot(bubblePop);
                     break;
                 case 3:
                     bullet = Instantiate(bulletPrefab, firePoint3.transform.position, firePoint3.transform.rotation);
                     bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint3.transform.up * fireForce, ForceMode2D.Impulse);
-                    Destroy(bullet, 5);
+                    Destroy(bullet, 2);
                     audio.PlayOneShot(bubblePop);
                     break;
                 case 4:
                     bullet = Instantiate(bulletPrefab, firePoint4.transform.position, firePoint4.transform.rotation);
                     bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint4.transform.up * fireForce, ForceMode2D.Impulse);
-                    Destroy(bullet, 5);
+                    Destroy(bullet, 2);
                     audio.PlayOneShot(bubblePop);
                     break;
                 case 5:
                     bullet = Instantiate(bulletPrefab, firePoint5.transform.position, firePoint5.transform.rotation);
                     bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint5.transform.up * fireForce, ForceMode2D.Impulse);
-                    Destroy(bullet, 5);
+                    Destroy(bullet, 2);
                     audio.PlayOneShot(bubblePop);
                     break;
                 case 6:
                     bullet = Instantiate(bulletPrefab, firePoint6.transform.position, firePoint6.transform.rotation);
                     bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint6.transform.up * fireForce, ForceMode2D.Impulse);
-                    Destroy(bullet, 5);
+                    Destroy(bullet, 2);
                     audio.PlayOneShot(bubblePop);
                     break;
                 default:
                     bullet = Instantiate(bulletPrefab, firePoint0.transform.position, firePoint0.transform.rotation);
                     bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint0.transform.up * fireForce, ForceMode2D.Impulse);
-                    Destroy(bullet, 5);
+                    Destroy(bullet, 2);
                     audio.PlayOneShot(bubblePop);
                     break;
             }
