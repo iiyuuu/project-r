@@ -7069,6 +7069,12 @@ MonoBehaviour:
     pitch: 1.2
     loop: 0
     source: {fileID: 0}
+  - name: Marked
+    clip: {fileID: 8300000, guid: e57ce93f7e40d454e8bfdc293b1a265d, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!1 &631727338
 GameObject:
   m_ObjectHideFlags: 0
@@ -15681,7 +15687,7 @@ MonoBehaviour:
   m_MinValue: 0.001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

@@ -51,8 +51,8 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(QuitRoutine()); 
     }
     
-    List<int> widths = new List<int>() {800, 1280, 1366, 1920};
-    List<int> heights = new List<int>() {600, 720, 768, 1080};
+    List<int> widths = new List<int>() {800, 1024, 1280, 1366, 1920, 2560};
+    List<int> heights = new List<int>() {600, 768, 720, 768, 1080, 1440};
 
     public void SetScreenSize (int index) 
     {

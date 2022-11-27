@@ -13,6 +13,7 @@ public class TextSlider : MonoBehaviour
      void Start() 
      {
         slider = GetComponent<Slider>();
+        SetLevel(slider.value);
         SetNumberText(slider.value);
      }
 
