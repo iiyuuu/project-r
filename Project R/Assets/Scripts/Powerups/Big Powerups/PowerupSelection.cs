@@ -95,6 +95,7 @@ public class PowerupSelection : MonoBehaviour
     {
         Powerup powerup = powerupPanels[index].gameObject.GetComponentInChildren<PowerupTemplate>(true).powerup;
         powerup.Activate(GameObject.FindGameObjectWithTag("Player"));
+        FindObjectOfType<PlayerStats>().AddPowerup(powerup);
     }
 
     public void CloseMenu()

@@ -320,6 +320,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 4785558742122789408}
   invulnerable: 0
+  flashMaterial: {fileID: 2100000, guid: b46bec1dc01be4a4aa7d83dcf3a40e09, type: 2}
+  originalMaterial: {fileID: 0}
   health: 6
   maxHealth: 3
   moveSpeed: 0.3
@@ -341,10 +343,11 @@ MonoBehaviour:
   pointerInput: {x: 0, y: 0}
   homePosition: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
-  iFrameDuration: 0.5
-  numberOfFlashes: 2
+  iFrameDuration: 0.2
+  numberOfFlashes: 1
   enemyHurt: 0
   spriteRend: {fileID: 0}
+  isFlipped: 0
 --- !u!114 &4785558742122789420
 MonoBehaviour:
   m_ObjectHideFlags: 0

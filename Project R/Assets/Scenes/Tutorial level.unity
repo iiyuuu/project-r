@@ -88479,6 +88479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScene: 
+  output: {fileID: 24300002, guid: ed6df74631140ab4588ad612f38051eb, type: 2}
   mixer: {fileID: 24100000, guid: ed6df74631140ab4588ad612f38051eb, type: 2}
   masterVolume: 0
   sounds:
@@ -88654,6 +88655,18 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 844ed320587df0d448e77214e6313efc, type: 3}
     volume: 0.25
     pitch: 1.2
+    loop: 0
+    source: {fileID: 0}
+  - name: F1 Boss BGM
+    clip: {fileID: 8300000, guid: e1fe4c812cdc44a83be7e99e20b0c764, type: 3}
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Bubble Pop
+    clip: {fileID: 8300000, guid: 8f502b3c09b8540dc82f1b3655693a11, type: 3}
+    volume: 0.25
+    pitch: 1
     loop: 0
     source: {fileID: 0}
 --- !u!4 &878241503
@@ -89099,6 +89112,34 @@ PrefabInstance:
     - target: {fileID: 7225311051477429507, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7436297343168213515, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7436297343168213515, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7436297343168213515, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1452148649}
+    - target: {fileID: 7436297343168213515, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7436297343168213515, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: AddPowerup
+      objectReference: {fileID: 0}
+    - target: {fileID: 7436297343168213515, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: PlayerStats, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7436297343168213515, guid: 59b5cc1c608152042ac9d70d1840e453, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Powerup, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects:
@@ -92126,7 +92167,7 @@ Tilemap:
       - {fileID: 1600228275, guid: 798f6a30f32bb814d880faa714079550, type: 3}
       - {fileID: 527064027, guid: 798f6a30f32bb814d880faa714079550, type: 3}
       - {fileID: 709154982, guid: 798f6a30f32bb814d880faa714079550, type: 3}
-      m_AnimationSpeed: 6
+      m_AnimationSpeed: 6.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 16, y: -6, z: 0}
@@ -92269,7 +92310,7 @@ Tilemap:
       - {fileID: 1600228275, guid: 798f6a30f32bb814d880faa714079550, type: 3}
       - {fileID: 527064027, guid: 798f6a30f32bb814d880faa714079550, type: 3}
       - {fileID: 709154982, guid: 798f6a30f32bb814d880faa714079550, type: 3}
-      m_AnimationSpeed: 6
+      m_AnimationSpeed: 6.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 15, y: 1, z: 0}
@@ -92503,7 +92544,7 @@ Tilemap:
       - {fileID: 1822243277, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -824224458, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -1144722836, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
-      m_AnimationSpeed: 6.0000005
+      m_AnimationSpeed: 6
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 13, y: 20, z: 0}
@@ -92659,7 +92700,7 @@ Tilemap:
       - {fileID: 1822243277, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -824224458, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
       - {fileID: -1144722836, guid: 477a43572c719154e88f82fea3b210e9, type: 3}
-      m_AnimationSpeed: 6.0000005
+      m_AnimationSpeed: 6
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 13, y: 29, z: 0}

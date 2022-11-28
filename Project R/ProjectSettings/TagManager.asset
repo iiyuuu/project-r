@@ -23,6 +23,7 @@ TagManager:
   - Overlay UI
   - Trap
   - BGM
+  - Ice
   layers:
   - Default
   - TransparentFX
@@ -35,7 +36,7 @@ TagManager:
   - Interactable
   - Projectile
   - Enemy Projectile
-  - Flying Enemy
+  - 
   - 
   - 
   - 

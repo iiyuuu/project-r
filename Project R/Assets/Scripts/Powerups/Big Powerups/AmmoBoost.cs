@@ -13,4 +13,9 @@ public class AmmoBoost : Powerup
         parent.GetComponent<PlayerStats>().currentAmmo += amount;
 
     }
+
+    public override void Deactivate(GameObject parent)
+    {
+        parent.GetComponent<PlayerStats>().maxAmmo -= amount;
+    }
 }

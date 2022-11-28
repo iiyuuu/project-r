@@ -45,7 +45,7 @@ public class InventoryManager : MonoBehaviour
             if (inventoryItems[i].enabled)
             {
                 inventoryPanels[i].gameObject.GetComponent<Image>().sprite = inventoryItems[i].sprite;
-                inventoryPanels[i].level.text = new string('I', inventoryItems[i].level);
+                inventoryPanels[i].level.text = new string('I', inventoryItems[i].level - 1);
             }
             else
             {

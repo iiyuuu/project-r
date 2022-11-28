@@ -64,7 +64,7 @@ public class ShopManager : MonoBehaviour
     {
         for(int i = 0; i < shopPanels.Length; i++)
         {
-            if(shopItems[i].level < shopItems[i].maxLevel)
+            if(shopItems[i].level <= shopItems[i].maxLevel)
             {
                 shopPanels[i].titleText.text = shopItems[i].title + " " + new string('I', shopItems[i].level);
             }
@@ -83,7 +83,7 @@ public class ShopManager : MonoBehaviour
     {
         for(int i = 0; i < shopItems.Length; i++)
         {
-            if (currencyManager.currency >= shopItems[i].baseCost && shopItems[i].purchasable && shopItems[i].level < shopItems[i].maxLevel)
+            if (currencyManager.currency >= shopItems[i].baseCost && shopItems[i].purchasable && shopItems[i].level <= shopItems[i].maxLevel)
             {
                 shopButtons[i].interactable = true;
             }

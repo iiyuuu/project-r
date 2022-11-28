@@ -22,7 +22,7 @@ public class ObstacleDetector : Detector
 
         foreach(Collider2D collider in colliders)
         {
-            SpriteRenderer render = collider.GetComponent<SpriteRenderer>();//other game object layer
+            SpriteRenderer render = collider.gameObject.GetComponent<SpriteRenderer>();//other game object layer
             if (render != null)
             {
                 print(render.gameObject);

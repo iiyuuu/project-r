@@ -1877,11 +1877,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 777386640743146268, guid: b8a1876b341ea7a4fa8ccf34a36c9195, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.13
+      value: -0.12700005
       objectReference: {fileID: 0}
     - target: {fileID: 777386640743146268, guid: b8a1876b341ea7a4fa8ccf34a36c9195, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 0.11800003
+      value: 0.007999985
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -2509,11 +2509,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 777386640743146268, guid: b8a1876b341ea7a4fa8ccf34a36c9195, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.0010000467
+      value: -0.1270001
       objectReference: {fileID: 0}
     - target: {fileID: 777386640743146268, guid: b8a1876b341ea7a4fa8ccf34a36c9195, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -0.025000095
+      value: 0.007999897
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -73496,11 +73496,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 777386640743146268, guid: b8a1876b341ea7a4fa8ccf34a36c9195, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.0010000467
+      value: -0.1270001
       objectReference: {fileID: 0}
     - target: {fileID: 777386640743146268, guid: b8a1876b341ea7a4fa8ccf34a36c9195, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -0.024999976
+      value: 0.008000016
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776929335436159866, guid: b8a1876b341ea7a4fa8ccf34a36c9195, type: 3}
+      propertyPath: obstaclesLayerMask.m_Bits
+      value: 72
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -104519,11 +104523,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 777386640743146268, guid: b8a1876b341ea7a4fa8ccf34a36c9195, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.0009999871
+      value: -0.127
       objectReference: {fileID: 0}
     - target: {fileID: 777386640743146268, guid: b8a1876b341ea7a4fa8ccf34a36c9195, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -0.025000095
+      value: 0.008000041
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776929335436159866, guid: b8a1876b341ea7a4fa8ccf34a36c9195, type: 3}
+      propertyPath: obstaclesLayerMask.m_Bits
+      value: 72
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -105225,11 +105233,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 777386640743146268, guid: b8a1876b341ea7a4fa8ccf34a36c9195, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.0009999871
+      value: -0.12699993
       objectReference: {fileID: 0}
     - target: {fileID: 777386640743146268, guid: b8a1876b341ea7a4fa8ccf34a36c9195, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -0.025000006
+      value: 0.00800014
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776929335436159866, guid: b8a1876b341ea7a4fa8ccf34a36c9195, type: 3}
+      propertyPath: showGizmos
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -105348,11 +105360,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 777386640743146268, guid: b8a1876b341ea7a4fa8ccf34a36c9195, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.0009999871
+      value: -0.1270001
       objectReference: {fileID: 0}
     - target: {fileID: 777386640743146268, guid: b8a1876b341ea7a4fa8ccf34a36c9195, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -0.024999976
+      value: 0.007999897
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

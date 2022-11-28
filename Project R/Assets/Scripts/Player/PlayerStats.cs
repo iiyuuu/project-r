@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 public class PlayerStats : MonoBehaviour
 {
@@ -17,6 +16,7 @@ public class PlayerStats : MonoBehaviour
     public int attackDamage;
 
     public List<ShopItems> smallPowerups;
+    public List<Powerup> largePowerups;
 
     public static event Action OnPlayerDamaged;
     public static event Action OnPlayerDeath;
@@ -42,6 +42,10 @@ public class PlayerStats : MonoBehaviour
     }
     private void Update()
     {
+        if(SceneManager.GetActiveScene().name == "Menu")
+        {
+            largePowerups.Clear();
+        }
         attackDamage = GetComponentInChildren<MeleeController>(true).attackDamage;
         if(currentHealth <= 2 && currentHealth != 0)
         {
@@ -76,6 +80,11 @@ public class PlayerStats : MonoBehaviour
                 smallPowerups[i].enabled = data.powerups[i].enabled;
             }
         }
+    }
+
+    public void AddPowerup(Powerup p)
+    {
+        largePowerups.Add(p);
     }
 
     public void DamageTaken(int amount)
@@ -135,6 +144,11 @@ public class PlayerStats : MonoBehaviour
         {
             c.gameObject.SetActive(true);
         }
+        foreach(Powerup p in largePowerups)
+        {
+            p.Deactivate(gameObject);
+        }
+        largePowerups.Clear();
         currentHealth = maxHealth;
         playerControls.canMove = true;
         playerControls.canDash = true;

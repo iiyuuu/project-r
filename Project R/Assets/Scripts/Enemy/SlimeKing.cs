@@ -1,202 +1,131 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class SlimeKing : Enemy
 {
-    int specialChange = 5;
-    float specialAttackCooldownTime = 3f;
+    public int stage = 1;
 
-    bool canSpecial = true;
-    bool shootRing = false;
-    bool canDash = true;
-
-
-    public GameObject firePoint0;
-    public GameObject firePoint1;
-    public GameObject firePoint2;
-    public GameObject firePoint3;
-    public GameObject firePoint4;
-    public GameObject firePoint5;
-    public GameObject firePoint6;
     public GameObject bulletPrefab;
-    public float fireForce = 3f;
-    [Header("Audio Stuff")]
-    AudioSource audio;
-    public AudioClip bubblePop;
-    public AudioClip walkingSound;
-    public AudioClip bossMusic;
+    public GameObject shadow;
+    private GameObject shadowCircle;
+    public float fireForce;
+    public bool shadowSpawn = false;
+    private float currentTime = 0f;
+    private float endTime;
+
+    public enum State
+    {
+        jupming, landing, shooting, idle, airborne
+    }
+
+    public State state;
 
 
-    Vector2 moveVector;
-    public Vector2 targetPosition;
-    public float dashForce;
-    float dashCooldown = 3f;
 
     // Start is called before the first frame update
     public override void Start()
     {
+        state = State.idle;
         base.Start();
-        audio = GetComponent<AudioSource>();
-        audio.Stop();
-
     }
 
-    // Update is called once per frame
     protected override void FixedUpdate()
     {
-        if (rb.velocity != Vector2.zero && !audio.isPlaying)
+        switch (state)
         {
-            audio.PlayOneShot(walkingSound,0.7f);
-        }
-        if(Health <= 20 && Health > 10)
-        {
-            spriteRend.color = Color.yellow;
-            int rand = Random.Range(0,6);
-            if(rand >= specialChange && canSpecial)
-            {
-                StartCoroutine(specialAttackCooldown());
-            }
-            else if (rand >= 0 && rand < specialChange && canDash)
-            {
-                StartCoroutine(dashCo());
-            }
-        }
-        else if(Health <=10 && Health > 0)
-        {
-            spriteRend.color = Color.red;
-            shootRing = true;
-            int rand = Random.Range(0, 6);
-            if (rand >= specialChange && canSpecial)
-            {
-                StartCoroutine(specialAttackCooldown());
-            }
-            else if(rand>=0 && rand < specialChange && canDash){
-                StartCoroutine(dashCo());
-            }
+            case State.idle:
+                base.FixedUpdate();
+                break;
+            case State.jupming:
+                foreach (CircleCollider2D collider in GetComponents<CircleCollider2D>())
+                {
+                    collider.enabled = false;
+                }
+                currentTime += Time.fixedDeltaTime;
+                Vector3 jumpPosition = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z);
+                transform.position = Vector3.Lerp(transform.position, jumpPosition, currentTime / endTime);
+                break;
+            case State.airborne:
+                currentTime += Time.fixedDeltaTime;
+                if (!shadowSpawn)
+                {
+                    shadowCircle = Instantiate(shadow, GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
+                    shadowSpawn = true;
+                }
+                else
+                {
+                    Debug.Log(shadowCircle.transform.localScale);
+                    shadowCircle.transform.localScale = Vector3.Lerp(shadowCircle.transform.localScale, new Vector3(1, 0.5f, 1), currentTime / endTime);//makes the shadow expand 1 second before slime drops
+                }
+                break;
+            case State.landing:
+                shadowSpawn = false;
+                currentTime += Time.fixedDeltaTime;
+                transform.position = Vector3.Lerp(transform.position, new Vector3(shadowCircle.transform.position.x, shadowCircle.transform.position.y + 0.5f, shadowCircle.transform.position.z), currentTime / endTime);
+                break;
+            
         }
     }
 
-    private void specialAttack()
+    private void Shoot()
     {
-        if (shootRing)
+        FindObjectOfType<AudioManager>().Play("Bubble Pop");
+        state = State.shooting;
+        if (stage == 3)
         {
-            GameObject bullet = Instantiate(bulletPrefab, firePoint1.transform.position, firePoint1.transform.rotation);
-            bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint1.transform.up * fireForce, ForceMode2D.Impulse);
-            Destroy(bullet, 2);
-            audio.PlayOneShot(bubblePop);
-            bullet = Instantiate(bulletPrefab, firePoint2.transform.position, firePoint2.transform.rotation);
-            bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint2.transform.up * fireForce, ForceMode2D.Impulse);
-            Destroy(bullet, 2);
-            audio.PlayOneShot(bubblePop);
-            bullet = Instantiate(bulletPrefab, firePoint3.transform.position, firePoint3.transform.rotation);
-            bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint3.transform.up * fireForce, ForceMode2D.Impulse);
-            Destroy(bullet, 2);
-            audio.PlayOneShot(bubblePop);
-            bullet = Instantiate(bulletPrefab, firePoint4.transform.position, firePoint4.transform.rotation);
-            bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint4.transform.up * fireForce, ForceMode2D.Impulse);
-            Destroy(bullet, 2);
-            audio.PlayOneShot(bubblePop);
-            bullet = Instantiate(bulletPrefab, firePoint5.transform.position, firePoint5.transform.rotation);
-            bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint5.transform.up * fireForce, ForceMode2D.Impulse);
-            Destroy(bullet, 2);
-            audio.PlayOneShot(bubblePop);
-            bullet = Instantiate(bulletPrefab, firePoint6.transform.position, firePoint6.transform.rotation);
-            bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint6.transform.up * fireForce, ForceMode2D.Impulse);
-            Destroy(bullet, 2);
-            audio.PlayOneShot(bubblePop);
-            bullet = Instantiate(bulletPrefab, firePoint0.transform.position, firePoint0.transform.rotation);
-            bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint0.transform.up * fireForce, ForceMode2D.Impulse);
-            Destroy(bullet, 2);
-            audio.PlayOneShot(bubblePop);
+            float angleStep = 360f / 8;
+            float angle = 0f;
+            for (int i = 1; i <= 8; i++)
+            {
+                float projDirX = transform.position.x + Mathf.Sin(angle * Mathf.PI / 180);
+                float projDirY = transform.position.y + Mathf.Cos(angle * Mathf.PI / 180);
+
+                Vector3 projectileVector = new Vector3(projDirX, projDirY, 0);
+                Vector3 moveDirection = (projectileVector - transform.position).normalized;
+
+                GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.AngleAxis(-angle, transform.forward));
+                bullet.GetComponentInChildren<Rigidbody2D>().AddForce(moveDirection * 1.5f, ForceMode2D.Impulse);
+                angle += angleStep;
+                Destroy(bullet, 2);
+            }
         }
         else
         {
-            int rand = Random.Range(0, 7);
-            switch (rand)
-            {
-                case 1:
-                    GameObject bullet = Instantiate(bulletPrefab, firePoint1.transform.position, firePoint1.transform.rotation);
-                    bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint1.transform.up * fireForce, ForceMode2D.Impulse);
-                    Destroy(bullet, 2);
-                    audio.PlayOneShot(bubblePop);
-                    break;
-                case 2:
-                    bullet = Instantiate(bulletPrefab, firePoint2.transform.position, firePoint2.transform.rotation);
-                    bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint2.transform.up * fireForce, ForceMode2D.Impulse);
-                    Destroy(bullet, 2);
-                    audio.PlayOneShot(bubblePop);
-                    break;
-                case 3:
-                    bullet = Instantiate(bulletPrefab, firePoint3.transform.position, firePoint3.transform.rotation);
-                    bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint3.transform.up * fireForce, ForceMode2D.Impulse);
-                    Destroy(bullet, 2);
-                    audio.PlayOneShot(bubblePop);
-                    break;
-                case 4:
-                    bullet = Instantiate(bulletPrefab, firePoint4.transform.position, firePoint4.transform.rotation);
-                    bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint4.transform.up * fireForce, ForceMode2D.Impulse);
-                    Destroy(bullet, 2);
-                    audio.PlayOneShot(bubblePop);
-                    break;
-                case 5:
-                    bullet = Instantiate(bulletPrefab, firePoint5.transform.position, firePoint5.transform.rotation);
-                    bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint5.transform.up * fireForce, ForceMode2D.Impulse);
-                    Destroy(bullet, 2);
-                    audio.PlayOneShot(bubblePop);
-                    break;
-                case 6:
-                    bullet = Instantiate(bulletPrefab, firePoint6.transform.position, firePoint6.transform.rotation);
-                    bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint6.transform.up * fireForce, ForceMode2D.Impulse);
-                    Destroy(bullet, 2);
-                    audio.PlayOneShot(bubblePop);
-                    break;
-                default:
-                    bullet = Instantiate(bulletPrefab, firePoint0.transform.position, firePoint0.transform.rotation);
-                    bullet.GetComponentInChildren<Rigidbody2D>().AddForce(firePoint0.transform.up * fireForce, ForceMode2D.Impulse);
-                    Destroy(bullet, 2);
-                    audio.PlayOneShot(bubblePop);
-                    break;
-            }
+            Vector3 moveDirection = ((Vector3)pointerInput - transform.position).normalized;
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            bullet.GetComponentInChildren<Rigidbody2D>().AddForce(moveDirection * 1.5f, ForceMode2D.Impulse);
+            Destroy(bullet, 2);
         }
     }
 
-    public void Dash()
+    public void Jump()
     {
-        moveVector = ((Vector2)transform.position + pointerInput).normalized;
-        targetPosition = moveVector * 1.25f + (Vector2)transform.position;//past the target 
-
-        RaycastHit2D hit = Physics2D.Raycast((Vector2)transform.position, moveVector, Vector2.Distance((Vector2)transform.position, targetPosition), LayerMask.GetMask("Interactable"));
-        if (hit.collider != null)
-        {
-            targetPosition = hit.transform.position;
-        }
-        if (isFlipped)
-        {
-            rb.AddForce(-moveVector * dashForce, ForceMode2D.Impulse);
-        }
-        else
-        {
-            rb.AddForce(moveVector * dashForce, ForceMode2D.Impulse);
-        }
-      
-
+        FindObjectOfType<AudioManager>().Play("Sword Slash2");
+        state = State.jupming;
+        currentTime = 0f;
+        endTime = .25f;
+        StartCoroutine(Land());
     }
-    IEnumerator specialAttackCooldown()
+
+    public IEnumerator Land()
     {
-        canSpecial = false;
-        specialAttack();
-        yield return new WaitForSeconds(specialAttackCooldownTime);
-        canSpecial = true;
-    }
+        yield return new WaitForSeconds(0.25f);
+        state = State.airborne;
+        currentTime = 0f;
+        endTime = 1f;
+        yield return new WaitForSeconds(1f);
+        state = State.landing;
+        currentTime = 0f;
+        endTime = .25f;
+        yield return new WaitForSeconds(.25f);
+        foreach (CircleCollider2D collider in GetComponents<CircleCollider2D>())
+        {
+            collider.enabled = true;
+        }
+        FindObjectOfType<AudioManager>().Play("Slime Jump2");
+        yield return new WaitForSeconds(.25f);
+        Destroy(shadowCircle);
+        state = State.idle;
 
-    IEnumerator dashCo()
-    {
-        canDash = false;
-        Dash();
-        yield return new WaitForSeconds(dashCooldown);
-        canDash = true;
     }
-
 }

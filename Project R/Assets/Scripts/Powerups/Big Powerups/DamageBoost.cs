@@ -13,4 +13,9 @@ public class DamageBoost : Powerup
         parent.GetComponent<PlayerStats>().attackDamage += amount;
 
     }
+
+    public override void Deactivate(GameObject parent)
+    {
+        parent.GetComponent<PlayerStats>().attackDamage -= amount;
+    }
 }

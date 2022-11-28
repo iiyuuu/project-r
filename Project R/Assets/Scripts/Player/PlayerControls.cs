@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -87,6 +88,10 @@ public class PlayerControls : MonoBehaviour
     //movement
     void FixedUpdate()
     {
+        if (FindObjectOfType<CinemachineVirtualCamera>().m_Lens.OrthographicSize >= 1.3f && FindObjectOfType<CinemachineVirtualCamera>().m_Lens.OrthographicSize >= 1.03f && !SceneManager.GetActiveScene().name.Contains("Boss"))
+        {
+            FindObjectOfType<CinemachineVirtualCamera>().m_Lens.OrthographicSize -= Time.deltaTime;
+        }
         if (SceneManager.GetActiveScene().name.Contains("F"))
         {
             gameObject.GetComponent<Light2D>().enabled = true;

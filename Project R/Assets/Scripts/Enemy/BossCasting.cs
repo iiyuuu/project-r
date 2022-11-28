@@ -33,11 +33,18 @@ public class BossCasting : MonoBehaviour
                     Instantiate(casts[2], (Vector2)player.transform.position + (Random.insideUnitCircle), Quaternion.identity);//spread fireball spawning
                 }
                 break;
-            case >8 and <= 10:
+            case >8 and <= 9:
                 for(int i = 0; i < phase; i++)
                 {
                     Debug.Log("Adds");
                     Instantiate(casts[3], (Vector2)player.transform.position + (Random.insideUnitCircle), Quaternion.identity);//adds spawning
+                }
+                break;
+            case > 9 and <= 10:
+                for (int i = 0; i < phase; i++)
+                {
+                    Debug.Log("Adds");
+                    Instantiate(casts[4], (Vector2)player.transform.position + (Random.insideUnitCircle), Quaternion.identity);//adds spawning
                 }
                 break;
             default:

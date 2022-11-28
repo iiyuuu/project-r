@@ -12,4 +12,9 @@ public class SpeedBoost : Powerup
         parent.GetComponent<PlayerControls>().baseMoveSpeed += amount;
 
     }
+
+    public override void Deactivate(GameObject parent)
+    {
+        parent.GetComponent<PlayerControls>().baseMoveSpeed -= amount;
+    }
 }

@@ -14306,6 +14306,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1269471637}
   invulnerable: 0
+  flashMaterial: {fileID: 2100000, guid: b46bec1dc01be4a4aa7d83dcf3a40e09, type: 2}
+  originalMaterial: {fileID: 0}
   health: 50
   maxHealth: 50
   moveSpeed: 2
@@ -14321,6 +14323,7 @@ MonoBehaviour:
   numberOfFlashes: 1
   enemyHurt: 0
   spriteRend: {fileID: 0}
+  isFlipped: 0
 --- !u!95 &1269471634
 Animator:
   serializedVersion: 4
@@ -14390,7 +14393,7 @@ SpriteRenderer:
   m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1269471636
@@ -14428,7 +14431,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!70 &1269471638
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -14454,7 +14457,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1269471632}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 630593d5b6e248b47bfb9a922564a2b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a777fbb6d6a3af4780f6dd90e1f29c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   casts:
@@ -14462,6 +14465,7 @@ MonoBehaviour:
   - {fileID: 8872545247490530151, guid: 7e4659a3909d0524da3d654193be6f3a, type: 3}
   - {fileID: 295383736433885769, guid: 1824d40acb55cf0458fdc87870c84077, type: 3}
   - {fileID: 4785558742122789418, guid: 84fccf5c6f6dcb242aad15450f9c72af, type: 3}
+  - {fileID: 777386639253033905, guid: b8a1876b341ea7a4fa8ccf34a36c9195, type: 3}
 --- !u!114 &1269471640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14551,7 +14555,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.006865889, y: -0.031582877}

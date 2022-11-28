@@ -1277,7 +1277,7 @@ MonoBehaviour:
   detectionRadius: 2
   layerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 384
   showGizmos: 1
 --- !u!114 &2883805995552912131
 MonoBehaviour:

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 913978135562230205}
   m_Layer: 10
   m_Name: Boss Bullet
-  m_TagString: Enemy Projectile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,9 +171,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 373667894874720840}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 330fd0fe271ca4d1bb0c15341a523c7b, type: 3}
+  m_Script: {fileID: 11500000, guid: c306df2f89124eb47b3ab035204aded9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  animator: {fileID: 0}
-  slime: {fileID: 3569968416217482967, guid: a774a8996485e124dad7311311dd8305, type: 3}
+  animator: {fileID: 6339909740644785832}
+  slime: {fileID: 3569968416217482967, guid: b08da07bf17583b4bae1d6185512c5e6, type: 3}

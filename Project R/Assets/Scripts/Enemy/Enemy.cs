@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
 {
     public Rigidbody2D rb;
     public bool invulnerable = false;
+    public Material flashMaterial;
+    public Material originalMaterial;
 
     [Header("Stats")]
     public int health;
@@ -84,6 +86,7 @@ public class Enemy : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
         homePosition = transform.position;
+        originalMaterial = spriteRend.material;
      }
 
     protected virtual void FixedUpdate()
@@ -188,10 +191,9 @@ public class Enemy : MonoBehaviour
         }
         for (int i = 0; i < numberOfFlashes; i++)
         {
-            spriteRend.color = new Color(1, 0, 0, 0.5f);
-            yield return new WaitForSeconds(iFrameDuration / (numberOfFlashes * 2));
-            spriteRend.color = Color.white;
-            yield return new WaitForSeconds(iFrameDuration / (numberOfFlashes * 2));
+            spriteRend.material = flashMaterial;
+            yield return new WaitForSeconds(iFrameDuration / numberOfFlashes);
+            spriteRend.material = originalMaterial;
         }
         enemyHurt = false;
 

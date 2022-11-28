@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 7194221344911867128}
   - component: {fileID: 7194221344911867129}
   - component: {fileID: 1544109542778989360}
-  m_Layer: 11
+  m_Layer: 7
   m_Name: FlyingEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -487,6 +487,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 7194221344439264792}
   invulnerable: 0
+  flashMaterial: {fileID: 2100000, guid: b46bec1dc01be4a4aa7d83dcf3a40e09, type: 2}
+  originalMaterial: {fileID: 0}
   health: 1
   maxHealth: 1
   moveSpeed: 0
@@ -499,10 +501,11 @@ MonoBehaviour:
   pointerInput: {x: 0, y: 0}
   homePosition: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
-  iFrameDuration: 0.5
-  numberOfFlashes: 2
+  iFrameDuration: 0.2
+  numberOfFlashes: 1
   enemyHurt: 0
   spriteRend: {fileID: 0}
+  isFlipped: 0
   chargeTime: 1
   dashingCooldown: 1
   dashForce: 2

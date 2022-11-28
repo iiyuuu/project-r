@@ -14,5 +14,7 @@ public class Powerup : ScriptableObject
     public Sprite sprite;
 
     public virtual void Activate(GameObject parent) {}
+
+    public virtual void Deactivate(GameObject parent) {}
     
 }

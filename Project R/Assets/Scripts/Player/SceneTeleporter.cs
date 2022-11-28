@@ -187,7 +187,11 @@ public class SceneTeleporter : MonoBehaviour
         loadingScreen.SetActive(false);
         foreach (Sound s in FindObjectOfType<AudioManager>().sounds)
         {
-            s.source.volume = s.volume + FindObjectOfType<AudioManager>().GetMasterVolume() / 20;
+            if (s.source != null)
+            {
+                s.source.volume = s.volume;
+            }
+            
         }
         if (SceneManager.GetActiveScene().name == "Hub")//load first then save, to check if there is data
         {

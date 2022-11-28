@@ -30,6 +30,10 @@ public class LichIdle : StateMachineBehaviour
         {
             animator.SetTrigger("Cast");
         }
+        if(FindObjectOfType<CinemachineVirtualCamera>().m_Lens.OrthographicSize < 1.2f)
+        {
+            FindObjectOfType<CinemachineVirtualCamera>().m_Lens.OrthographicSize += Time.deltaTime;
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

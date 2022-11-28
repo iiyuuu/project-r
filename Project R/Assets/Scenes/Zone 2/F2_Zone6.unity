@@ -27998,6 +27998,10 @@ PrefabInstance:
       value: 0.040094376
       objectReference: {fileID: 0}
     - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
+      propertyPath: spawn
+      value: 
+      objectReference: {fileID: 1661133677}
+    - target: {fileID: 4933373860573959700, guid: dbfd65dd4d1297e42a851b4647b16cff, type: 3}
       propertyPath: loader
       value: 
       objectReference: {fileID: 1803692464}

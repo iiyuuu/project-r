@@ -13,4 +13,9 @@ public class HealthBoost : Powerup
         parent.GetComponent<PlayerStats>().currentHealth += amount;
 
     }
+
+    public override void Deactivate(GameObject parent)
+    {
+        parent.GetComponent<PlayerStats>().maxHealth -= amount;
+    }
 }
