@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 2
-  reloadTime: 2
+  reloadTime: 3
   fireForce: 3
   currentDelay: 0
   reloadTrigger: 0
@@ -1118,6 +1118,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ab5156ed78250f74a90d461440b4609c, type: 2}
   - {fileID: 11400000, guid: c7c78b83926c29748ac454947db566e0, type: 2}
   - {fileID: 11400000, guid: b9e35e607a173f74a8550489d5048ae5, type: 2}
+  largePowerups: []
   hurt: 0
   iFrameDuration: 1
   numberOfFlashes: 5
