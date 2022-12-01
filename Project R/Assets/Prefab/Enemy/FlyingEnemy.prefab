@@ -161,7 +161,7 @@ MonoBehaviour:
   targetDetectionRange: 1
   obstaclesLayerMask:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 64
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 64
