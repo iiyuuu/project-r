@@ -24,7 +24,7 @@ public class Stopwatch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().name.Contains("F1") && !toggle.isOn)
+        if (SceneManager.GetActiveScene().name.Contains("Zone") && !toggle.isOn)
         {
             Debug.Log("toggle is now on");
             toggle.isOn = true;
@@ -40,6 +40,10 @@ public class Stopwatch : MonoBehaviour
         if (toggle.isOn)
         {
             currentTime = currentTime + Time.deltaTime;
+        }
+        else
+        {
+            currentTime = 0;
         }
         TimeSpan time = TimeSpan.FromSeconds(currentTime);
         currentTimeText.text = time.ToString(@"mm\:ss");
