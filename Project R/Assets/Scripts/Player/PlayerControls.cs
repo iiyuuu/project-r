@@ -375,4 +375,9 @@ public class PlayerControls : MonoBehaviour
        
     }
 
+    public void FlipBack()
+    {
+        spriteRenderer.flipX = GetComponentInChildren<RangedAttack>().facingLeft;
+    }
+
 }

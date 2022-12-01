@@ -1883,6 +1883,10 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.y
       value: 0.007999985
       objectReference: {fileID: 0}
+    - target: {fileID: 4776929335436159866, guid: b8a1876b341ea7a4fa8ccf34a36c9195, type: 3}
+      propertyPath: obstaclesLayerMask.m_Bits
+      value: 328
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: b8a1876b341ea7a4fa8ccf34a36c9195, type: 3}
@@ -1966,6 +1970,10 @@ PrefabInstance:
     - target: {fileID: 7194221344439264787, guid: d22424b510b4b4505b98404a5df64fbd, type: 3}
       propertyPath: m_Name
       value: FlyingEnemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194221344439264789, guid: d22424b510b4b4505b98404a5df64fbd, type: 3}
+      propertyPath: numberOfFlashes
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7194221344439264794, guid: d22424b510b4b4505b98404a5df64fbd, type: 3}
       propertyPath: m_RootOrder
@@ -4182,6 +4190,10 @@ PrefabInstance:
     - target: {fileID: 7194221344439264787, guid: d22424b510b4b4505b98404a5df64fbd, type: 3}
       propertyPath: m_Name
       value: FlyingEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7194221344439264789, guid: d22424b510b4b4505b98404a5df64fbd, type: 3}
+      propertyPath: numberOfFlashes
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7194221344439264794, guid: d22424b510b4b4505b98404a5df64fbd, type: 3}
       propertyPath: m_RootOrder

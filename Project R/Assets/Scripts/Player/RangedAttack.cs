@@ -16,8 +16,10 @@ public class RangedAttack : MonoBehaviour
 
     [Header("Bools")]
     public bool reloadTrigger = false;
+    public bool facingLeft;
     [SerializeField] private bool reloading = false;
     [SerializeField] private bool firing = false;
+    
 
     [Header("Borrowed Components")]
     public GameObject bulletPrefab;
@@ -80,6 +82,7 @@ public class RangedAttack : MonoBehaviour
     }
     public void Fire()
     {
+        facingLeft = GameObject.FindGameObjectWithTag("Player").GetComponent<SpriteRenderer>().flipX;
         if (!firing && !reloading && controls.canDash)
         {
             animator.SetTrigger("Fireball");//locks movement, then unlocks movement
